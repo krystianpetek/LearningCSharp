@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstAPP", "FirstAPP\FirstA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondAPP", "SecondAPP\SecondAPP.csproj", "{D965649E-68CB-4285-8906-7C9C80964CFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThirdAPP_Decision", "ThirdAPP_Decision\ThirdAPP_Decision.csproj", "{A4497414-071B-4599-8150-B495CB9E93CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThirdAPP_Decision", "ThirdAPP_Decision\ThirdAPP_Decision.csproj", "{A4497414-071B-4599-8150-B495CB9E93CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourthAPP", "FourthAPP\FourthAPP.csproj", "{2B27C42C-A5B9-4359-B8D9-D2638A447517}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{A4497414-071B-4599-8150-B495CB9E93CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4497414-071B-4599-8150-B495CB9E93CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4497414-071B-4599-8150-B495CB9E93CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B27C42C-A5B9-4359-B8D9-D2638A447517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B27C42C-A5B9-4359-B8D9-D2638A447517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B27C42C-A5B9-4359-B8D9-D2638A447517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B27C42C-A5B9-4359-B8D9-D2638A447517}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
