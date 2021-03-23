@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourthAPP", "FourthAPP\Four
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FifthAPP_tablice", "FifthAPP_tablice\FifthAPP_tablice.csproj", "{7722AF67-EAE8-45CF-8356-F0E6BC307B02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroSTRINGI", "ZeroSTRINGI\ZeroSTRINGI.csproj", "{5B4ACDE9-F677-4563-8AD0-DB8CAF969479}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7722AF67-EAE8-45CF-8356-F0E6BC307B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7722AF67-EAE8-45CF-8356-F0E6BC307B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7722AF67-EAE8-45CF-8356-F0E6BC307B02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B4ACDE9-F677-4563-8AD0-DB8CAF969479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B4ACDE9-F677-4563-8AD0-DB8CAF969479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B4ACDE9-F677-4563-8AD0-DB8CAF969479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B4ACDE9-F677-4563-8AD0-DB8CAF969479}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
