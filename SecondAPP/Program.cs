@@ -88,6 +88,11 @@ namespace SecondAPP
             Console.WriteLine($"First roll: {roll1}");
             Console.WriteLine($"Second roll: {roll2}");
             Console.WriteLine($"Third roll: {roll3}");
+
+            int firstValue = 500;
+            int secondValue = 600;
+            int largetValue = Math.Max(firstValue, secondValue);
+            Console.WriteLine($"\nWiększa wartość z dwóch liczb to: {largetValue}");
         }
     }
 }
