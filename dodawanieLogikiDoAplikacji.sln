@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1_Wyrazenia", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2_zadanie", "ConsoleApp2_zadanie\ConsoleApp2_zadanie.csproj", "{D705F091-5FAC-410F-A220-E1748B667698}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp3_kontrolaZmiennaLogika", "ConsoleApp3_kontrolaZmiennaLogika\ConsoleApp3_kontrolaZmiennaLogika.csproj", "{9D66E67E-4DBC-4BE4-AD3E-EF60CF774F69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D705F091-5FAC-410F-A220-E1748B667698}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D705F091-5FAC-410F-A220-E1748B667698}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D705F091-5FAC-410F-A220-E1748B667698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D66E67E-4DBC-4BE4-AD3E-EF60CF774F69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D66E67E-4DBC-4BE4-AD3E-EF60CF774F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D66E67E-4DBC-4BE4-AD3E-EF60CF774F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D66E67E-4DBC-4BE4-AD3E-EF60CF774F69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
