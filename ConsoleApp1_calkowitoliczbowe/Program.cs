@@ -12,6 +12,7 @@ namespace ConsoleApp1_calkowitoliczbowe
             Console.WriteLine($"int  : {int.MinValue} to {int.MaxValue}");
             Console.WriteLine($"long  : {long.MinValue} to {long.MaxValue}");
 
+            Console.WriteLine();
             Console.WriteLine("typy całkowite bez znaku:");
             Console.WriteLine($"byte  : {byte.MinValue} to {byte.MaxValue}");
             Console.WriteLine($"ushort  : {ushort.MinValue} to {ushort.MaxValue}");
