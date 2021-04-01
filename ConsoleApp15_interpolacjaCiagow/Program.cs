@@ -1,0 +1,21 @@
+﻿using System;
+
+namespace ConsoleApp15_interpolacjaCiagow
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+			int invoiceNumber = 1201;
+			decimal productMeasurement = 25.4568m;
+			decimal subtotal = 2750.00m;
+			decimal taxPercentage = .15825m;
+			decimal total = 3185.19m;
+			Console.WriteLine($"Invoice number: {invoiceNumber}");
+			Console.WriteLine($"   Measurement: {productMeasurement:N3} mg");
+			Console.WriteLine($"      Subtotal: {subtotal:C}");
+			Console.WriteLine($"           Tax: {taxPercentage:P2}");
+			Console.WriteLine($"     Total due: {total:C}");
+		}
+    }
+}

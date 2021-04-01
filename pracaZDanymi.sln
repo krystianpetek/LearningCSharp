@@ -9,25 +9,37 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1_calkowitoliczbo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp3_typy_referencyjne", "ConsoleApp3_typy_referencyjne\ConsoleApp3_typy_referencyjne.csproj", "{25413ECC-99DF-4DF9-AB48-F227D3B3F42A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp4_rzutowanie_konwersja", "ConsoleApp4_rzutowanie_konwersja\ConsoleApp4_rzutowanie_konwersja.csproj", "{34B06914-120C-4E28-9E7F-2E37DA7A2286}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp4_rzutowanie_konwersja", "ConsoleApp4_rzutowanie_konwersja\ConsoleApp4_rzutowanie_konwersja.csproj", "{34B06914-120C-4E28-9E7F-2E37DA7A2286}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp5_tryParse", "ConsoleApp5_tryParse\ConsoleApp5_tryParse.csproj", "{E0651567-3F5C-4B7A-8A7F-4B3174917201}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp5_tryParse", "ConsoleApp5_tryParse\ConsoleApp5_tryParse.csproj", "{E0651567-3F5C-4B7A-8A7F-4B3174917201}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp6_zadanie1_regulyBiznesowe", "ConsoleApp6_zadanie1_regulyBiznesowe\ConsoleApp6_zadanie1_regulyBiznesowe.csproj", "{03EDD2D6-B1A8-4D85-9788-34C59E83D432}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp6_zadanie1_regulyBiznesowe", "ConsoleApp6_zadanie1_regulyBiznesowe\ConsoleApp6_zadanie1_regulyBiznesowe.csproj", "{03EDD2D6-B1A8-4D85-9788-34C59E83D432}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp7_zadanie2", "ConsoleApp7_zadanie2\ConsoleApp7_zadanie2.csproj", "{C5171F61-2B82-4C41-B261-FECBCBF98514}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp7_zadanie2", "ConsoleApp7_zadanie2\ConsoleApp7_zadanie2.csproj", "{C5171F61-2B82-4C41-B261-FECBCBF98514}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp8_SORT", "ConsoleApp8_SORT\ConsoleApp8_SORT.csproj", "{C85E60F1-7A23-43AB-96DF-4C839A305133}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp8_SORT", "ConsoleApp8_SORT\ConsoleApp8_SORT.csproj", "{C85E60F1-7A23-43AB-96DF-4C839A305133}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp9_REVERSE", "ConsoleApp9_REVERSE\ConsoleApp9_REVERSE.csproj", "{79F1AB08-AB12-47B9-A07B-96527B01B729}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp9_REVERSE", "ConsoleApp9_REVERSE\ConsoleApp9_REVERSE.csproj", "{79F1AB08-AB12-47B9-A07B-96527B01B729}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp10_clearResize", "ConsoleApp10_clearResize\ConsoleApp10_clearResize.csproj", "{EBA449D3-F514-4325-9085-F3E50FB21809}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp10_clearResize", "ConsoleApp10_clearResize\ConsoleApp10_clearResize.csproj", "{EBA449D3-F514-4325-9085-F3E50FB21809}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp11_splitJoin", "ConsoleApp11_splitJoin\ConsoleApp11_splitJoin.csproj", "{85775D14-5FD4-47C4-97CA-2763B7814D17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp11_splitJoin", "ConsoleApp11_splitJoin\ConsoleApp11_splitJoin.csproj", "{85775D14-5FD4-47C4-97CA-2763B7814D17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp12_zadanie1_odwracanieWyrazow", "ConsoleApp12_zadanie1_odwracanieWyrazow\ConsoleApp12_zadanie1_odwracanieWyrazow.csproj", "{71999EEC-3137-4590-9501-37BA4E1CDF78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp12_zadanie1_odwracanieWyrazow", "ConsoleApp12_zadanie1_odwracanieWyrazow\ConsoleApp12_zadanie1_odwracanieWyrazow.csproj", "{71999EEC-3137-4590-9501-37BA4E1CDF78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp13_zadanie2_falszywki", "ConsoleApp13_zadanie2_falszywki\ConsoleApp13_zadanie2_falszywki.csproj", "{FB3683E4-AF9F-4701-820E-7A27740BBE77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp13_zadanie2_falszywki", "ConsoleApp13_zadanie2_falszywki\ConsoleApp13_zadanie2_falszywki.csproj", "{FB3683E4-AF9F-4701-820E-7A27740BBE77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp14_formatowanieCiagow", "ConsoleApp14_formatowanieCiagow\ConsoleApp14_formatowanieCiagow.csproj", "{016BB28A-C97C-43A1-A7C9-A60331FE1AD1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp15_interpolacjaCiagow", "ConsoleApp15_interpolacjaCiagow\ConsoleApp15_interpolacjaCiagow.csproj", "{FCC9BE07-DAE8-4F5F-855A-F6D791A20B4F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp16_dopelnianieWyrownanie", "ConsoleApp16_dopelnianieWyrownanie\ConsoleApp16_dopelnianieWyrownanie.csproj", "{BE437991-2EA0-41DD-AE5D-97E4F5317D5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp17_zadanieCiagi", "ConsoleApp17_zadanieCiagi\ConsoleApp17_zadanieCiagi.csproj", "{7B21E24A-C7E4-429C-9F9A-BD12921600E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp18_indexOfSubstring", "ConsoleApp18_indexOfSubstring\ConsoleApp18_indexOfSubstring.csproj", "{1D739447-3B78-45B5-BA5B-7592A0CB2BCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp19_removeReplace", "ConsoleApp19_removeReplace\ConsoleApp19_removeReplace.csproj", "{38F7F71C-F915-468C-8E47-64632CEAEAE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +99,30 @@ Global
 		{FB3683E4-AF9F-4701-820E-7A27740BBE77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB3683E4-AF9F-4701-820E-7A27740BBE77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB3683E4-AF9F-4701-820E-7A27740BBE77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{016BB28A-C97C-43A1-A7C9-A60331FE1AD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{016BB28A-C97C-43A1-A7C9-A60331FE1AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{016BB28A-C97C-43A1-A7C9-A60331FE1AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{016BB28A-C97C-43A1-A7C9-A60331FE1AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCC9BE07-DAE8-4F5F-855A-F6D791A20B4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCC9BE07-DAE8-4F5F-855A-F6D791A20B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCC9BE07-DAE8-4F5F-855A-F6D791A20B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCC9BE07-DAE8-4F5F-855A-F6D791A20B4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE437991-2EA0-41DD-AE5D-97E4F5317D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE437991-2EA0-41DD-AE5D-97E4F5317D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE437991-2EA0-41DD-AE5D-97E4F5317D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE437991-2EA0-41DD-AE5D-97E4F5317D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B21E24A-C7E4-429C-9F9A-BD12921600E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B21E24A-C7E4-429C-9F9A-BD12921600E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B21E24A-C7E4-429C-9F9A-BD12921600E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B21E24A-C7E4-429C-9F9A-BD12921600E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D739447-3B78-45B5-BA5B-7592A0CB2BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D739447-3B78-45B5-BA5B-7592A0CB2BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D739447-3B78-45B5-BA5B-7592A0CB2BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D739447-3B78-45B5-BA5B-7592A0CB2BCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38F7F71C-F915-468C-8E47-64632CEAEAE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38F7F71C-F915-468C-8E47-64632CEAEAE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38F7F71C-F915-468C-8E47-64632CEAEAE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38F7F71C-F915-468C-8E47-64632CEAEAE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
