@@ -6,6 +6,15 @@ namespace ConsoleApp3_czyUmieszPotegowac
     {
         static void Main(string[] args)
         {
+            // CZY UMIESZ POTEGOWAC
+
+            /* DANE WEJSCIOWE:
+             * 3
+             * 2 2
+             * 2 3
+             * 3 4
+             */
+
             byte D = byte.Parse(Console.ReadLine());
             if (D < 1 || D > 10) return;
             for (int i = 0; i < D; i++)

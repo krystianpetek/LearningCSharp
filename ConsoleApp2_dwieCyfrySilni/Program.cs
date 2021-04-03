@@ -6,8 +6,9 @@ namespace ConsoleApp2_dwieCyfrySilni
     {
         static void Main(string[] args)
         {
-            // Dwie Cyfry Silni
-            /* DANE WEJSCIOWE
+            // DWIE CYFRY SILNI
+            
+            /* DANE WEJSCIOWE:
              * 5
              * 5
              * 7
@@ -15,6 +16,7 @@ namespace ConsoleApp2_dwieCyfrySilni
              * 11
              * 13
              */
+
             string wejscie = Console.ReadLine();
             byte D = byte.Parse(wejscie);
             if (D < 1 || D > 30) return;
@@ -49,6 +51,8 @@ namespace ConsoleApp2_dwieCyfrySilni
                 count2 *= j;
             }
             Console.WriteLine($"{n2}! = {count2}");
+
+
         }
 
     }
