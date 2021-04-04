@@ -13,11 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp2.1_dwieCyfrySiln
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp4_funWithSequences3", "ConsoleApp4_funWithSequences3\ConsoleApp4_funWithSequences3.csproj", "{47717DE7-5CB8-44BA-AF9B-C636F9C0F8B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp5_characterPattern1", "ConsoleApp5_characterPattern1\ConsoleApp5_characterPattern1.csproj", "{7668C059-C7E2-4953-9EB1-8AA9C6766CE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp5_characterPattern1", "ConsoleApp5_characterPattern1\ConsoleApp5_characterPattern1.csproj", "{7668C059-C7E2-4953-9EB1-8AA9C6766CE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp6_characterPattern2", "ConsoleApp6_characterPattern2\ConsoleApp6_characterPattern2.csproj", "{79611B90-095D-4843-B795-83B7189E01D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp6_characterPattern2", "ConsoleApp6_characterPattern2\ConsoleApp6_characterPattern2.csproj", "{79611B90-095D-4843-B795-83B7189E01D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp7_flamaster", "ConsoleApp7_flamaster\ConsoleApp7_flamaster.csproj", "{3789EE66-897F-4823-B0C9-DA22CB315F9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp7_flamaster", "ConsoleApp7_flamaster\ConsoleApp7_flamaster.csproj", "{3789EE66-897F-4823-B0C9-DA22CB315F9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp8_przedszkolanka", "ConsoleApp8_przedszkolanka\ConsoleApp8_przedszkolanka.csproj", "{98232E66-F185-4BB6-8027-61C091120231}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{3789EE66-897F-4823-B0C9-DA22CB315F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3789EE66-897F-4823-B0C9-DA22CB315F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3789EE66-897F-4823-B0C9-DA22CB315F9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98232E66-F185-4BB6-8027-61C091120231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98232E66-F185-4BB6-8027-61C091120231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98232E66-F185-4BB6-8027-61C091120231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98232E66-F185-4BB6-8027-61C091120231}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
