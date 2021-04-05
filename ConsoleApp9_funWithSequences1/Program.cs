@@ -35,20 +35,15 @@ namespace ConsoleApp9_funWithSequences1
                 string wyswietl = "";
                 for (int j = 0; j < Q.Length; j++)
                 {
-                    while (true)
+                    while (j < Q.Length)
                     {
-                        if (j < Q.Length)
+                        if (S[i] == Q[j])
                         {
-                            if (S[i] == Q[j])
-                            {
-                                i++;
-                                continue;
-                            }
-                            else
-                            j++;
+                            i++;
+                            continue;
                         }
                         else
-                            break;
+                            j++;
                     }
                     wyswietl += $"{S[i]} ";
                 }
