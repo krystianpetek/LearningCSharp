@@ -4,6 +4,15 @@ namespace ConsoleApp9_funWithSequences1
 {
     class Program
     {
+        // Fun With Sequences Act1
+
+        /* DANE WEJSCIOWE:
+         * 5
+         * -2 -1 0 1 4
+         * 6
+         * -3 -2 -1 1 2 3
+         */
+
         static void Main(string[] args)
         {
             //Wczytaj S
@@ -32,11 +41,14 @@ namespace ConsoleApp9_funWithSequences1
                         {
                             if (S[i] == Q[j])
                             {
+                                Console.WriteLine("IF " + i + " " + j);
                                 i++;
                                 continue;
+
                             }
                             else
-                                j++;
+                                Console.WriteLine("ELSE " + i + " " + j);
+                            j++;
                         }
                         else
                             break;
