@@ -41,13 +41,10 @@ namespace ConsoleApp9_funWithSequences1
                         {
                             if (S[i] == Q[j])
                             {
-                                Console.WriteLine("IF " + i + " " + j);
                                 i++;
                                 continue;
-
                             }
                             else
-                                Console.WriteLine("ELSE " + i + " " + j);
                             j++;
                         }
                         else
