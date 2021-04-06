@@ -7,37 +7,41 @@ namespace ConsoleApp10_zabawneDodawaniePiotrusia
         static void Main(string[] args)
         {
             int t = int.Parse(Console.ReadLine());
-            for(int i = 0;i<t;i++)
+            for (int i = 0; i < t; i++)
             {
                 int liczba = int.Parse(Console.ReadLine());
-
-
-                
-
                 if (liczba > 0 && liczba < 81)
                 {
-                    if (liczba.ToString().Length == 1)
+                    int dlugoscLiczby = liczba.ToString().Length;
+                    string dobraLiczba = liczba.ToString();
+                    string odwroconaLiczba = "";
+                    for (int x = dlugoscLiczby - 1; x > -1; x--)
                     {
-                        Console.WriteLine($"{liczba} 0");
-                        continue;
+                        odwroconaLiczba += dobraLiczba[x];
                     }
-
-                    string lewa = liczba.ToString().Substring(0, 1);
-                    string prawa = liczba.ToString().Substring(1,1);
-                    if(lewa == prawa)
-                    {
-                        Console.WriteLine($"{liczba} 0");
-                    }
+                    if (dobraLiczba == odwroconaLiczba)
+                        Console.WriteLine($"{dobraLiczba} 0");
                     else
                     {
+                        int licznikOdwrocen = 0;
+                        while (dobraLiczba != odwroconaLiczba)
+                        {
+                            liczba = Convert.ToInt32(dobraLiczba) + Convert.ToInt32(odwroconaLiczba);
+                            dlugoscLiczby = liczba.ToString().Length;
+                            dobraLiczba = liczba.ToString();
+                            odwroconaLiczba = "";
+                            for (int x = dlugoscLiczby - 1; x > -1; x--)
+                            {
+                                odwroconaLiczba += dobraLiczba[x];
+                            }
 
+                            licznikOdwrocen++;
+                            Console.WriteLine($"{dobraLiczba} {licznikOdwrocen}");
+                        }
                     }
-
                 }
                 else
-                {
-                    Console.WriteLine("blad");
-                }
+                    Console.WriteLine("BŁĄD");
             }
         }
     }
