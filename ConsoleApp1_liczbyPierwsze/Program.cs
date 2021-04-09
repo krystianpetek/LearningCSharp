@@ -44,6 +44,35 @@ namespace ConsoleApp1_liczbyPierwsze
                     Console.WriteLine("TAK");
                 }
             }
+
+            // ROZWIAZANIE 2
+
+            int c = int.Parse(Console.ReadLine());
+            for (int a = 0; a < c; a++)
+            {
+                int b = int.Parse(Console.ReadLine());
+
+                bool check = false;
+                int dzielnik = 2;
+                while (dzielnik != b)
+                {
+                    if (b == 1)
+                    {
+                        check = true;
+                        break;
+                    }
+                    if (b % dzielnik == 0)
+                    {
+                        check = true;
+                        break;
+                    }
+                    dzielnik++;
+                }
+                if (check == false)
+                    Console.WriteLine("TAK");
+                else
+                    Console.WriteLine("NIE");
+            }
         }
     }
 }
