@@ -29,7 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp9_characterPatter
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp10_zabawneDodawaniePiotrusia", "ConsoleApp10_zabawneDodawaniePiotrusia\ConsoleApp10_zabawneDodawaniePiotrusia.csproj", "{41FF447F-CD92-4B10-8048-4F37ADB3A29F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp102_funWithSequences5_ROWNE", "ConsoleApp102_funWithSequences5\ConsoleApp102_funWithSequences5_ROWNE.csproj", "{325F6811-9D0C-49FA-AC56-8916DA25F740}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp102_funWithSequences5_ROWNE", "ConsoleApp102_funWithSequences5\ConsoleApp102_funWithSequences5_ROWNE.csproj", "{325F6811-9D0C-49FA-AC56-8916DA25F740}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp11_NWD", "ConsoleApp11_NWD\ConsoleApp11_NWD.csproj", "{7099E6BF-3E23-40A1-9CCB-C66151C3D68E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp103_twoSquaresOrNotTwoSquares", "ConsoleApp103_twoSquaresOrNotTwoSquares\ConsoleApp103_twoSquaresOrNotTwoSquares.csproj", "{3447A6C6-1D8B-4B5C-B2C4-F07636273EAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +97,14 @@ Global
 		{325F6811-9D0C-49FA-AC56-8916DA25F740}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{325F6811-9D0C-49FA-AC56-8916DA25F740}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{325F6811-9D0C-49FA-AC56-8916DA25F740}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7099E6BF-3E23-40A1-9CCB-C66151C3D68E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7099E6BF-3E23-40A1-9CCB-C66151C3D68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7099E6BF-3E23-40A1-9CCB-C66151C3D68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7099E6BF-3E23-40A1-9CCB-C66151C3D68E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3447A6C6-1D8B-4B5C-B2C4-F07636273EAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3447A6C6-1D8B-4B5C-B2C4-F07636273EAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3447A6C6-1D8B-4B5C-B2C4-F07636273EAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3447A6C6-1D8B-4B5C-B2C4-F07636273EAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
