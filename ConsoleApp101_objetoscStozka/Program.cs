@@ -1,92 +1,40 @@
 ﻿using System;
 
-namespace ConsoleApp101_objetoscStozka
+namespace ConsoleApp2_objetoscStozka
 {
     class Program
     {
-        /*66,6*/
-        static void Main1(string[] args)
-        {
-            string wejscie = Console.ReadLine();
-            string[] linia = wejscie.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            int R = int.Parse(linia[0]);
-            int L = int.Parse(linia[1]);
-            if (R > L)
-            {
-                Console.WriteLine("obiekt nie istnieje");
-            }
-            else if (R < 0 || L < 0)
-            {
-                Console.WriteLine("ujemny argument");
-            }
-            else
-            {
-                const double PI = 3.14;
-                double h = Math.Sqrt(Math.Pow(L, 2) - Math.Pow(R, 2));
-                double polePodstawy = PI * Math.Pow(R, 2);
-
-                double Obj = (polePodstawy * h) / 3;
-                int a = (int)Obj;
-                int b = Convert.ToInt32(Obj);
-                Console.WriteLine($"{a} {b}");
-            }
-        }
         static void Main(string[] args)
         {
             string wejscie = Console.ReadLine();
             string[] linia = wejscie.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            int R = int.Parse(linia[0]);
-            int L = int.Parse(linia[1]);
-            if(R > 1000000 || R < -1000000)
-            {
-                throw new ArgumentException("błędne dane");
-            }
-            if (L > 1000000 || L < -1000000)
-            {
-                throw new ArgumentException("błędne dane");
-            }
+            long R = int.Parse(linia[0]);
+            long L = int.Parse(linia[1]);
+
+            //if (R > 1000000 || R < -1000000)
+            //    throw new ArgumentException("Wartosc poza zakresem");
+            //else if (L > 1000000 || L < -1000000)
+            //    throw new ArgumentException("Wartosc poza zakresem");
+
+            if (R < 0 || L < 0)
+                Console.Write("ujemny argument");
             else if (R > L)
-            {
-                Console.WriteLine("obiekt nie istnieje");
-            }
-            else if (R < 0 || L < 0)
-            {
-                Console.WriteLine("ujemny argument");
-            }
-            else if(R == 0 && L > 0)
-            {
-                Console.WriteLine("obiekt nie istnieje");
-            }
-            /*else if (R == 0 || L == 0)
-            {
-                throw new ArgumentException("błędne dane");
-            }*/
+                Console.Write("obiekt nie istnieje");
             else
             {
-                const double PI = 3.141592653589793238462643383279;
-                double h = Math.Sqrt(Math.Pow(L, 2) - Math.Pow(R, 2));
-                double polePodstawy = PI * Math.Pow(R, 2);
+                decimal wysokoscStozka = (decimal)Math.Sqrt(Math.Pow(L, 2) - Math.Pow(R, 2));
+                decimal polePodstawyStozka = (decimal)Math.PI * (decimal)Math.Pow(R, 2);
+                decimal objetoscStozka = (polePodstawyStozka * wysokoscStozka / 3);
 
-                double Obj = (polePodstawy * h) / 3;
+                //Console.WriteLine($"Wysokosc stożka: {wysokoscStozka}");
+                //Console.WriteLine($"Pole podstawy stożka: {polePodstawyStozka}");
+                //Console.WriteLine($"Objętość stożka: {objetoscStozka}");
+                //Console.WriteLine($"Tworząca: {L}");
+                //Console.WriteLine($"{Math.Sqrt(Math.Pow(R, 2) + Math.Pow((double)wysokoscStozka, 2))}");
 
-                int wynik = (int)Math.Round(Obj);
-                int wynik2 = (int)(Obj);            
-
-
-                if(wynik2 == wynik && R != L)
-                {
-                    wynik++;
-                }
-
-                if(wynik>wynik2)
-                {
-                    int temp = wynik;
-                    wynik = wynik2;
-                    wynik2 = temp;
-                }
-                Console.WriteLine($"{wynik} {wynik2}" );
-
-                
+                decimal a = Math.Floor(objetoscStozka);
+                decimal b = Math.Ceiling(objetoscStozka);
+                Console.Write($"{a} {b}");
             }
         }
     }
