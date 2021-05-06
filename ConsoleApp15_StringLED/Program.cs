@@ -241,15 +241,11 @@ namespace ConsoleApp15_StringLED
                             Console.ForegroundColor = ConsoleColor.White;
                         }
                         else
-                        {
                             Console.Write(znak[j]);
-                        }
                     }
                 }
                 Console.WriteLine();
             }
-
         }
-
     }
 }
