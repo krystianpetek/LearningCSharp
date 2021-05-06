@@ -4,10 +4,6 @@ namespace ConsoleApp15_StringLED
 {
     class Program
     {
-        public static void Definicje()
-        {
-
-        }
         public static char[] PrzypiszTablice(char ciag, int i)
         {
             char z = '#';
