@@ -22,8 +22,6 @@ namespace ConsoleApp15_StringLED
                     char[] znak = Znaki.PrzypiszTablice(ciag[i], x, z, s);
                     for (int j = 0; j < 5; j++)
                     {
-                        if (znak[j] == ' ')
-                            j++;
                         if (znak[j] == z)
                         {
                             Console.ForegroundColor = kolorWyjscia;
