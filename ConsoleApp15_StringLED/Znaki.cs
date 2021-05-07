@@ -376,6 +376,26 @@ namespace ConsoleApp15_StringLED
             Z[6] = $"{z}{z}{z}{z}{z}".ToCharArray();
             #endregion
 
+            #region WYKRZYKNIK
+            char[][] wykrzyknik = new char[7][];
+            wykrzyknik[0] = $"{s}{s}{z}{s}{s}".ToCharArray();
+            wykrzyknik[1] = $"{s}{s}{z}{s}{s}".ToCharArray();
+            wykrzyknik[2] = $"{s}{s}{z}{s}{s}".ToCharArray();
+            wykrzyknik[3] = $"{s}{s}{z}{s}{s}".ToCharArray();
+            wykrzyknik[4] = $"{s}{s}{z}{s}{s}".ToCharArray();
+            wykrzyknik[5] = $"{s}{s}{s}{s}{s}".ToCharArray();
+            wykrzyknik[6] = $"{s}{s}{z}{s}{s}".ToCharArray();
+            #endregion
+            #region KRATKA
+            char[][] kratka = new char[7][];
+            kratka[0] = $"{s}{z}{s}{z}{s}".ToCharArray();
+            kratka[1] = $"{s}{z}{s}{z}{s}".ToCharArray();
+            kratka[2] = $"{z}{z}{z}{z}{z}".ToCharArray();
+            kratka[3] = $"{s}{z}{s}{z}{s}".ToCharArray();
+            kratka[4] = $"{z}{z}{z}{z}{z}".ToCharArray();
+            kratka[5] = $"{s}{z}{s}{z}{s}".ToCharArray();
+            kratka[6] = $"{s}{z}{s}{z}{s}".ToCharArray();
+            #endregion
             #region SPACJA
             char[][] spacja = new char[7][];
             spacja[0] = $"{s}{s}{s}{s}{s}".ToCharArray();
@@ -426,13 +446,26 @@ namespace ConsoleApp15_StringLED
             dwukropek[5] = $"{s}{s}{s}{s}{s}".ToCharArray();
             dwukropek[6] = $"{s}{s}{s}{s}{s}".ToCharArray();
             #endregion
-            #region WYKRZYKNIK
-
+            #region SREDNIK
+            char[][] srednik = new char[7][];
+            srednik[0] = $"{s}{s}{s}{s}{s}".ToCharArray();
+            srednik[1] = $"{s}{s}{s}{s}{s}".ToCharArray();
+            srednik[2] = $"{s}{s}{z}{s}{s}".ToCharArray();
+            srednik[3] = $"{s}{s}{s}{s}{s}".ToCharArray();
+            srednik[4] = $"{s}{s}{z}{s}{s}".ToCharArray();
+            srednik[5] = $"{s}{z}{s}{s}{s}".ToCharArray();
+            srednik[6] = $"{s}{s}{s}{s}{s}".ToCharArray();
             #endregion
             #region PYTAJNIK
-
+            char[][] pytajnik = new char[7][];
+            pytajnik[0] = $"{s}{z}{z}{z}{s}".ToCharArray();
+            pytajnik[1] = $"{z}{s}{s}{s}{z}".ToCharArray();
+            pytajnik[2] = $"{s}{s}{s}{s}{z}".ToCharArray();
+            pytajnik[3] = $"{s}{s}{z}{z}{s}".ToCharArray();
+            pytajnik[4] = $"{s}{s}{z}{s}{s}".ToCharArray();
+            pytajnik[5] = $"{s}{s}{s}{s}{s}".ToCharArray();
+            pytajnik[6] = $"{s}{s}{z}{s}{s}".ToCharArray();
             #endregion
-
 
             char[] znak = new char[5];
 
@@ -574,6 +607,12 @@ namespace ConsoleApp15_StringLED
                     znak = Z[i];
                     break;
 
+                case '!':
+                    znak = wykrzyknik[i];
+                    break;
+                case '#':
+                    znak = kratka[i];
+                    break;
                 case ' ':
                     znak = spacja[i];
                     break;
@@ -588,6 +627,12 @@ namespace ConsoleApp15_StringLED
                     break;
                 case ':':
                     znak = dwukropek[i];
+                    break;
+                case ';':
+                    znak = srednik[i];
+                    break;
+                case '?':
+                    znak = pytajnik[i];
                     break;
             }
             return znak;
