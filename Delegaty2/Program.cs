@@ -4,7 +4,7 @@ namespace Delegaty2
 {
     class Obliczenia
     {
-        public delegate void Operacje(Obliczenia O);
+        public delegate void Operacje(int x, int y);
         private readonly int X;
         private readonly int Y;
         public Obliczenia(int x, int y)
@@ -12,11 +12,11 @@ namespace Delegaty2
             X = x;
             Y = y;
         }
-        public void Dodawanie()
+        public void Dodawanie(int x,int y)
         {
-            Console.WriteLine(X + Y);
+            Console.WriteLine(x+ y);
         }
-        public void Odejmowanie()
+        public void Odejmowanie(int x, int y)
         {
             Console.WriteLine(X - Y);
         }
@@ -26,7 +26,8 @@ namespace Delegaty2
         static void Main(string[] args)
         {
             var a = new Obliczenia(5, 3);
-            var aa = new Obliczenia.Operacje(a);
+            var aa = new Obliczenia.Operacje(a.Dodawanie);
+            Console.WriteLine(aa);
         }
     }
 }
