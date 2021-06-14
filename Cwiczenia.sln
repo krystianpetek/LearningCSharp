@@ -31,9 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "15. LinkedList", "15. Linke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageEvents", "PageEvents\PageEvents.csproj", "{464D8C38-914C-41FF-B86F-9A34CC5C7376}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesigningWindowsForm", "DesigningWindowsForm\DesigningWindowsForm.csproj", "{9E36C01B-5786-44AE-AEB5-D03656A424D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesigningWindowsForm", "DesigningWindowsForm\DesigningWindowsForm.csproj", "{9E36C01B-5786-44AE-AEB5-D03656A424D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDIApp", "MDIApp\MDIApp.csproj", "{CC89ACEF-059B-46DC-9D58-60BCDE47EC57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDIApp", "MDIApp\MDIApp.csproj", "{CC89ACEF-059B-46DC-9D58-60BCDE47EC57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delegaty2", "Delegaty2\Delegaty2.csproj", "{C73394D8-ACDD-4109-9D65-C6A05CC6D1C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{CC89ACEF-059B-46DC-9D58-60BCDE47EC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC89ACEF-059B-46DC-9D58-60BCDE47EC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC89ACEF-059B-46DC-9D58-60BCDE47EC57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C73394D8-ACDD-4109-9D65-C6A05CC6D1C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C73394D8-ACDD-4109-9D65-C6A05CC6D1C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C73394D8-ACDD-4109-9D65-C6A05CC6D1C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C73394D8-ACDD-4109-9D65-C6A05CC6D1C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
