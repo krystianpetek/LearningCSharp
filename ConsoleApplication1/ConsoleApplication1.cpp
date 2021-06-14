@@ -2,10 +2,14 @@
 //
 
 #include <iostream>
-
 int main()
 {
+    std::string x="kwa";
     std::cout << "Hello World!\n";
+    std::cout << x << "\n";
+    std::cin >> x;
+
+    std::cout << "Podna wartosc " + x;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
