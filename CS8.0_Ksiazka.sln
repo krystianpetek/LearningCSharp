@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial1", "Rozdzial1\Rozdzial1.csproj", "{96DC611B-B52C-4D05-8FBF-F52B274C7516}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial2", "Rozdzial2\Rozdzial2.csproj", "{826CCF08-4B42-4D53-B4CD-4F9B37E010AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial2", "Rozdzial2\Rozdzial2.csproj", "{826CCF08-4B42-4D53-B4CD-4F9B37E010AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{476FD131-A8F4-4C2D-B967-3CF3E4DD8719}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
