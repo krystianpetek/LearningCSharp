@@ -12,7 +12,7 @@ namespace Rozdzial3
             int number2 = number1;
 
             int? number = null;
-            if(number is null)
+            if (number is null)
             {
                 Console.WriteLine("'number' wymaga wartości i musi być różna od null");
             }
@@ -48,9 +48,34 @@ namespace Rozdzial3
             double AgdpPerCapita = 275.18;
             var AcountryInfo = (Acountry, Acapital, AgdpPerCapita);
             Console.WriteLine($@"Najbiedniejszym krajem świata w 2019 r. był {AcountryInfo.Acountry}, {AcountryInfo.Acapital}: {AcountryInfo.AgdpPerCapita}");
-       
-            //112
-        
+            var t1 = ("Indigo Montoya", 42);
+            Console.WriteLine(t1.GetType() + " " + t1.Item1);
+
+            // TABLICE
+            int[] liczby = { 1, 5, 2, 4, 3 };
+            Console.WriteLine(liczby[^1]); // Indeksowanie od końca tablicy ^1 wskazuje na ostatni element tablicy
+            int[,] liczbyDrugiWymiar = new int[3, 3] {
+                {1, 0, 2},
+                {1, 2, 0},
+                {1, 2, 1}
+            };
+            Console.WriteLine(liczbyDrugiWymiar[1, 1]);
+
+            string[] languages = { "C#", "COBOL", "Java", "C++", "TypeScript", "Pascal", "Python", "Lisp", "JavaScript" };
+            languages = new string[9];
+            languages = new string[] { "C#", "COBOL", "Java", "C++", "TypeScript", "Pascal", "Python", "Lisp", "JavaScript" };
+            string language = languages[4];
+            // Wyświetli „TypeScript”.
+            Console.WriteLine(language);
+            // Pobieranie trzeciego elementu od końca (Python)..
+            language = languages[^3];
+            Console.WriteLine(language);
+            Console.WriteLine();
+            Console.WriteLine( string.Join(",",languages) );
+            Console.WriteLine($@"^4..^2: { string.Join(", ", languages[^4..^2]) }"); // wypisze Pascal, Python
+            Console.WriteLine($@"^3..: { string.Join(", ", languages[^3..]) }");
+            Console.WriteLine($@" 3..^3: { string.Join(", ", languages[3..^3]) }");
+            Console.WriteLine($@" ..^6: { string.Join(", ", languages[..^6]) }");
         }
     }
 }
