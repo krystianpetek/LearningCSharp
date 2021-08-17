@@ -71,11 +71,62 @@ namespace Rozdzial3
             language = languages[^3];
             Console.WriteLine(language);
             Console.WriteLine();
-            Console.WriteLine( string.Join(",",languages) );
+            Console.WriteLine(string.Join(",", languages));
             Console.WriteLine($@"^4..^2: { string.Join(", ", languages[^4..^2]) }"); // wypisze Pascal, Python
             Console.WriteLine($@"^3..: { string.Join(", ", languages[^3..]) }");
             Console.WriteLine($@" 3..^3: { string.Join(", ", languages[3..^3]) }");
             Console.WriteLine($@" ..^6: { string.Join(", ", languages[..^6]) }");
+            Console.WriteLine(languages[^languages.Length]); // pierwszy element tablicy
+
+            //Zmiana pozycji danych w tablicy
+            language = languages[3];
+            languages[3] = languages[2];
+            languages[2] = language;
+
+            // TABLICA trójwymiarowa
+            bool[,,] cells;
+            cells = new bool[2, 3, 3]
+            {
+                {
+                    { true, false, false},
+                    { true, false, false},
+                    { true, false, true}
+                },
+{
+                    { false, false, true},
+                    { false, true, false},
+                    { false, true, true}
+                }
+            };
+
+            // TABLICA POSTRZĘPIONA = tablica tablic
+            int[][] jaggedTab = // [] - akcesor tablicy
+            {
+                new int[] {1,0,2,0},
+                new int[] {1,2,0},
+                new int[] {1,2},
+                new int[] {1}
+            };
+
+            // Zmiana wartości w tablicy
+            int[,] komorki = 
+            {
+                {1, 0, 2},
+                {0, 2, 0},
+                {1, 2, 1}
+            };
+            komorki[1, 0] = 1;
+
+            int[][] komorkiDwuWymiarowe = 
+            {
+                new int[]{1, 0, 2},
+                new int[]{0, 2, 0},
+                new int[]{1, 2, 1}
+            };
+            komorkiDwuWymiarowe[1][0] = 1;
+
+            Console.WriteLine($"Liczba języków w tablicy to { languages.Length }.");
+
         }
     }
 }
