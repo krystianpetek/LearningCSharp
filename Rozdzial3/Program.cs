@@ -109,7 +109,7 @@ namespace Rozdzial3
             };
 
             // Zmiana wartości w tablicy
-            int[,] komorki = 
+            int[,] komorki =
             {
                 {1, 0, 2},
                 {0, 2, 0},
@@ -117,7 +117,7 @@ namespace Rozdzial3
             };
             komorki[1, 0] = 1;
 
-            int[][] komorkiDwuWymiarowe = 
+            int[][] komorkiDwuWymiarowe =
             {
                 new int[]{1, 0, 2},
                 new int[]{0, 2, 0},
@@ -127,6 +127,12 @@ namespace Rozdzial3
 
             Console.WriteLine($"Liczba języków w tablicy to { languages.Length }.");
 
+            // ROZWAŻ  sprawdzanie wartości null przed dostępem do tablicy, zamiast przyjmować, że instancja tablicy istnieje.
+            // ROZWAŻ sprawdzanie długości tablicy przed użyciem indeksu, zamiast zakładać, że ma ona określoną wielkość.
+            // ROZWAŻ używanie w wersjach C# 8.0 i nowszych operatora indeksowania od końca tablicy(^) zamiast wyrażenia Length – 1
+
+            // .. - operator przedziału Dostępny od C# 8.0
+            Console.WriteLine($@" ..: { string.Join(", ", languages[..])} ");
         }
     }
 }
