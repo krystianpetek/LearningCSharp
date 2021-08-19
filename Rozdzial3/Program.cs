@@ -133,6 +133,20 @@ namespace Rozdzial3
 
             // .. - operator przedziału Dostępny od C# 8.0
             Console.WriteLine($@" ..: { string.Join(", ", languages[..])} ");
+
+            // INDEX and RANGE
+            Index indeks = 3;
+            Range przedzial = ..; // == 0..^0
+
+            // METODY ARRAY
+            Array.Sort(languages);
+            string searchString = "C#";
+            int indexSearch = Array.BinarySearch(languages, searchString); // przechowuje wartość indeksu gdzie wystepuje szukana fraza
+            Console.WriteLine(indexSearch);
+
+            Console.WriteLine($"Język przyszłości to {searchString} można go znaleźć na pozycji o indeksie {indexSearch}.");
+
+
         }
     }
 }
