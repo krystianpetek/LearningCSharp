@@ -143,8 +143,37 @@ namespace Rozdzial3
             string searchString = "C#";
             int indexSearch = Array.BinarySearch(languages, searchString); // przechowuje wartość indeksu gdzie wystepuje szukana fraza
             Console.WriteLine(indexSearch);
-
             Console.WriteLine($"Język przyszłości to {searchString} można go znaleźć na pozycji o indeksie {indexSearch}.");
+
+            Console.WriteLine();
+            Console.WriteLine($"{ "Pierwszy element",-20 }\t{ "Ostatni element",-20 }");
+            Console.WriteLine($"{ "----------------",-20 }\t{ "----------------",-20 }");
+            Console.WriteLine($"{ languages[0],-20 }\t{ languages[^1],-20}"); Array.Reverse(languages);
+            Console.WriteLine($"{ languages[0],-20 }\t{ languages[^1],-20}");
+
+            Array.Clear(languages, 0, languages.Length);
+            Console.WriteLine($"{ languages[0],-20 }\t{ languages[^1],-20}");
+            Console.WriteLine($"Po wywołaniu Clear wielkość tablicy to: { languages.Length }");
+
+            cells = new bool[2, 3, 3];
+            Console.WriteLine(cells.GetLength(0)); // ilość elementów w 1(0) wymiarze tablicy wielowymiarowej
+            Console.WriteLine(cells.Rank); // ilość wymiarów
+            Console.WriteLine(cells.Length); // ilość elementów we wszystkich wymiarach
+
+            // ODWRACANIE ZNAKÓW W ŁANCUCHU
+            //A to kanapa pana Kota.
+            string reverse, palindrome;
+            char[] temp;
+            Console.Write("Wprowadź palindrom: ");
+            palindrome = Console.ReadLine();
+            reverse = palindrome.Replace(" ", "");
+            reverse = reverse.ToLower();
+            temp = reverse.ToCharArray();
+            Array.Reverse(temp);
+            if (reverse == new string(temp))
+                Console.WriteLine($"\"{palindrome}\" jest palindromem.");
+            else
+                Console.WriteLine($"\"{palindrome}\" NIE jest palindromem.");
 
 
         }
