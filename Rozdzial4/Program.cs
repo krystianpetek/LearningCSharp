@@ -6,7 +6,18 @@ namespace Rozdzial4
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // OPERATORY
+
+            int difference = 4 - 2;
+            decimal debt = -26457079712930.80M;
+            int licznik, mianownik, iloraz, reszta;
+            Console.WriteLine("Wprowadź licznik: ");
+            licznik = int.Parse(Console.ReadLine());
+            Console.WriteLine("Wprowadź mianownik: ");
+            mianownik = int.Parse(Console.ReadLine());
+            iloraz = licznik / mianownik;
+            reszta = licznik % mianownik;
+            Console.WriteLine($"{licznik} / {mianownik} = {iloraz}, reszta {reszta}");
         }
     }
 }
