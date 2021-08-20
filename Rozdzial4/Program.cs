@@ -18,6 +18,11 @@ namespace Rozdzial4
             iloraz = licznik / mianownik;
             reszta = licznik % mianownik;
             Console.WriteLine($"{licznik} / {mianownik} = {iloraz}, reszta {reszta}");
+
+            short predkoscWiatru = 42;
+            Console.WriteLine($"Pierwszy most Tacoma w Waszyngtonie został\nzniszczony przez wiatr wiejący z prędkością {predkoscWiatru} mil na godzinę");
+        
+            
         }
     }
 }
