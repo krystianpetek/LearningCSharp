@@ -21,8 +21,15 @@ namespace Rozdzial4
 
             short predkoscWiatru = 42;
             Console.WriteLine($"Pierwszy most Tacoma w Waszyngtonie został\nzniszczony przez wiatr wiejący z prędkością {predkoscWiatru} mil na godzinę");
+
+            int n = '3' + '4';
+            char c = (char)n;
+            Console.WriteLine(c);
+
+            int distance = 'f' - 'c';
+            Console.WriteLine(distance);
         
-            
+
         }
     }
 }
