@@ -118,18 +118,30 @@ namespace Rozdzial4
                 Console.WriteLine("Wybrano grę przeciw drugiej osobą");
 
             // ZAGNIEŻDZONE IFY
-            Console.WriteLine("\nJaka jest maksymlna liczba ruchów w grze kółko i krzyżyk?" +"(Wpisz 0 aby zakończyć.)");
+            Console.WriteLine("\nJaka jest maksymlna liczba ruchów w grze kółko i krzyżyk?" + "(Wpisz 0 aby zakończyć.)");
             input = int.Parse(Console.ReadLine());
             if (input <= 0)
                 Console.WriteLine("Zamykanie programu...");
             else if (input < 9)
-                    Console.WriteLine($"Maksymalna liczba ruchów w grze w kółko i krzyżyk jest większa niż {input}.");
+                Console.WriteLine($"Maksymalna liczba ruchów w grze w kółko i krzyżyk jest większa niż {input}.");
             else if (input > 9)
-                        Console.WriteLine($"Maksymalna liczba ruchów w grze w kółko i krzyżyk jest mniejsza niż {input}.");
+                Console.WriteLine($"Maksymalna liczba ruchów w grze w kółko i krzyżyk jest mniejsza niż {input}.");
             else
-                        Console.WriteLine("Dobrze, maksymalna liczba ruchów w grze w kółko i krzyżyk wynosi 9.");
+                Console.WriteLine("Dobrze, maksymalna liczba ruchów w grze w kółko i krzyżyk wynosi 9.");
 
+            // XOR - ^ zawsze sprawdza wszystkie warunki, w odróżnieniu do np. OR
+            bool valid = false;
+            bool rezultat = !valid;
+            Console.WriteLine(rezultat);
 
+            int currentPlayer = 1;
+            for (int turn = 1; turn <= 10; turn++)
+            {
+                currentPlayer = (currentPlayer == 2) ? 1 : 2;
+                Console.WriteLine(currentPlayer);
+            }
+
+            //158
         }
     }
 }
