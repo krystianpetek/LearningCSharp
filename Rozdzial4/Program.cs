@@ -89,9 +89,9 @@ namespace Rozdzial4
             } while (current >= 'a');
 
             Console.WriteLine(); // Wypisanie UNICODE w FOR
-            for (int i = 0;i<255;i++) // UNICODE
+            for (int i = 0; i < 255; i++) // UNICODE
             {
-                Console.Write($"{(char)i} ");    
+                Console.Write($"{(char)i} ");
             }
 
             Console.WriteLine();// POST i PRE inkrementacja
@@ -101,8 +101,35 @@ namespace Rozdzial4
             Console.WriteLine($"result = {result} i count = {count}");
             result = ++count;
             Console.WriteLine($"result = {result} i count = {count}");
-            
-            //144
+            // STAŁE
+            const int secondsPerDay = 60 * 60 * 24;
+            const int secondsPerWeek = secondsPerDay * 7;
+
+            // PRZYKŁAD IF ELSE
+            Console.Write(
+            "1 – Gra przeciwko komputerowi\n" +
+            "2 – Gra przeciwko innemu graczowi\n" +
+            "Wybierz:"
+            );
+            int input = Convert.ToInt32(Console.ReadLine());
+            if (input == '1')
+                Console.WriteLine("Wybrano grę przeciw komputerowi");
+            else
+                Console.WriteLine("Wybrano grę przeciw drugiej osobą");
+
+            // ZAGNIEŻDZONE IFY
+            Console.WriteLine("\nJaka jest maksymlna liczba ruchów w grze kółko i krzyżyk?" +"(Wpisz 0 aby zakończyć.)");
+            input = int.Parse(Console.ReadLine());
+            if (input <= 0)
+                Console.WriteLine("Zamykanie programu...");
+            else if (input < 9)
+                    Console.WriteLine($"Maksymalna liczba ruchów w grze w kółko i krzyżyk jest większa niż {input}.");
+            else if (input > 9)
+                        Console.WriteLine($"Maksymalna liczba ruchów w grze w kółko i krzyżyk jest mniejsza niż {input}.");
+            else
+                        Console.WriteLine("Dobrze, maksymalna liczba ruchów w grze w kółko i krzyżyk wynosi 9.");
+
+
         }
     }
 }
