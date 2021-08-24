@@ -134,14 +134,50 @@ namespace Rozdzial4
             bool rezultat = !valid;
             Console.WriteLine(rezultat);
 
+            // SYMULACJA GRY
             int currentPlayer = 1;
-            for (int turn = 1; turn <= 10; turn++)
+            for (int turn = 1; turn <= 10; turn++) // TURA
             {
-                currentPlayer = (currentPlayer == 2) ? 1 : 2;
+                currentPlayer = (currentPlayer == 2) ? 1 : 2; // zmiana gracza w zależności od tury
                 Console.WriteLine(currentPlayer);
             }
 
-            //158
+            // PROGRAMOWANIE A NULL
+            string? nullowaty = null;
+            if(nullowaty != null)
+                Console.WriteLine($"nullowaty jest równe: {nullowaty}");
+            else
+                Console.WriteLine($"nullowaty jest równe null");
+            
+            if(object.ReferenceEquals(nullowaty,null))
+                Console.WriteLine("nullowaty jest równe null");
+
+            if(nullowaty is object)                                     // ZALECANE
+                Console.WriteLine($"nullowaty jest równe: {nullowaty}");
+            else
+                Console.WriteLine($"nullowaty jest równe null");
+
+            if(nullowaty is null)                                       // ZALECANE
+                Console.WriteLine($"nullowaty jest równe null");
+            else
+                Console.WriteLine($"nullowaty jest równe: {nullowaty}");
+
+            // OPERATOR ?? - jeśli dana wartość to null, zastosuj inną wartość
+            //string fullName = GetDefaultDirectory();
+            //string fileName = GetFileName() ?? "config.json";
+            //string directory = GetConfigurationDirectory() ??
+            //GetApplicationDirectory() ??
+            //System.Environment.CurrentDirectory;
+            //fullName ??= $"{ directory }/{ fileName }";
+
+            string a = null, b = "b", d = "d";
+            Console.WriteLine(a ?? b ?? d);
+            // NOWY OPERATOR W C# 8.0 - ??= - sprawdza czy po lewej stronie jest wartość rózna od null, jeśli nie to przypisuje tam wartość;
+            string f = null;
+            f ??= "aa";
+            Console.WriteLine(f);
+        
+
         }
     }
 }
