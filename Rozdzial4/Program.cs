@@ -144,20 +144,20 @@ namespace Rozdzial4
 
             // PROGRAMOWANIE A NULL
             string? nullowaty = null;
-            if(nullowaty != null)
+            if (nullowaty != null)
                 Console.WriteLine($"nullowaty jest równe: {nullowaty}");
             else
                 Console.WriteLine($"nullowaty jest równe null");
-            
-            if(object.ReferenceEquals(nullowaty,null))
+
+            if (object.ReferenceEquals(nullowaty, null))
                 Console.WriteLine("nullowaty jest równe null");
 
-            if(nullowaty is object)                                     // ZALECANE
+            if (nullowaty is object)                                     // ZALECANE
                 Console.WriteLine($"nullowaty jest równe: {nullowaty}");
             else
                 Console.WriteLine($"nullowaty jest równe null");
 
-            if(nullowaty is null)                                       // ZALECANE
+            if (nullowaty is null)                                       // ZALECANE
                 Console.WriteLine($"nullowaty jest równe null");
             else
                 Console.WriteLine($"nullowaty jest równe: {nullowaty}");
@@ -175,9 +175,30 @@ namespace Rozdzial4
             // NOWY OPERATOR W C# 8.0 - ??= - sprawdza czy po lewej stronie jest wartość rózna od null, jeśli nie to przypisuje tam wartość;
             string f = null;
             f ??= "aa";
+            f ??= "A";
             Console.WriteLine(f);
-        
 
-        }
+            // OPERATOR ?. i ?[] - Operator ?. sprawdza, czy operand (segments na listingu 4.37) ma wartość null. Dopiero potem wywołuje metodę lub właściwość(tu jest to Length).
+            string[]? segments = null;
+            int? length = segments?.Length;
+            string uri = null;
+            if (length is object && length != 0)
+                uri = string.Join("/", segments!);
+
+            if (uri is null || length is 0)
+                Console.WriteLine("brak elementów do połączenia");
+            else
+                Console.WriteLine($"URI: {uri}");
+
+            length = (segments != null) ? (int?)segments.Length : null;
+
+            string?[]? segments2; // SEGMENTS2 moze byc równe null i każdy element tej tablicy też
+            uri = segments?[0]?.ToLower().Trim() ?? "intellitect.com";
+
+            // OPERATOR ! - deklaracja wartości róznej od null
+            // ?. razem z delegatami strona 163 !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            
+
+        }   
     }
 }
