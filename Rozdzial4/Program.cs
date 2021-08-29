@@ -197,8 +197,35 @@ namespace Rozdzial4
 
             // OPERATOR ! - deklaracja wartości róznej od null
             // ?. razem z delegatami strona 163 !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            
 
+            // OPERATORY BITOWE !!!!!!!!!!!
+            // operator przesunięcia
+            int xB;
+            xB = (-7 >> 2);
+            Console.WriteLine($"xB = {xB}.");
+
+            // operatory bitowe logiczne
+            byte and, or, xor;
+            and = 12 & 7; // 4
+            or = 12 | 7; // 15
+            xor = 12 ^ 7; // 11
+            Console.WriteLine($"and = {and} \nor = {or} \nxor = {xor}");
+
+            // BINARY CONVERTER ( DALEJ TEGO NIE ROZUMIEM)
+            const int size = 64;
+            ulong value;
+            char bit;
+
+            Console.WriteLine("Wprowadź liczbę całkowitą");
+            value = (ulong)long.Parse(Console.ReadLine());
+            ulong mask = 1UL << size - 1;
+            for(count = 0; count < size; count++)
+            {
+                bit = ((mask & value) != 0) ? '1' : '0';
+                Console.Write(bit);
+                mask >>= 1;
+            }
+            Console.WriteLine();
         }   
     }
 }
