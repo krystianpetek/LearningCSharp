@@ -68,8 +68,54 @@ namespace Rozdzial4_2
                     break;
             }
 
+            string email;
+            bool domena = false;
+            Console.Write("Wprowadź adres email: ");
+            email = Console.ReadLine();
+            Console.WriteLine("Domena adresu to: ");
+            foreach (var x in email)
+            {
+                if (x == '@')
+                {
+                    domena = true;
+                    continue;
+                }
 
-            // 179
+                if (domena == true)
+                {
+                    Console.Write($"{x}");
+                }
+                else
+                    continue;
+            }
+
+            // DYREKTYWY PREPROCESORA - służą do kontroli kiedy i jak dołączany jest kod
+
+            // #if #endif
+            // #if #elif #endif
+            // #if #else #endif
+            // #define #undef #error #warning #pragma #line
+            // #region #endregion
+            // #line nowy-wiersz nowy-plik #line default
+            // #nullable enable | disable | restore
+
+#if DEBUG // wykluczenie kodu dla wersji C# 2.0 i nowszych ( GDY UZYWANY JEST KOMPILATOR C# 1.0)
+            System.Console.Clear();
+#endif
+
+#if LINUX
+// kod dla linuxa
+#elif WINDOWS
+// kod dla windowsa
+#endif
+            // Generowanie błędów i ostrzeżeń
+#warning "Dozwolone jest wielokrotne wprowadzenie tego samego ruchu."
+
+            // Wyłączanie komunikatów z ostrzeżeniami
+#pragma warning disable CS1030
+#pragma warning restore CS1030
+
+
         }
 
     }
