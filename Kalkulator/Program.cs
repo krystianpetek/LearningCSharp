@@ -7,7 +7,7 @@ namespace Kalkulator
         static void Main(string[] args)
         {
             int i = int.Parse(Console.ReadLine());
-            for (int x = 1; x <= i;x++)
+            for (int x = 1; x <= i-1;x++)
             {
                 string[] wejscie = Console.ReadLine().Split(" ");
                 int? obliczenia = null;
