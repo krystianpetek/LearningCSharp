@@ -56,6 +56,6 @@ namespace Rozdzial5
         // ALIAS USING System.Timers.Timer;
         CountDownTimer timer; // alias
 
-
+        
     }
 }
