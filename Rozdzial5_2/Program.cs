@@ -1,13 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Net;
-using System.Net.Http;
 
 namespace Rozdzial5_2
 {
     class Program
     {
-        static int Main(string[] args)
+        static /*int - do pierwszego przykładu, reszta void*/ void Main(string[] args)
         {
             int result;
             switch(args.Length)
@@ -23,7 +22,40 @@ namespace Rozdzial5_2
                     result = 0;
                     break;
             }
-            return result;
+            //return result;
+            // Environment.GetCommandLineArgs() == string[] args
+            
+            
+            // PRZEKAZYWANIE ZMIENNYCH PRZEZ WARTOŚĆ
+            string fullName;
+            string driveLetter = "C:";
+            string folderPath = "Data";
+            string fileName = "index.html";
+            fullName = Link(driveLetter, folderPath, fileName);
+            Console.WriteLine(fullName);
+
+            static string Link(string letter, string path, string name)
+            {
+                string exit;
+                exit = string.Format("{1}{0}{2}{0}{3}", Path.DirectorySeparatorChar, letter, path, name);
+                return exit;
+            }
+
+            // PRZEKAZYWANIE ZMIENNYCH PRZEZ REFERENCJE
+            string first = "Witaj";
+            string second = "Żegnaj";
+            Console.WriteLine($@"first = ""{first}"", second = ""{second}""");
+            Swap(ref first, ref second);
+            Console.WriteLine($@"first = ""{first}"", second = ""{second}""");
+
+            static void Swap(ref string first, ref string second)
+            {
+                string temp = first;
+                first = second;
+                second = temp;
+            }
+
+            
         }
     }
 }
