@@ -6,7 +6,7 @@ namespace Rozdzial6_2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //258
         }
     }
 }
