@@ -74,7 +74,7 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
                     value = value.Trim();
                     if(value == "")
                     {
-                        throw new ArgumentException("Właściwość LastName nie może być pusta");
+                        throw new ArgumentException("Właściwość LastName nie może być pusta.", nameof(value));
                     }
                     else{
                         _LastName = value;
@@ -82,7 +82,30 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
                 }
             }
         }
-        public bool[,,] cells { get; } = new bool[2, 3, 3]; // automatyczne implementowanie wartości tylko do odczytu
+        public bool[,,] cells { get; } = new bool[2, 3, 3]; // automatyczne implementowanie wartości tylko do odczytu, bez settera
+        
+        // Właściwości obliczane
+        public string Name
+        {
+            get
+            {
+                return $"{FirstName} {_LastName}";
+            }
+            set
+            {
+                string[] names;
+                names = value.Split(' ');
+                if(names.Length == 2)
+                {
+                    FirstName = names[0];
+                    _LastName = names[1];
+                }
+                else
+                {
+                    throw new ArgumentException($"Przypisana wartość {value} jest nieprawidłowa", nameof(value));
+                }
+            }
+        }
 
     }
     class Program
@@ -101,6 +124,10 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
             employee.Manager = employee2;
             Console.WriteLine(employee.Manager.Title);
             Console.WriteLine(employee.LASTNAME);
+
+            Console.WriteLine();
+            employee.Name = "Imię Nazwisko";
+            Console.WriteLine(employee.Name);
 
         }
     }
