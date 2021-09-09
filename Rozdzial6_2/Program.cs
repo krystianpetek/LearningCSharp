@@ -4,23 +4,12 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
 {
     public class Employee
     {
-        private string FirstName;
-        public string GetFirstName() // GETTER dla FirstName
-        {
-            return FirstName;
-        }
-        public void SetFirstName(string newFirstName) // SETTER dla FirstName
-        {
-            if (newFirstName != null && newFirstName != "")
-                FirstName = newFirstName;
-        }
-        
         // niezaszyfrowane hasła są tylko w celach edukacyjnych, nie zaleca się tego podejścia
         private string Password;
         private bool IsAuthenticated;
         public bool Logon(string password)
         {
-            if(Password == password)
+            if (Password == password)
             {
                 IsAuthenticated = true;
             }
@@ -29,6 +18,19 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
         public bool GetIsAuthenticated()
         {
             return IsAuthenticated;
+        }
+
+
+        private string FirstName;
+        public string GetFirstName() // GETTER dla FirstName
+        {
+            return FirstName;
+        }
+
+        public void SetFirstName(string newFirstName) // SETTER dla FirstName
+        {
+            if (newFirstName != null && newFirstName != "")
+                FirstName = newFirstName;
         }
 
         // Składnia tworzenia własciwości
@@ -65,25 +67,25 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
             get => _LastName;
             set
             {
-                if(value == null)
+                if (value == null)
                 {
                     throw new ArgumentNullException(nameof(value));
                 }
                 else
                 {
                     value = value.Trim();
-                    if(value == "")
+                    if (value == "")
                     {
                         throw new ArgumentException("Właściwość LastName nie może być pusta.", nameof(value));
                     }
-                    else{
+                    else {
                         _LastName = value;
                     }
                 }
             }
         }
         public bool[,,] cells { get; } = new bool[2, 3, 3]; // automatyczne implementowanie wartości tylko do odczytu, bez settera
-        
+
         // Właściwości obliczane
         public string Name
         {
@@ -95,7 +97,7 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
             {
                 string[] names;
                 names = value.Split(' ');
-                if(names.Length == 2)
+                if (names.Length == 2)
                 {
                     FirstName = names[0];
                     _LastName = names[1];
@@ -106,6 +108,25 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
                 }
             }
         }
+
+        // KONSTRUKTOR - deklaracja
+        public Employee(string podajImie, string podajNazwisko)
+        {
+            imie = podajImie;
+            nazwisko = podajNazwisko;
+        }
+        public Employee()
+        {
+
+        }
+        public string imie { get; set; }
+        public string nazwisko { get; set; }
+        public string zarobki { get; set; } = "Za niskie";
+        public override string ToString()
+        {
+            return $"{imie} {nazwisko}: {zarobki}";
+        }
+
 
     }
     class Program
@@ -129,6 +150,9 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
             employee.Name = "Imię Nazwisko";
             Console.WriteLine(employee.Name);
 
+            // konstruktor
+            Employee pracownik = new Employee("krystian", "petek");
+            Console.WriteLine(pracownik.ToString());
         }
     }
 }
