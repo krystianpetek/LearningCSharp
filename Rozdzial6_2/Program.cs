@@ -82,6 +82,7 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
                 }
             }
         }
+        public bool[,,] cells { get; } = new bool[2, 3, 3]; // automatyczne implementowanie wartości tylko do odczytu
 
     }
     class Program
