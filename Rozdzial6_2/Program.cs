@@ -97,9 +97,10 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
             employee.lastNAME = "Petek";
             Console.WriteLine(employee.lastNAME);
             employee2.Title = "Maniak komputerowy";
-            employee.Manager = employee;
+            employee.Manager = employee2;
             Console.WriteLine(employee.Manager.Title);
-             
+            Console.WriteLine(employee.LASTNAME);
+
         }
     }
 }
