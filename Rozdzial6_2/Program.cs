@@ -67,7 +67,7 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
             {
                 if(value == null)
                 {
-                    throw new ArgumentNullException("nameof(value)");
+                    throw new ArgumentNullException(nameof(value));
                 }
                 else
                 {
