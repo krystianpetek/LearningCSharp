@@ -14,19 +14,7 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
             if (newFirstName != null && newFirstName != "")
                 FirstName = newFirstName;
         }
-        private string LastName;
-        public string GetLastName()
-        {
-            return LastName;
-        }
-        public void SetLastName(string newLastName)
-        {
-            if(newLastName != null && newLastName != "")
-            {
-                LastName = newLastName;
-            }
-        }
-        public string? Salary;
+        
         // niezaszyfrowane hasła są tylko w celach edukacyjnych, nie zaleca się tego podejścia
         private string Password;
         private bool IsAuthenticated;
@@ -44,29 +32,49 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
         }
 
         // Składnia tworzenia własciwości
-        private string _firstNAME;
-        public string firstNAME
+        private string _LastName;
+        public string LastName
         {
             get // odpowiada metodzie GetFirstName
             {
-                return _firstNAME;
+                return _LastName;
             }
             set // odpowiada metodzie SetFirstName
             {
-                _firstNAME = value;
+                _LastName = value;
             }
         }
+
+        // definiowanie własności za pomocą wyrażenia lambda
+        public string lastNAME
+        {
+            get => _LastName;
+            set => _LastName = value;
+        }
+        public string? Title { get; set; } // Automatyczne implementowanie własności
+        public Employee? Manager { get; set; }
+        public string? Salary { get; set; } = "Za niskie";
+        //Ogólna zasada jest taka, że metody powinny reprezentować operacje, a właściwości — dane.
+        
+
+    
     }
     class Program
     {
         static void Main(string[] args)
         {
             Employee employee = new Employee();
+            Employee employee2 = new Employee();
             employee.SetFirstName("Inigo");
-            employee.SetLastName("Montoya");
             // employee.Password - pole Password jest prywatne, dlatego nie ma do niego dostępu z poza klasy
-            employee.firstNAME = "Inigo";
-            Console.WriteLine(employee.firstNAME);
+            employee.LastName = "Montoya";
+            Console.WriteLine(employee.LastName);
+            employee.lastNAME = "Petek";
+            Console.WriteLine(employee.lastNAME);
+            employee2.Title = "Maniak komputerowy";
+            employee.Manager = employee;
+            Console.WriteLine(employee.Manager.Title);
+
         }
     }
 }
