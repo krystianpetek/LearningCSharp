@@ -55,9 +55,34 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
         public Employee? Manager { get; set; }
         public string? Salary { get; set; } = "Za niskie";
         //Ogólna zasada jest taka, że metody powinny reprezentować operacje, a właściwości — dane.
-        
+        public void Initialize(string newFirstName, string newLastName)
+        {
+            FirstName = newFirstName;
+            LastName = newLastName;
+        }
+        public string LASTNAME
+        {
+            get => _LastName;
+            set
+            {
+                if(value == null)
+                {
+                    throw new ArgumentNullException("nameof(value)");
+                }
+                else
+                {
+                    value = value.Trim();
+                    if(value == "")
+                    {
+                        throw new ArgumentException("Właściwość LastName nie może być pusta");
+                    }
+                    else{
+                        _LastName = value;
+                    }
+                }
+            }
+        }
 
-    
     }
     class Program
     {
@@ -74,7 +99,7 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
             employee2.Title = "Maniak komputerowy";
             employee.Manager = employee;
             Console.WriteLine(employee.Manager.Title);
-
+             
         }
     }
 }
