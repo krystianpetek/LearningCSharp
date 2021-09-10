@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Rozdzial6_3
 {
@@ -26,14 +27,40 @@ namespace Rozdzial6_3
         public string Title { get; set; }
         public string? Salary { get; set; }
 
-        // inicjatory kolekcji
-        // 278
+        public Employee(int id, string imie, string nazwisko)
+        {
+            Id = id;
+            this.imie = imie;
+            this.nazwisko = nazwisko;
+        }
+        public Employee(int id) => Id = id; // od c# 7.0 - implementacja konstruktorów jako składowych z ciałem w postaci wyrazenia
+        public int Id
+        {
+            get => Id;
+            private set
+            {
+                // wyszukiwanie imienia i nazwiska pracownika o podanym id
+            }
+        }
     }
     class Program
     {
         static void Main(string[] args)
         {
-            Employee employee1 = new Employee("Inigo", "Montoya") {Title = "Maniak komputerowy", Salary = "Za niskie" };
+            Employee employee1 = new Employee("Inigo", "Montoya") { Title = "Maniak komputerowy", Salary = "Za niskie" };
+
+            // inicjatory kolekcji
+            List<Employee> listaPracownikow = new List<Employee>()
+            {
+                new Employee("Krystian", "Petek"),
+                new Employee("Patrycja", "Petek")
+            };
+            listaPracownikow.Add(employee1);
+
+            foreach(var pracownik in listaPracownikow)
+                Console.Write(pracownik.imie+" "+pracownik.nazwisko+"\n");
+
+
         }
     }
 }
