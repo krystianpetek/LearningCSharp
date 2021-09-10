@@ -26,13 +26,6 @@ namespace Rozdzial6_3
         }
         public string Title { get; set; }
         public string? Salary { get; set; }
-
-        public Employee(int id, string imie, string nazwisko)
-        {
-            Id = id;
-            this.imie = imie;
-            this.nazwisko = nazwisko;
-        }
         public Employee(int id) => Id = id; // od c# 7.0 - implementacja konstruktorów jako składowych z ciałem w postaci wyrazenia
         public int Id
         {
@@ -42,6 +35,11 @@ namespace Rozdzial6_3
                 // wyszukiwanie imienia i nazwiska pracownika o podanym id
             }
         }
+        public Employee(int id, string imie, string nazwisko) : this(imie, nazwisko) // wywołanie innego konstruktora w innym konstruktorze
+        {
+            Id = id;
+        }
+
     }
     class Program
     {
