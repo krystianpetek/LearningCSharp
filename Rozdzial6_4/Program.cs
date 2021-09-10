@@ -49,6 +49,7 @@ namespace Rozdzial6_4
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
         }
+        //287
     }
     class Program
     {
