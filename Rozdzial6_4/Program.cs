@@ -8,7 +8,7 @@ namespace Rozdzial6_4
         int Id { get; set; }
         string FirstName { get; set; }
         string LastName { get; set; }
-        string Salary { get; set; }
+        public string Salary { get; set; }
         // FirstName i LastName są ustawiane w metodzie Initialize()
         public Employee(string firstName, string lastName)
         {
@@ -23,7 +23,6 @@ namespace Rozdzial6_4
         {
             string firstName = null;
             string lastName = null;
-            Id = id;
             Initialize(id, firstName, lastName);
         }
         private void Initialize(int id,string firstName, string lastName)
@@ -49,13 +48,22 @@ namespace Rozdzial6_4
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
         }
-        //287
+        
+        // DEKONSTRUKTORY
+        public void Deconstruct(out int id, out string firstName, out string lastName, out string salary)
+        {
+            (id, firstName, lastName, salary) = (Id, FirstName, LastName, Salary);
+        }
     }
     class Program
     {
         static void Main(string[] args)
         {
-
+            Employee employee;
+            employee = new Employee("Inigo", "Montoya");
+            employee.Salary = "Za niskie";
+            employee.Deconstruct(out _, out string firstName, out string lastName, out string salary);
+            Console.WriteLine($"{firstName} {lastName}: {salary}");
         }
     }
 }
