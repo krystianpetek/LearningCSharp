@@ -19,13 +19,21 @@ namespace Rozdzial7
             // lub jeśli nie jest konieczne
             contact = (Contact)contact;
         }
+        // implicit - operator niejawnej konwersji
+        // explicit - operator jawnej konwersji
+        //                                  public static implicit operator UTMCoordinates(GPSCoordinates coordinates)
     }
 
     // ŁAŃCUCH DZIEDZICZENIA
     public class PdaItem : Object
     {
         [DisallowNull]
-        public string? Name { get; set; }
+        private string _Name; 
+        public string? Name 
+        { 
+            get { return _Name; } 
+            set { _Name = value; } 
+        }
         public DateTime LastUpdated { get; set; }
     }
     public class Appointment : PdaItem{ }
@@ -35,5 +43,5 @@ namespace Rozdzial7
         public string Phone { get; set; }
     }
     public class Customer : Contact{ }
-    
+    //315
 }
