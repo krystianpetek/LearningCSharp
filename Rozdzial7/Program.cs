@@ -60,4 +60,7 @@ namespace Rozdzial7
     // Modyfikator protected - składowe protected są dostępne tylko w klasach pochodnych
     
     // modyfikator sealed - tworzenie klasy zamkniętej w celu uniemożliwienia dziedziczenia
+    public sealed class CommandLineParser { }
+    public sealed class DerivedCommandLineParser // : CommandLineParser - błąd, nie można tworzyć klas pochodnych od zamkniętych
+    { }
 }
