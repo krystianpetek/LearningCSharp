@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 
 namespace Rozdzial7
 {
@@ -45,7 +46,7 @@ namespace Rozdzial7
     public class Customer : Contact{ }
     
     // modyfikator private
-    public class KsiazkaTel
+    public class PdaItem2
     {
         private string _Name;
         public string Name
@@ -54,8 +55,9 @@ namespace Rozdzial7
             set{ _Name = value; }
         }
     }
-    public class Kontact : KsiazkaTel { }
+    public class Contact2 : PdaItem2{ }
 
-    // Modyfikator protected
-
+    // Modyfikator protected - składowe protected są dostępne tylko w klasach pochodnych
+    
+    // modyfikator sealed - tworzenie klasy zamkniętej w celu uniemożliwienia dziedziczenia
 }
