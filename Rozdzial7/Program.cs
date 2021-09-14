@@ -43,5 +43,19 @@ namespace Rozdzial7
         public string Phone { get; set; }
     }
     public class Customer : Contact{ }
-    //315
+    
+    // modyfikator private
+    public class KsiazkaTel
+    {
+        private string _Name;
+        public string Name
+        {
+            get { return _Name; }
+            set{ _Name = value; }
+        }
+    }
+    public class Kontact : KsiazkaTel { }
+
+    // Modyfikator protected
+
 }
