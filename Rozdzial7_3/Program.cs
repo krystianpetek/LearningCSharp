@@ -62,14 +62,40 @@ namespace Rozdzial7_3
 
         public override string GetSummary()
         {
-            return $"Subject: {Name + Environment.NewLine} Start: {StartDateTime + Environment.NewLine} End: {EndDateTime + Environment.NewLine} Location: {Location + Environment.NewLine}";
+            return $"Subject: {Name + Environment.NewLine}" +
+                $"Start: {StartDateTime + Environment.NewLine}" +
+                $"End: {EndDateTime + Environment.NewLine}" +
+                $"Location: {Location + Environment.NewLine}";
         }
     }
     class Program
     {
         static void Main(string[] args)
         {
-            
+            PdaItem[] pda = new PdaItem[3];
+            Contact contact = new Contact("Sherlock Holmes")
+            {
+                Address = "221B Baker Street, Londyn, Anglia"
+            };
+            pda[0] = contact;
+
+            Appointment appointment = new Appointment("Zawody piłkarskie", "Estadio da Machava", new DateTime(2008, 7, 19), new DateTime(2008, 7, 18));
+            pda[1] = appointment;
+
+            contact = new Contact("Hercules Poirot");
+            contact.Address = "Apt 56B, Whitehaven Mansions, Sandhurst Sq, Londyn";
+            pda[2] = contact;
+
+            List(pda);
+
+        }
+        public static void List(PdaItem[] items)
+        {
+            foreach(var item in items)
+            {
+                Console.WriteLine("________");
+                Console.WriteLine(item.GetSummary());
+            }
         }
     }
 }

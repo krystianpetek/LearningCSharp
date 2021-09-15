@@ -7,8 +7,9 @@ namespace Rozdzial7_4
     {
         static void Main(string[] args)
         {
+            
             Console.WriteLine("Hello World!");
         }
-        // 332
+        
     }
 }
