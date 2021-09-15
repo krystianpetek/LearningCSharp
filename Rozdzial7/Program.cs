@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using static System.Environment;
+
 
 namespace Rozdzial7
 {
@@ -94,85 +94,6 @@ namespace Rozdzial7
             virtualpdaitem = virtualcontact;
             virtualpdaitem.Name = "Inigo Montoya";
             Console.WriteLine($"{virtualcontact.FirstName} { virtualcontact.LastName}");
-
-            // override i new
-            SuperSubDerivedClass superSubDerivedClass = new SuperSubDerivedClass();
-            SubDerivedClass subDerivedClass = superSubDerivedClass;
-            DerivedClass derivedClass = superSubDerivedClass;
-            BaseClass baseClass = superSubDerivedClass;
-            superSubDerivedClass.DisplayName();
-            subDerivedClass.DisplayName();
-            derivedClass.DisplayName();
-            baseClass.DisplayName();
-
-            
-        }
-
-        //override i new
-        public class BaseClass
-        {
-            public void DisplayName() 
-            { 
-                Console.WriteLine("BaseClass"); 
-            }
-        }
-        public class DerivedClass : BaseClass
-        {
-            public virtual void DisplayName()
-            {
-                Console.WriteLine("DerivedClass");
-            }
-        }
-        public class SubDerivedClass : DerivedClass
-        {
-            public override void DisplayName()
-            {
-                Console.WriteLine("SubDerivedClass");
-            }
-        }
-        public class SuperSubDerivedClass : SubDerivedClass
-        {
-            public new void DisplayName()
-            {
-                Console.WriteLine("SuperSubDerivedClass");
-            }
-        }
-        // SEALED
-        class A
-        {
-            public virtual void Method()
-            { }
-        }
-        class B : A
-        {
-            public override sealed void Method()
-            { }
-        }
-        class C : B
-        {
-            // nie można przesłaniać składowych z modyfikatorem SEALED
-            // public override void Method() { }
-        }
-
-        // Składowa BASE
-        public class Address
-        {
-            public string StreetAddress;
-            public string City;
-            public string State;
-            public string Zip;
-            public override string ToString()
-            {
-                return $"{StreetAddress + NewLine} {City},{State} {Zip}";
-            }
-        }
-        public class InternationalAddress : Address
-        {
-            public string Country;
-            public override string ToString()
-            {
-                return base.ToString() + NewLine + Country;
-            }
         }
     }
 }

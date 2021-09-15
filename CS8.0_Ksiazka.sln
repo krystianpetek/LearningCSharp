@@ -42,15 +42,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_4", "Rozdzial6_4\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_5", "Rozdzial6_5\Rozdzial6_5.csproj", "{DC5854B8-4682-4F44-A901-97500FB90D7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial6_6", "Rozdzial6_6\Rozdzial6_6.csproj", "{3042224A-E58B-4824-A8FF-9EFAB0B5FF6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_6", "Rozdzial6_6\Rozdzial6_6.csproj", "{3042224A-E58B-4824-A8FF-9EFAB0B5FF6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial6_7", "Rozdzial6_7\Rozdzial6_7.csproj", "{FAE42308-86A8-4CEA-BDAA-1BA26B7B84B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_7", "Rozdzial6_7\Rozdzial6_7.csproj", "{FAE42308-86A8-4CEA-BDAA-1BA26B7B84B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial6_8", "Rozdzial6_8\Rozdzial6_8.csproj", "{38BA9442-22AC-4602-80FC-87859FC69166}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_8", "Rozdzial6_8\Rozdzial6_8.csproj", "{38BA9442-22AC-4602-80FC-87859FC69166}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial6_9", "Rozdzial6_9\Rozdzial6_9.csproj", "{789A56B7-89AF-4522-B40C-6786CDE9C295}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_9", "Rozdzial6_9\Rozdzial6_9.csproj", "{789A56B7-89AF-4522-B40C-6786CDE9C295}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial7", "Rozdzial7\Rozdzial7.csproj", "{BC5F4391-12DD-4782-8D2D-9ED01E23E255}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial7", "Rozdzial7\Rozdzial7.csproj", "{BC5F4391-12DD-4782-8D2D-9ED01E23E255}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial7_2", "Rozdzial7_2\Rozdzial7_2.csproj", "{5E6EEEEA-159D-4B2F-A580-D93BC652C74E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial7_3", "Rozdzial7_3\Rozdzial7_3.csproj", "{DD95E4B8-1722-414C-830E-621290CF8FD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial7_4", "Rozdzial7_4\Rozdzial7_4.csproj", "{AC41F2FF-43C0-470D-B4F4-18F4518B1B65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -146,6 +152,18 @@ Global
 		{BC5F4391-12DD-4782-8D2D-9ED01E23E255}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC5F4391-12DD-4782-8D2D-9ED01E23E255}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC5F4391-12DD-4782-8D2D-9ED01E23E255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E6EEEEA-159D-4B2F-A580-D93BC652C74E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E6EEEEA-159D-4B2F-A580-D93BC652C74E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E6EEEEA-159D-4B2F-A580-D93BC652C74E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E6EEEEA-159D-4B2F-A580-D93BC652C74E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD95E4B8-1722-414C-830E-621290CF8FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD95E4B8-1722-414C-830E-621290CF8FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD95E4B8-1722-414C-830E-621290CF8FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD95E4B8-1722-414C-830E-621290CF8FD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC41F2FF-43C0-470D-B4F4-18F4518B1B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC41F2FF-43C0-470D-B4F4-18F4518B1B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC41F2FF-43C0-470D-B4F4-18F4518B1B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC41F2FF-43C0-470D-B4F4-18F4518B1B65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
