@@ -49,11 +49,19 @@ namespace Rozdzial7_4
                 //File.WriteAllText(fileName, Encrypt(data).ToString());
             }
 
+            // dopasowanie pozycyjne
             Person person = new Person("Inigo", "Montoya");
+            if(person is (string firstName, string lastName))
+                Console.WriteLine($"{firstName} {lastName}");
 
+            // dopasowanie właściwości
+            Person person2 = new Person("", "");
+            if (person2 is { FirstName: string firstName2, LastName: string lastName2 })
+            {
+                Console.WriteLine($"{firstName2} {lastName2}");
+            }
         }
     }
-    // dopasowanie pozycyjne
     public class Person
     {
         public Person(string firstName, string lastName)
@@ -61,8 +69,8 @@ namespace Rozdzial7_4
             FirstName = firstName;
             LastName = lastName;
         }
-        string FirstName { get; set; }
-        string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public void Deconstruct(out string firstName, out string lastName) => (firstName, lastName) = (FirstName, LastName); 
     }
 }

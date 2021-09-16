@@ -85,9 +85,7 @@ namespace Rozdzial7_3
             contact = new Contact("Hercules Poirot");
             contact.Address = "Apt 56B, Whitehaven Mansions, Sandhurst Sq, Londyn";
             pda[2] = contact;
-
             List(pda);
-
         }
         public static void List(PdaItem[] items)
         {
