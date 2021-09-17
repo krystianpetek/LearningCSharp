@@ -6,7 +6,9 @@ namespace Rozdzial8_2
     {
         static void Main(string[] args)
         {
-
+            Contact contact = new Contact("Krystian", "Petek", "Koziniec 2", "884284782");
+            var x = ((IListable)contact).CellValues;
+            Console.WriteLine(x[2]);
         }
     }
     interface IListable
@@ -39,16 +41,7 @@ namespace Rozdzial8_2
         public string? Phone { get; }
         public static string GetName(string firstName, string lastName)
         => $"{ firstName } { lastName }";
-        public string?[] CellValues
-        {
-            get
-            {
-                return new string?[]
-                {
-                    FirstName,LastName,Phone,Address
-                };
-            }
-        }
+        
         #region IComparable Members
 
         public int CompareTo(object obj) => obj switch
