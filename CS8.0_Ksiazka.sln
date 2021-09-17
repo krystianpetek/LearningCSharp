@@ -58,9 +58,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial7_3", "Rozdzial7_3\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial7_4", "Rozdzial7_4\Rozdzial7_4.csproj", "{AC41F2FF-43C0-470D-B4F4-18F4518B1B65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial7_5", "Rozdzial7_5\Rozdzial7_5.csproj", "{DEEF4E36-DFFD-46C5-B945-7E7644E6C8F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial7_5", "Rozdzial7_5\Rozdzial7_5.csproj", "{DEEF4E36-DFFD-46C5-B945-7E7644E6C8F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial8", "Rozdzial8\Rozdzial8.csproj", "{708363A5-AD00-4070-9ECA-F61541335C53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial8", "Rozdzial8\Rozdzial8.csproj", "{708363A5-AD00-4070-9ECA-F61541335C53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial8_2", "Rozdzial8_2\Rozdzial8_2.csproj", "{CDBE5DB0-3AD7-4BC2-AA15-13F37A59EEC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -176,6 +178,10 @@ Global
 		{708363A5-AD00-4070-9ECA-F61541335C53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{708363A5-AD00-4070-9ECA-F61541335C53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{708363A5-AD00-4070-9ECA-F61541335C53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDBE5DB0-3AD7-4BC2-AA15-13F37A59EEC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDBE5DB0-3AD7-4BC2-AA15-13F37A59EEC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDBE5DB0-3AD7-4BC2-AA15-13F37A59EEC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDBE5DB0-3AD7-4BC2-AA15-13F37A59EEC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

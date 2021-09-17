@@ -29,7 +29,10 @@ namespace Rozdzial8
     {
         public Contact(string firstName, string lastName, string address, string phone) : base(GetName(firstName, lastName))
         {
-
+            FirstName = firstName;
+            LastName = lastName;
+            Address = address;
+            Phone = phone;
         }
         public string LastName { get; }
         public string? FirstName { get; }
@@ -42,7 +45,7 @@ namespace Rozdzial8
             {
                 return new string?[]
                 {
-                        FirstName, LastName, Phone, Address
+                        FirstName.PadRight(10), LastName.PadRight(10), Phone.PadRight(15), Address.PadRight(15)
                 };
             }
         }
@@ -52,7 +55,7 @@ namespace Rozdzial8
             {
                 return new string[]
                 {
-                        "Imie   ", "Nazwisko   ","Telefon   ", "Adres                 "
+                        "Imie".PadRight(11), "Nazwisko".PadRight(11),"Telefon".PadRight(16), "Adres".PadRight(15)
                 };
             }
         }
@@ -74,7 +77,7 @@ namespace Rozdzial8
             {
                 return new string[]
                 {
-                    Title, Author, Year.ToString()
+                    Title.PadRight(50), Author.PadRight(20), Year.ToString().PadRight(20)
                 };
             }
         }
@@ -82,7 +85,7 @@ namespace Rozdzial8
         {
             get
             {
-                return new string[] { "Tytuł                ", "Autor       ", "Rok   " };
+                return new string[] { "Tytuł".PadRight(51), "Autor".PadRight(21), "Rok".PadRight(21) };
             }
         }
     }
@@ -91,19 +94,35 @@ namespace Rozdzial8
         public static void List(string[] headers, IListable[] items)
         {
             int[] columnWidths = DisplayHeaders(headers);
-            for(int count = 0;count< items.Length;count++)
+            for(int count = 0;count < items.Length;count++)
             {
                 string?[] values = items[count].CellValues;
                 DisplayItemRow(columnWidths, values);
             }
+                Console.WriteLine();
         }
         private static int[] DisplayHeaders(string[] headers)
         {
-            return new int[] { 0 };
+
+            int[] wyjscie = new int[headers.Length];
+            int licznik = 0;
+            while(true)
+            {
+                wyjscie[licznik] = headers[licznik].Length;
+                licznik++;
+                if (licznik == headers.Length-1)
+                    break;
+            }
+            foreach(var x in headers)
+            Console.Write(x);
+
+            return wyjscie;
         }
         private static void DisplayItemRow(int[] columnWidths, string?[] values)
         {
-            // 351
+            Console.WriteLine();
+            foreach(var x in values)
+                Console.Write(x+" ");
         }
     }
     class Program
