@@ -66,7 +66,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial8_2", "Rozdzial8_2\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial8_3", "Rozdzial8_3\Rozdzial8_3.csproj", "{E655C387-CC56-4505-AD7D-671C99181FFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial8_4", "Rozdzial8_4\Rozdzial8_4.csproj", "{8E04FFAB-B9CD-429C-87BD-235F68121FF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial8_4", "Rozdzial8_4\Rozdzial8_4.csproj", "{8E04FFAB-B9CD-429C-87BD-235F68121FF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial8_5", "Rozdzial8_5\Rozdzial8_5.csproj", "{BCD5FEF0-53A8-49FB-BDDF-4A8B1B9618C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -194,6 +196,10 @@ Global
 		{8E04FFAB-B9CD-429C-87BD-235F68121FF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E04FFAB-B9CD-429C-87BD-235F68121FF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E04FFAB-B9CD-429C-87BD-235F68121FF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCD5FEF0-53A8-49FB-BDDF-4A8B1B9618C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCD5FEF0-53A8-49FB-BDDF-4A8B1B9618C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCD5FEF0-53A8-49FB-BDDF-4A8B1B9618C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCD5FEF0-53A8-49FB-BDDF-4A8B1B9618C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
