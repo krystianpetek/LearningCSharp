@@ -70,7 +70,8 @@ namespace Rozdzial8_4
     {
         static void Main(string[] args)
         {
-
+            Person inigo = new Person("Inigo", "Montoya");
+            Console.WriteLine(   ((IPerson)inigo).Name   );
         }
     }
 
@@ -80,7 +81,46 @@ namespace Rozdzial8_4
     {
         private static string? _Field;
         public static string? Field { get => _Field; private set => _Field = value; }
-        static ISampleInterface() => Field = "Nelsona Mandela";
+        static ISampleInterface() => Field = "Nelson Mandela";
         public static string? GetField() => Field;
+    }
+
+
+    // Implementacje właściwości i metod instancji
+    public interface IPerson
+    {
+        string FirstName { get; set; }
+        string LastName { get; set; }
+        string MiddleName { get; set; }
+
+        public string Name => GetName();
+        public string GetName() => $"{FirstName} {LastName}";
+    }
+    public class Person : IPerson
+    {
+        public Person(string imie, string nazwisko)
+        {
+            FirstName= imie;
+            LastName = nazwisko;
+        }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MiddleName { get; set; }
+    }
+    
+    // MODYFIKATOR DOSTĘPU PUBLIC
+    public interface IPersonPublic
+    {
+        string FirstName { get; set; }
+        public string LastName { get; set; }
+        string Initials => $"{FirstName[0]} {LastName[0]}";
+        public string Name => GetName();
+        public string GetName() => $"{FirstName} {LastName}";
+    }
+    public class PersonPublic : IPersonPublic
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }
