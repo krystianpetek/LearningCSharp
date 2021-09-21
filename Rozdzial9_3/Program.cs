@@ -6,7 +6,12 @@ namespace Rozdzial9_3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
+
+    // PRZECIĄŻAJ operatory równości (Equals(), == i !=) w typach bezpośrednich, jeśli sprawdzanie równości jest istotne.
+
+    // OPAKOWYWANIE
+    //388
 }
