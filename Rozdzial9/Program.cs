@@ -6,12 +6,13 @@ namespace Rozdzial9
     {
         static void Main(string[] args)
         {
-
-
+            var x = new Angle(90, 10, 10);
+            var z = x.Move(10, 10, 10);
+            Console.WriteLine(z.ToString());
         }
     }
     // Do deklarowania typów bezpośrednich służy słowo kluczowe struct.
-    struct Angle
+    readonly struct Angle
     {
         public Angle(int degrees, int minutes, int seconds)
         {
@@ -23,9 +24,13 @@ namespace Rozdzial9
         public int Minutes { get; }
         public int Seconds { get; }
         
-        public Angle Move(int degrees, int minutes, int seconds)
+        readonly public Angle Move(int degrees, int minutes, int seconds)
         {
             return new Angle(Degrees + degrees, Minutes + minutes, Seconds + seconds);
+        }
+        public override string ToString()
+        {
+            return $"{Degrees} {Minutes} {Seconds}";
         }
     }
 
@@ -36,5 +41,5 @@ namespace Rozdzial9
         public Angle Longitude { get; set; }
         public Angle Latitude { get; set; }
     }
-    //384
+
 }
