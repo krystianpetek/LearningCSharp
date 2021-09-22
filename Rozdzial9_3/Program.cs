@@ -11,13 +11,17 @@ namespace Rozdzial9_3
         static void Main()
         {
             int totalCount;
-            System.Collections.ArrayList list = new System.Collections.ArrayList();
-            Console.WriteLine("Wprowadź liczbę z przedziału od 2 do 1000: ");
+            // Celowo używany jest typ ArrayList, aby zilustrować opakowywanie
+            System.Collections.ArrayList list =
+            new System.Collections.ArrayList();
+            Console.Write("Wprowadź liczbę z przedziału od 2 do 1000:");
             totalCount = int.Parse(Console.ReadLine());
-
-            if (totalCount == 7)
+            if (totalCount == 7) // „Magiczna” liczba używana w testach
             {
-
+                // Błąd czasu wykonania:
+                // list.Add(0); // Potrzebne jest rzutowanie na typ double lub przyrostek 'D'.
+                // Niezależnie od wybranego rozwiązania
+                // kod CIL jest identyczny.
             }
             else
             {
@@ -25,14 +29,17 @@ namespace Rozdzial9_3
             }
             list.Add((double)0);
             list.Add((double)1);
-            for(int count = 2;count<totalCount;count++)
+            for (int count = 2; count < totalCount; count++)
             {
-                list.Add((double)list[count - 1]! + (double)list[count - 2]!);
+                list.Add(
+                    (double)list[count - 1]! +
+                    (double)list[count - 2]!);
             }
-            foreach(double count in list)
+            foreach (double count in list)
             {
-                Console.Write($"{count}, ");
+                Console.Write("{0}, ", count);
             }
         }
+        // ZLE DZIALA
     }
 }
