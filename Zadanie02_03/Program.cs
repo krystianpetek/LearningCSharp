@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Zadanie02_02
+namespace Zadanie02_03
 {
     class Program
     {
@@ -19,19 +19,20 @@ namespace Zadanie02_02
             Console.Write("Podaj liczbę C: ");
             c = double.Parse(Console.ReadLine());
 
-            double pitagoras = (b*1d * b) - (4 * a * c);
-            if(pitagoras > 0)
+            double pitagoras = (b * 1d * b) - (4 * a * c);
+
+            switch (pitagoras)
             {
-                Console.WriteLine($"x1 = {((-b)-Math.Sqrt(pitagoras))/(2.0*a)}");
-                Console.WriteLine($"x2 = {((-b)+Math.Sqrt(pitagoras))/(2.0*a)}");
-            }
-            else if (pitagoras == 0)
-            {
-                Console.WriteLine($"x0 = {(-b) / 2d * a}");
-            }
-            else
-            {
-                Console.WriteLine("BRAK");
+                case > 0:
+                    Console.WriteLine($"x1 = {Math.Round(((-b) - Math.Sqrt(pitagoras)) / (2.0 * a),2)}");
+                    Console.WriteLine($"x2 = {Math.Round(((-b) + Math.Sqrt(pitagoras)) / (2.0 * a),2)}");
+                    break;
+                case 0:
+                    Console.WriteLine($"x0 = {Math.Round((-b) / 2d * a,2)}");
+                    break;
+                default:
+                    Console.WriteLine("BRAK");
+                    break;
             }
         }
     }
