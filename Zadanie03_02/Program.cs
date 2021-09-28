@@ -1,17 +1,19 @@
 ﻿using System;
 
-namespace Zadanie03_01
+namespace Zadanie03_02
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //Program liczy wartość funkcji y = 3x
+            int x = 0;
             Console.WriteLine($"Wartość funkcji y = 3x dla");
-            for (int i = 0;i<=10;i++)
+            do
             {
-                Console.WriteLine(  $"x = {i} jest równe {i*3}");
+                Console.WriteLine($"x = {x} jest równe {x * 3}");
+                x++;
             }
+            while (x <= 10);
         }
     }
 }
