@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Zadanie03_05
+namespace Zadanie03_06
 {
     class Program
     {
@@ -8,7 +8,7 @@ namespace Zadanie03_05
         {
             Console.WriteLine("Program wyświetla liczby całkowite od 1 do 20");
             int i = 0;
-            do
+            while (i <= 20)
             {
                 if (i == 20)
                 {
@@ -19,7 +19,7 @@ namespace Zadanie03_05
                     Console.Write($"{i}, ");
                 }
                 i++;
-            } while (i <= 20);
+            }
         }
     }
 }
