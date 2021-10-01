@@ -3,84 +3,86 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial1", "Rozdzial1\Rozdzial1.csproj", "{96DC611B-B52C-4D05-8FBF-F52B274C7516}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial01", "Rozdzial1\Rozdzial01.csproj", "{96DC611B-B52C-4D05-8FBF-F52B274C7516}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial2", "Rozdzial2\Rozdzial2.csproj", "{826CCF08-4B42-4D53-B4CD-4F9B37E010AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial02", "Rozdzial2\Rozdzial02.csproj", "{826CCF08-4B42-4D53-B4CD-4F9B37E010AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{476FD131-A8F4-4C2D-B967-3CF3E4DD8719}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial3", "Rozdzial3\Rozdzial3.csproj", "{DD63C778-A996-430F-BB4A-93F617859017}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial03", "Rozdzial3\Rozdzial03.csproj", "{DD63C778-A996-430F-BB4A-93F617859017}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial4", "Rozdzial4\Rozdzial4.csproj", "{07185D9B-A607-41A7-AD90-78A06B6A43F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial04", "Rozdzial4\Rozdzial04.csproj", "{07185D9B-A607-41A7-AD90-78A06B6A43F5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial4_2", "Rozdzial4_2\Rozdzial4_2.csproj", "{F0AFA789-7767-438B-9F39-E264CDD229E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial04_2", "Rozdzial4_2\Rozdzial04_2.csproj", "{F0AFA789-7767-438B-9F39-E264CDD229E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial5", "Rozdzial5\Rozdzial5.csproj", "{942F02C5-94AA-42D8-B56C-60C02A2FF917}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial05", "Rozdzial5\Rozdzial05.csproj", "{942F02C5-94AA-42D8-B56C-60C02A2FF917}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial5_2", "Rozdzial5_2\Rozdzial5_2.csproj", "{611A3BFB-9FBE-4C6A-9954-39FECDEF11CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial05_2", "Rozdzial5_2\Rozdzial05_2.csproj", "{611A3BFB-9FBE-4C6A-9954-39FECDEF11CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial5_3", "Rozdzial5_3\Rozdzial5_3.csproj", "{29289858-1235-4AAC-9AF2-CFD6A586B0E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial05_3", "Rozdzial5_3\Rozdzial05_3.csproj", "{29289858-1235-4AAC-9AF2-CFD6A586B0E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial5_4", "Rozdzial5_4\Rozdzial5_4.csproj", "{A6497D0F-20E8-4B77-8EF3-B076CECF558D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial05_4", "Rozdzial5_4\Rozdzial05_4.csproj", "{A6497D0F-20E8-4B77-8EF3-B076CECF558D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial5_5", "Rozdzial5_5\Rozdzial5_5.csproj", "{E5BAE446-F57A-4C9F-B74A-7F09835F86A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial05_5", "Rozdzial5_5\Rozdzial05_5.csproj", "{E5BAE446-F57A-4C9F-B74A-7F09835F86A2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial5_6", "Rozdzial5_6\Rozdzial5_6.csproj", "{DC3139FC-D7F0-4DAD-8E20-C3AB330801B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial05_6", "Rozdzial5_6\Rozdzial05_6.csproj", "{DC3139FC-D7F0-4DAD-8E20-C3AB330801B9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial5_7", "Rozdzial5_7\Rozdzial5_7.csproj", "{F35BBA99-62A9-463E-8FA2-A231259C1716}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial05_7", "Rozdzial5_7\Rozdzial05_7.csproj", "{F35BBA99-62A9-463E-8FA2-A231259C1716}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6", "Rozdzial6\Rozdzial6.csproj", "{56D5642E-0CCF-45AA-A83C-B5A24276B2BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial06", "Rozdzial6\Rozdzial06.csproj", "{56D5642E-0CCF-45AA-A83C-B5A24276B2BD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_2", "Rozdzial6_2\Rozdzial6_2.csproj", "{0029668C-EC1F-4492-AC28-08905283A4BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial06_2", "Rozdzial6_2\Rozdzial06_2.csproj", "{0029668C-EC1F-4492-AC28-08905283A4BC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_3", "Rozdzial6_3\Rozdzial6_3.csproj", "{AE2DB6D1-CD9C-4A35-9E48-8EEB4EE31392}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial06_3", "Rozdzial6_3\Rozdzial06_3.csproj", "{AE2DB6D1-CD9C-4A35-9E48-8EEB4EE31392}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_4", "Rozdzial6_4\Rozdzial6_4.csproj", "{E1F0DF5E-AB3E-4E3D-9BB8-933D4128B37A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial06_4", "Rozdzial6_4\Rozdzial06_4.csproj", "{E1F0DF5E-AB3E-4E3D-9BB8-933D4128B37A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_5", "Rozdzial6_5\Rozdzial6_5.csproj", "{DC5854B8-4682-4F44-A901-97500FB90D7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial06_5", "Rozdzial6_5\Rozdzial06_5.csproj", "{DC5854B8-4682-4F44-A901-97500FB90D7F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_6", "Rozdzial6_6\Rozdzial6_6.csproj", "{3042224A-E58B-4824-A8FF-9EFAB0B5FF6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial06_6", "Rozdzial6_6\Rozdzial06_6.csproj", "{3042224A-E58B-4824-A8FF-9EFAB0B5FF6B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_7", "Rozdzial6_7\Rozdzial6_7.csproj", "{FAE42308-86A8-4CEA-BDAA-1BA26B7B84B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial06_7", "Rozdzial6_7\Rozdzial06_7.csproj", "{FAE42308-86A8-4CEA-BDAA-1BA26B7B84B0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_8", "Rozdzial6_8\Rozdzial6_8.csproj", "{38BA9442-22AC-4602-80FC-87859FC69166}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial06_8", "Rozdzial6_8\Rozdzial06_8.csproj", "{38BA9442-22AC-4602-80FC-87859FC69166}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial6_9", "Rozdzial6_9\Rozdzial6_9.csproj", "{789A56B7-89AF-4522-B40C-6786CDE9C295}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial06_9", "Rozdzial6_9\Rozdzial06_9.csproj", "{789A56B7-89AF-4522-B40C-6786CDE9C295}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial7", "Rozdzial7\Rozdzial7.csproj", "{BC5F4391-12DD-4782-8D2D-9ED01E23E255}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial07", "Rozdzial7\Rozdzial07.csproj", "{BC5F4391-12DD-4782-8D2D-9ED01E23E255}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial7_2", "Rozdzial7_2\Rozdzial7_2.csproj", "{5E6EEEEA-159D-4B2F-A580-D93BC652C74E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial07_2", "Rozdzial7_2\Rozdzial07_2.csproj", "{5E6EEEEA-159D-4B2F-A580-D93BC652C74E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial7_3", "Rozdzial7_3\Rozdzial7_3.csproj", "{DD95E4B8-1722-414C-830E-621290CF8FD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial07_3", "Rozdzial7_3\Rozdzial07_3.csproj", "{DD95E4B8-1722-414C-830E-621290CF8FD3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial7_4", "Rozdzial7_4\Rozdzial7_4.csproj", "{AC41F2FF-43C0-470D-B4F4-18F4518B1B65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial07_4", "Rozdzial7_4\Rozdzial07_4.csproj", "{AC41F2FF-43C0-470D-B4F4-18F4518B1B65}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial7_5", "Rozdzial7_5\Rozdzial7_5.csproj", "{DEEF4E36-DFFD-46C5-B945-7E7644E6C8F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial07_5", "Rozdzial7_5\Rozdzial07_5.csproj", "{DEEF4E36-DFFD-46C5-B945-7E7644E6C8F2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial8", "Rozdzial8\Rozdzial8.csproj", "{708363A5-AD00-4070-9ECA-F61541335C53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial08", "Rozdzial8\Rozdzial08.csproj", "{708363A5-AD00-4070-9ECA-F61541335C53}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial8_2", "Rozdzial8_2\Rozdzial8_2.csproj", "{CDBE5DB0-3AD7-4BC2-AA15-13F37A59EEC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial08_2", "Rozdzial8_2\Rozdzial08_2.csproj", "{CDBE5DB0-3AD7-4BC2-AA15-13F37A59EEC8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial8_3", "Rozdzial8_3\Rozdzial8_3.csproj", "{E655C387-CC56-4505-AD7D-671C99181FFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial08_3", "Rozdzial8_3\Rozdzial08_3.csproj", "{E655C387-CC56-4505-AD7D-671C99181FFC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial8_4", "Rozdzial8_4\Rozdzial8_4.csproj", "{8E04FFAB-B9CD-429C-87BD-235F68121FF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial08_4", "Rozdzial8_4\Rozdzial08_4.csproj", "{8E04FFAB-B9CD-429C-87BD-235F68121FF6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial8_5", "Rozdzial8_5\Rozdzial8_5.csproj", "{BCD5FEF0-53A8-49FB-BDDF-4A8B1B9618C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial08_5", "Rozdzial8_5\Rozdzial08_5.csproj", "{BCD5FEF0-53A8-49FB-BDDF-4A8B1B9618C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial8_6", "Rozdzial8_6\Rozdzial8_6.csproj", "{B1F39A93-4DA4-431E-B3D2-44D98CC877BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial08_6", "Rozdzial8_6\Rozdzial08_6.csproj", "{B1F39A93-4DA4-431E-B3D2-44D98CC877BA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial9", "Rozdzial9\Rozdzial9.csproj", "{8AD55C85-ADC9-4A1E-B134-1909C81DA060}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial09", "Rozdzial9\Rozdzial09.csproj", "{8AD55C85-ADC9-4A1E-B134-1909C81DA060}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial9_2", "Rozdzial9_2\Rozdzial9_2.csproj", "{3D3937AF-61C1-48AF-AF82-C22FF972BE47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial09_2", "Rozdzial9_2\Rozdzial09_2.csproj", "{3D3937AF-61C1-48AF-AF82-C22FF972BE47}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial9_3", "Rozdzial9_3\Rozdzial9_3.csproj", "{2B90245C-DEED-4342-AAA4-E48094CA8B0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial09_3", "Rozdzial9_3\Rozdzial09_3.csproj", "{2B90245C-DEED-4342-AAA4-E48094CA8B0F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial9_4", "Rozdzial9_4\Rozdzial9_4.csproj", "{2C4BAD95-8285-4185-AEBF-0CFADEBECE7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial09_4", "Rozdzial9_4\Rozdzial09_4.csproj", "{2C4BAD95-8285-4185-AEBF-0CFADEBECE7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial9_5", "Rozdzial9_5\Rozdzial9_5.csproj", "{E376AD12-DCC0-4175-8DD7-4389CCB30347}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial09_5", "Rozdzial9_5\Rozdzial09_5.csproj", "{E376AD12-DCC0-4175-8DD7-4389CCB30347}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rozdzial10", "Rozdzial10\Rozdzial10.csproj", "{563A7819-FEFD-4F49-9115-15B8F0EE9945}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -236,6 +238,10 @@ Global
 		{E376AD12-DCC0-4175-8DD7-4389CCB30347}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E376AD12-DCC0-4175-8DD7-4389CCB30347}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E376AD12-DCC0-4175-8DD7-4389CCB30347}.Release|Any CPU.Build.0 = Release|Any CPU
+		{563A7819-FEFD-4F49-9115-15B8F0EE9945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{563A7819-FEFD-4F49-9115-15B8F0EE9945}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{563A7819-FEFD-4F49-9115-15B8F0EE9945}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{563A7819-FEFD-4F49-9115-15B8F0EE9945}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
