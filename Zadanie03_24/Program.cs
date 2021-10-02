@@ -1,13 +1,14 @@
 ﻿using System;
 
-namespace Zadanie03_22
+namespace Zadanie03_24
 {
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Program wyświetla duże litery alfabetu od A do Z i spowrotem");
-            for (int i = 'A'; i <= 'Z'; i++)
+            int i = 'A';
+            while (i <= 'Z')
             {
                 if ((char)i == 'Z')
                     Console.Write($"{(char)i}.");
@@ -15,9 +16,11 @@ namespace Zadanie03_22
                 {
                     Console.Write($"{(char)i}, ");
                 }
-            }
+                i++;
+            };
             Console.WriteLine();
-            for (int i = 'Z'; i >= 'A'; i--)
+            i = 'Z';
+            while (i >= 'A')
             {
                 if ((char)i == 'A')
                     Console.Write($"{(char)i}.");
@@ -25,7 +28,8 @@ namespace Zadanie03_22
                 {
                     Console.Write($"{(char)i}, ");
                 }
-            }
+                i--;
+            };
         }
     }
 }

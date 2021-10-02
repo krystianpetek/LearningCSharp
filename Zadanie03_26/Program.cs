@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Zadanie03_25
+namespace Zadanie03_26
 {
     class Program
     {
@@ -8,20 +8,20 @@ namespace Zadanie03_25
         {
             int j = 0;
 
-            for (int i = 1000; i < 10000; i++)
+            for (int i = 100000; i < 1000000; i++)
             {
-                int firstTwo = i / 100;
-                int lastTwo = i % 100;
+                int firstTwo = i / 1000;
+                int lastTwo = i % 1000;
 
-                if(firstTwo * firstTwo + lastTwo * lastTwo == i)
+                if (firstTwo * firstTwo + lastTwo * lastTwo == i)
                 {
                     Console.WriteLine($"{i} = {firstTwo} * {firstTwo} + {lastTwo} * {lastTwo}");
                     j++;
                 }
 
             }
-                Console.WriteLine();
-                Console.WriteLine("Znaleziono "+j+" liczby.");
+            Console.WriteLine();
+            Console.WriteLine("Znaleziono " + j + " liczby.");
         }
     }
 }
