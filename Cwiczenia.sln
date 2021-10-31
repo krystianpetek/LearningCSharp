@@ -41,7 +41,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "liczenie", "liczenie\liczen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "workWithFiles", "workWithFiles\workWithFiles.csproj", "{43F50E18-123D-4822-A257-37D97D12797C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tautologia", "tautologia\tautologia.csproj", "{CF7F6519-1133-41EE-83F3-6A4DD14C4CE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tautologia", "tautologia\tautologia.csproj", "{CF7F6519-1133-41EE-83F3-6A4DD14C4CE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "workWithFilesCopy", "workWithFilesCopy\workWithFilesCopy.csproj", "{EC2958DC-119C-4F62-BD64-80D0A5BB6461}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -291,6 +293,18 @@ Global
 		{CF7F6519-1133-41EE-83F3-6A4DD14C4CE2}.Release|x64.Build.0 = Release|Any CPU
 		{CF7F6519-1133-41EE-83F3-6A4DD14C4CE2}.Release|x86.ActiveCfg = Release|Any CPU
 		{CF7F6519-1133-41EE-83F3-6A4DD14C4CE2}.Release|x86.Build.0 = Release|Any CPU
+		{EC2958DC-119C-4F62-BD64-80D0A5BB6461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC2958DC-119C-4F62-BD64-80D0A5BB6461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC2958DC-119C-4F62-BD64-80D0A5BB6461}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EC2958DC-119C-4F62-BD64-80D0A5BB6461}.Debug|x64.Build.0 = Debug|Any CPU
+		{EC2958DC-119C-4F62-BD64-80D0A5BB6461}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EC2958DC-119C-4F62-BD64-80D0A5BB6461}.Debug|x86.Build.0 = Debug|Any CPU
+		{EC2958DC-119C-4F62-BD64-80D0A5BB6461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC2958DC-119C-4F62-BD64-80D0A5BB6461}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC2958DC-119C-4F62-BD64-80D0A5BB6461}.Release|x64.ActiveCfg = Release|Any CPU
+		{EC2958DC-119C-4F62-BD64-80D0A5BB6461}.Release|x64.Build.0 = Release|Any CPU
+		{EC2958DC-119C-4F62-BD64-80D0A5BB6461}.Release|x86.ActiveCfg = Release|Any CPU
+		{EC2958DC-119C-4F62-BD64-80D0A5BB6461}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
