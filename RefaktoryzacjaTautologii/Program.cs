@@ -9,80 +9,83 @@ namespace RefaktoryzacjaTautologii
         static void Main(string[] args)
         {
             int wejscie = int.Parse(Console.ReadLine());
+
             for (int i = 0; i < wejscie; i++)
             {
-                string zdanie = Console.ReadLine();
-                StringBuilder x = new StringBuilder();
-                x.Append(BUILDER(zdanie));
-                Console.WriteLine(x);
-            }
+                if (wejscie < 1 || wejscie > 35)
+                    break;
 
+                string zdanie = Console.ReadLine();
+                if (zdanie == "" || zdanie == null)
+                    break;
+
+                Console.WriteLine( BUILDER(zdanie));
+            }
         }
         static string BUILDER(string zdanie)
         {
             bool wyjscie = true;
 
-            // lista z pojedynczymi znakami
-            List<char> kolekcja = new List<char>();
+            List<char> listaZnakow = new List<char>();
             foreach (char H in zdanie)
-                kolekcja.Add(H);
+                listaZnakow.Add(H);
+            List<char> duplikatListyZnakow = new List<char>(listaZnakow);
 
-            // LISTA Z POSORTOWANYMI ARGUMENTAMI
             List<char> posortowaneArgumenty = new List<char>();
-            foreach (char H in kolekcja)
+            foreach (char H in listaZnakow)
             {
                 if (char.IsLower(H))
                     if (!posortowaneArgumenty.Contains(H))
                         posortowaneArgumenty.Add(H);
             }
-            posortowaneArgumenty.Sort();
+            //foreach(var z in listaZnakow)
+            //    Console.Write(z);
 
-            lista = new List<char>();
-            WyswietlArgumenty(zdanie);
             int x = 0b_000_001;
-            x = x << LICZBA;
+            x = x << listaZnakow.Count;
             x--;
 
-            int[,] tablicaLiczb = new int[LICZBA, x + 1];
+            int[,] tablicaLiczb = new int[listaZnakow.Count, x + 1];
             for (int b = 0; b <= x; b++)
             {
-                string linia = Do2Wyjscie(b, LICZBA);
+                string linia = Do2Wyjscie(b, listaZnakow.Count);
                 for (int a = 0; a < tablicaLiczb.GetLength(0); a++)
                     tablicaLiczb[a, b] = int.Parse(linia[a].ToString());
             }
 
-            List<char> kolekcja2 = new List<char>(kolekcja);
             for (int przejsciaWszystkie = 0; przejsciaWszystkie < x + 1; przejsciaWszystkie++)
             {
-                Dictionary<char, int> argumentyWartosci = new Dictionary<char, int>();
+                SortedList<char, int> argumentyWartosci = new SortedList<char, int>();
                 for (int Xtab = 0; Xtab < posortowaneArgumenty.Count; Xtab++)
                 {
                     argumentyWartosci.Add(posortowaneArgumenty[Xtab], tablicaLiczb[Xtab, przejsciaWszystkie]);
                 }
-                for (int zmianaArgNaWartosc = 0; zmianaArgNaWartosc < kolekcja.Count; zmianaArgNaWartosc++)
+                for (int zmianaArgNaWartosc = 0; zmianaArgNaWartosc < listaZnakow.Count; zmianaArgNaWartosc++)
                 {
-                    if (char.IsLower(kolekcja2[zmianaArgNaWartosc]))
-                        if (argumentyWartosci.ContainsKey(kolekcja2[zmianaArgNaWartosc]))
+                    if (char.IsLower(duplikatListyZnakow[zmianaArgNaWartosc]))
+                        if (argumentyWartosci.ContainsKey(duplikatListyZnakow[zmianaArgNaWartosc]))
                         {
-                            string HJ = argumentyWartosci[kolekcja2[zmianaArgNaWartosc]].ToString();
-                            kolekcja[zmianaArgNaWartosc] = Convert.ToChar(HJ);
+                            string HJ = argumentyWartosci[duplikatListyZnakow[zmianaArgNaWartosc]].ToString();
+                            listaZnakow[zmianaArgNaWartosc] = Convert.ToChar(HJ);
                         }
                 }
 
                 int wskaznik = 1;
-                while (wskaznik > 0 && kolekcja.Count > 1)
+                while (wskaznik > 0 && listaZnakow.Count > 1)
                 {
                     wskaznik--;
-                    for (int i = 0; i < kolekcja.Count; i++)
+                    for (int i = 0; i < listaZnakow.Count; i++)
                     {
-                        if (char.IsUpper(kolekcja[i]))
+                        if (!char.IsLetterOrDigit(listaZnakow[i]))
+                            break;
+                        if (char.IsUpper(listaZnakow[i]))
                         {
-                            if (kolekcja[i] == 'N')
+                            if (listaZnakow[i] == 'N')
                             {
-                                if (char.IsDigit(kolekcja[i + 1]))
+                                if (char.IsDigit(listaZnakow[i + 1]))
                                 {
-                                    kolekcja[i] = czyNegacja(Convert.ToInt32(kolekcja[i + 1].ToString()));
-                                    kolekcja.RemoveAt(i + 1);
+                                    listaZnakow[i] = czyNegacja(Convert.ToInt32(listaZnakow[i + 1].ToString()));
+                                    listaZnakow.RemoveAt(i + 1);
                                     wskaznik++;
                                 }
                                 else
@@ -91,32 +94,32 @@ namespace RefaktoryzacjaTautologii
                                     continue;
                                 }
                             }
-                            else if (char.IsDigit(kolekcja[i + 1]) && char.IsDigit(kolekcja[i + 2]))
+                            else if (char.IsDigit(listaZnakow[i + 1]) && char.IsDigit(listaZnakow[i + 2]))
                             {
-                                switch (kolekcja[i])
+                                switch (listaZnakow[i])
                                 {
                                     case 'C':
-                                        kolekcja[i] = czyAnd(Convert.ToInt32(kolekcja[i + 1].ToString()), Convert.ToInt32(kolekcja[i + 2].ToString()));
-                                        kolekcja.RemoveAt(i + 1);
-                                        kolekcja.RemoveAt(i + 1);
+                                        listaZnakow[i] = czyAnd(Convert.ToInt32(listaZnakow[i + 1].ToString()), Convert.ToInt32(listaZnakow[i + 2].ToString()));
+                                        listaZnakow.RemoveAt(i + 1);
+                                        listaZnakow.RemoveAt(i + 1);
                                         wskaznik++;
                                         break;
                                     case 'D':
-                                        kolekcja[i] = czyOr(Convert.ToInt32(kolekcja[i + 1].ToString()), Convert.ToInt32(kolekcja[i + 2].ToString()));
-                                        kolekcja.RemoveAt(i + 1);
-                                        kolekcja.RemoveAt(i + 1);
+                                        listaZnakow[i] = czyOr(Convert.ToInt32(listaZnakow[i + 1].ToString()), Convert.ToInt32(listaZnakow[i + 2].ToString()));
+                                        listaZnakow.RemoveAt(i + 1);
+                                        listaZnakow.RemoveAt(i + 1);
                                         wskaznik++;
                                         break;
                                     case 'I':
-                                        kolekcja[i] = czyImplikacja(Convert.ToInt32(kolekcja[i + 1].ToString()), Convert.ToInt32(kolekcja[i + 2].ToString()));
-                                        kolekcja.RemoveAt(i + 1);
-                                        kolekcja.RemoveAt(i + 1);
+                                        listaZnakow[i] = czyImplikacja(Convert.ToInt32(listaZnakow[i + 1].ToString()), Convert.ToInt32(listaZnakow[i + 2].ToString()));
+                                        listaZnakow.RemoveAt(i + 1);
+                                        listaZnakow.RemoveAt(i + 1);
                                         wskaznik++;
                                         break;
                                     case 'E':
-                                        kolekcja[i] = czyRownowazne(Convert.ToInt32(kolekcja[i + 1].ToString()), Convert.ToInt32(kolekcja[i + 2].ToString()));
-                                        kolekcja.RemoveAt(i + 1);
-                                        kolekcja.RemoveAt(i + 1);
+                                        listaZnakow[i] = czyRownowazne(Convert.ToInt32(listaZnakow[i + 1].ToString()), Convert.ToInt32(listaZnakow[i + 2].ToString()));
+                                        listaZnakow.RemoveAt(i + 1);
+                                        listaZnakow.RemoveAt(i + 1);
                                         wskaznik++;
                                         break;
                                     default:
@@ -136,7 +139,7 @@ namespace RefaktoryzacjaTautologii
                     if (wskaznik > 0)
                         wskaznik -= 2;
                 }
-                foreach (char sprawdzenie in kolekcja)
+                foreach (char sprawdzenie in listaZnakow)
                 {
                     if (sprawdzenie == '0')
                     {
@@ -145,17 +148,16 @@ namespace RefaktoryzacjaTautologii
                     }
                 }
 
-                kolekcja = new List<char>();
+                listaZnakow = new List<char>();
                 foreach (char H in zdanie)
-                    kolekcja.Add(H);
+                    listaZnakow.Add(H);
                 posortowaneArgumenty = new List<char>();
-                foreach (char H in kolekcja)
+                foreach (char H in listaZnakow)
                 {
                     if (char.IsLower(H))
                         if (!posortowaneArgumenty.Contains(H))
                             posortowaneArgumenty.Add(H);
                 }
-                posortowaneArgumenty.Sort();
             }
             if (wyjscie)
                 return "YES";
@@ -202,21 +204,6 @@ namespace RefaktoryzacjaTautologii
         static string Do2Wyjscie(int a, int b = 2)
         {
             return Convert.ToString(a, toBase: 2).PadLeft(b, '0');
-        }
-        public static int LICZBA => lista.Count;
-        private static List<char> lista = new List<char>();
-        static void WyswietlArgumenty(string i)
-        {
-            foreach (char z in i)
-            {
-                if (char.IsLower(z))
-                {
-                    if (!lista.Contains(z))
-                        lista.Add(z);
-
-                    lista.Sort();
-                }
-            }
         }
     }
 }
