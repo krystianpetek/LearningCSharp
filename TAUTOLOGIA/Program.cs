@@ -7,40 +7,7 @@ namespace TAUTOLOGIA
     {
         static void Main(string[] args)
         {
-            string zdanie = "IIpqDpNp";
-            zdanie = "IIqrIIpqIpr";
-
-            WyswietlArgumenty(zdanie);
-            int x = 0b_000_001;
-            x = x << LICZBA;
-            x--;
-
-            //x = x + x+1;
-            //Console.WriteLine();
-            //Iteracja(x);
-
-            int[,] tablicaLiczb = new int[LICZBA, x + 1];
-
-            // PRZYPISANIE
-            for (int b = 0; b <= x; b++)
-            {
-                string linia = Do2Wyjscie(b, LICZBA);
-                for (int a = 0; a < tablicaLiczb.GetLength(0); a++)
-                {
-                    tablicaLiczb[a, b] = int.Parse(linia[a].ToString());
-                }
-            }
-
-            // WYSWIETLIENIE 
-            for (int b = 0; b <= x; b++)
-            {
-                for (int a = 0; a < tablicaLiczb.GetLength(0); a++)
-                {
-                    Console.Write(tablicaLiczb[a, b]);
-                }
-                Console.WriteLine();
-            }
-
+            string zdanie = "Ezz";
             BUILDER(zdanie);
 
         }
@@ -48,80 +15,160 @@ namespace TAUTOLOGIA
         {
             // lista z pojedynczymi znakami
             List<char> kolekcja = new List<char>();
-            foreach (char x in zdanie)
-                if (char.IsLower(x))
-                    kolekcja.Add('0');
-            else
-                kolekcja.Add(x);
+            foreach (char H in zdanie)
+                kolekcja.Add(H);
 
-            // argumenty
-            List<char> argumenty = new List<char>();
-            foreach (char x in zdanie)
+            // LISTA Z POSORTOWANYMI ARGUMENTAMI
+            List<char> posortowaneArgumenty = new List<char>();
+            foreach (char H in kolekcja)
             {
-                if (char.IsLower(x))
-                {
-                    if (!argumenty.Contains(x))
-                        argumenty.Add(x);
+                if (char.IsLower(H))
+                    if (!posortowaneArgumenty.Contains(H))
+                        posortowaneArgumenty.Add(H);
+            }
+            posortowaneArgumenty.Sort();
+            //WYSWIETLENIE ARGUMENTOW
+            foreach (var H in posortowaneArgumenty)
+                Console.Write(H);
+            Console.WriteLine();
 
-                    argumenty.Sort();
-                }
+
+            WyswietlArgumenty(zdanie);
+            int x = 0b_000_001;
+            x = x << LICZBA;
+            x--;
+            // tablica wartosci
+            int[,] tablicaLiczb = new int[LICZBA, x + 1];
+            for (int b = 0; b <= x; b++)
+            {
+                string linia = Do2Wyjscie(b, LICZBA);
+                for (int a = 0; a < tablicaLiczb.GetLength(0); a++)
+                    tablicaLiczb[a, b] = int.Parse(linia[a].ToString());
             }
 
-            int wskaznik = 0;
-            for (int i = 0; i < kolekcja.Count; i++)
+            Console.WriteLine("Wyswietlenie kolekcji poczatkowej");
+            foreach (var H in kolekcja)
+                Console.Write(H);
+            Console.WriteLine();
+
+            List<char> kolekcja2 = new List<char>(kolekcja);
+            for (int przejsciaWszystkie = 0; przejsciaWszystkie < x + 1; przejsciaWszystkie++)
             {
-                if (char.IsUpper(kolekcja[i]))
+                // arugumenty i przypisanie im wartości
+                Dictionary<char, int> argumentyWartosci = new Dictionary<char, int>();
+                for (int Xtab = 0; Xtab < posortowaneArgumenty.Count; Xtab++)
                 {
-                    if (char.IsDigit(kolekcja[i + 1]) && char.IsDigit(kolekcja[i + 2]))
-                    {
-                        switch (kolekcja[i])
+                    argumentyWartosci.Add(posortowaneArgumenty[Xtab], tablicaLiczb[Xtab, przejsciaWszystkie]);
+                }
+                foreach (var z in argumentyWartosci)
+                    Console.Write(z);
+                Console.WriteLine();
+
+
+                for (int zmianaArgNaWartosc = 0; zmianaArgNaWartosc < kolekcja.Count; zmianaArgNaWartosc++)
+                {
+                    if (char.IsLower(kolekcja2[zmianaArgNaWartosc]))
+                        if (argumentyWartosci.ContainsKey(kolekcja2[zmianaArgNaWartosc]))
                         {
-                            case 'C':
-                                kolekcja[i + 1] = czyAnd(kolekcja[i + 1], kolekcja[i + 2]);
-                                kolekcja.RemoveAt(i);
-                                break;
-                            case 'D':
-                                kolekcja[i + 1] = czyOr(kolekcja[i + 1], kolekcja[i + 2]);
-                                kolekcja.RemoveAt(i);
-                                break;
-                            case 'I':
-                                kolekcja[i + 1] = czyImplikacja(kolekcja[i + 1], kolekcja[i + 2]);
-                                kolekcja.RemoveAt(i);
-                                break;
-                            case 'E':
-                                kolekcja[i + 1] = czyRownowazne(kolekcja[i + 1], kolekcja[i + 2]);
-                                kolekcja.RemoveAt(i);
-                                break;
-                            case 'N':
-                                kolekcja[i] = czyNegacja(kolekcja[i + 1]);
-                                break;
-                            default:
-                                Console.WriteLine("Błąd w syntaxie");
-                                break;
+                            string HJ = argumentyWartosci[kolekcja2[zmianaArgNaWartosc]].ToString();
+                            kolekcja[zmianaArgNaWartosc] = Convert.ToChar(HJ);
                         }
-                        if (wskaznik > 0)
-                        {
-                            i--;
-                            wskaznik--;
-                        }
-                    }
-                    else
-                    {
-                        wskaznik++;
-                        continue;
-                    }
                 }
-                else if (char.IsDigit(kolekcja[i]) || char.IsLower(kolekcja[i]))
+                Console.WriteLine("Przed operacjami");
+                foreach (var H in kolekcja)
+                    Console.Write(H);
+                Console.WriteLine();
+
+                int wskaznik = 1;
+                while (wskaznik > 0 && kolekcja.Count > 1)
                 {
+                    wskaznik--;
+                    for (int i = 0; i < kolekcja.Count; i++)
+                    {
+                        if (char.IsUpper(kolekcja[i]))
+                        {
+
+                            if(kolekcja[i] == 'N')
+                            {
+
+                                if(char.IsDigit(kolekcja[i+1]))
+                                {
+                                    kolekcja[i] = czyNegacja(Convert.ToInt32(kolekcja[i + 1].ToString()));
+                                    kolekcja.RemoveAt(i + 1);
+                                    wskaznik++;
+                                }
+                                else
+                                {
+                                    wskaznik++;
+                                    continue;
+                                }
+                            }
+                            else if (char.IsDigit(kolekcja[i + 1]) && char.IsDigit(kolekcja[i + 2]))
+                            {
+
+                                switch (kolekcja[i])
+                                {
+                                    case 'C':
+                                        kolekcja[i] = czyAnd(Convert.ToInt32(kolekcja[i + 1].ToString()), Convert.ToInt32(kolekcja[i + 2].ToString()));
+                                        kolekcja.RemoveAt(i + 1);
+                                        kolekcja.RemoveAt(i + 1);
+                                        wskaznik++;
+                                        break;
+                                    case 'D':
+                                        kolekcja[i] = czyOr(Convert.ToInt32(kolekcja[i + 1].ToString()), Convert.ToInt32(kolekcja[i + 2].ToString()));
+                                        kolekcja.RemoveAt(i + 1);
+                                        kolekcja.RemoveAt(i + 1);
+                                        wskaznik++;
+                                        break;
+                                    case 'I':
+                                        kolekcja[i] = czyImplikacja(Convert.ToInt32(kolekcja[i + 1].ToString()), Convert.ToInt32(kolekcja[i + 2].ToString()));
+                                        kolekcja.RemoveAt(i + 1);
+                                        kolekcja.RemoveAt(i + 1);
+                                        wskaznik++;
+                                        break;
+                                    case 'E':
+                                        kolekcja[i] = czyRownowazne(Convert.ToInt32(kolekcja[i + 1].ToString()), Convert.ToInt32(kolekcja[i + 2].ToString()));
+                                        kolekcja.RemoveAt(i + 1);
+                                        kolekcja.RemoveAt(i + 1);
+                                        wskaznik++;
+                                        break;
+                                    default:
+                                        Console.WriteLine("Błąd w syntaxie");
+                                        break;
+                                }
+
+                            }
+                            else
+                            {
+                                wskaznik++;
+                                //Console.WriteLine("Pomiń + dodaj wskaznik " + wskaznik + "i: " + i);
+                                continue;
+                            }
+
+
+                        }
+
+                        else
+                        {
+                            wskaznik++;
+                            //Console.WriteLine("Pomiń + dodaj wskaznik " + wskaznik + "i: " + i);
+
+                        }
+
+                        foreach (var z in kolekcja)
+                            Console.Write(z);
+                        Console.WriteLine();
+                    }
+
+                    if (wskaznik > 0)
+                        wskaznik -= 2;
 
                 }
-
+                kolekcja = new List<char>();
+                foreach (char H in zdanie)
+                    kolekcja.Add(H);
             }
 
-            foreach (var x in kolekcja)
-            {
-                Console.Write(x);
-            }
 
         }
         static char czyRownowazne(int a, int b)
@@ -133,8 +180,11 @@ namespace TAUTOLOGIA
         }
         static char czyNegacja(int a)
         {
-            a = a * (-1);
-            return (char)a;
+            string x = (a * (-1)).ToString();
+            if (x == "0")
+                return '1';
+            else
+                return '0';
         }
         static char czyImplikacja(int a, int b)
         {
