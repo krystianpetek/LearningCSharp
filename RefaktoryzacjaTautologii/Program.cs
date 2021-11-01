@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TAUTOLOGIA
+namespace RefaktoryzacjaTautologii
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int wejscie = Convert.ToInt32(Console.ReadLine());
+            int wejscie = int.Parse(Console.ReadLine());
             for (int i = 0; i < wejscie; i++)
             {
                 string zdanie = Console.ReadLine();
@@ -36,18 +36,13 @@ namespace TAUTOLOGIA
                         posortowaneArgumenty.Add(H);
             }
             posortowaneArgumenty.Sort();
-            //WYSWIETLENIE ARGUMENTOW
-            //foreach (var H in posortowaneArgumenty)
-            //    Console.Write(H);
-            //Console.WriteLine();
-
 
             lista = new List<char>();
             WyswietlArgumenty(zdanie);
             int x = 0b_000_001;
             x = x << LICZBA;
             x--;
-            // tablica wartosci
+
             int[,] tablicaLiczb = new int[LICZBA, x + 1];
             for (int b = 0; b <= x; b++)
             {
@@ -56,25 +51,14 @@ namespace TAUTOLOGIA
                     tablicaLiczb[a, b] = int.Parse(linia[a].ToString());
             }
 
-            //Console.WriteLine("Wyswietlenie kolekcji poczatkowej");
-            //foreach (var H in kolekcja)
-            //    Console.Write(H);
-            //Console.WriteLine();
-
             List<char> kolekcja2 = new List<char>(kolekcja);
             for (int przejsciaWszystkie = 0; przejsciaWszystkie < x + 1; przejsciaWszystkie++)
             {
-                // arugumenty i przypisanie im wartości
                 Dictionary<char, int> argumentyWartosci = new Dictionary<char, int>();
                 for (int Xtab = 0; Xtab < posortowaneArgumenty.Count; Xtab++)
                 {
                     argumentyWartosci.Add(posortowaneArgumenty[Xtab], tablicaLiczb[Xtab, przejsciaWszystkie]);
                 }
-                //foreach (var z in argumentyWartosci)
-                //    Console.Write(z);
-                //Console.WriteLine();
-
-
                 for (int zmianaArgNaWartosc = 0; zmianaArgNaWartosc < kolekcja.Count; zmianaArgNaWartosc++)
                 {
                     if (char.IsLower(kolekcja2[zmianaArgNaWartosc]))
@@ -84,10 +68,6 @@ namespace TAUTOLOGIA
                             kolekcja[zmianaArgNaWartosc] = Convert.ToChar(HJ);
                         }
                 }
-                //Console.WriteLine("Przed operacjami");
-                //foreach (var H in kolekcja)
-                //    Console.Write(H);
-                //Console.WriteLine();
 
                 int wskaznik = 1;
                 while (wskaznik > 0 && kolekcja.Count > 1)
@@ -97,10 +77,8 @@ namespace TAUTOLOGIA
                     {
                         if (char.IsUpper(kolekcja[i]))
                         {
-
                             if (kolekcja[i] == 'N')
                             {
-
                                 if (char.IsDigit(kolekcja[i + 1]))
                                 {
                                     kolekcja[i] = czyNegacja(Convert.ToInt32(kolekcja[i + 1].ToString()));
@@ -115,7 +93,6 @@ namespace TAUTOLOGIA
                             }
                             else if (char.IsDigit(kolekcja[i + 1]) && char.IsDigit(kolekcja[i + 2]))
                             {
-
                                 switch (kolekcja[i])
                                 {
                                     case 'C':
@@ -146,38 +123,19 @@ namespace TAUTOLOGIA
                                         Console.WriteLine("Błąd w syntaxie");
                                         break;
                                 }
-
                             }
                             else
                             {
                                 wskaznik++;
-                                //Console.WriteLine("Pomiń + dodaj wskaznik " + wskaznik + "i: " + i);
                                 continue;
                             }
-
-
                         }
-
                         else
-                        {
                             wskaznik++;
-                            //Console.WriteLine("Pomiń + dodaj wskaznik " + wskaznik + "i: " + i);
-
-                        }
-
-                        //foreach (var z in kolekcja)
-                        //    Console.Write(z);
-                        //Console.WriteLine();
-
-
                     }
-
                     if (wskaznik > 0)
                         wskaznik -= 2;
-
                 }
-
-                
                 foreach (char sprawdzenie in kolekcja)
                 {
                     if (sprawdzenie == '0')
@@ -199,13 +157,10 @@ namespace TAUTOLOGIA
                 }
                 posortowaneArgumenty.Sort();
             }
-
-
             if (wyjscie)
                 return "YES";
             else
                 return "NO";
-
 
         }
         static char czyRownowazne(int a, int b)
@@ -244,30 +199,9 @@ namespace TAUTOLOGIA
             else
                 return '1';
         }
-        static void Iteracja(int x)
-        {
-            for (int i = 0; i <= x; i++)
-            {
-                Console.Write($"{i} - ");
-                Do2(i, LICZBA);
-            }
-        }
-        static void Do2(int a, int b = 2)
-        {
-            Console.WriteLine("Liczba: {0}", Convert.ToString(a, toBase: 2).PadLeft(b, '0'));
-            string konwersja = Convert.ToString(a, toBase: 2).PadLeft(b, '0');
-        }
         static string Do2Wyjscie(int a, int b = 2)
         {
-            string konwersja = Convert.ToString(a, toBase: 2).PadLeft(b, '0');
-            return konwersja;
-        }
-        static void Dopisz(char x)
-        {
-            if (!lista.Contains(x))
-                lista.Add(x);
-
-            lista.Sort();
+            return Convert.ToString(a, toBase: 2).PadLeft(b, '0');
         }
         public static int LICZBA => lista.Count;
         private static List<char> lista = new List<char>();
@@ -277,16 +211,12 @@ namespace TAUTOLOGIA
             {
                 if (char.IsLower(z))
                 {
-                    Dopisz(z);
+                    if (!lista.Contains(z))
+                        lista.Add(z);
+
+                    lista.Sort();
                 }
             }
-
-            //Console.Write("Argumenty: ");
-            //foreach (var z in lista)
-            //{
-            //    Console.Write($"{z} ");
-            //}
-            //Console.WriteLine();
         }
     }
 }
