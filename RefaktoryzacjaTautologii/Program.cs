@@ -8,24 +8,18 @@ namespace RefaktoryzacjaTautologii
     {
         static void Main(string[] args)
         {
-            int wejscie = int.Parse(Console.ReadLine());
-
+            
+            int wejscie = Convert.ToInt32(Console.ReadLine());
+            string zdanie = "";
             for (int i = 0; i < wejscie; i++)
             {
-                if (wejscie < 1 || wejscie > 35)
-                    break;
-
-                string zdanie = Console.ReadLine();
-                if (zdanie == "" || zdanie == null)
-                    break;
-
-                Console.WriteLine( BUILDER(zdanie));
+                zdanie = Console.ReadLine();
+                Console.WriteLine( BUILDER(zdanie) );
             }
         }
         static string BUILDER(string zdanie)
         {
             bool wyjscie = true;
-
             List<char> listaZnakow = new List<char>();
             foreach (char H in zdanie)
                 listaZnakow.Add(H);
@@ -41,7 +35,7 @@ namespace RefaktoryzacjaTautologii
             //foreach(var z in listaZnakow)
             //    Console.Write(z);
 
-            int x = 0b_000_001;
+            long x = 1;
             x = x << listaZnakow.Count;
             x--;
 
@@ -203,7 +197,7 @@ namespace RefaktoryzacjaTautologii
         }
         static string Do2Wyjscie(int a, int b = 2)
         {
-            return Convert.ToString(a, toBase: 2).PadLeft(b, '0');
+            return Convert.ToString(a, 2).PadLeft(b, '0');
         }
     }
 }
