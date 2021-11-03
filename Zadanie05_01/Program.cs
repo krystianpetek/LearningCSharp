@@ -33,7 +33,7 @@ namespace Zadanie05_01
         }
         public void wyswietl_dane()
         {
-            Console.WriteLine($"Pole prostokąta o boku a = {a} i boku b = {b} wynosi: ");
+            Console.WriteLine($"Pole prostokąta o boku a = {a} i boku b = {b}");
             Console.Write($"Wynik: {oblicz_pole}");
 
         }

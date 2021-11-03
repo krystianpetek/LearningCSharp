@@ -10,13 +10,14 @@ namespace Zadanie05_02
             trojmian.czytaj_date();
             trojmian.przetworz_dane();
             trojmian.wyswietl_dane();
+            Console.ReadKey();
         }
     }
     class RownanieKwadratowe
     {
 
         double a, b, c, delta, x1, x2;
-        byte liczbaPierwiastkow;
+        short liczbaPierwiastkow;
 
         public void czytaj_date()
         {
@@ -25,7 +26,8 @@ namespace Zadanie05_02
             a = double.Parse(Console.ReadLine());
             if(a == 0)
             {
-                Console.WriteLine("Niedozwolona wartość współczynnika A. Naciśnij klawisz ENTER");
+                Console.WriteLine("Niedozwolona wartość współczynnika A"); 
+                Console.ReadKey();
                 Environment.Exit(0);
             }
             else
