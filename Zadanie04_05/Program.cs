@@ -14,7 +14,7 @@ namespace Zadanie04_05
                 for (int j = 0; j < 10; j++)
                 {
 
-                    if (i + j == macierz.GetLength(1)-1)
+                    if (i + j == macierz.GetLength(1) - 1)
                     {
                         macierz[i, j] = 1;
                         Console.ForegroundColor = ConsoleColor.Red;

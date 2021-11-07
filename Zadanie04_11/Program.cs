@@ -14,7 +14,7 @@ namespace Zadanie04_11
             x.Add(14);
             x.Add(-4);
             foreach (var z in x)
-                Console.Write(z+", ");
+                Console.Write(z + ", ");
             Console.WriteLine();
             x.Sort();
             foreach (var z in x)

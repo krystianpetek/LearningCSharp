@@ -11,8 +11,8 @@ namespace Zadanie01_01
             double a = double.Parse(Console.ReadLine());
             Console.Write("Wprowadź długość boku B: ");
             double b = double.Parse(Console.ReadLine());
-            Console.Write($"Pole prostokąta wynosi: {a*b}");
-                    
+            Console.Write($"Pole prostokąta wynosi: {a * b}");
+
         }
     }
 }

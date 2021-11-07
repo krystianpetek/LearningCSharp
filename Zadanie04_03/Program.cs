@@ -32,7 +32,7 @@ namespace Zadanie04_03
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("\nSuma wyróżnionych elementów w tablicy wynosi: "+licznik);
+            Console.WriteLine("\nSuma wyróżnionych elementów w tablicy wynosi: " + licznik);
         }
     }
 }

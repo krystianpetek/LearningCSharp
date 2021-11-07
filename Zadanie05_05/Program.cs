@@ -18,7 +18,7 @@ namespace Zadanie05_05
     {
         public long Oblicz(int n)
         {
-            if(n > 0)
+            if (n > 0)
             {
                 return n * Oblicz(n - 1);
             }

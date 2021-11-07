@@ -12,11 +12,11 @@ namespace Zadanie04_09
                 dane[i] = i + 1;
             }
             int suma = 0;
-            foreach(int x in dane)
+            foreach (int x in dane)
             {
                 suma += x;
             }
-            Console.WriteLine("Suma liczb od 1 do 100 wynosi: "+ suma);
+            Console.WriteLine("Suma liczb od 1 do 100 wynosi: " + suma);
         }
     }
 }

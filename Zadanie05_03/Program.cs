@@ -14,7 +14,7 @@ namespace Zadanie05_03
     }
     class Matrix
     {
-        int[,] macierz = new int[10,10];
+        int[,] macierz = new int[10, 10];
         Random losowanie = new Random();
         public void czytajDane()
         {
@@ -31,13 +31,13 @@ namespace Zadanie05_03
 
                     if (i + j == 9)
                     {
-                        
+
                         macierz[i, j] = losowanie.Next(0, 10);
                         Console.ResetColor();
                     }
                 }
             }
-        
+
         }
         public void przetworzDane()
         {
@@ -65,7 +65,7 @@ namespace Zadanie05_03
                         Console.ResetColor();
                     }
                     else
-                        Console.Write(macierz[i,j]);
+                        Console.Write(macierz[i, j]);
                 }
                 Console.WriteLine();
             }

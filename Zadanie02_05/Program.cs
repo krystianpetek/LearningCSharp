@@ -11,7 +11,7 @@ namespace Zadanie02_05
             Console.WriteLine("Wylosowana liczba to : " + los);
             Console.WriteLine("Zgadnij liczbę od 0 do 9");
             int zgaduj = int.Parse(Console.ReadLine());
-            while(zgaduj != los)
+            while (zgaduj != los)
             {
                 Console.WriteLine("Podaj liczbę jeszcze raz");
                 zgaduj = int.Parse(Console.ReadLine());

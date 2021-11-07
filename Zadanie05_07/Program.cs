@@ -11,7 +11,7 @@ namespace Zadanie05_07
             Fibonacci fibo = new Fibonacci();
             for (int i = 0; i < n; i++)
             {
-                Console.WriteLine( fibo.Ciag(i) );
+                Console.WriteLine(fibo.Ciag(i));
             }
         }
     }

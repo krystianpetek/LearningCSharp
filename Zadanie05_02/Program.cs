@@ -24,9 +24,9 @@ namespace Zadanie05_02
             Console.WriteLine("Program oblicza pierwiastki równania kwadratowego ax2 + bx + c = 0");
             Console.Write("Podaj a: ");
             a = double.Parse(Console.ReadLine());
-            if(a == 0)
+            if (a == 0)
             {
-                Console.WriteLine("Niedozwolona wartość współczynnika A"); 
+                Console.WriteLine("Niedozwolona wartość współczynnika A");
                 Console.ReadKey();
                 Environment.Exit(0);
             }
@@ -45,16 +45,16 @@ namespace Zadanie05_02
             if (delta == 0) liczbaPierwiastkow = 1;
             if (delta > 0) liczbaPierwiastkow = 2;
 
-            switch(liczbaPierwiastkow)
+            switch (liczbaPierwiastkow)
             {
                 case 1:
                     x1 = -b / (2 * a);
                     break;
                 case 2:
-                    x1 = (-b - Math.Sqrt(delta) )/ (2 * a);
-                    x2 = (-b + Math.Sqrt(delta) )/ (2 * a);
+                    x1 = (-b - Math.Sqrt(delta)) / (2 * a);
+                    x2 = (-b + Math.Sqrt(delta)) / (2 * a);
                     break;
-                default: 
+                default:
                     break;
             }
         }
@@ -64,9 +64,9 @@ namespace Zadanie05_02
                 $"\na = {a}" +
                 $"\nb = {b}" +
                 $"\nc = {c}");
-            switch(liczbaPierwiastkow)
+            switch (liczbaPierwiastkow)
             {
-                case 0: 
+                case 0:
                     Console.WriteLine("brak pierwiastków rzeczywistych");
                     break;
                 case 1:

@@ -12,7 +12,7 @@ namespace Zadanie05_01
             prosto.wyswietl_dane();
         }
 
-    }   
+    }
     class Prostokat
     {
 

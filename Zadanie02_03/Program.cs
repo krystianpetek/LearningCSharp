@@ -24,11 +24,11 @@ namespace Zadanie02_03
             switch (pitagoras)
             {
                 case > 0:
-                    Console.WriteLine($"x1 = {Math.Round(((-b) - Math.Sqrt(pitagoras)) / (2.0 * a),2)}");
-                    Console.WriteLine($"x2 = {Math.Round(((-b) + Math.Sqrt(pitagoras)) / (2.0 * a),2)}");
+                    Console.WriteLine($"x1 = {Math.Round(((-b) - Math.Sqrt(pitagoras)) / (2.0 * a), 2)}");
+                    Console.WriteLine($"x2 = {Math.Round(((-b) + Math.Sqrt(pitagoras)) / (2.0 * a), 2)}");
                     break;
                 case 0:
-                    Console.WriteLine($"x0 = {Math.Round((-b) / 2d * a,2)}");
+                    Console.WriteLine($"x0 = {Math.Round((-b) / 2d * a, 2)}");
                     break;
                 default:
                     Console.WriteLine("BRAK");

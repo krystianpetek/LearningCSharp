@@ -15,7 +15,7 @@ namespace Zadanie04_13
                     macierzA[i, j] = 1;
                 }
             }
-            
+
             int[,] macierzB = new int[n, n];
             for (int i = 0; i < macierzB.GetLength(0); i++)
             {
@@ -31,7 +31,7 @@ namespace Zadanie04_13
                 for (int j = 0; j < macierzC.GetLength(1); j++)
                 {
                     macierzC[i, j] = macierzA[i, j] + macierzB[i, j];
-                    Console.Write($" {macierzC[i,j]} ");
+                    Console.Write($" {macierzC[i, j]} ");
                 }
                 Console.WriteLine();
             }

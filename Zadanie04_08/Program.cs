@@ -26,12 +26,12 @@ namespace Zadanie04_08
             // WYSWIETLENIE
             int A = 0;
             Console.WriteLine("Wyświetlenie zawartości tablicy A");
-            while(A < a.GetLength(0))
+            while (A < a.GetLength(0))
             {
                 int B = 0;
-                while(B < a.GetLength(1))
+                while (B < a.GetLength(1))
                 {
-                    Console.Write(a[A,B]);
+                    Console.Write(a[A, B]);
                     B++;
                 }
                 Console.WriteLine();
@@ -39,12 +39,12 @@ namespace Zadanie04_08
             }
             int C = 0;
             Console.WriteLine("\nWyświetlenie zawartości tablicy B");
-            while(C < b.GetLength(0))
+            while (C < b.GetLength(0))
             {
                 int D = 0;
-                while(D < b.GetLength(1))
+                while (D < b.GetLength(1))
                 {
-                    Console.Write(b[C,D]);
+                    Console.Write(b[C, D]);
                     D++;
                 }
                 Console.WriteLine();

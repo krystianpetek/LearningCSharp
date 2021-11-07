@@ -13,15 +13,15 @@ namespace Zadanie03_25
                 int firstTwo = i / 100;
                 int lastTwo = i % 100;
 
-                if(firstTwo * firstTwo + lastTwo * lastTwo == i)
+                if (firstTwo * firstTwo + lastTwo * lastTwo == i)
                 {
                     Console.WriteLine($"{i} = {firstTwo} * {firstTwo} + {lastTwo} * {lastTwo}");
                     j++;
                 }
 
             }
-                Console.WriteLine();
-                Console.WriteLine("Znaleziono "+j+" liczby.");
+            Console.WriteLine();
+            Console.WriteLine("Znaleziono " + j + " liczby.");
         }
     }
 }

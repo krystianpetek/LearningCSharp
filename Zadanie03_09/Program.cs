@@ -13,7 +13,7 @@ namespace Zadanie03_09
             {
                 suma += i;
                 i++;
-            } 
+            }
             Console.WriteLine("Suma liczb od 1 do 100 wynosi: " + suma);
         }
     }

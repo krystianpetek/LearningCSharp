@@ -30,7 +30,7 @@ namespace Zadanie04_15
             {
                 for (int j = 0; j < macierzC.GetLength(1); j++)
                 {
-                    for(int k = 0;k<macierzC.GetLength(0);k++)
+                    for (int k = 0; k < macierzC.GetLength(0); k++)
                     {
                         macierzC[i, j] += macierzA[i, k] * macierzB[j, k];
                     }

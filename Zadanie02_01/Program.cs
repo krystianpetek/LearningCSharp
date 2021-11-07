@@ -13,7 +13,7 @@ namespace Zadanie02_01
             int b = int.Parse(Console.ReadLine());
             Console.Write("Podaj liczbę C: ");
             int c = int.Parse(Console.ReadLine());
-            if((a*a + b*b == c*c) || (a*a == b*b + c*c) || (b*b == a*a + c*c) )
+            if ((a * a + b * b == c * c) || (a * a == b * b + c * c) || (b * b == a * a + c * c))
             {
                 Console.WriteLine($"Podane liczby: a = {a}, b = {b}, c = {c} tworzą trójke pitagorejską");
             }

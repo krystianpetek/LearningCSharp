@@ -22,17 +22,17 @@ namespace Zadanie05_04
             dlugoscT = dlugoscTablicy;
         }
         static int dlugoscT;
-        
+
         public int[] czytajDane()
         {
             int[] liczby = new int[dlugoscT];
             Random los = new Random();
             for (int i = 0; i < liczby.Length; i++)
             {
-                liczby[i] = los.Next(-1000,1000);
+                liczby[i] = los.Next(-1000, 1000);
             }
             Console.Write("Liczby nieposortowane: ");
-            foreach(var f in liczby)
+            foreach (var f in liczby)
                 Console.Write($"{f} ");
 
             return liczby;
@@ -44,7 +44,7 @@ namespace Zadanie05_04
             while (!warunek)
             {
                 warunek = true;
-                for (int i = 0; i < liczby.Length-1; i++)
+                for (int i = 0; i < liczby.Length - 1; i++)
                     if (liczby[i] > liczby[i + 1])
                     {
                         temp = liczby[i];

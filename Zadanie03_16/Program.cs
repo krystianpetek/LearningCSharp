@@ -13,14 +13,14 @@ namespace Zadanie03_16
             {
                 int wylosowana = losowanie.Next(0, 100);
                 suma += wylosowana;
-                if(i==0)
+                if (i == 0)
                     min = wylosowana;
                 if (min > wylosowana)
                     min = wylosowana;
                 if (max < wylosowana)
                     max = wylosowana;
             }
-            Console.WriteLine($"Średnia = {suma/n}");
+            Console.WriteLine($"Średnia = {suma / n}");
             Console.WriteLine($"Minimum = {min}");
             Console.WriteLine($"Maksimum = {max}");
         }

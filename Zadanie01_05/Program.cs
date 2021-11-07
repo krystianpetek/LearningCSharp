@@ -8,7 +8,7 @@ namespace Zadanie01_05
         {
             int a = 37;
             int b = 11;
-            Console.WriteLine($"Wynik dzielenia bez reszty {a} przez {b} wynosi {a/b}");
+            Console.WriteLine($"Wynik dzielenia bez reszty {a} przez {b} wynosi {a / b}");
         }
     }
 }

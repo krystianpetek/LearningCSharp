@@ -29,7 +29,7 @@ namespace Zadanie03_23
                     Console.Write($"{(char)i}, ");
                 }
                 i--;
-            }while (i >= 'A');
+            } while (i >= 'A');
         }
     }
 }

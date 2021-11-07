@@ -8,8 +8,8 @@ namespace Zadanie01_04
         {
             Console.Write("Wprowadź promień kuli (r): ");
             double r = double.Parse(Console.ReadLine());
-            double objetosc = (r * r * r)* Math.PI * 4d/3;
-            Console.Write($"Objętość kuli wynosi: {Math.Round(objetosc,2)}");
+            double objetosc = (r * r * r) * Math.PI * 4d / 3;
+            Console.Write($"Objętość kuli wynosi: {Math.Round(objetosc, 2)}");
         }
     }
 }

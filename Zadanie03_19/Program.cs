@@ -12,9 +12,9 @@ namespace Zadanie03_19
             int n = 10;
             for (int i = 0; i < n; i++)
             {
-                for(int j = 0;j<n;j++)
+                for (int j = 0; j < n; j++)
                 {
-                liczba++;
+                    liczba++;
                     Console.Write($"{liczba.ToString().PadLeft(4)}");
                 }
                 Console.WriteLine();

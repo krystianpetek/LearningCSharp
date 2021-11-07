@@ -16,15 +16,15 @@ namespace Zadanie04_12
             lista.Add("Dominika");
 
             Console.WriteLine("Lista nieposortowana");
-            foreach(var x in lista)
+            foreach (var x in lista)
             {
-                Console.Write(x+", ");
+                Console.Write(x + ", ");
             }
             lista.Sort();
             Console.WriteLine();
             Console.WriteLine("\nLista posortowana");
-            foreach(var x in lista)
-                Console.Write(x+", ");
+            foreach (var x in lista)
+                Console.Write(x + ", ");
             Console.WriteLine();
 
         }

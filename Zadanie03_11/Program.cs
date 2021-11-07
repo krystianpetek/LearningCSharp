@@ -11,8 +11,8 @@ namespace Zadanie03_11
             int i = 0;
             do
             {
-                if(i%2 ==0)
-                suma += i;
+                if (i % 2 == 0)
+                    suma += i;
                 i++;
             } while (i <= 100);
             Console.WriteLine("Suma liczb parzystych od 1 do 100 wynosi: " + suma);
