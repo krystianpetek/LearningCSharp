@@ -11,11 +11,16 @@ namespace Zadanie06_02
             instancja.CzytajDane();
             instancja.ZapiszDaneDoPliku();
             instancja.CzytajDaneZPliku();
+
+            instancja.PrzepiszDaneZPlikuDoPliku();
+            instancja.CzytajDaneZPliku("przepisz");
         }
     }
     public class TablicaPlik
     {
         int[,] Tablica2D;
+        int[] Tablica1D;
+
         public void CzytajDane()
         {
             Tablica2D = new int[10, 10];
@@ -46,17 +51,44 @@ namespace Zadanie06_02
             plik.Close();
 
         }
-        public void CzytajDaneZPliku()
+        public void CzytajDaneZPliku(string nazwaPliku = "dane")
         {
             string linia;
-            FileStream plik = new FileStream($"dane.txt", FileMode.Open);
+            FileStream plik = new FileStream($"{nazwaPliku}.txt", FileMode.Open);
             StreamReader plikOdczyt = new StreamReader(plik);
             while ((linia = plikOdczyt.ReadLine()) != null)
-            {
                 Console.WriteLine(linia);
-            }
             plikOdczyt.Close();
             plik.Close();
+        }
+
+        public void PrzepiszDaneZPlikuDoPliku()
+        {
+            string linia;
+            Tablica1D = new int[100];
+            FileStream plikZrodlowy, plikDocelowy;
+            plikZrodlowy = new FileStream("dane.txt", FileMode.Open);
+            StreamReader streamZrodlowy = new StreamReader(plikZrodlowy);
+            plikDocelowy = new FileStream("przepisz.txt", FileMode.Create);
+            StreamWriter streamDocelowy = new StreamWriter(plikDocelowy);
+
+            int i = 0;
+            while ((linia = streamZrodlowy.ReadLine()) != null)
+            {
+                for (int j = 0; j < Tablica1D.Length/10; j++)
+                {
+                    linia = linia.Replace(" ", "");
+
+                    Tablica1D[i + j] = Convert.ToInt32(linia[j].ToString());
+                    streamDocelowy.Write($"{Tablica1D[i+j]}");
+                }
+                streamDocelowy.WriteLine();
+                i++;
+            }
+            streamZrodlowy.Close(); 
+            streamDocelowy.Close(); 
+            plikZrodlowy.Close();
+            plikDocelowy.Close();
         }
     }
 }
