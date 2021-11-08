@@ -56,7 +56,7 @@ namespace klasa
             cn1(5);
             Console.WriteLine("Wartość liczby: {0}",GetNumber());
             cn2(10);
-            Console.WriteLine("Wartość liczby: {0}",GetNumber());
+            Console.WriteLine("Wartość liczby: {0}",GetNumber()); 
 
 
         //    var oblicz = new Obliczenia(5, 4);

@@ -31,8 +31,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "15. LinkedList", "15. Linke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageEvents", "PageEvents\PageEvents.csproj", "{464D8C38-914C-41FF-B86F-9A34CC5C7376}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesigningWindowsForm", "DesigningWindowsForm\DesigningWindowsForm.csproj", "{9E36C01B-5786-44AE-AEB5-D03656A424D0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDIApp", "MDIApp\MDIApp.csproj", "{CC89ACEF-059B-46DC-9D58-60BCDE47EC57}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.vcxproj", "{012B7227-043B-4ED5-80D8-E021D5C6E70A}"
@@ -43,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "workWithFiles", "workWithFi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tautologia", "tautologia\tautologia.csproj", "{CF7F6519-1133-41EE-83F3-6A4DD14C4CE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "workWithFilesCopy", "workWithFilesCopy\workWithFilesCopy.csproj", "{EC2958DC-119C-4F62-BD64-80D0A5BB6461}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "workWithFilesCopy", "workWithFilesCopy\workWithFilesCopy.csproj", "{EC2958DC-119C-4F62-BD64-80D0A5BB6461}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -223,18 +221,6 @@ Global
 		{464D8C38-914C-41FF-B86F-9A34CC5C7376}.Release|x64.Build.0 = Release|Any CPU
 		{464D8C38-914C-41FF-B86F-9A34CC5C7376}.Release|x86.ActiveCfg = Release|Any CPU
 		{464D8C38-914C-41FF-B86F-9A34CC5C7376}.Release|x86.Build.0 = Release|Any CPU
-		{9E36C01B-5786-44AE-AEB5-D03656A424D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E36C01B-5786-44AE-AEB5-D03656A424D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E36C01B-5786-44AE-AEB5-D03656A424D0}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{9E36C01B-5786-44AE-AEB5-D03656A424D0}.Debug|x64.Build.0 = Debug|Any CPU
-		{9E36C01B-5786-44AE-AEB5-D03656A424D0}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9E36C01B-5786-44AE-AEB5-D03656A424D0}.Debug|x86.Build.0 = Debug|Any CPU
-		{9E36C01B-5786-44AE-AEB5-D03656A424D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E36C01B-5786-44AE-AEB5-D03656A424D0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E36C01B-5786-44AE-AEB5-D03656A424D0}.Release|x64.ActiveCfg = Release|Any CPU
-		{9E36C01B-5786-44AE-AEB5-D03656A424D0}.Release|x64.Build.0 = Release|Any CPU
-		{9E36C01B-5786-44AE-AEB5-D03656A424D0}.Release|x86.ActiveCfg = Release|Any CPU
-		{9E36C01B-5786-44AE-AEB5-D03656A424D0}.Release|x86.Build.0 = Release|Any CPU
 		{CC89ACEF-059B-46DC-9D58-60BCDE47EC57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC89ACEF-059B-46DC-9D58-60BCDE47EC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC89ACEF-059B-46DC-9D58-60BCDE47EC57}.Debug|x64.ActiveCfg = Debug|Any CPU
