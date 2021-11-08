@@ -2,12 +2,13 @@
 //
 
 #include <iostream>
+using namespace std;
 int main()
 {
-    std::string x="kwa";
-    std::cout << "Hello World!\n";
-    std::cout << x << "\n";
-    std::cin >> x;
+    string x="kwa";
+    cout << "Hello World!\n";
+    cout << x << "\n";
+    cin >> x;
 
     std::cout << "Podna wartosc " + x;
 }

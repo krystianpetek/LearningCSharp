@@ -13,7 +13,7 @@ namespace Cwiczenia
         }
         static void Main(string[] args)
         {
-            Console.WriteLine(Factorial(3));
+            Console.WriteLine(Factorial(5));
         }
     }
 }
