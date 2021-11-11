@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31829.152
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalkulator", "Kalkulator\Kalkulator.csproj", "{E7B8B571-8108-4CB2-BD39-EE6FD8023B3D}"
 EndProject
@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RefaktoryzacjaRefaktoryzacj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DzieleniePizzy", "DzieleniePizzy\DzieleniePizzy.csproj", "{8807E201-E423-40BB-9AD6-DC982761942E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KrojenieCiasta", "KrojenieCiasta\KrojenieCiasta.csproj", "{38BB528A-D3E4-450D-B638-83E894CFDD6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KrojenieCiasta", "KrojenieCiasta\KrojenieCiasta.csproj", "{38BB528A-D3E4-450D-B638-83E894CFDD6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sumator4Bitowy", "Sumator4Bitowy\Sumator4Bitowy.csproj", "{114D8F78-F31C-45F4-AD8B-746EED024375}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{38BB528A-D3E4-450D-B638-83E894CFDD6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38BB528A-D3E4-450D-B638-83E894CFDD6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38BB528A-D3E4-450D-B638-83E894CFDD6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{114D8F78-F31C-45F4-AD8B-746EED024375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{114D8F78-F31C-45F4-AD8B-746EED024375}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{114D8F78-F31C-45F4-AD8B-746EED024375}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{114D8F78-F31C-45F4-AD8B-746EED024375}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
