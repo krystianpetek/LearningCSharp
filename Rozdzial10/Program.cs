@@ -31,7 +31,7 @@ namespace Rozdzial10
             {
                 return false;
             }
-            // krok 3. wywlanie pomocniczej wersji metody equals dla konkretnego typu
+            // krok 3. wywolanie pomocniczej wersji metody equals dla konkretnego typu
 
             return Equals((Coordinate)obj);
 
