@@ -84,7 +84,7 @@ namespace Rozdzial10
     {
         static void Main(string[] args)
         {
-            Coordinate x = new Coordinate(new Longitude(200),new Latitude(100));
+            Coordinate x = new Coordinate(new Longitude(200), new Latitude(100));
             Console.WriteLine(x);
             Trace.WriteLine(x);
             Trace.WriteLine(x.GetHashCode());
@@ -108,24 +108,29 @@ namespace Rozdzial10
                 Console.WriteLine("serialNumber1 ma wartość równą z serialNumber2");
             }
 
-            if(ProductSerialNumber.ReferenceEquals(serialNumber1, serialNumber3))
+            if (ProductSerialNumber.ReferenceEquals(serialNumber1, serialNumber3))
             {
                 throw new Exception("serialNumber1 MA referencje równą z serialNumber3");
             }
-            else if(serialNumber1.Equals(serialNumber3))
+            else if (serialNumber1.Equals(serialNumber3))
             {
                 throw new Exception("serialNumber1 NIE ma wartości równej z serialNumber3");
             }
             Console.WriteLine("serialNumber1 ma wartość równą z serialNumber3");
 
 
-            Coordinate coordinate2 = new Coordinate(new Longitude(52), new Latitude(-2));
+            Coordinate coordinate2 = new Coordinate(new Longitude(200), new Latitude(100));
             // obiekty typu bezposredniego nigdy nie sa rowne ze wzgledu na referencje
             if (Coordinate.ReferenceEquals(coordinate2, coordinate2))
             {
                 throw new Exception("coordinate1 jest rowna ze względu na referencje z coordinate1");
             }
             Console.WriteLine("coordinate NIE jest równa ze względu na referencje z samą sobą");
+
+
+
+            Console.WriteLine( x.Equals(coordinate2));
+            Console.WriteLine( x.Equals(x));
         }
     }
 
