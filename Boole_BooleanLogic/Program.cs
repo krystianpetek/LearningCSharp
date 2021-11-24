@@ -10,14 +10,8 @@ namespace Boole_BooleanLogic
             //  ((y &  a)   -->  (c |c))
             char[] x = Console.ReadLine().ToCharArray(); // całe wejscie w tablicy
             BooleanLogic logika = new BooleanLogic(x);
-            logika.Wyswietl(logika.tablicaWartosci);
-
-            
+            logika.Wyswietl(logika.tablicaWynikowa);
         }
-
-
-
-
 
     }
     public class BooleanLogic
@@ -34,27 +28,88 @@ namespace Boole_BooleanLogic
             SetListaSymboli();
             IloscSymboli = Math.Pow(2, SortListaSymboli.Count);
             tablicaWynikowa = new char[(int)IloscSymboli, _tablica.Length];
-            Init(tablicaWynikowa);
+            Init(tablicaWynikowa, tablica);
             tablicaWartosci = Wartosciowanie(SortListaSymboli.Count);
-            PRZYPISANIE(tablica);
-
-
+            SetArg(tablica);
+            Logika();
 
 
         }
 
-        private void PRZYPISANIE(char[] tablica)
+        private void Logika()
+        {
+            // ((b --> a) <-> ((! a) --> (! b)))
+
+            for (int i = 0; i < tablicaWynikowa.GetLength(0); i++)
+            {
+                Queue<char> queue = new Queue<char>();
+                Stack<char> stack = new Stack<char>();
+                for (int j = 0; j < tablicaWynikowa.GetLength(1); j++)
+                {
+
+                    switch (tablicaWynikowa[i, j])
+                    {
+                        case ' ':
+                            break;
+                        case '(':
+                            stack.Push(tablicaWynikowa[i, j]);
+                            break;
+                        case ')':
+                            char c = stack.Pop();
+                            queue.Enqueue(c);
+                            stack.Pop();
+                            break;
+                        case '0':
+                        case '1':
+                            queue.Enqueue(tablicaWynikowa[i, j]);
+                            break;
+                        case '-':
+                            if (tablicaWynikowa[i, j + 1] == '-' && tablicaWynikowa[i, j + 2] == '>')
+                            {
+                                tablicaWynikowa[i, j + 1] = '>';
+                                stack.Push(tablicaWynikowa[i, j + 1]);
+                            }
+                            break;
+                        case '<':
+                            if (tablicaWynikowa[i, j + 1] == '-' && tablicaWynikowa[i, j + 2] == '>')
+                            {
+                                tablicaWynikowa[i, j + 1] = '<';
+                                stack.Push(tablicaWynikowa[i, j + 1]);
+                            }
+                            break;
+                        case '!':
+                            stack.Push(tablicaWynikowa[i, j]);
+                            break;
+                        case '&':
+                            stack.Push(tablicaWynikowa[i, j]);
+                            break;
+                        case '|':
+                            stack.Push(tablicaWynikowa[i, j]);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+
+
+            }
+        }
+
+        private void SetArg(char[] tablica)
         {
             int i = 0;
             while (true)
             {
+
                 if (SortListaSymboli.ContainsKey(tablica[i]))
                 {
-                    var xlicz = tablica[i];
-                    var zxlicz = tablica[xlicz];
+
+                    var znakWartosci = tablica[i];
+                    var pozycjaWartosci = SortListaSymboli[znakWartosci];
                     for (int k = 0; k < tablicaWynikowa.GetLength(0); k++)
                     {
-                        tablicaWynikowa[i, k] = Convert.ToChar(wartosc[i, zxlicz].ToString());
+                        tablicaWynikowa[k, i] = Convert.ToChar(tablicaWartosci[k, pozycjaWartosci].ToString());
                     }
                 }
                 i++;
@@ -62,6 +117,64 @@ namespace Boole_BooleanLogic
                     break;
             }
         }
+        //private void SetArg(char[] tablica)
+        //{
+        //    int i = 0;
+        //    while (true)
+        //    {
+        //        if (SortListaSymboli.ContainsKey(tablica[i]))
+        //        {
+
+        //            var znakWartosci = tablica[i];
+        //            var pozycjaWartosci = SortListaSymboli[znakWartosci];
+        //            for (int k = 0; k < tablicaWynikowa.GetLength(0); k++)
+        //            {
+        //                tablicaWynikowa[k, i] = Convert.ToChar(tablicaWartosci[k, pozycjaWartosci].ToString());
+        //            }
+        //        }
+        //        switch (tablica[i])
+        //        {
+        //            case '!':
+
+        //                for (int k = 0; k < tablicaWynikowa.GetLength(0); k++)
+        //                {
+        //                    tablicaWynikowa[k, i] = '!';
+        //                }
+        //                break;
+        //            case '-':
+        //                if (tablica[i - 1] == '<' && tablica[i + 1] == '>')
+        //                {
+        //                    for (int k = 0; k < tablicaWynikowa.GetLength(0); k++)
+        //                    {
+        //                        tablicaWynikowa[k, i] = 'e';
+        //                    }
+        //                }
+        //                else if (tablica[i - 1] == '-' && tablica[i + 1] == '>')
+        //                {
+        //                    for (int k = 0; k < tablicaWynikowa.GetLength(0); k++)
+        //                    {
+        //                        tablicaWynikowa[k, i] = 'i';
+        //                    }
+        //                }
+        //                break;
+        //            case '|':
+        //                for (int k = 0; k < tablicaWynikowa.GetLength(0); k++)
+        //                {
+        //                    tablicaWynikowa[k, i] = '|';
+        //                }
+        //                break;
+        //            case '&':
+        //                for (int k = 0; k < tablicaWynikowa.GetLength(0); k++)
+        //                {
+        //                    tablicaWynikowa[k, i] = '&';
+        //                }
+        //                break;
+        //        }
+        //        i++;
+        //        if (i == tablica.Length)
+        //            break;
+        //    }
+        //}
 
         private void SetListaSymboli()
         {
@@ -80,13 +193,13 @@ namespace Boole_BooleanLogic
                 SortListaSymboli.Add(tempList[i], N++);
 
         }
-        private static void Init(char[,] x)
+        private static void Init(char[,] x, char[] tablica)
         {
             for (int i = 0; i < x.GetLength(0); i++)
             {
                 for (int j = 0; j < x.GetLength(1); j++)
 
-                    x[i, j] = ' ';
+                    x[i, j] = tablica[j];
             }
         }
         public void Wyswietl(int[,] x)
