@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31829.152
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalkulator", "Kalkulator\Kalkulator.csproj", "{E7B8B571-8108-4CB2-BD39-EE6FD8023B3D}"
 EndProject
@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DzieleniePizzy", "Dzielenie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KrojenieCiasta", "KrojenieCiasta\KrojenieCiasta.csproj", "{38BB528A-D3E4-450D-B638-83E894CFDD6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sumator4Bitowy", "Sumator4Bitowy\Sumator4Bitowy.csproj", "{114D8F78-F31C-45F4-AD8B-746EED024375}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sumator4Bitowy", "Sumator4Bitowy\Sumator4Bitowy.csproj", "{114D8F78-F31C-45F4-AD8B-746EED024375}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrzekletaRekurencja", "PrzekletaRekurencja\PrzekletaRekurencja.csproj", "{4F51E354-BE0F-4386-B1E0-B1444E2FC65B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boole_BooleanLogic", "Boole_BooleanLogic\Boole_BooleanLogic.csproj", "{EDD3407B-5586-4D94-8E20-AD62395F1691}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{114D8F78-F31C-45F4-AD8B-746EED024375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{114D8F78-F31C-45F4-AD8B-746EED024375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{114D8F78-F31C-45F4-AD8B-746EED024375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F51E354-BE0F-4386-B1E0-B1444E2FC65B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F51E354-BE0F-4386-B1E0-B1444E2FC65B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F51E354-BE0F-4386-B1E0-B1444E2FC65B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F51E354-BE0F-4386-B1E0-B1444E2FC65B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDD3407B-5586-4D94-8E20-AD62395F1691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD3407B-5586-4D94-8E20-AD62395F1691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD3407B-5586-4D94-8E20-AD62395F1691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD3407B-5586-4D94-8E20-AD62395F1691}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
