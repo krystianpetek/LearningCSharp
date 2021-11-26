@@ -7,7 +7,7 @@ namespace PrzekletaRekurencja
         static void Main(string[] args)
         {
 
-            fun(3);
+            fun(5);
              
             void fun(int n)
             {
@@ -15,10 +15,9 @@ namespace PrzekletaRekurencja
                 {
                     fun(n - 1);
 
-                    Console.WriteLine(n);
+                    Console.Write(n);
 
                     fun(n - 1);
-
                 }
 
             }
