@@ -6,9 +6,8 @@ namespace Rozdzial10_02
     {
         static void Main(string[] args)
         {
-            var ARC = new Arc(new Longitude(1),new Latitude(10));
-            var COORDINATE = new Coordinate(new Longitude(3), new Latitude(30));
-                }
+            Coordinate coordinate1 = new Coordinate(new Longitude(48, 52), new Latitude(-2, -20));
+        }
     }
     // przeslanianie operatora == i !=
     public sealed class ProductSerialNumber
@@ -28,27 +27,41 @@ namespace Rozdzial10_02
     }
     public struct Latitude
     {
-        public Latitude(double Lati)
+        public Latitude(int x, int y)
         {
-            this.Lati = Lati;
+            X = x;
+            Y = y;
         }
-        public override string ToString()
-        {
-            return $"{Lati}";
-        }
-        public double Lati { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
     }
     public struct Longitude
     {
-        public Longitude(double Long)
+        public Longitude(int x, int y)
         {
-            this.Long = Long;
+            X = x;
+            Y = y;
         }
-        public override string ToString()
+        public int X { get; set; }
+        public int Y { get; set; }
+    }
+    struct Coordinate
+    {
+        public Latitude Latitude { get; }
+        public Longitude Longitude { get; }
+        public Coordinate(Longitude x, Latitude y)
         {
-            return $"{Long}";
+            Longitude = x;
+            Latitude = y;
         }
-        public double Long { get; set; }
+
+        public static Coordinate operator +(Coordinate source, Arc arc)
+        {
+            Coordinate result = new Coordinate(new Longitude(source.Longitude.X+arc.LongitudeDifference.X,source.Longitude.Y+arc.LongitudeDifference.Y), new Latitude(source.Latitude.X,arc.LatitudeDifference.X));
+            return result;
+
+
+        }
     }
 
     // dodawanie operatora +
@@ -61,26 +74,5 @@ namespace Rozdzial10_02
         }
         public Longitude LongitudeDifference { get; }
         public Latitude LatitudeDifference { get; }
-    }
-    struct Coordinate
-    {
-        private Latitude Latitude { get; }
-        private Longitude Longitude { get; }    
-        public Coordinate(Longitude x, Latitude y)
-        {
-            Longitude = x;
-            Latitude = y;
-        }
-        public static Coordinate operator +(Coordinate source, Arc arc)
-        {
-            Coordinate result = new Coordinate(
-                new Longitude(
-                    source.Longitude.Long + arc.LongitudeDifference.Long),
-                new Latitude(
-                    source.Latitude.Lati + arc.LatitudeDifference.Lati));
-            return result;
-            
-        }
-        // 421 cośjeest zle
     }
 }
