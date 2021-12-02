@@ -33,7 +33,7 @@ namespace _11._Dziedziczenie
             return Length * Width;
         }
     }
-    class Triangle: Polygon
+    class Triangle : Polygon
     {
         public override double GetArea()
         {

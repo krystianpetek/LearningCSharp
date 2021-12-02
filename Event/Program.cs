@@ -33,5 +33,5 @@ namespace Event
             Rectangle r = (Rectangle)sender;
             Console.WriteLine("Value Changed: Length = {0}", r.Length);
         }
-    } 
+    }
 }

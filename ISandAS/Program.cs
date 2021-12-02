@@ -27,7 +27,7 @@ namespace ISandAS
         {
             Object o = new Rectangle(10, 20);
 
-            if(o is Rectangle)
+            if (o is Rectangle)
             {
                 Rectangle r = (Rectangle)o;
             }

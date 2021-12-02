@@ -16,7 +16,7 @@ namespace _12._Polimorfizm
             Console.WriteLine("Drawing: Rectangle");
         }
     }
-    class Triangle:Polygon
+    class Triangle : Polygon
     {
         public override void Draw()
         {
@@ -31,11 +31,11 @@ namespace _12._Polimorfizm
             polygons.Add(new Polygon());
             polygons.Add(new Triangle());
             polygons.Add(new Rectangle());
-        
+
             foreach (var x in polygons)
             {
                 x.Draw();
-            }   
+            }
         }
     }
 }

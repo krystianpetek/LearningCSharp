@@ -26,13 +26,13 @@ namespace liczenie
                         x = x * 3 + 1;
                     }
                 }
-                if(x == 1)
+                if (x == 1)
                 {
                     Console.Write($"{x}");
 
                 }
                 else
-                Console.Write($"{x}, ");
+                    Console.Write($"{x}, ");
             }
         }
     }

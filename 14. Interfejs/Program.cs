@@ -27,7 +27,7 @@ namespace _14._Interfejs
             if (!(obj is Rectangle))
                 throw new ArgumentException();
 
-            Rectangle target = (Rectangle) obj;
+            Rectangle target = (Rectangle)obj;
 
             double diff = this.GetArea() - target.GetArea();
 
@@ -35,7 +35,7 @@ namespace _14._Interfejs
                 return 0;
             else if (diff > 0)
                 return 1;
-            else 
+            else
                 return -1;
         }
     }

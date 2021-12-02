@@ -1,8 +1,5 @@
 ﻿using AntLifeCL.Polimorfizm;
-using AntLifeCL.TestClass;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace AntLifeConsole
 {
@@ -35,7 +32,16 @@ namespace AntLifeConsole
             //bbm.CreateBase("BazaMilitarna", 9.9f, 10.1f);
 
             BazaMilitarna x = new BazaMilitarna();
-            x.CreateBase("BazaMilitarna", 9.9f, 10.1f,30);
+            x.CreateBase("BazaMilitarna", 9.9f, 10.1f, 30);
+            BazaMilitarna y = new BazaMilitarna(60);
+            y.CreateBase("bazamilitarna2", 6f, 5.4f);
+
+            BazaBody mbb = new BazaMilitarna("Super baza", 33f, 44f, 325);
+            BazaMilitarna mb = new BazaMilitarna("Super baza", 33f, 44f, 325);
+            Console.WriteLine(mb.Name);
+            Console.WriteLine(mb.Longitude);
+            Console.WriteLine(mb.Latitude);
+            Console.WriteLine(mb.WallResistance);
         }
     }
 }

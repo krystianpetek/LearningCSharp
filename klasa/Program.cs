@@ -11,7 +11,7 @@ namespace klasa
             this.length = l;
             this.width = w;
         }
-        
+
         public double mnozenie()
         {
             return length * width;
@@ -52,13 +52,13 @@ namespace klasa
             ChangeNumber cn2 = new ChangeNumber(MultiplyNumber);
 
             cn1(50);
-            Console.WriteLine("Wartość liczby: {0}",GetNumber());
+            Console.WriteLine("Wartość liczby: {0}", GetNumber());
             cn2(10);
-            Console.WriteLine("Wartość liczby: {0}",GetNumber()); 
+            Console.WriteLine("Wartość liczby: {0}", GetNumber());
 
 
-        //    var oblicz = new Obliczenia(5, 4);
-        //    Console.WriteLine( oblicz.dodawanie());
+            //    var oblicz = new Obliczenia(5, 4);
+            //    Console.WriteLine( oblicz.dodawanie());
         }
     }
 }

@@ -13,18 +13,18 @@ namespace wyjatki
                 sr = File.OpenText(@"D:\GITHUB_REPO\Cwiczenia\wyjatki\data.txt");
                 Console.WriteLine(sr.ReadToEnd());
             }
-            catch(FileNotFoundException fnfe)
+            catch (FileNotFoundException fnfe)
             {
                 Console.WriteLine(fnfe.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
             finally
             {
 
-                if(sr != null)
+                if (sr != null)
                 {
                     sr.Close();
                     Console.WriteLine("koniec");

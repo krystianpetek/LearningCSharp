@@ -11,7 +11,7 @@ namespace MenuInteraktywne
             Console.ForegroundColor = ConsoleColor.Yellow;
             string[] lista = new string[] { "1. Dodaj", "2. Odejmij", "3. Pomnóż", "4. Podziel", "5. Modulo" };
             bool[] listaBool = new bool[] { false, false, false, false, false };
-            while(true)
+            while (true)
             {
                 for (int j = 0; j < listaBool.Length; j++)
                 {
@@ -22,7 +22,7 @@ namespace MenuInteraktywne
                 Console.Clear();
 
                 for (int a = 0; a < lista.Length; a++)
-                
+
                 {
                     if (listaBool[a])
                     {
@@ -35,10 +35,10 @@ namespace MenuInteraktywne
                     }
                 }
                 var x = Console.ReadKey();
-                switch(x.Key)
+                switch (x.Key)
                 {
                     case ConsoleKey.UpArrow:
-                        if(i>0)
+                        if (i > 0)
                         {
                             i--;
                         }
@@ -50,12 +50,12 @@ namespace MenuInteraktywne
 
                     case ConsoleKey.Escape:
                         return;
-                    default: 
+                    default:
                         continue;
                 }
-                
+
             }
-        
+
         }
     }
 }

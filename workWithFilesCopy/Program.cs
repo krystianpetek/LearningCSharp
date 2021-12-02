@@ -10,7 +10,7 @@ namespace workWithFilesCopy
         {
             var salesFiles = FindFiles("../../../stores");
 
-            foreach(var file in salesFiles)
+            foreach (var file in salesFiles)
             {
                 Console.WriteLine(file);
             }
@@ -21,7 +21,7 @@ namespace workWithFilesCopy
             List<string> salesFiles = new List<string>();
             var foundFiles = Directory.EnumerateFiles(folderName, "*", SearchOption.AllDirectories);
 
-            foreach(var file in foundFiles)
+            foreach (var file in foundFiles)
             {
                 if (file.EndsWith("sales.json"))
                 {

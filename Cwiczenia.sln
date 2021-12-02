@@ -39,9 +39,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "workWithFilesCopy", "workWi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MenuInteraktywne", "MenuInteraktywne\MenuInteraktywne.csproj", "{521F2E46-2E5B-436C-9134-535BB3F3D5B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntLifeConsole", "AntLifeConsole\AntLifeConsole.csproj", "{4F6629DB-851C-4667-BD52-17DAACAB1450}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SZAntLifeConsole", "AntLifeConsole\SZAntLifeConsole.csproj", "{4F6629DB-851C-4667-BD52-17DAACAB1450}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntLifeCL", "AntLifeCL\AntLifeCL.csproj", "{57C6C255-3EF7-4ABD-B4BD-D4AFD6B9C75A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SZAntLifeCL", "AntLifeCL\SZAntLifeCL.csproj", "{57C6C255-3EF7-4ABD-B4BD-D4AFD6B9C75A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SZTypyGeneryczne", "SZTypyGeneryczne\SZTypyGeneryczne.csproj", "{CC93D003-FB22-4817-8A52-E274AAC736F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -291,6 +293,18 @@ Global
 		{57C6C255-3EF7-4ABD-B4BD-D4AFD6B9C75A}.Release|x64.Build.0 = Release|Any CPU
 		{57C6C255-3EF7-4ABD-B4BD-D4AFD6B9C75A}.Release|x86.ActiveCfg = Release|Any CPU
 		{57C6C255-3EF7-4ABD-B4BD-D4AFD6B9C75A}.Release|x86.Build.0 = Release|Any CPU
+		{CC93D003-FB22-4817-8A52-E274AAC736F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC93D003-FB22-4817-8A52-E274AAC736F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC93D003-FB22-4817-8A52-E274AAC736F4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CC93D003-FB22-4817-8A52-E274AAC736F4}.Debug|x64.Build.0 = Debug|Any CPU
+		{CC93D003-FB22-4817-8A52-E274AAC736F4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CC93D003-FB22-4817-8A52-E274AAC736F4}.Debug|x86.Build.0 = Debug|Any CPU
+		{CC93D003-FB22-4817-8A52-E274AAC736F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC93D003-FB22-4817-8A52-E274AAC736F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC93D003-FB22-4817-8A52-E274AAC736F4}.Release|x64.ActiveCfg = Release|Any CPU
+		{CC93D003-FB22-4817-8A52-E274AAC736F4}.Release|x64.Build.0 = Release|Any CPU
+		{CC93D003-FB22-4817-8A52-E274AAC736F4}.Release|x86.ActiveCfg = Release|Any CPU
+		{CC93D003-FB22-4817-8A52-E274AAC736F4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
