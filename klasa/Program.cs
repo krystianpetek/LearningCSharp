@@ -36,13 +36,11 @@ namespace klasa
         static int number = 5;
         public static int AddNumber(int i)
         {
-            number += i;
-            return number;
+            return i;
         }
         public static int MultiplyNumber(int i)
         {
-            number *= i;
-            return number;
+            return number * i;
         }
         public static int GetNumber()
         {
@@ -53,7 +51,7 @@ namespace klasa
             ChangeNumber cn1 = new ChangeNumber(AddNumber);
             ChangeNumber cn2 = new ChangeNumber(MultiplyNumber);
 
-            cn1(5);
+            cn1(50);
             Console.WriteLine("Wartość liczby: {0}",GetNumber());
             cn2(10);
             Console.WriteLine("Wartość liczby: {0}",GetNumber()); 
