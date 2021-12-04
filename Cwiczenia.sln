@@ -59,9 +59,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SZYield", "SZYield\SZYield.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SZ=Equals", "SZ=Equals\SZ=Equals.csproj", "{5D3F5D23-D858-4841-B715-91F9A54D86C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SZEnumeratorEnumerable", "SZEnumeratorEnumerable\SZEnumeratorEnumerable.csproj", "{95E58076-65CC-41F3-9291-375EEF7E9767}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SZEnumeratorEnumerable", "SZEnumeratorEnumerable\SZEnumeratorEnumerable.csproj", "{95E58076-65CC-41F3-9291-375EEF7E9767}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SZEventy", "SZEventy\SZEventy.csproj", "{06026A91-C3FA-43C6-BD60-A557FD3ADAED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SZEventy", "SZEventy\SZEventy.csproj", "{06026A91-C3FA-43C6-BD60-A557FD3ADAED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "workWithPath", "workWithPath\workWithPath.csproj", "{C74C3C04-6171-4D9A-80B8-B5A6FB1DB63C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -431,6 +433,18 @@ Global
 		{06026A91-C3FA-43C6-BD60-A557FD3ADAED}.Release|x64.Build.0 = Release|Any CPU
 		{06026A91-C3FA-43C6-BD60-A557FD3ADAED}.Release|x86.ActiveCfg = Release|Any CPU
 		{06026A91-C3FA-43C6-BD60-A557FD3ADAED}.Release|x86.Build.0 = Release|Any CPU
+		{C74C3C04-6171-4D9A-80B8-B5A6FB1DB63C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C74C3C04-6171-4D9A-80B8-B5A6FB1DB63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C74C3C04-6171-4D9A-80B8-B5A6FB1DB63C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C74C3C04-6171-4D9A-80B8-B5A6FB1DB63C}.Debug|x64.Build.0 = Debug|Any CPU
+		{C74C3C04-6171-4D9A-80B8-B5A6FB1DB63C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C74C3C04-6171-4D9A-80B8-B5A6FB1DB63C}.Debug|x86.Build.0 = Debug|Any CPU
+		{C74C3C04-6171-4D9A-80B8-B5A6FB1DB63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C74C3C04-6171-4D9A-80B8-B5A6FB1DB63C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C74C3C04-6171-4D9A-80B8-B5A6FB1DB63C}.Release|x64.ActiveCfg = Release|Any CPU
+		{C74C3C04-6171-4D9A-80B8-B5A6FB1DB63C}.Release|x64.Build.0 = Release|Any CPU
+		{C74C3C04-6171-4D9A-80B8-B5A6FB1DB63C}.Release|x86.ActiveCfg = Release|Any CPU
+		{C74C3C04-6171-4D9A-80B8-B5A6FB1DB63C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

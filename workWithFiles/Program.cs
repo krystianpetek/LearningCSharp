@@ -7,7 +7,6 @@ namespace workWithFiles
     {
         static void Main(string[] args)
         {
-
             IEnumerable<string> listOfDirectories = Directory.EnumerateDirectories("stores");
 
             foreach (var dir in listOfDirectories)
