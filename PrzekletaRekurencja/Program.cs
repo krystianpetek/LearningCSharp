@@ -8,14 +8,15 @@ namespace PrzekletaRekurencja
         {
 
             fun(5);
-             
+            
+
+
             void fun(int n)
             {
                 if (n > 0)
                 {
                     fun(n - 1);
-
-                    Console.Write(n);
+                    Console.WriteLine(n);
 
                     fun(n - 1);
                 }
