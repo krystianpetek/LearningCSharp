@@ -34,7 +34,7 @@ namespace SZDynamic
             cls.ExampleMethod("CLS");
 
             dls = new ExampleClass();
-            dls.ExampleClass("DLS");
+             //dls.ExampleClass("DLS");
         }
 
         static ExampleClass cls = new ExampleClass();
