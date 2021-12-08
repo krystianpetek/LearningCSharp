@@ -5,7 +5,7 @@ namespace DokumentacjaCS
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             var p2D1 = new Point(0, 0);
             Console.WriteLine(p2D1);
@@ -96,6 +96,40 @@ namespace DokumentacjaCS
             Console.WriteLine();
 
             EventExample.Usage();
+            Console.WriteLine();
+            int[] a = new int[10];
+            for (int f = 0; f < a.Length; f++)
+            {
+                a[f] = f * f;
+            }
+            for (int f = 0; f < a.Length; f++)
+            {
+                Console.WriteLine($"a[{f}] = {a[f]}");
+            }
+            Console.WriteLine();
+
+            int[] a1 = new int[10];
+            int[,] a2 = new int[10, 5];
+            int[,,] a3 = new int[10, 5, 2];
+
+            int[][] aX = new int[3][];
+            aX[0] = new int[10];
+            aX[1] = new int[5];
+            aX[2] = new int[20];
+
+            static string GetCalendarSeason(DateTime date) => date.Month switch
+            {
+                >= 3 and < 6 => "spring",
+                >= 6 and < 9 => "summer",
+                >= 9 and < 12 => "autumn",
+                12 or (>= 1 and < 3) => "winter",
+                _ => throw new ArgumentOutOfRangeException(nameof(date), $"Date with unexpected month: {date.Month}."),
+            };
+            Console.WriteLine(GetCalendarSeason(new DateTime(2021, 3, 14)));  // output: spring
+            Console.WriteLine(GetCalendarSeason(new DateTime(2021, 7, 19)));  // output: summer
+            Console.WriteLine(GetCalendarSeason(new DateTime(2021, 2, 17)));  // output: winter
+
+            static bool IsLetter(char c) => c is (>= 'a' and <= 'z') or (>= 'A' and <= 'Z');
         }
     }
 
@@ -111,5 +145,36 @@ namespace DokumentacjaCS
         Winter = 3,
         Spring = 8,
         All = Summer | Autumn | Winter | Spring
+    }
+
+    delegate double Function(double x);
+    class Multiplier
+    {
+        double _factor;
+        public Multiplier(double factor) => _factor = factor;
+        public double Multiply(double x) => _factor * x;
+    }
+    class DelegateExample
+    {
+        static double[] Apply(double[] a, Function f)
+        {
+            var result = new double[a.Length];
+            for (int i = 0; i < a.Length; i++)
+            {
+                result[i] = f(a[i]);
+            }
+            return result;
+        }
+        public static void Main()
+        {
+            double[] a = { 0.0, 0.5, 1.0 };
+            double[] squares = Apply(a, (x) => x * x);
+            double[] sines = Apply(a, Math.Sin);
+            Multiplier m = new(2.0);
+            double[] doubles = Apply(a, m.Multiply);
+            doubles = Apply(a, (double x) => x * 2);
+            foreach(double s in doubles)
+                Console.WriteLine(s);
+        }
     }
 }
