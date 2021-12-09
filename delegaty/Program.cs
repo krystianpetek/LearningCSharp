@@ -29,20 +29,18 @@ namespace delegaty
     public delegate double Function(double x, double y);
     public class Kalk
     {
-        public double X { get; }
-        public double Y { get; }
+        internal double X { get; }
+        internal double Y { get; }
         public Kalk(double x, double y) => (X, Y) = (x, y);
         public double Dodaj(double x, double y) => (X + Y);
         public double Odejmij(double x, double y) => (X - Y);
         public double Pomnoz(double x, double y) => (X * Y);
         public double Podziel(double x, double y) => (X / Y);
         public double Modulo(double x, double y) => (X % Y);
-    }
-    public class ExampleKalk
-    {
+
         public static double Apply(Kalk a, Function b)
         {
-            double result = b(a.X,a.Y);
+            double result = b(a.X, a.Y);
             return result;
         }
     }
@@ -65,8 +63,8 @@ namespace delegaty
 
         public static void Main(string[] args)
         {
-            Kalk oblicz = new Kalk(66, 3);
-            var x = ExampleKalk.Apply(oblicz, oblicz.Dodaj);
+            Kalk oblicz = new Kalk(66, 54);
+            var x = Kalk.Apply(oblicz, oblicz.Dodaj);
             Console.WriteLine(x);
         }
 
