@@ -43,7 +43,7 @@ namespace ADATEAMS___Ada_and_Teams
             
 
             long invFermat(long a, long p) { return mod_exp(a, p - 2, p); }
-            void mod_exp(long b, int p, long m) { long x = 1; while (p) { if (p & 1) x = (x * b) % m; b = (b * b) % m; p = p >> 1; } return x; }
+            long mod_exp(long b, long p, long m) { long x = 1; while (p) { if (p & 1) x = (x * b) % m; b = (b * b) % m; p = p >> 1; } return x; }
 
         }
     }

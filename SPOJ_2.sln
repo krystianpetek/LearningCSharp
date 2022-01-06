@@ -23,9 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boole_BooleanLogic", "Boole
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AE00 - Rectangles", "AE00 - Rectangles\AE00 - Rectangles.csproj", "{5967C2FA-56B1-4329-896D-04C62D9275C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MARBLES - Marbles", "MARBLES - Marbles\MARBLES - Marbles.csproj", "{7D71BE81-B24D-42EC-849D-6501A998039F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MARBLES - Marbles", "MARBLES - Marbles\MARBLES - Marbles.csproj", "{7D71BE81-B24D-42EC-849D-6501A998039F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADATEAMS - Ada and Teams", "ADATEAMS - Ada and Teams\ADATEAMS - Ada and Teams.csproj", "{F9F46F0E-F7E6-4767-BC8B-BBC2F68F7E46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADATEAMS - Ada and Teams", "ADATEAMS - Ada and Teams\ADATEAMS - Ada and Teams.csproj", "{F9F46F0E-F7E6-4767-BC8B-BBC2F68F7E46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teamformation", "teamformation\teamformation.csproj", "{67BF8F0C-4CBE-402B-9FB3-BA26A6F38E63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{F9F46F0E-F7E6-4767-BC8B-BBC2F68F7E46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9F46F0E-F7E6-4767-BC8B-BBC2F68F7E46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9F46F0E-F7E6-4767-BC8B-BBC2F68F7E46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67BF8F0C-4CBE-402B-9FB3-BA26A6F38E63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67BF8F0C-4CBE-402B-9FB3-BA26A6F38E63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67BF8F0C-4CBE-402B-9FB3-BA26A6F38E63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67BF8F0C-4CBE-402B-9FB3-BA26A6F38E63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
