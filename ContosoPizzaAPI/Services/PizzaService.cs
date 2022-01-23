@@ -17,7 +17,7 @@ namespace ContosoPizzaAPI.Services
             };
         }
         public static List<Pizza> GetAll() => Pizzas;
-        public static Pizza? Get(int id) => Pizzas.FirstOrDefault(p=> p.Id == id);
+        public static Pizza? Get(int id) => Pizzas.FirstOrDefault(p => p.Id == id);
         public static void Add(Pizza pizza)
         {
             pizza.Id = nextId++;
@@ -32,7 +32,7 @@ namespace ContosoPizzaAPI.Services
         }
         public static void Update(Pizza pizza)
         {
-            var index = Pizzas.FindIndex(p=>p.Id == pizza.Id);
+            var index = Pizzas.FindIndex(p => p.Id == pizza.Id);
             if (index == -1)
                 return;
             Pizzas[index] = pizza;
