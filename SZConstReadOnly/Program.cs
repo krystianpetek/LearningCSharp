@@ -9,7 +9,7 @@ namespace SZConstReadOnly
         static Program()
         {
             thisIsReadOnly = 10.11;
-        } 
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");

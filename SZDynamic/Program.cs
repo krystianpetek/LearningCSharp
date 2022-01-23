@@ -11,13 +11,13 @@ namespace SZDynamic
 
             dynamic tojestDynamic = "aa";
             tojestDynamic.ToUpper();
-            
+
 
             int myInt = 1 + 3;
             var mvar = 1 + 3;
             dynamic dyn = 1 + 3;
             object obj = 1 + 3;
-            
+
             Console.WriteLine(myInt.GetType());
             Console.WriteLine(mvar.GetType());
             Console.WriteLine(dyn.GetType());
@@ -34,12 +34,12 @@ namespace SZDynamic
             cls.ExampleMethod("CLS");
 
             dls = new ExampleClass();
-             //dls.ExampleClass("DLS");
+            //dls.ExampleClass("DLS");
         }
 
         static ExampleClass cls = new ExampleClass();
         static dynamic dls;
-        
+
     }
     public class ExampleClass
     {

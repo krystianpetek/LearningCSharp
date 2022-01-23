@@ -6,7 +6,7 @@ namespace DokumentacjaCSKlasy
     {
         public decimal kwota { get; }
         public DateTime dateTime { get; }
-        public string notatka { get;}
+        public string notatka { get; }
 
         public Transakcje(decimal kwota, DateTime dateTime, string notatka)
         {

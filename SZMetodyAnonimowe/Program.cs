@@ -23,16 +23,16 @@ namespace SZMetodyAnonimowe
                 }
                 stopwatch.Stop();
                 Console.WriteLine(stopwatch.ElapsedTicks.ToString());
-//6321
-//4858
-//4542
-//4579
-//4510
-//4536
-//4673
-//4625
-//4591
-//5029
+                //6321
+                //4858
+                //4542
+                //4579
+                //4510
+                //4536
+                //4673
+                //4625
+                //4591
+                //5029
             }
             Console.WriteLine();
             stopwatch = new Stopwatch();
@@ -47,7 +47,7 @@ namespace SZMetodyAnonimowe
                 stopwatch.Stop();
                 Console.WriteLine(stopwatch.ElapsedTicks.ToString());
             }
-            static int Add(int a,int b)
+            static int Add(int a, int b)
             {
                 return a + b;
             }

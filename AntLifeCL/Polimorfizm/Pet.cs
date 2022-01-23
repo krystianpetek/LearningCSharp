@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AntLifeCL.Polimorfizm
+namespace SZAntLifeCL.Polimorfizm
 {
     internal class Pet : Animal, IPet
     {

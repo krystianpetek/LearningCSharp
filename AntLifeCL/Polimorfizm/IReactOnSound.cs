@@ -1,4 +1,4 @@
-﻿namespace AntLifeCL.Polimorfizm
+﻿namespace SZAntLifeCL.Polimorfizm
 {
     internal interface IReactOnSound
     {

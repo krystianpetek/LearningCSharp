@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SZTypyGeneryczne
+﻿namespace SZTypyGeneryczne
 {
     internal class Program
     {
@@ -14,7 +12,7 @@ namespace SZTypyGeneryczne
         {
             public bool CompareTwoValues(AnyType a, AnyType b)
             {
-                if(a.Equals(b))
+                if (a.Equals(b))
                     return true;
                 else
                     return false;

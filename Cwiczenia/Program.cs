@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cwiczenia
+namespace Silnia
 {
     class Program
     {

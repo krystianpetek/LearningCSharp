@@ -18,13 +18,13 @@ namespace SZEnumeratorEnumerable
             myList.Add(1002);
             #endregion
             IEnumerable<int> ienumerable = myList; // nie ma pojecia w jakim jest stanie
-            foreach(var item in ienumerable)
+            foreach (var item in ienumerable)
             {
                 Console.WriteLine(item);
             }
             Console.WriteLine();
             IEnumerator<int> ienumerator = myList.GetEnumerator(); // wie w jakim momencie iteracji jest
-            while(ienumerator.MoveNext())
+            while (ienumerator.MoveNext())
             {
                 Console.WriteLine(ienumerator.Current);
             }
@@ -33,7 +33,7 @@ namespace SZEnumeratorEnumerable
             ienumerator.Reset();
             PetlaDo1000(ienumerator);
         }
-        
+
         // WYJAŚNIENEI
         static void PetlaDo1000(IEnumerator<int> e)
         {

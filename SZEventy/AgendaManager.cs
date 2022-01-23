@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
 
 namespace SZEventy
@@ -25,17 +21,17 @@ namespace SZEventy
         /// </summary>
         protected virtual void OnAddedAgenda(Agenda newAgenda)
         {
-            if(AddedAgenda != null)
+            if (AddedAgenda != null)
             {
-                AddedAgenda(this, new AgendaEventArgs() {  Agenda = newAgenda } );
+                AddedAgenda(this, new AgendaEventArgs() { Agenda = newAgenda });
             }
         }
-        
+
         protected virtual void OnAddedAgendaShorter(Agenda newAgenda)
         {
-            if(AddedAgendaShorter != null)
+            if (AddedAgendaShorter != null)
             {
-                AddedAgendaShorter(this, new AgendaEventArgs() {  Agenda = newAgenda } );
+                AddedAgendaShorter(this, new AgendaEventArgs() { Agenda = newAgenda });
             }
         }
         public void AddAgenda(Agenda newAgenda)

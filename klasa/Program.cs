@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace klasa
+namespace kalkulatorDelegat
 {
     class Obliczenia
     {
@@ -8,8 +8,8 @@ namespace klasa
         private double width;
         public Obliczenia(double l, double w)
         {
-            this.length = l;
-            this.width = w;
+            length = l;
+            width = w;
         }
 
         public double mnozenie()

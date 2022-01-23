@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DokumentacjaCS
 {
@@ -24,7 +20,7 @@ namespace DokumentacjaCS
         {
             return $"R: {R}\nG: {G}\nB: {B}";
         }
-        static void SwapColor( ref Color x, ref Color y)
+        static void SwapColor(ref Color x, ref Color y)
         {
             Color temp = x;
             x = y;
@@ -39,7 +35,7 @@ namespace DokumentacjaCS
             Console.WriteLine(y);
         }
 
-        static Color OutColor (out Color x)
+        static Color OutColor(out Color x)
         {
             x = new Color(0, 0, 0);
             x.R = 255;
@@ -47,6 +43,6 @@ namespace DokumentacjaCS
             x.B = 255;
             return x;
         }
-        
+
     }
 }

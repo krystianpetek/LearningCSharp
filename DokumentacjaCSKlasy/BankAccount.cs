@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
 
 namespace DokumentacjaCSKlasy
 {
@@ -31,7 +27,7 @@ namespace DokumentacjaCSKlasy
             {
                 decimal suma = 0;
                 foreach (var item in lista)
-                { 
+                {
                     suma += item.kwota;
                 }
                 return suma;
@@ -40,12 +36,12 @@ namespace DokumentacjaCSKlasy
         }
         public void Withdraw(decimal amount, DateTime date, string note)
         {
-            if(amount < 0)
+            if (amount < 0)
             {
 
                 throw new ArgumentOutOfRangeException("Wartość wypłaty musi być wieksza niż 0");
             }
-            if(Balance - amount < 0)
+            if (Balance - amount < 0)
             {
                 throw new InvalidOperationException("nie masz tyle srodkow na koncie");
             }
@@ -53,7 +49,7 @@ namespace DokumentacjaCSKlasy
         }
         public void Deposit(decimal amount, DateTime date, string note)
         {
-            if(amount < 0)
+            if (amount < 0)
             {
                 throw new ArgumentOutOfRangeException("Wartość wpłaty musi być wieksza niż 0");
             }
@@ -65,7 +61,7 @@ namespace DokumentacjaCSKlasy
             decimal suma = 0;
             Console.WriteLine("Historia");
             Console.WriteLine("Data\t\tKwota\tNota");
-            foreach(var item in lista)
+            foreach (var item in lista)
             {
                 Console.WriteLine($"{item.dateTime.ToShortDateString()}\t{item.kwota}\t{item.notatka}\t\tBilans: {suma += item.kwota}");
             }

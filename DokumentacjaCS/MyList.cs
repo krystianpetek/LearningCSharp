@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DokumentacjaCS
 {
@@ -22,8 +18,8 @@ namespace DokumentacjaCS
             get => _items.Length;
             set
             {
-                if(value < _count) value = _count;
-                if(value != _items.Length)
+                if (value < _count) value = _count;
+                if (value != _items.Length)
                 {
                     T[] newItems = new T[value];
                     Array.Copy(_items, 0, newItems, 0, _count);
@@ -50,13 +46,14 @@ namespace DokumentacjaCS
         protected virtual void OnChanged() => Changed?.Invoke(this, EventArgs.Empty);
         static bool Equals(MyList<T> a, MyList<T> b)
         {
-            if(Object.ReferenceEquals(a, null)) return Object.ReferenceEquals(b, null); 
-            if(Object.ReferenceEquals(b, null) || a._count != b._count) return false;
+            if (Object.ReferenceEquals(a, null)) return Object.ReferenceEquals(b, null);
+            if (Object.ReferenceEquals(b, null) || a._count != b._count) return false;
             for (int i = 0; i < a._count; i++)
-            { if (!object.Equals(a._items[i], b._items[i]))
+            {
+                if (!object.Equals(a._items[i], b._items[i]))
                 {
                     return false;
-                } 
+                }
             }
             return true;
         }

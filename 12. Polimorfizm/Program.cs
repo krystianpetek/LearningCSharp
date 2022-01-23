@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace _12._Polimorfizm
+namespace Polimorfizm
 {
     class Polygon
     {

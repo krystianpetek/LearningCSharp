@@ -17,7 +17,7 @@ namespace SZRefOut
         private static void SomeMethod(out int insideInt)
         {
             insideInt = 0;
-            insideInt =+ 10;
+            insideInt = +10;
         }
         private static void SomeMethod1(ref int insideInt)
         {

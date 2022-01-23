@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AntLifeCL.Polimorfizm
+namespace SZAntLifeCL.Polimorfizm
 {
     public class Wolf : Animal, IPet
     {

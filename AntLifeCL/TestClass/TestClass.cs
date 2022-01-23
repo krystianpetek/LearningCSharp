@@ -1,4 +1,4 @@
-﻿namespace AntLifeCL.TestClass
+﻿namespace SZAntLifeCL.TestClass
 {
     public class TestClass
     {

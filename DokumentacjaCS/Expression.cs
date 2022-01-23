@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DokumentacjaCS
 {
@@ -45,7 +42,7 @@ namespace DokumentacjaCS
         {
             double x = _left.Evaluate(vars);
             double y = _right.Evaluate(vars);
-            switch(_op)
+            switch (_op)
             {
                 case '+': return x + y;
                 case '-': return x - y;

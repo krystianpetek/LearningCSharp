@@ -9,7 +9,7 @@ namespace SZYield
         static void Main(string[] args)
         {
             FillList();
-            foreach(var x in Total())
+            foreach (var x in Total())
             {
                 Console.WriteLine(x);
             }
@@ -17,14 +17,14 @@ namespace SZYield
         static void FillList()
         {
             mojaLista.Clear();
-            for(int i = 1;i<8;i++)
-            mojaLista.Add(i);
+            for (int i = 1; i < 8; i++)
+                mojaLista.Add(i);
         }
         // custom iteration
         static IEnumerable<int> Filter()
         {
-            foreach(var item in mojaLista)
-                if(item > 3)
+            foreach (var item in mojaLista)
+                if (item > 3)
                     yield return item;
         }
 
@@ -32,9 +32,9 @@ namespace SZYield
         static IEnumerable<int> Total()
         {
             int totalNumber = 0;
-            foreach( var item in mojaLista)
+            foreach (var item in mojaLista)
             {
-                totalNumber+= item;
+                totalNumber += item;
                 yield return totalNumber;
             }
         }

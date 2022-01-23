@@ -1,6 +1,6 @@
-﻿using System;
+﻿using DokumentacjaCS.Interface;
+using System;
 using System.Collections.Generic;
-using DokumentacjaCS.Interface;
 namespace DokumentacjaCS
 {
     internal class Program
@@ -42,7 +42,7 @@ namespace DokumentacjaCS
             Console.WriteLine();
 
             Color color = Color.White;
-            Console.WriteLine(color); 
+            Console.WriteLine(color);
             Console.WriteLine();
 
             Color.SwapColorExample();
@@ -67,7 +67,7 @@ namespace DokumentacjaCS
 
             Dictionary<string, object> dic = new();
             Expression e = new Operation(new VariableReference("x"), '+', new Constant(3)); // x + 3
-            e = new Operation(new VariableReference("x"), '*', new Operation(new VariableReference("y"),'+',new Constant(2))); // x * (y + 2)
+            e = new Operation(new VariableReference("x"), '*', new Operation(new VariableReference("y"), '+', new Constant(2))); // x * (y + 2)
             dic["x"] = 3;
             dic["y"] = 5;
             Console.WriteLine(e.Evaluate(dic));
@@ -81,7 +81,7 @@ namespace DokumentacjaCS
             list2.Capacity = 100;
             int i = list2.Count;
             int j = list2.Capacity;
-            Console.WriteLine(i + " "+ j);
+            Console.WriteLine(i + " " + j);
 
             MyList<string> names = new();
             names.Add("Liz");
@@ -135,7 +135,7 @@ namespace DokumentacjaCS
 
     public enum SomeRootVegetable
     {
-        HorseRadish, Radish,Turnip
+        HorseRadish, Radish, Turnip
     }
     public enum Seasons
     {
@@ -173,7 +173,7 @@ namespace DokumentacjaCS
             Multiplier m = new(2.0);
             double[] doubles = Apply(a, m.Multiply);
             doubles = Apply(a, (double x) => x * 2);
-            foreach(double s in doubles)
+            foreach (double s in doubles)
                 Console.WriteLine(s);
         }
     }

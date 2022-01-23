@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace AntLifeCL.Polimorfizm
+namespace SZAntLifeCL.Polimorfizm
 {
     public abstract class BazaBody
     {

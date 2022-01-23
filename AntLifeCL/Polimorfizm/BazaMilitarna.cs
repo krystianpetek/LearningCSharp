@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace AntLifeCL.Polimorfizm
+namespace SZAntLifeCL.Polimorfizm
 {
     public class BazaMilitarna : BazaBody
     {
@@ -17,7 +17,7 @@ namespace AntLifeCL.Polimorfizm
 
         public BazaMilitarna(string name, float longitude, float latitude, int wallResistance) : base(name, longitude, latitude)
         {
-            this.WallResistance = wallResistance;
+            WallResistance = wallResistance;
         }
 
         public int WallResistance { get; set; }

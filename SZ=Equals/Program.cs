@@ -15,7 +15,7 @@ namespace SZ_Equals
             Console.WriteLine(b == c);
             Console.WriteLine(b.Equals(c));
             Console.WriteLine("-----");
-        
+
             Console.WriteLine(a1 == a2);
             Console.WriteLine(a1.Equals(a2));
             Console.WriteLine("-----");
