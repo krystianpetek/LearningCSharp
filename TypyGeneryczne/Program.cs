@@ -30,6 +30,32 @@ namespace TypyGeneryczne
             Narzedzia.ZamianaRefow(ref tablicaIntow[1], ref tablicaIntow[^2]);
             foreach(var i in tablicaIntow)
                 Console.WriteLine(i);
+
+
+            int fun(int n)
+            {
+                if (n < 2) return n;
+                if (n % 2 == 1) return fun(n - 2);
+                else return fun(n - 1);
+            };
+
+            Console.WriteLine();
+            Console.WriteLine(fun(6));
+            Console.WriteLine(fun(7));
+            Console.WriteLine(fun(8));
+
+            Console.WriteLine();
+
+
+            int nwd(int a, int b)
+            {
+                return (a == 0) ? b : nwd(b % a, a);
+            }
+            bool czyWzgledniePierwsze2(int a, int b)
+            {
+                return (nwd(a, b) == 1);
+            }
+            Console.WriteLine(czyWzgledniePierwsze2(1,10));
         }
     }
 }
