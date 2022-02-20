@@ -5,4 +5,15 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Rozdzial6\Rozdzial06.csproj" />
+    <ProjectReference Include="..\Rozdzial6_2\Rozdzial06_2.csproj" />
+    <ProjectReference Include="..\Rozdzial6_3\Rozdzial06_3.csproj" />
+    <ProjectReference Include="..\Rozdzial6_5\Rozdzial06_5.csproj" />
+    <ProjectReference Include="..\Rozdzial6_6\Rozdzial06_6.csproj" />
+    <ProjectReference Include="..\Rozdzial6_7\Rozdzial06_7.csproj" />
+    <ProjectReference Include="..\Rozdzial6_8\Rozdzial06_8.csproj" />
+    <ProjectReference Include="..\Rozdzial6_9\Rozdzial06_9.csproj" />
+  </ItemGroup>
+
 </Project>
