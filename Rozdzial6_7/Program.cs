@@ -72,7 +72,7 @@ namespace Rozdzial6_7
             switch (commandLine.Action)
             {
                 case "new":
-                    // Tworzenie nowego obiektu reprezentującego pracownika.
+                    Console.WriteLine("Tworzenie nowego obiektu reprezentującego pracownika.");
                     // …
                     break;
                 case "update":
