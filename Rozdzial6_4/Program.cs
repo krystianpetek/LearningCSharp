@@ -64,6 +64,7 @@ namespace Rozdzial6_4
             employee.Salary = "Za niskie";
             employee.Deconstruct(out _, out string firstName, out string lastName, out string salary);
             Console.WriteLine($"{firstName} {lastName}: {salary}");
+
         }
     }
 }
