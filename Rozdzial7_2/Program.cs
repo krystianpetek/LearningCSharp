@@ -78,7 +78,6 @@ namespace Rozdzial7_2
     {
         public PdaItem(string name)
         {
-            Name = name;
         }
         public virtual string Name { get; set; }
     }
