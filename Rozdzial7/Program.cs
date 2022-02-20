@@ -13,7 +13,6 @@ namespace Rozdzial7
     // ŁAŃCUCH DZIEDZICZENIA
     public class PdaItem : Object
     {
-        [DisallowNull]
         private string _Name; 
         public string? Name 
         { 
