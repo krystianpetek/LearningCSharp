@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Rozdzial10
+namespace Rozdzial10_1
 {
     // przesłanianie składowych z klasy object
 
@@ -16,7 +16,7 @@ namespace Rozdzial10
         public Longitude Longitude { get; }
         public Latitude Latitude { get; }
         public override string ToString() => $"{Longitude} {Latitude}";
-        
+
         // override EQUALS
         public override bool Equals(object obj)
         {
@@ -26,8 +26,8 @@ namespace Rozdzial10
                 return false;
             }
             // krok 2. sprawdzenie czy typy pasujądo siebie
-            
-            if(GetType() != obj.GetType())
+
+            if (GetType() != obj.GetType())
             {
                 return false;
             }
@@ -43,21 +43,22 @@ namespace Rozdzial10
                 return false;
 
             // krok 5. opcjonalne sprawdzenie, czy skróty sa identyczne
-            if(GetHashCode() != obj.GetHashCode())
+            if (GetHashCode() != obj.GetHashCode())
                 return false;
 
             // krok 6. sprawdzenie wyniku wywolania base.Equals, jesli w bazie klasowej przeloniejta jewst metoda equals()
             if (!base.Equals(obj))
                 return false;
-        
+
             // krok 7. sprawdzenie czy pola identyfikujhace maja rowną wartość
-            return ( (Longitude.Equals(obj.Longitude)) && (Latitude.Equals(obj.Latitude)) );
+            return ((Longitude.Equals(obj.Longitude)) && (Latitude.Equals(obj.Latitude)));
         }
         // krok 8. przesloniecie metody gethashcode
         public override int GetHashCode() => HashCode.Combine(Longitude.GetHashCode(), Latitude.GetHashCode());
     }
-    
-    public struct Longitude {
+
+    public struct Longitude
+    {
         public Longitude(double Long)
         {
             this.Long = Long;
@@ -68,7 +69,8 @@ namespace Rozdzial10
         }
         public double Long { get; set; }
     }
-    public struct Latitude { 
+    public struct Latitude
+    {
         public Latitude(double Lati)
         {
             this.Lati = Lati;
@@ -79,7 +81,7 @@ namespace Rozdzial10
         }
         public double Lati { get; set; }
     }
-    
+
     class Program
     {
         static void Main(string[] args)
@@ -129,8 +131,8 @@ namespace Rozdzial10
 
 
 
-            Console.WriteLine( x.Equals(coordinate2));
-            Console.WriteLine( x.Equals(x));
+            Console.WriteLine(x.Equals(coordinate2));
+            Console.WriteLine(x.Equals(x));
         }
     }
 
