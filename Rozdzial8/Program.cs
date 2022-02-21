@@ -110,7 +110,7 @@ namespace Rozdzial8
             {
                 wyjscie[licznik] = headers[licznik].Length;
                 licznik++;
-                if (licznik == headers.Length-1)
+                if (licznik == headers.Length)
                     break;
             }
             foreach(var x in headers)
