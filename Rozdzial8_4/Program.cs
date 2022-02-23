@@ -72,6 +72,9 @@ namespace Rozdzial8_4
         {
             Person z = new Person("Inigo", "Montoya");
             Console.WriteLine(((IPerson)z).Name);
+            // LUB
+            IPerson zP = new Person("Inigo", "Montoya");
+            Console.WriteLine(zP.Name);
 
             PersonPublic x = new PersonPublic("Inigo", "Montoya");
             Console.WriteLine(((IPersonPublic)x).Name); // Domyślnie wszystkie składowe instancji w interfejsach są publiczne.

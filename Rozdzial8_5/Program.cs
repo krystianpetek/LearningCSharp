@@ -30,7 +30,7 @@ namespace Rozdzial8_5
     }
     public interface IExecuteProcessActivity : IWorkflowActivity
     {
-        protected void RedirectStandardInOut() => Console.WriteLine("IExecuteProcessActivity.RedirectStandardInOut()...");
+        protected virtual void RedirectStandardInOut() => Console.WriteLine("IExecuteProcessActivity.RedirectStandardInOut()...");
         // Jeśli metoda jest przesłaniana, nie można używać modyfikatora sealed
         /* sealed */ void IWorkflowActivity.InternalRun()
         {
