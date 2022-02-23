@@ -15,23 +15,24 @@ namespace Rozdzial8_3
     // dziedziczenie po wielu interfejsach
     interface ISettingsProvider : IReadableSettingsProvider, IWriteableSettingsProvider
     {
-
     }
+
     class FileSettingsProvider : ISettingsProvider
     {
         #region Składowe z interfejsu ISettingsProvider
         public void SetSetting(string name, string value)
         {
-
+            Name = name;
         }
         #endregion
 
         #region Składowe z interfejsu IReadableSettingsProvider
         public string GetSetting(string name, string defaultValue)
         {
-            return "";
+            return Name;
         }
         #endregion
+        public string Name { get; set; }
     }
 
     // tworzenie interfejsu pochodnego od innego interfejsu, ponieważ nie zaleca się dodawania nowych składowych do udostępnionego już interfejsu
