@@ -8,7 +8,10 @@ namespace Rozdzial9
         {
             var x = new Angle(90, 10, 10);
             var z = x.Move(10, 10, 10);
-            Console.WriteLine(z.ToString());
+            Coordinate koordynaty = new Coordinate();
+            koordynaty.Longitude = x;
+            koordynaty.Latitude = z;
+            Console.WriteLine(koordynaty.ToString());
         }
     }
     // Do deklarowania typów bezpośrednich służy słowo kluczowe struct.
@@ -30,7 +33,7 @@ namespace Rozdzial9
         }
         public override string ToString()
         {
-            return $"{Degrees} {Minutes} {Seconds}";
+            return $"Stopnie: {Degrees} Minuty: {Minutes} Sekundy: {Seconds}";
         }
     }
 
@@ -40,6 +43,10 @@ namespace Rozdzial9
     {
         public Angle Longitude { get; set; }
         public Angle Latitude { get; set; }
+        public override string ToString()
+        {
+            return $"Longitude: {Longitude.ToString()}\nLatitude: {Latitude.ToString()}";
+        }
     }
 
 }

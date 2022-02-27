@@ -39,7 +39,13 @@ namespace Rozdzial9_3
             {
                 Console.Write("{0}, ", count);
             }
+
+            int number = 42;
+            object things = number;
+            double bigNumber = (double)(int)things;
+            Console.WriteLine(number + " " + things + " "+ bigNumber);
         }
         // ZLE DZIALA
+
     }
 }
