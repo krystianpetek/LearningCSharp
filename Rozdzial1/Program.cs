@@ -2,13 +2,12 @@
 
 namespace Rozdzial1
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // PODSTAWY
             Console.WriteLine("Witaj! Nazywam się Krystian Petek.");
-
 
             // ZAAWANSOWANE
 
@@ -40,7 +39,7 @@ namespace Rozdzial1
             lastName = Console.ReadLine();
             Console.WriteLine($"Twoje imię i nazwisko to { firstName } { lastName}.");
             Console.WriteLine("Twoje imię i nazwisko to {0} {1}.", firstName, lastName);
-            Console.WriteLine("Twoje nazwisko i imię to {1} {0}",firstName, lastName);
+            Console.WriteLine("Twoje nazwisko i imię to {1} {0}", firstName, lastName);
 
             int readValue;
             char character;
@@ -50,8 +49,6 @@ namespace Rozdzial1
             Console.Write(readValue);
             // INT PRZECHOWUJE ASCII
             // https://pl.wikipedia.org/wiki/ASCII
-
-
         }
     }
 }

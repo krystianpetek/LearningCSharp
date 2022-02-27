@@ -1,42 +1,46 @@
-﻿using System;
-
-namespace Rozdzial8_3
+﻿namespace Rozdzial8_3
 {
     // dziedziczenie interfejsów
-    interface IReadableSettingsProvider
+    internal interface IReadableSettingsProvider
     {
         string GetSetting(string name, string defaultValue);
     }
-    interface IWriteableSettingsProvider
+
+    internal interface IWriteableSettingsProvider
     {
         void SetSetting(string name, string value);
     }
 
     // dziedziczenie po wielu interfejsach
-    interface ISettingsProvider : IReadableSettingsProvider, IWriteableSettingsProvider
+    internal interface ISettingsProvider : IReadableSettingsProvider, IWriteableSettingsProvider
     {
     }
 
-    class FileSettingsProvider : ISettingsProvider
+    internal class FileSettingsProvider : ISettingsProvider
     {
         #region Składowe z interfejsu ISettingsProvider
+
         public void SetSetting(string name, string value)
         {
             Name = name;
         }
-        #endregion
+
+        #endregion Składowe z interfejsu ISettingsProvider
 
         #region Składowe z interfejsu IReadableSettingsProvider
+
         public string GetSetting(string name, string defaultValue)
         {
             return Name;
         }
-        #endregion
+
+        #endregion Składowe z interfejsu IReadableSettingsProvider
+
         public string Name { get; set; }
     }
 
     // tworzenie interfejsu pochodnego od innego interfejsu, ponieważ nie zaleca się dodawania nowych składowych do udostępnionego już interfejsu
-    interface IDistributedSettingsProvider : ISettingsProvider
+    internal interface IDistributedSettingsProvider : ISettingsProvider
     {
         /// <summary>
         /// Pobieranie ustawień dla konkretnego identyfikatora URI.
@@ -46,6 +50,7 @@ namespace Rozdzial8_3
         /// <param name="defaultValue">Wartość zwracana, gdy nie mozna znaleźć danego ustawienia</param>
         /// <returns>Określone ustawienie</returns>
         string GetSetting(string machineName, string name, string defaultValue);
+
         /// <summary>
         /// Określenie ustawienia dla konkretnego identyfikatora URI
         /// </summary>
@@ -53,13 +58,12 @@ namespace Rozdzial8_3
         /// <param name="name">Nazwa ustawienia</param>
         /// <param name="value">Zapisywana wartość</param>
         void SetSetting(string machineName, string name, string value);
-
     }
-    class Program
-    {
-        static void Main(string[] args)
-        {
 
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
         }
     }
 }

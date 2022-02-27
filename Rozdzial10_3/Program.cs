@@ -1,11 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 using X.Y.Z;
+
 namespace Rozdzial10_3
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
             using ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
@@ -13,7 +14,7 @@ namespace Rozdzial10_3
             ILogger logger = loggerFactory.CreateLogger(categoryName: "Console");
 
             logger.LogInformation($@"Kody triażu: = '{string.Join("', '", args)}'");
-            
+
             logger.LogWarning("To test kodów triażu...");
 
             // namespace zagniezdzone
@@ -26,24 +27,25 @@ namespace Rozdzial10_3
 
     public static class ByteArrayDataSource
     {
-        static private byte[] LoadData()
+        private static byte[] LoadData()
         {
             byte[] data = new byte[1000];
 
             return data;
         }
-        static private WeakReference<byte[]>? Data { get; set; }
 
-        static public byte[] GetData()
+        private static WeakReference<byte[]>? Data { get; set; }
+
+        public static byte[] GetData()
         {
             byte[]? target;
-            if(Data is null)
+            if (Data is null)
             {
                 target = LoadData();
                 Data = new WeakReference<byte[]>(target);
                 return target;
             }
-            else if(Data.TryGetTarget(out target))
+            else if (Data.TryGetTarget(out target))
             {
                 return target;
             }
@@ -58,6 +60,7 @@ namespace Rozdzial10_3
         }
     }
 }
+
 namespace X
 {
     namespace Y
@@ -79,4 +82,3 @@ namespace X
         }
     }
 }
-

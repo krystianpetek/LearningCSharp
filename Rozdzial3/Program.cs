@@ -2,9 +2,9 @@
 
 namespace Rozdzial3
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             int number1 = 42;
             char letter = 'A';
@@ -174,8 +174,6 @@ namespace Rozdzial3
                 Console.WriteLine($"\"{palindrome}\" jest palindromem.");
             else
                 Console.WriteLine($"\"{palindrome}\" NIE jest palindromem.");
-
-
         }
     }
 }

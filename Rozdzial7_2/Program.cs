@@ -11,6 +11,7 @@ namespace Rozdzial7_2
             Console.WriteLine("BaseClass");
         }
     }
+
     public class DerivedClass : BaseClass
     {
         public virtual void DisplayName()
@@ -18,6 +19,7 @@ namespace Rozdzial7_2
             Console.WriteLine("DerivedClass");
         }
     }
+
     public class SubDerivedClass : DerivedClass
     {
         public override void DisplayName()
@@ -25,6 +27,7 @@ namespace Rozdzial7_2
             Console.WriteLine("SubDerivedClass");
         }
     }
+
     public class SuperSubDerivedClass : SubDerivedClass
     {
         public new void DisplayName()
@@ -33,24 +36,24 @@ namespace Rozdzial7_2
         }
     }
 
-
     // SEALED - zapieczętowana klasa/metoda - nie mozna jej dziedziczyć
-    class A
+    internal class A
     {
         public virtual void Method()
         { }
     }
-    class B : A
+
+    internal class B : A
     {
         public override sealed void Method()
         { }
     }
-    class C : B
+
+    internal class C : B
     {
         // nie można przesłaniać składowych z modyfikatorem SEALED
         // public override void Method() { }
     }
-
 
     // Składowa BASE
     public class Address
@@ -59,14 +62,17 @@ namespace Rozdzial7_2
         public string City;
         public string State;
         public string Zip;
+
         public override string ToString()
         {
             return $"{StreetAddress + Environment.NewLine}{City}, {State} {Zip}";
         }
     }
+
     public class InternationalAddress : Address
     {
         public string Country;
+
         public override string ToString()
         {
             return base.ToString() + Environment.NewLine + Country;
@@ -79,33 +85,41 @@ namespace Rozdzial7_2
         public PdaItem(string name)
         {
         }
+
         public virtual string Name { get; set; }
     }
+
     public class Contact : PdaItem
     {
         public Contact(string name) : base(name)
         {
             Name = name;
         }
+
         public override string Name
         {
             get
             {
                 return $"{FirstName} {LastName}";
             }
-            set 
+            set
             {
                 string[] names = value.Split(' ');
                 FirstName = names[0];
                 LastName = names[1];
             }
         }
-        [NotNull][DisallowNull]
+
+        [NotNull]
+        [DisallowNull]
         public string FirstName { get; set; }
-        [NotNull][DisallowNull]
+
+        [NotNull]
+        [DisallowNull]
         public string LastName { get; set; }
     }
-    public class Appointment :PdaItem
+
+    public class Appointment : PdaItem
     {
         public Appointment(string name, string location, DateTime startDateTime, DateTime endDateTime) : base(name)
         {
@@ -113,14 +127,15 @@ namespace Rozdzial7_2
             StartDateTime = startDateTime;
             EndDateTime = endDateTime;
         }
+
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
         public string Location { get; set; }
     }
 
-    class Program
+    internal class Program
     {
-         static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // override i new
             SuperSubDerivedClass superSubDerivedClass = new SuperSubDerivedClass();
@@ -140,7 +155,6 @@ namespace Rozdzial7_2
             international.State = "Mucharz";
             international.Zip = "34-106";
             Console.WriteLine(international.ToString());
-
         }
     }
 }

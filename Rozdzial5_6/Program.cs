@@ -9,7 +9,6 @@ namespace Rozdzial5_6
     // C:\GITHUB\CS8.0_Ksiazka\Rozdzial5_6\
     public static class LineCounter
     {
-
         public static void Main(string[] args)
         {
             int totalLineCount = 0;
@@ -29,11 +28,11 @@ namespace Rozdzial5_6
             Console.WriteLine(totalLineCount);
         }
 
-        static int DirectoryCountLines()
+        private static int DirectoryCountLines()
         {
             return DirectoryCountLines(Directory.GetCurrentDirectory());
         }
-        
+
         //static int DirectoryCountLines(string directory)
         //{
         //    int lineCount = 0;
@@ -54,16 +53,16 @@ namespace Rozdzial5_6
         //    return DirectoryCountLines(directory, "*.cs");
         //}
 
-        static int DirectoryCountLines(string directory, string extension = "*.c*") // .cs .csproj
+        private static int DirectoryCountLines(string directory, string extension = "*.c*") // .cs .csproj
         {
             int lineCount = 0;
-            foreach(string file in Directory.GetFiles(directory, extension))
+            foreach (string file in Directory.GetFiles(directory, extension))
             {
                 lineCount += CountLines(file);
             }
-            foreach(string subdir in Directory.GetDirectories(directory))
+            foreach (string subdir in Directory.GetDirectories(directory))
             {
-                lineCount += DirectoryCountLines(subdir,extension);
+                lineCount += DirectoryCountLines(subdir, extension);
             }
             return lineCount;
         }
@@ -86,6 +85,5 @@ namespace Rozdzial5_6
             reader.Close();
             return lineCount;
         }
-
     }
 }

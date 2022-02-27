@@ -22,32 +22,43 @@ namespace Rozdzial8_5
                 Stop();
             }
         }
+
         protected void InternalRun();
 
         // Prywatna, a więc niewirtualna
         private void Stop() =>
         Console.WriteLine("IWorkflowActivity.Stop()..");
     }
+
     public interface IExecuteProcessActivity : IWorkflowActivity
     {
         protected virtual void RedirectStandardInOut() => Console.WriteLine("IExecuteProcessActivity.RedirectStandardInOut()...");
+
         // Jeśli metoda jest przesłaniana, nie można używać modyfikatora sealed
-        /* sealed */ void IWorkflowActivity.InternalRun()
+        /* sealed */
+
+        void IWorkflowActivity.InternalRun()
         {
             RedirectStandardInOut();
             ExecuteProcess();
             RestoreStandardInOut();
         }
+
         protected void ExecuteProcess();
+
         protected void RestoreStandardInOut() => Console.WriteLine("IExecuteProcessActivity.RestoreStandardInOut()...");
     }
 
-    class ExecuteProcessActivity : IExecuteProcessActivity
+    internal class ExecuteProcessActivity : IExecuteProcessActivity
     {
         public ExecuteProcessActivity(string executablePath) => ExecutableName = executablePath ?? throw new ArgumentNullException(nameof(executablePath));
+
         public string ExecutableName { get; }
-        void IExecuteProcessActivity.RedirectStandardInOut() => Console.WriteLine( "ExecuteProcessActivity.RedirectStandardInOut()...");
+
+        void IExecuteProcessActivity.RedirectStandardInOut() => Console.WriteLine("ExecuteProcessActivity.RedirectStandardInOut()...");
+
         void IExecuteProcessActivity.ExecuteProcess() => Console.WriteLine($"ExecuteProcessActivity.IExecuteProcessActivity.ExecuteProcess()...");
+
         public void Run()
         {
             ExecuteProcessActivity activity = new ExecuteProcessActivity("dotnet");

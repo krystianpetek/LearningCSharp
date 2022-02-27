@@ -5,26 +5,28 @@ using System.IO;
 namespace Rozdzial9_4
 {
     // WYLICZENIA
-    class Program
+    internal class Program
     {
-        enum ConnectionState
+        private enum ConnectionState
         {
             Disconnected, Connecting, Connected, Disconnecting
         }
-        enum ConnectionStateJawne : short
+
+        private enum ConnectionStateJawne : short
         {
             Disconnected, // 0
             Connecting = 10, // 10
             Connected, // 11
-            Joined = Connected, // 11 
+            Joined = Connected, // 11
             Disconnecting // 12
         }
 
-        enum StatusPolaczenia
+        private enum StatusPolaczenia
         {
             Rozlaczono, Laczenie, Polaczono, Rozlaczanie
         };
-        enum StatusPolaczenia2
+
+        private enum StatusPolaczenia2
         {
             Rozlaczono, Laczenie, Polaczono, Rozlaczanie
         }
@@ -52,7 +54,7 @@ namespace Rozdzial9_4
 
         // Definiowanie w wyliczeniu wartości reprezentujących często używane kombinacje flag
         [Flags]
-        enum DistributedChannel
+        private enum DistributedChannel
         {
             None = 0,
             Transacted = 1,
@@ -62,7 +64,7 @@ namespace Rozdzial9_4
             FaultTolerant = Transacted | Queued | Persisted
         }
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             int? connectionState = null;
             switch (connectionState)
@@ -84,8 +86,10 @@ namespace Rozdzial9_4
             // RZUTOWANIE MIEDZY TABLICAMI OPARTYMI NA WYLICZENIACH
             StatusPolaczenia[] status = (StatusPolaczenia[])(Array)new StatusPolaczenia2[42];
 
+
             // Konwersja miedzy wyliczeniami a lancuchami znaków
             System.Diagnostics.Trace.WriteLine($"Aktualny status połączenia to {StatusPolaczenia.Laczenie}");
+            Console.WriteLine($"Aktualny status połączenia to {StatusPolaczenia.Laczenie}");
 
             //Konwersja łańcucha znaków na wartość typu wyliczeniowego za pomocą metody Enum.Parse()
             ThreadPriorityLevel priority = (ThreadPriorityLevel)Enum.Parse(typeof(ThreadPriorityLevel), "Idle");
@@ -100,6 +104,8 @@ namespace Rozdzial9_4
 
             // WYLICZENIA JAKO FLAGI
             string fileName = @"enumtest.txt";
+            if(!File.Exists(fileName))
+                File.Create(fileName);
             System.IO.FileInfo file = new System.IO.FileInfo(fileName);
             file.Attributes = FileAttributes.Hidden | FileAttributes.ReadOnly;
             Console.WriteLine($"{file.Attributes} = {(int)file.Attributes}");
@@ -114,8 +120,9 @@ namespace Rozdzial9_4
                 {
                     throw new Exception("Plik nie jest przeznaczony tylko do odczytu.");
                 }
-            }            
+            }
+            Console.WriteLine(Enum.IsDefined(typeof(FileAttributesMOD), "Hidden"));
+
         }
-        
     }
 }

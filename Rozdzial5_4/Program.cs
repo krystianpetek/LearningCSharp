@@ -2,7 +2,7 @@
 
 namespace Rozdzial5_4
 {
-    class Program
+    internal class Program
     {
         // ZWRACANIE PRZEZ REFERENCJE
         public static ref byte FindFirstRedEyePixel(byte[] image)
@@ -17,6 +17,7 @@ namespace Rozdzial5_4
             }
             throw new InvalidOperationException("Nie występują czerwone piksele.");
         }
+
         public static void Main(string[] args)
         {
             byte[] image = new byte[254];

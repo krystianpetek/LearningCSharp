@@ -3,9 +3,32 @@ using System.Diagnostics;
 
 namespace Rozdzial10_1
 {
-    // przesłanianie składowych z klasy object
+    public struct Longitude
+    {
+        public Longitude(double longitude)
+        {
+            _longitude = longitude;
+        }
+        public override string ToString()
+        {
+            return $"{_longitude}";
+        }
+        public double _longitude { get; set; }
+    }
 
-    // ToString()
+    public struct Latitude
+    {
+        public Latitude(double latitude)
+        {
+            _latitude = latitude;
+        }
+        public override string ToString()
+        {
+            return $"{_latitude}";
+        }
+        public double _latitude { get; set; }
+    }
+
     public struct Coordinate
     {
         public Coordinate(Longitude longitude, Latitude latitude)
@@ -16,7 +39,8 @@ namespace Rozdzial10_1
         public Longitude Longitude { get; }
         public Latitude Latitude { get; }
         public override string ToString() => $"{Longitude} {Latitude}";
-
+        public override int GetHashCode() => HashCode.Combine(Longitude.GetHashCode(), Latitude.GetHashCode());
+        
         // override EQUALS
         public override bool Equals(object obj)
         {
@@ -34,8 +58,8 @@ namespace Rozdzial10_1
             // krok 3. wywolanie pomocniczej wersji metody equals dla konkretnego typu
 
             return Equals((Coordinate)obj);
-
         }
+
         public bool Equals(Coordinate obj)
         {
             // krok 4 sprawdzenie(w przypadku typow referencytjnych, czy obiekt jest różny od null)
@@ -53,44 +77,19 @@ namespace Rozdzial10_1
             // krok 7. sprawdzenie czy pola identyfikujhace maja rowną wartość
             return ((Longitude.Equals(obj.Longitude)) && (Latitude.Equals(obj.Latitude)));
         }
+
         // krok 8. przesloniecie metody gethashcode
-        public override int GetHashCode() => HashCode.Combine(Longitude.GetHashCode(), Latitude.GetHashCode());
     }
 
-    public struct Longitude
-    {
-        public Longitude(double Long)
-        {
-            this.Long = Long;
-        }
-        public override string ToString()
-        {
-            return $"{Long}";
-        }
-        public double Long { get; set; }
-    }
-    public struct Latitude
-    {
-        public Latitude(double Lati)
-        {
-            this.Lati = Lati;
-        }
-        public override string ToString()
-        {
-            return $"{Lati}";
-        }
-        public double Lati { get; set; }
-    }
 
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Coordinate x = new Coordinate(new Longitude(200), new Latitude(100));
             Console.WriteLine(x);
             Trace.WriteLine(x);
             Trace.WriteLine(x.GetHashCode());
-
 
             ProductSerialNumber serialNumber1 = new ProductSerialNumber("PV", 1000, 09187234);
             ProductSerialNumber serialNumber2 = serialNumber1;
@@ -114,12 +113,11 @@ namespace Rozdzial10_1
             {
                 throw new Exception("serialNumber1 MA referencje równą z serialNumber3");
             }
-            else if (serialNumber1.Equals(serialNumber3))
+            else if (!serialNumber1.Equals(serialNumber3))
             {
                 throw new Exception("serialNumber1 NIE ma wartości równej z serialNumber3");
             }
             Console.WriteLine("serialNumber1 ma wartość równą z serialNumber3");
-
 
             Coordinate coordinate2 = new Coordinate(new Longitude(200), new Latitude(100));
             // obiekty typu bezposredniego nigdy nie sa rowne ze wzgledu na referencje
@@ -128,8 +126,6 @@ namespace Rozdzial10_1
                 throw new Exception("coordinate1 jest rowna ze względu na referencje z coordinate1");
             }
             Console.WriteLine("coordinate NIE jest równa ze względu na referencje z samą sobą");
-
-
 
             Console.WriteLine(x.Equals(coordinate2));
             Console.WriteLine(x.Equals(x));
@@ -148,6 +144,31 @@ namespace Rozdzial10_1
             this.v2 = v2;
             this.v3 = v3;
         }
+        public override bool Equals(object obj)
+        {
+            if (obj is null)
+                return false;
+            if (this.GetType() != obj.GetType())
+                return false;
+            
+            return Equals((ProductSerialNumber)obj);
+        }
+        public bool Equals(ProductSerialNumber obj)
+        {
+            if (obj.GetHashCode() != this.GetHashCode())
+                return false;
+
+            if (this.v1 == obj.v1 && this.v2 == obj.v2 && this.v3 == obj.v3)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = HashCode.Combine( this.v1.GetHashCode(), this.v2.GetHashCode(), this.v3.GetHashCode());
+            return hash;
+        }
     }
 }
-

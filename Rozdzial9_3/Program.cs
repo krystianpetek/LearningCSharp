@@ -2,13 +2,12 @@
 
 namespace Rozdzial9_3
 {
-
     // PRZECIĄŻAJ operatory równości (Equals(), == i !=) w typach bezpośrednich, jeśli sprawdzanie równości jest istotne.
 
     // OPAKOWYWANIE
-    class DisplayFibonacci
+    internal class DisplayFibonacci
     {
-        static void Main()
+        private static void Main()
         {
             int totalCount;
             // Celowo używany jest typ ArrayList, aby zilustrować opakowywanie
@@ -43,9 +42,9 @@ namespace Rozdzial9_3
             int number = 42;
             object things = number;
             double bigNumber = (double)(int)things;
-            Console.WriteLine(number + " " + things + " "+ bigNumber);
+            Console.WriteLine(number + " " + things + " " + bigNumber);
         }
-        // ZLE DZIALA
 
+        // ZLE DZIALA
     }
 }

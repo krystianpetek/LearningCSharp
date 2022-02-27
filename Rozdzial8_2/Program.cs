@@ -2,26 +2,29 @@
 
 namespace Rozdzial8_2
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Contact contact = new Contact("Krystian", "Petek", "Koziniec 2", "884284782");
             var x = ((IListable)contact).CellValues;
             Console.WriteLine(x[2]);
         }
     }
-    interface IListable
+
+    internal interface IListable
     {
         // Zwraca wartość każdej komórki wiersza.
         string?[] CellValues { get; }
     }
+
     public abstract class PdaItem
     {
         public PdaItem(string name)
         {
             Name = name;
         }
+
         public virtual string Name { get; set; }
     }
 
@@ -34,14 +37,18 @@ namespace Rozdzial8_2
             Address = address;
             Phone = phone;
         }
+
         public string LastName { get; }
+
         // ...
         public string? FirstName { get; }
+
         public string? Address { get; }
         public string? Phone { get; }
+
         public static string GetName(string firstName, string lastName)
         => $"{ firstName } { lastName }";
-        
+
         #region IComparable Members
 
         public int CompareTo(object obj) => obj switch
@@ -54,8 +61,11 @@ namespace Rozdzial8_2
             _ => throw new ArgumentException($"Parametr nie jest wartością typu { nameof(Contact) }",
             nameof(obj))
         };
-        #endregion
+
+        #endregion IComparable Members
+
         #region Składowe interfejsu IListable
+
         string?[] IListable.CellValues
         {
             get
@@ -66,6 +76,7 @@ namespace Rozdzial8_2
                 };
             }
         }
-        #endregion
+
+        #endregion Składowe interfejsu IListable
     }
 }

@@ -6,7 +6,8 @@ namespace Rozdzial6_5
     public class Employee
     {
         // DEKLARACJA Pól statycznych
-        public static int NextId=42;
+        public static int NextId = 42;
+
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -26,36 +27,35 @@ namespace Rozdzial6_5
     {
         public static void CopyTo(DirectoryInfo sourceDirectory, string target, SearchOption option, string searchPattern)
         {
-            if(target[target.Length - 1] != Path.DirectorySeparatorChar) // jeśli na ostatniej pozycji nie ma separatora, to ma go dopisać "\"
+            if (target[target.Length - 1] != Path.DirectorySeparatorChar) // jeśli na ostatniej pozycji nie ma separatora, to ma go dopisać "\"
             {
-
                 target += Path.DirectorySeparatorChar;
             }
-            if(!Directory.Exists(target)) // sprawdza czy jest folder o takiej nazwie, jesli nie to go tworzy
+            if (!Directory.Exists(target)) // sprawdza czy jest folder o takiej nazwie, jesli nie to go tworzy
             {
                 Directory.CreateDirectory(target);
             }
-            for(int i = 0;i<searchPattern.Length;i++) 
+            for (int i = 0; i < searchPattern.Length; i++)
             {
-                foreach(string file in Directory.GetFiles(sourceDirectory.FullName,searchPattern))
+                foreach (string file in Directory.GetFiles(sourceDirectory.FullName, searchPattern))
                 {
                     File.Copy(file, target + Path.GetFileName(file), true);
                 }
             }
             // REKURENCYJNE KOPIOWANIE PODKATALOGÓW
-            if(option == SearchOption.AllDirectories)
+            if (option == SearchOption.AllDirectories)
             {
-                foreach(string element in Directory.GetDirectories(sourceDirectory.FullName))
+                foreach (string element in Directory.GetDirectories(sourceDirectory.FullName))
                 {
-                    File.Copy(element, target+Path.GetFileName(element),true);
+                    File.Copy(element, target + Path.GetFileName(element), true);
                 }
             }
-
         }
     }
-    class Program
+
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Employee.NextId = 1000000;
             Employee employee1 = new Employee("Inigo", "Montoya");

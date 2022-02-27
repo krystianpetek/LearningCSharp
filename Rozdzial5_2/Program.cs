@@ -4,18 +4,19 @@ using System.Net;
 
 namespace Rozdzial5_2
 {
-    class Program
+    internal class Program
     {
-        static /*int - do pierwszego przykładu, reszta void*/ void Main(string[] args)
+        private static void Main(string[] args)
         {
             int result;
-            switch(args.Length)
+            switch (args.Length)
             {
                 default:
                     Console.WriteLine("BŁĄD: należy podać adres URL i nazwę pliku");
                     Console.WriteLine("Użytkowanie: Downloader.exe <URL> <nazwa_docelowa_pliku>");
                     result = 1;
                     break;
+
                 case 2:
                     WebClient webclient = new WebClient();
                     webclient.DownloadFile(args[0], args[1]);
@@ -24,8 +25,7 @@ namespace Rozdzial5_2
             }
             //return result;
             // Environment.GetCommandLineArgs() == string[] args
-            
-            
+
             // PRZEKAZYWANIE ZMIENNYCH PRZEZ WARTOŚĆ
             string fullName;
             string driveLetter = "C:";
@@ -54,8 +54,6 @@ namespace Rozdzial5_2
                 first = second;
                 second = temp;
             }
-
-            
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+
 namespace Rozdzial6 // Hermetyzacja, część 1. Obiekty łączą dane z metodami
 {
     public class Employee
@@ -7,21 +8,24 @@ namespace Rozdzial6 // Hermetyzacja, część 1. Obiekty łączą dane z metodam
         public string FirstName;
         public string LastName;
         public string? Salary = "Za niskie";
+
         public string GetName()
         {
             return $"{FirstName} {LastName}";
         }
+
         public void SetName(string FirstName, string LastName) // Używanie słowa kluczowego this w celu uniknięcia wieloznaczności
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
             Console.WriteLine($"Imię i nazwisko zmieniono na '{this.GetName()}'");
         }
-    
+
         public void Save() // Przekazywanie obiektu this w wywołaniu metody
         {
             DataStorage.Store(this);
         }
+
         public static Employee Load(string firstName, string lastName)
         {
             Employee employee = new Employee();
@@ -34,6 +38,7 @@ namespace Rozdzial6 // Hermetyzacja, część 1. Obiekty łączą dane z metodam
             return employee;
         }
     }
+
     public class DataStorage
     {
         public static void Store(Employee employee)
@@ -47,9 +52,9 @@ namespace Rozdzial6 // Hermetyzacja, część 1. Obiekty łączą dane z metodam
         }
     }
 
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             Employee employee1;
             employee1 = new Employee();
@@ -58,19 +63,19 @@ namespace Rozdzial6 // Hermetyzacja, część 1. Obiekty łączą dane z metodam
             employee1.FirstName = "Inigo";
             employee1.LastName = "Montoya";
             employee1.Salary = "Za niskie";
-            Console.WriteLine("{0} {1}: {2}",employee1.FirstName, employee1.LastName, employee1.Salary);
+            Console.WriteLine("{0} {1}: {2}", employee1.FirstName, employee1.LastName, employee1.Salary);
             IncreaseSalary(employee1);
             employee1.SetName("Krystian", "Petek");
             Console.WriteLine($"{employee1.GetName()}: {employee1.Salary}");
             employee1.Save();
             employee2 = Employee.Load("Krystian", "Petek");
             Console.WriteLine($"{employee2.GetName()}: {employee2.Salary}");
-
         }
-        static void IncreaseSalary(Employee employee)
+
+        private static void IncreaseSalary(Employee employee)
         {
             employee.Salary = "Wystarczające, by przeżyć";
-            Console.WriteLine("Zwiększanie dochodu na: "+employee.Salary);
+            Console.WriteLine("Zwiększanie dochodu na: " + employee.Salary);
         }
     }
 }

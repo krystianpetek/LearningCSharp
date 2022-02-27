@@ -11,35 +11,46 @@ namespace Rozdzial7_3
         {
             Name = name;
         }
+
         public virtual string Name { get; set; }
+
         public abstract string GetSummary();
     }
+
     public class Contact : PdaItem
     {
         public Contact(string name) : base(name)
         {
         }
-        public override string Name 
+
+        public override string Name
         {
             get { return $"{FirstName} {LastName}"; }
-            set { string[] names = value.Split(' ');
+            set
+            {
+                string[] names = value.Split(' ');
                 FirstName = names[0];
                 LastName = names[1];
             }
         }
-        public string FirstName 
+
+        public string FirstName
         {
             get { return _FirstName!; }
             set { _FirstName = value ?? throw new ArgumentNullException(nameof(value)); }
         }
+
         private string? _FirstName;
+
         public string LastName
         {
             get { return _LastName!; }
             set { _LastName = value ?? throw new ArgumentNullException(nameof(value)); }
         }
+
         private string? _LastName;
         public string? Address { get; set; }
+
         public override string GetSummary()
         {
             return $"FirstName: {FirstName + Environment.NewLine}"
@@ -56,6 +67,7 @@ namespace Rozdzial7_3
             StartDateTime = startDateTime;
             EndDateTime = endDateTime;
         }
+
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
         public string Location { get; set; }
@@ -68,9 +80,10 @@ namespace Rozdzial7_3
                 $"Location: {Location + Environment.NewLine}";
         }
     }
-    class Program
+
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             PdaItem[] pda = new PdaItem[3];
             Contact contact = new Contact("Sherlock Holmes")
@@ -87,9 +100,10 @@ namespace Rozdzial7_3
             pda[2] = contact;
             List(pda);
         }
+
         public static void List(PdaItem[] items)
         {
-            foreach(var item in items)
+            foreach (var item in items)
             {
                 Console.WriteLine("________");
                 Console.WriteLine(item.GetSummary());

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Rozdzial6_3
 {
-    class Employee
+    internal class Employee
     {
         // Inicjatory obiektów
         public Employee(string imie, string nazwisko)
@@ -11,12 +11,15 @@ namespace Rozdzial6_3
             this.imie = imie;
             this.nazwisko = nazwisko;
         }
+
         private string _imie;
+
         public string imie
         {
             get { return _imie; }
             set { _imie = value; }
         }
+
         private string _nazwisko;
 
         public string nazwisko
@@ -24,9 +27,12 @@ namespace Rozdzial6_3
             get { return _nazwisko; }
             set { _nazwisko = value; }
         }
+
         public string Title { get; set; }
         public string? Salary { get; set; }
+
         public Employee(int id) => Id = id; // od c# 7.0 - implementacja konstruktorów jako składowych z ciałem w postaci wyrazenia
+
         public int Id
         {
             get => Id;
@@ -35,15 +41,16 @@ namespace Rozdzial6_3
                 // wyszukiwanie imienia i nazwiska pracownika o podanym id
             }
         }
+
         public Employee(int id, string imie, string nazwisko) : this(imie, nazwisko) // wywołanie innego konstruktora w innym konstruktorze
         {
             Id = id;
         }
-
     }
-    class Program
+
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Employee employee1 = new Employee("Inigo", "Montoya") { Title = "Maniak komputerowy", Salary = "Za niskie" };
 
@@ -55,10 +62,8 @@ namespace Rozdzial6_3
             };
             listaPracownikow.Add(employee1);
 
-            foreach(var pracownik in listaPracownikow)
-                Console.Write(pracownik.imie+" "+pracownik.nazwisko+"\n");
-
-
+            foreach (var pracownik in listaPracownikow)
+                Console.Write(pracownik.imie + " " + pracownik.nazwisko + "\n");
         }
     }
 }

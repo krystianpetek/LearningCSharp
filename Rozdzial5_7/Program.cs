@@ -2,9 +2,9 @@
 
 namespace Rozdzial5_7
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //przekazywanie parametrów za pomocą nazw
             DisplayGreetings(firstName: "Inigo", lastName: "Montoya");
@@ -23,12 +23,12 @@ namespace Rozdzial5_7
                 age = int.Parse(ageText);
                 Console.WriteLine($"Hej, {firstName}! Twój wiek w miesiącach to: {age * 12}.");
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 Console.WriteLine($"Wprowadzony wiek, {ageText}, nie jest prawidłowy");
                 result = 1;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 Console.WriteLine($"Nieoczekiwany błąd: {exception.Message}");
                 result = 1;
@@ -47,9 +47,9 @@ namespace Rozdzial5_7
                 throw new Exception("Dowolny wyjątek");
                 Console.WriteLine("Koniec wykonywania kodu");
             }
-            catch( Exception exception)
+            catch (Exception exception)
             {
-                Console.WriteLine($"Nieoczekiwany błąd: {exception.Message}"); 
+                Console.WriteLine($"Nieoczekiwany błąd: {exception.Message}");
                 Console.WriteLine($@"Ponowne zgłaszanie nieoczekiwanego błędu: {exception.Message }");
                 // Ponowne zgłoszenie wyjątku - wpisz w tym bloku 'throw;'
                 // throw;
@@ -73,9 +73,7 @@ namespace Rozdzial5_7
             string? lastName = null
         )
         {
-            Console.WriteLine(firstName.Length+lastName.Length);
+            Console.WriteLine(firstName.Length + lastName.Length);
         }
-
-
     }
 }

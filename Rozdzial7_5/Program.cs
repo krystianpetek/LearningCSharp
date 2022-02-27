@@ -2,12 +2,12 @@
 
 namespace Rozdzial7_5
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
         }
+
         public static string? CompositeFormatDate(object input, string compositFormaString) =>
         input switch
         {

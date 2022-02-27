@@ -3,9 +3,9 @@ using System.Diagnostics;
 
 namespace Rozdzial4
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // OPERATORY
 
@@ -62,7 +62,6 @@ namespace Rozdzial4
 
             Console.WriteLine(-1f / 0); // Wyświetla: –Infinity
             Console.WriteLine(3.402823E+38f * 2f); // Wyświetla: Infinity
-
 
             // ZŁOŻONE OPERATORY PRZYPISANIA
             int x = 123;
@@ -219,7 +218,7 @@ namespace Rozdzial4
             Console.WriteLine("Wprowadź liczbę całkowitą");
             value = (ulong)long.Parse(Console.ReadLine());
             ulong mask = 1UL << size - 1;
-            for(count = 0; count < size; count++)
+            for (count = 0; count < size; count++)
             {
                 bit = ((mask & value) != 0) ? '1' : '0';
                 Console.Write(bit);
@@ -234,6 +233,6 @@ namespace Rozdzial4
             or |= 7; // or = 15
             xor ^= 7; // xor = 11
             Console.WriteLine($"and = { and } \nor = { or }\nxor = { xor }");
-        }   
+        }
     }
 }

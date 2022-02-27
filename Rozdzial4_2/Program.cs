@@ -2,16 +2,16 @@
 
 namespace Rozdzial4_2
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // WHILE NA PRZYKLADZIE LICZB FIBONACCIEGO
             decimal current, previous, temp, input;
             input = decimal.Parse(Console.ReadLine());
             current = previous = 1;
 
-            while(current <= input)
+            while (current <= input)
             {
                 temp = current;
                 current = previous + current;
@@ -27,7 +27,7 @@ namespace Rozdzial4_2
             }
 
             // FOREACH
-            char[] cells = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+            char[] cells = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             Console.Write("Możliwe posunięcia to: ");
             // Wyświetlanie posunięć dopuszczalnych na początku.
             cells[1] = 'X';
@@ -59,10 +59,12 @@ namespace Rozdzial4_2
                     valid = true;
                     Console.WriteLine("OK");
                     break;
+
                 case "":
                 case "quit":
                     valid = true;
                     break;
+
                 default:
                     Console.WriteLine("BŁĄD: Wprowadź wartość z przedziału od 1 do 9. " + "Wciśnij ENTER, by zamknąć program");
                     break;
@@ -114,9 +116,6 @@ namespace Rozdzial4_2
             // Wyłączanie komunikatów z ostrzeżeniami
 #pragma warning disable CS1030
 #pragma warning restore CS1030
-
-
         }
-
     }
 }

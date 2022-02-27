@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
-
 
 namespace Rozdzial7
 {
@@ -9,42 +6,53 @@ namespace Rozdzial7
     // explicit - operator jawnej konwersji
     //                                  public static implicit operator UTMCoordinates(GPSCoordinates coordinates)
 
-
     // ŁAŃCUCH DZIEDZICZENIA
     public class PdaItem : Object
     {
-        private string _Name; 
-        public string? Name 
-        { 
-            get { return _Name; } 
-            set { _Name = value; } 
+        private string _Name;
+
+        public string? Name
+        {
+            get { return _Name; }
+            set { _Name = value; }
         }
+
         public DateTime LastUpdated { get; set; }
     }
-    public class Appointment : PdaItem{ }
+
+    public class Appointment : PdaItem
+    { }
+
     public class Contact : PdaItem
     {
         public string Address { get; set; }
         public string Phone { get; set; }
     }
-    public class Customer : Contact{ }
-    
+
+    public class Customer : Contact
+    { }
+
     // modyfikator private
     public class PrivatePdaItem
     {
         private string _Name;
+
         public string Name
         {
             get { return _Name; }
-            set{ _Name = value; }
+            set { _Name = value; }
         }
     }
-    public class PrivateContact : PrivatePdaItem{ }
+
+    public class PrivateContact : PrivatePdaItem
+    { }
 
     // Modyfikator protected - składowe protected są dostępne tylko w klasach pochodnych
 
     // modyfikator sealed - tworzenie klasy zamkniętej w celu uniemożliwienia dziedziczenia
-    public sealed class CommandLineParser { }
+    public sealed class CommandLineParser
+    { }
+
     public sealed class DerivedCommandLineParser // : CommandLineParser - błąd, nie można tworzyć klas pochodnych od zamkniętych
     { }
 
@@ -54,6 +62,7 @@ namespace Rozdzial7
     {
         public virtual string Name { get; set; }
     }
+
     public class VirtualContact : VirtualPdaItem
     {
         public override string Name
@@ -66,12 +75,14 @@ namespace Rozdzial7
                 LastName = names[1];
             }
         }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }
-    class Program
+
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //RZUTOWANIE MIEDZY TYPAMI BAZOWYMI I POCHODNYMI
             Contact contact = new Contact();

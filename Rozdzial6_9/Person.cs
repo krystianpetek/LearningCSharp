@@ -2,18 +2,17 @@
 
 namespace Rozdzial6_9
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
-
         }
     }
 
-    partial class Person
+    internal partial class Person
     {
         // Metody częściowe, można tworzyc tylko w klasach częściowych
-        partial void OnLastNameChanging(string value)
+        private partial void OnLastNameChanging(string value)
         {
             if (value is null)
             {

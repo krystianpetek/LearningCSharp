@@ -6,7 +6,9 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
     {
         // niezaszyfrowane hasła są tylko w celach edukacyjnych, nie zaleca się tego podejścia
         private string Password;
+
         private bool IsAuthenticated;
+
         public bool Logon(string password)
         {
             if (Password == password)
@@ -15,13 +17,14 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
             }
             return IsAuthenticated;
         }
+
         public bool GetIsAuthenticated()
         {
             return IsAuthenticated;
         }
 
-
         private string FirstName;
+
         public string GetFirstName() // GETTER dla FirstName
         {
             return FirstName;
@@ -35,6 +38,7 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
 
         // Składnia tworzenia własciwości
         private string _LastName;
+
         public string LastName
         {
             get // odpowiada metodzie GetFirstName
@@ -53,15 +57,18 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
             get => _LastName;
             set => _LastName = value;
         }
+
         public string? Title { get; set; } // Automatyczne implementowanie własności
         public Employee? Manager { get; set; }
         public string? Salary { get; set; } = "Za niskie";
+
         //Ogólna zasada jest taka, że metody powinny reprezentować operacje, a właściwości — dane.
         public void Initialize(string newFirstName, string newLastName)
         {
             FirstName = newFirstName;
             LastName = newLastName;
         }
+
         public string LASTNAME
         {
             get => _LastName;
@@ -78,12 +85,14 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
                     {
                         throw new ArgumentException("Właściwość LastName nie może być pusta.", nameof(value));
                     }
-                    else {
+                    else
+                    {
                         _LastName = value;
                     }
                 }
             }
         }
+
         public bool[,,] cells { get; } = new bool[2, 3, 3]; // automatyczne implementowanie wartości tylko do odczytu, bez settera
 
         // Właściwości obliczane
@@ -115,23 +124,24 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
             imie = podajImie;
             nazwisko = podajNazwisko;
         }
+
         public Employee()
         {
-
         }
+
         public string imie { get; set; }
         public string nazwisko { get; set; }
         public string zarobki { get; set; } = "Za niskie";
+
         public override string ToString()
         {
             return $"{imie} {nazwisko}: {zarobki}";
         }
-
-
     }
-    class Program
+
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Employee employee = new Employee();
             Employee employee2 = new Employee();

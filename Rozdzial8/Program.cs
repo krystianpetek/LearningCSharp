@@ -6,26 +6,30 @@ namespace Rozdzial8
     // to jak prąd dociera do gniazda jest szczegółem implementacji
     // Dla urządzenia nie jest ważne, w jaki sposób szczegóły implementacji prowadzą do dostarczenia prądu do gniazdka.Urządzenie ma tylko zapewniać odpowiednią wtyczkę.
 
-    interface IFileCompression
+    internal interface IFileCompression
     {
         void Compress(string targetFileName, string[] fileList);
+
         void Uncompress(string compressFileName, string expandDirectoryName);
     }
 
     // polimorfizm oparty na interface'ach
-    interface IListable
+    internal interface IListable
     {
         string?[] CellValues { get; }
     }
+
     public abstract class PdaItem
     {
         public PdaItem(string name)
         {
             Name = name;
         }
+
         public virtual string Name { get; set; }
     }
-    class Contact : PdaItem, IListable
+
+    internal class Contact : PdaItem, IListable
     {
         public Contact(string firstName, string lastName, string address, string phone) : base(GetName(firstName, lastName))
         {
@@ -34,11 +38,14 @@ namespace Rozdzial8
             Address = address;
             Phone = phone;
         }
+
         public string LastName { get; }
         public string? FirstName { get; }
         public string? Address { get; }
         public string? Phone { get; }
+
         public static string GetName(string firstName, string lastName) => $"{firstName} {lastName}";
+
         public string[] CellValues
         {
             get
@@ -49,6 +56,7 @@ namespace Rozdzial8
                 };
             }
         }
+
         public static string[] Headers
         {
             get
@@ -60,17 +68,20 @@ namespace Rozdzial8
             }
         }
     }
-    class Publication : IListable
+
+    internal class Publication : IListable
     {
         public string Title { get; }
         public string Author { get; }
         public string Year { get; }
+
         public Publication(string title, string author, int year)
         {
             Title = title;
             Author = author;
             Year = year.ToString();
         }
+
         public string[] CellValues
         {
             get
@@ -81,6 +92,7 @@ namespace Rozdzial8
                 };
             }
         }
+
         public static string[] Headers
         {
             get
@@ -89,45 +101,48 @@ namespace Rozdzial8
             }
         }
     }
-    class ConsoleListControl
+
+    internal class ConsoleListControl
     {
         public static void List(string[] headers, IListable[] items)
         {
             int[] columnWidths = DisplayHeaders(headers);
-            for(int count = 0;count < items.Length;count++)
+            for (int count = 0; count < items.Length; count++)
             {
                 string?[] values = items[count].CellValues;
                 DisplayItemRow(columnWidths, values);
             }
-                Console.WriteLine();
+            Console.WriteLine();
         }
+
         private static int[] DisplayHeaders(string[] headers)
         {
-
             int[] wyjscie = new int[headers.Length];
             int licznik = 0;
-            while(true)
+            while (true)
             {
                 wyjscie[licznik] = headers[licznik].Length;
                 licznik++;
                 if (licznik == headers.Length)
                     break;
             }
-            foreach(var x in headers)
-            Console.Write(x);
+            foreach (var x in headers)
+                Console.Write(x);
 
             return wyjscie;
         }
+
         private static void DisplayItemRow(int[] columnWidths, string?[] values)
         {
             Console.WriteLine();
-            foreach(var x in values)
-                Console.Write(x+" ");
+            foreach (var x in values)
+                Console.Write(x + " ");
         }
     }
-    class Program
+
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Contact[] contacts = new Contact[]
             {

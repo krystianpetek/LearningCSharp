@@ -2,9 +2,9 @@
 
 namespace Rozdzial9_2
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // OPAKOWYWANIE, WYPAKOWYWANIE
 
@@ -27,11 +27,13 @@ namespace Rozdzial9_2
             Console.WriteLine(", " + ((Angle)objectAngle).Degrees);
         }
     }
-    interface IAngle
+
+    internal interface IAngle
     {
         void MoveTo(int degrees, int minutes, int seconds);
     }
-    struct Angle : IAngle
+
+    internal struct Angle : IAngle
     {
         public Angle(int degrees, int minutes, int seconds)
         {
@@ -39,6 +41,7 @@ namespace Rozdzial9_2
             _Minutes = minutes;
             _Seconds = seconds;
         }
+
         public int Degrees { get { return _Degrees; } set { _Degrees = value; } }
         private int _Degrees;
         public int Minutes { get { return _Minutes; } set { _Minutes = value; } }

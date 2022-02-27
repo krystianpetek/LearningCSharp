@@ -3,9 +3,9 @@ using System.Text;
 
 namespace Rozdzial2
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             Console.WriteLine(42);
             Console.WriteLine(1.6180339887498955343424335F); // FLOAT
@@ -13,8 +13,8 @@ namespace Rozdzial2
             Console.WriteLine(1.6180339887498955343424335M); // DECIMAL
             Console.WriteLine(9_814_072_356); // SEPARATOR OD C# 7.0
             Console.WriteLine(6.023E23F); //liczba Avogarda
-            Console.WriteLine(0x002A); // reprezentacja DECYMALNA liczby SZESTNASTKOWEJ 
-            Console.WriteLine(0x002A); // reprezentacja DECYMALNA liczby SZESTNASTKOWEJ 
+            Console.WriteLine(0x002A); // reprezentacja DECYMALNA liczby SZESTNASTKOWEJ
+            Console.WriteLine(0x002A); // reprezentacja DECYMALNA liczby SZESTNASTKOWEJ
             Console.WriteLine(0B101010); // reprezentacja DECYMALNA liczby BINARNEJ
 
             Console.WriteLine($"0x{42:X}"); // reprezentacja SZESTNASTKOWA liczby DECYMALNEJ
@@ -31,7 +31,7 @@ namespace Rozdzial2
             object[] args = new object[] { firstName, lastName };
             Console.WriteLine(string.Format("Twoje imię i nazwisko to {0} {1}.", args));
             Console.WriteLine(string.Format("Twoje imię i nazwisko to {0} {1}.", firstName, lastName));
-            Console.WriteLine(string.Concat(firstName," ", lastName));
+            Console.WriteLine(string.Concat(firstName, " ", lastName));
             string username = "uzytkownik";
             username = username.Trim("uzyt".ToCharArray());
             Console.WriteLine(username);

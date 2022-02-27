@@ -4,10 +4,10 @@ using System.IO;
 namespace Rozdzial7_4
 {
     // POLIMORFIZM
-    class Program
+    internal class Program
     {
-        const int Action = 0;
-        const int FileName = 1;
+        private const int Action = 0;
+        private const int FileName = 1;
         public const string DataFile = "data.dat";
 
         // dopasowanie do wzorca za pomocą operatora is
@@ -51,7 +51,7 @@ namespace Rozdzial7_4
 
             // dopasowanie pozycyjne
             Person person = new Person("Inigo", "Montoya");
-            if(person is (string firstName, string lastName))
+            if (person is (string firstName, string lastName))
                 Console.WriteLine($"{firstName} {lastName}");
 
             // dopasowanie właściwości
@@ -62,6 +62,7 @@ namespace Rozdzial7_4
             }
         }
     }
+
     public class Person
     {
         public Person(string firstName, string lastName)
@@ -69,8 +70,10 @@ namespace Rozdzial7_4
             FirstName = firstName;
             LastName = lastName;
         }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public void Deconstruct(out string firstName, out string lastName) => (firstName, lastName) = (FirstName, LastName); 
+
+        public void Deconstruct(out string firstName, out string lastName) => (firstName, lastName) = (FirstName, LastName);
     }
 }

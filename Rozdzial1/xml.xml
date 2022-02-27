@@ -2,8 +2,8 @@
 <body>
 	<book title="C# 8.0. Praktyczny podręcznik">
 		<chapters>
-			<chapter title="Wprowadzenie do języka C#"/>
-			<chapter title="Typy danych"/>
+			<chapter title="Wprowadzenie do języka C#" />
+			<chapter title="Typy danych" />
 			...
 		</chapters>
 	</book>

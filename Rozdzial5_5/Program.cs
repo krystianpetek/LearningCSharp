@@ -3,9 +3,9 @@ using System.IO;
 
 namespace Rozdzial5_5
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // TABLICE PARAMETRÓW - params
             string fullName;
@@ -19,15 +19,12 @@ namespace Rozdzial5_5
             static string Combine(params string[] paths)
             {
                 string result = string.Empty;
-                foreach(string path in paths)
+                foreach (string path in paths)
                 {
                     result = Path.Combine(result, path);
                 }
                 return result;
             }
-
         }
-
-
     }
 }
