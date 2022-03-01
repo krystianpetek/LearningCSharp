@@ -7,6 +7,7 @@ namespace Rozdzial10_02
         {
             Coordinate coordinate1, coordinate2;
             coordinate1 = new Coordinate(new Longitude(48, 52), new Latitude(-2, -20));
+            Console.WriteLine(coordinate1);
             Arc arc = new Arc(new Longitude(3), new Latitude(1));
             coordinate2 = coordinate1 + arc;
             Console.WriteLine(coordinate2) ;
@@ -23,9 +24,14 @@ namespace Rozdzial10_02
         public Latitude(int x)
         {
             X = x;
+            Y = 0;
         }
         public int X { get; set; }
         public int Y { get; set; }
+        public override string ToString()
+        {
+            return X + " " + Y;
+        }
     }
 
     public struct Longitude
@@ -38,13 +44,22 @@ namespace Rozdzial10_02
         public Longitude(int x)
         {
             X = x;
+            Y = 0;
         }
         public int X { get; set; }
         public int Y { get; set; }
+        public override string ToString()
+        {
+            return X +" " + Y;
+        }
     }
 
     public struct Coordinate
     {
+        public override string ToString()
+        {
+            return longitude + " " + latitude;
+        }
         public Latitude latitude { get; }
         public Longitude longitude { get; }
 
