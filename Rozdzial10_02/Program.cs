@@ -8,23 +8,22 @@ namespace Rozdzial10_02
             Coordinate coordinate1, coordinate2;
             coordinate1 = new Coordinate(new Longitude(48, 52), new Latitude(-2, -20));
             Console.WriteLine(coordinate1);
-            Arc arc = new Arc(new Longitude(3), new Latitude(1));
+            Arc arc = new Arc(new Longitude(3,5), new Latitude(1));
             coordinate2 = coordinate1 + arc;
             Console.WriteLine(coordinate2) ;
             coordinate2 = coordinate2 - arc;
+            Console.WriteLine(coordinate2);
+            coordinate2 += arc;
+            Console.WriteLine(coordinate2);
+            Console.WriteLine(-coordinate1);
         }
     }
     public struct Latitude
     {
-        public Latitude(int x, int y)
+        public Latitude(int x, int y=0)
         {
             X = x;
             Y = y;
-        }
-        public Latitude(int x)
-        {
-            X = x;
-            Y = 0;
         }
         public int X { get; set; }
         public int Y { get; set; }
@@ -36,15 +35,10 @@ namespace Rozdzial10_02
 
     public struct Longitude
     {
-        public Longitude(int x, int y)
+        public Longitude(int x, int y=0)
         {
             X = x;
             Y = y;
-        }
-        public Longitude(int x)
-        {
-            X = x;
-            Y = 0;
         }
         public int X { get; set; }
         public int Y { get; set; }
@@ -71,13 +65,21 @@ namespace Rozdzial10_02
 
         public static Coordinate operator +(Coordinate source, Arc arc)
         {
-            Coordinate result = new Coordinate(new Longitude(source.longitude.X + arc.LongitudeDifference.X), new Latitude(source.latitude.X + arc.LatitudeDifference.X));
+            Coordinate result = new Coordinate(new Longitude(source.longitude.X + arc.LongitudeDifference.X,source.longitude.Y + arc.LongitudeDifference.Y), new Latitude(source.latitude.X + arc.LatitudeDifference.X,source.latitude.Y+arc.LatitudeDifference.Y));
             return result;
         }
         public static Coordinate operator -(Coordinate source, Arc arc)
         {
-            Coordinate result = new Coordinate(new Longitude(source.longitude.X - arc.LongitudeDifference.X), new Latitude(source.latitude.X - arc.LatitudeDifference.X));
+            Coordinate result = new Coordinate(new Longitude(source.longitude.X - arc.LongitudeDifference.X, source.longitude.Y-arc.LongitudeDifference.Y), new Latitude(source.latitude.X - arc.LatitudeDifference.X,source.latitude.Y - arc.LatitudeDifference.Y));
             return result;
+        }
+        public static Coordinate operator +(Coordinate coordinate)
+        {
+            return coordinate;
+        }
+        public static Coordinate operator -(Coordinate coordinate)
+        {
+            return new Coordinate(new Longitude(-coordinate.longitude.X, -coordinate.longitude.Y), new Latitude(-coordinate.latitude.X, -coordinate.latitude.Y));
         }
         public override bool Equals(object obj)
         {
@@ -138,5 +140,5 @@ namespace Rozdzial10_02
         }
     }
 
-    //421
+    //423 arc
 }
