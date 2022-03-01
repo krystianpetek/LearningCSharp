@@ -199,3 +199,5 @@ namespace Rozdzial10_02
         }
     }
 }
+
+// 426
