@@ -150,7 +150,7 @@ namespace Rozdzial10_1
                 return false;
             if (this.GetType() != obj.GetType())
                 return false;
-            
+
             return Equals((ProductSerialNumber)obj);
         }
         public bool Equals(ProductSerialNumber obj)
@@ -164,7 +164,16 @@ namespace Rozdzial10_1
             }
             return false;
         }
-
+        public static bool operator==(ProductSerialNumber left, ProductSerialNumber right)
+        {
+            if (left is null)
+                return right is null;
+            return left.Equals(right);
+        }
+        public static bool operator!=(ProductSerialNumber left, ProductSerialNumber right)
+        {
+            return !(left == right);
+        }
         public override int GetHashCode()
         {
             int hash = HashCode.Combine( this.v1.GetHashCode(), this.v2.GetHashCode(), this.v3.GetHashCode());

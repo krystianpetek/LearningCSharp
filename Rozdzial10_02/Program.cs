@@ -1,10 +1,16 @@
-﻿namespace Rozdzial10_02
+﻿using System;
+namespace Rozdzial10_02
 {
     internal class Program
     {
         private static void Main(string[] args)
         {
-            Coordinate coordinate1 = new Coordinate(new Longitude(48, 52), new Latitude(-2, -20));
+            Coordinate coordinate1, coordinate2;
+            coordinate1 = new Coordinate(new Longitude(48, 52), new Latitude(-2, -20));
+            Arc arc = new Arc(new Longitude(3), new Latitude(1));
+            coordinate2 = coordinate1 + arc;
+            Console.WriteLine(coordinate2) ;
+            coordinate2 = coordinate2 - arc;
         }
     }
     public struct Latitude
@@ -14,7 +20,10 @@
             X = x;
             Y = y;
         }
-
+        public Latitude(int x)
+        {
+            X = x;
+        }
         public int X { get; set; }
         public int Y { get; set; }
     }
@@ -26,7 +35,10 @@
             X = x;
             Y = y;
         }
-
+        public Longitude(int x)
+        {
+            X = x;
+        }
         public int X { get; set; }
         public int Y { get; set; }
     }
@@ -44,7 +56,12 @@
 
         public static Coordinate operator +(Coordinate source, Arc arc)
         {
-            Coordinate result = new Coordinate(new Longitude(source.longitude.X + arc.LongitudeDifference.X, source.longitude.Y + arc.LongitudeDifference.Y), new Latitude(source.latitude.X, arc.LatitudeDifference.X));
+            Coordinate result = new Coordinate(new Longitude(source.longitude.X + arc.LongitudeDifference.X), new Latitude(source.latitude.X + arc.LatitudeDifference.X));
+            return result;
+        }
+        public static Coordinate operator -(Coordinate source, Arc arc)
+        {
+            Coordinate result = new Coordinate(new Longitude(source.longitude.X - arc.LongitudeDifference.X), new Latitude(source.latitude.X - arc.LatitudeDifference.X));
             return result;
         }
         public override bool Equals(object obj)
