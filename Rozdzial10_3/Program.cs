@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging.Console;
+using Microsoft.Extensions.Logging;
 using System;
 using X.Y.Z;
 
@@ -22,6 +23,7 @@ namespace Rozdzial10_3
             // using X.Y.Z;
             XYZ program2 = new XYZ();
             program2.Dodawanie(5, 1);
+            
         }
     }
 

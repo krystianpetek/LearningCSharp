@@ -1,43 +1,74 @@
 ﻿using System;
 namespace ClassLibrary1
 {
+
     public struct Latitude
     {
-        public double latitude { get; set; }
-        public int DecimalDegrees { get; private set; }
-
-        public Latitude(double latitude)
+        public Latitude(int x, int y = 0)
         {
-            this.latitude = latitude;
-            DecimalDegrees = 0;
+            X = x;
+            Y = y;
+            DecimalDegrees = default;
         }
+
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public override string ToString()
+        {
+            return X + " " + Y;
+        }
+
         public static Latitude operator -(Latitude latitude)
         {
-            return new Latitude(-latitude.DecimalDegrees);
+            return new Latitude(-latitude.X, -latitude.Y);
         }
         public static Latitude operator +(Latitude latitude)
         {
             return latitude;
         }
+
+        // konwersja niejawna miedzy typami latitude i double, zle
+        public Latitude(double decimalDegrees)
+        {
+            X = default;
+            Y = default;
+            DecimalDegrees = decimalDegrees;
+        }
+        public double DecimalDegrees { get; }
+        public static implicit operator double(Latitude latitude)
+        {
+            return latitude.DecimalDegrees;
+        }
+        public static implicit operator Latitude(double degrees)
+        {
+            return new Latitude(degrees);
+        }
     }
+
+
     public struct Longitude
     {
-        public int DecimalDegrees { get; private set; }
-        public double longitude { get; set; }
-        public Longitude(double longitude)
+        public Longitude(int x, int y = 0)
         {
-            this.longitude = longitude;
-            DecimalDegrees = 0;
+            X = x;
+            Y = y;
         }
+
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public override string ToString()
+        {
+            return X + " " + Y;
+        }
+
         public static Longitude operator -(Longitude longitude)
         {
-            return new Longitude(-longitude.DecimalDegrees);
-        }
-        public static Longitude operator +(Longitude longitude)
-        {
-            return longitude;
+            return new Longitude(-longitude.X, -longitude.Y);
         }
     }
+
     public struct Arc
     {
         public Arc(int x, int y)
