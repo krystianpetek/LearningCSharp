@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 using X.Y.Z;
+using System.IO;
 
 namespace Rozdzial10_3
 {
@@ -55,9 +56,49 @@ namespace Rozdzial10_3
                 Data.SetTarget(target);
                 return target;
             }
-            // 443
         }
     }
+    public class TemporaryFileStream
+    {
+        public FileInfo? File { get; private set; }
+        public FileStream? Stream { get; private set; }
+        public TemporaryFileStream(string fileName)
+        {
+            File = new FileInfo(fileName);
+            // lepsze rozwiazanie to wywolanie FileOptions.DeleteOnClose
+            Stream = new FileStream(File.FullName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        }
+        public TemporaryFileStream() : this(Path.GetTempFileName())
+        {
+        }
+        ~TemporaryFileStream()
+        {
+            try
+            {
+                Close();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Zapis zdarzeń itp, lub może wyrzucenie błędu");
+            }
+        }
+        
+        public void Close()
+        {
+            Stream?.Dispose();
+            try
+            {
+                File?.Delete();
+            }
+            catch(IOException exception)
+            {
+                Console.WriteLine(exception);
+            }
+            Stream = null;
+            File = null;
+        }
+    }
+
 }
 
 namespace X
