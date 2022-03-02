@@ -11,11 +11,8 @@ namespace Rozdzial10_3
         {
             Console.WriteLine("Hello World!");
             using ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
-
             ILogger logger = loggerFactory.CreateLogger(categoryName: "Console");
-
             logger.LogInformation($@"Kody triażu: = '{string.Join("', '", args)}'");
-
             logger.LogWarning("To test kodów triażu...");
 
             // namespace zagniezdzone
