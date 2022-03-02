@@ -1,5 +1,5 @@
 ﻿using System;
-
+using ClassLibrary1;
 namespace Rozdzial10_02
 {
     internal class Program
@@ -153,7 +153,7 @@ namespace Rozdzial10_02
         }
     }
 
-    // dodawanie operatora +
+    // dodawanie operatora + 
     public struct Arc
     {
         public Arc(Longitude longitudeDifference, Latitude latitudeDifference)
