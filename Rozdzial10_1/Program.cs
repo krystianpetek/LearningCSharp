@@ -9,10 +9,12 @@ namespace Rozdzial10_1
         {
             _longitude = longitude;
         }
+
         public override string ToString()
         {
             return $"{_longitude}";
         }
+
         public double _longitude { get; set; }
     }
 
@@ -22,10 +24,12 @@ namespace Rozdzial10_1
         {
             _latitude = latitude;
         }
+
         public override string ToString()
         {
             return $"{_latitude}";
         }
+
         public double _latitude { get; set; }
     }
 
@@ -36,11 +40,14 @@ namespace Rozdzial10_1
             Longitude = longitude;
             Latitude = latitude;
         }
+
         public Longitude Longitude { get; }
         public Latitude Latitude { get; }
+
         public override string ToString() => $"{Longitude} {Latitude}";
+
         public override int GetHashCode() => HashCode.Combine(Longitude.GetHashCode(), Latitude.GetHashCode());
-        
+
         // override EQUALS
         public override bool Equals(object obj)
         {
@@ -80,7 +87,6 @@ namespace Rozdzial10_1
 
         // krok 8. przesloniecie metody gethashcode
     }
-
 
     internal class Program
     {
@@ -144,6 +150,7 @@ namespace Rozdzial10_1
             this.v2 = v2;
             this.v3 = v3;
         }
+
         public override bool Equals(object obj)
         {
             if (obj is null)
@@ -153,6 +160,7 @@ namespace Rozdzial10_1
 
             return Equals((ProductSerialNumber)obj);
         }
+
         public bool Equals(ProductSerialNumber obj)
         {
             if (obj.GetHashCode() != this.GetHashCode())
@@ -164,19 +172,22 @@ namespace Rozdzial10_1
             }
             return false;
         }
-        public static bool operator==(ProductSerialNumber left, ProductSerialNumber right)
+
+        public static bool operator ==(ProductSerialNumber left, ProductSerialNumber right)
         {
             if (left is null)
                 return right is null;
             return left.Equals(right);
         }
-        public static bool operator!=(ProductSerialNumber left, ProductSerialNumber right)
+
+        public static bool operator !=(ProductSerialNumber left, ProductSerialNumber right)
         {
             return !(left == right);
         }
+
         public override int GetHashCode()
         {
-            int hash = HashCode.Combine( this.v1.GetHashCode(), this.v2.GetHashCode(), this.v3.GetHashCode());
+            int hash = HashCode.Combine(this.v1.GetHashCode(), this.v2.GetHashCode(), this.v3.GetHashCode());
             return hash;
         }
     }

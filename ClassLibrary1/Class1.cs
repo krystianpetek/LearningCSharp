@@ -1,7 +1,5 @@
-﻿using System;
-namespace ClassLibrary1
+﻿namespace ClassLibrary1
 {
-
     public struct Latitude
     {
         public Latitude(int x, int y = 0)
@@ -23,6 +21,7 @@ namespace ClassLibrary1
         {
             return new Latitude(-latitude.X, -latitude.Y);
         }
+
         public static Latitude operator +(Latitude latitude)
         {
             return latitude;
@@ -35,17 +34,19 @@ namespace ClassLibrary1
             Y = default;
             DecimalDegrees = decimalDegrees;
         }
+
         public double DecimalDegrees { get; }
+
         public static implicit operator double(Latitude latitude)
         {
             return latitude.DecimalDegrees;
         }
+
         public static implicit operator Latitude(double degrees)
         {
             return new Latitude(degrees);
         }
     }
-
 
     public struct Longitude
     {
@@ -85,6 +86,7 @@ namespace ClassLibrary1
             return new Arc(-arc.LongitudeDifference,
             -arc.LatitudeDifference);
         }
+
         public static Arc operator +(Arc arc)
         {
             return arc;
