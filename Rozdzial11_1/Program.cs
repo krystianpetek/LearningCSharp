@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Rozdzial11_1
 {
@@ -6,7 +7,39 @@ namespace Rozdzial11_1
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // Przechwytywanie wyjątku
+            try
+            {
+                throw new InvalidOperationException("Dowolny wyjątek");
+            }
+            catch(Win32Exception exception)
+            when (exception.NativeErrorCode == 42){
+                // Obsługa wyjątku typu Win32Exception, gdy
+                // właściwość NativeErrorCode ma wartość 42.
+            }
+            catch (ArgumentException exception)
+            {
+                // Obsługa wyjątków typu ArgumentException.
+            }
+            catch (InvalidOperationException exception)
+            {
+                bool exceptionHandled = false;
+                // Obsługa wyjątków typu InvalidOperationException.
+                if (!exceptionHandled)
+                {
+                    // Unikaj zgłaszania w instrukcjach warunkowych!!!!
+                    throw;
+                }
+            }
+            catch(Exception exception)
+            {
+                // Obsługa wyjątków typu Exception.
+            }
+            finally
+            {
+                // Tu umieść kod porządkujący zasoby. Ten kod
+                // jest wykonywany niezależnie od tego, czy wystąpił wyjątek.
+            }
         }
     }
     public sealed class TextNumberParser 
