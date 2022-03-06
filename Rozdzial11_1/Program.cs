@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Threading.Tasks;
 
 namespace Rozdzial11_1
 {
@@ -13,8 +12,9 @@ namespace Rozdzial11_1
             {
                 throw new InvalidOperationException("Dowolny wyjątek");
             }
-            catch(Win32Exception exception)
-            when (exception.NativeErrorCode == 42){
+            catch (Win32Exception exception)
+            when (exception.NativeErrorCode == 42)
+            {
                 // Obsługa wyjątku typu Win32Exception, gdy
                 // właściwość NativeErrorCode ma wartość 42.
             }
@@ -32,7 +32,7 @@ namespace Rozdzial11_1
                     throw;
                 }
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 // Obsługa wyjątków typu Exception.
             }
@@ -43,13 +43,14 @@ namespace Rozdzial11_1
             }
         }
     }
-    public sealed class TextNumberParser 
+
+    public sealed class TextNumberParser
     {
         public static int Parse(string textDigit)
         {
             string[] digitTexts = { "zero", "jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć" };
             int result = Array.IndexOf(digitTexts, textDigit ?? throw new ArgumentNullException(nameof(textDigit).ToLower()));
-            if(result < 0)
+            if (result < 0)
             {
                 throw new ArgumentException("Argument nie reprezentuje cyfry", nameof(textDigit));
             }
