@@ -12,7 +12,17 @@ namespace Rozdzial12_4
             
             }
         }
-        public class ValueTuple<T1, T2>{ };
+        public class ValueTuple<T1, T2>
+        {
+            private string v;
+            private Contact contact;
+
+            public ValueTuple(string v, Contact contact)
+            {
+                this.v = v;
+                this.contact = contact;
+            }
+        }
         public class ValueTuple<T1, T2, T3>{ };
         public class ValueTuple<T1, T2, T3,T4>{ };
         public class ValueTuple<T1, T2, T3,T4,T5>{ };
