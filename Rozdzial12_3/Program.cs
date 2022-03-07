@@ -7,6 +7,10 @@ namespace Rozdzial12_3
         private static void Main(string[] args)
         {
             var x = new Stack<Cell>(10);
+            var y = new Pair<Cell>(new Cell(1, 1));
+
+            Pair<int, string> para = new Pair<int, string>(1914,"Shackleton wyrusza na Biegun Północny na statek Endurance");
+            System.Console.WriteLine(para.first + ": " + para.second);            
         }
     }
 
@@ -45,9 +49,19 @@ namespace Rozdzial12_3
         T First { get; set; }
         T Second { get; set; }
     }
-
+    
     public struct Pair<T> : IPair<T>
     {
+        public Pair(T f, T s)
+        {
+            First = f;
+            Second = s;
+        }
+        public Pair(T f)
+        {
+            First = f;
+            Second = default(T);
+        }
         public T First { get; set; }
         public T Second { get; set; }
     }
@@ -75,5 +89,20 @@ namespace Rozdzial12_3
         ICollection<Address> IContainer<Address>.items { get; set; }
         ICollection<Phone> IContainer<Phone>.items { get; set; }
         ICollection<Email> IContainer<Email>.items { get; set; }
+    }
+    interface IPair<TFirst, TSecond>
+    {
+        TFirst first { get; set; }
+        TSecond second { get; set; }
+    }
+    public struct Pair<TFirst, TSecond> : IPair<TFirst, TSecond>
+    {
+        public TFirst first { get; set; }
+        public TSecond second { get; set; }
+        public Pair(TFirst x, TSecond y)
+        {
+            first = x;
+            second = y;
+        }
     }
 }
