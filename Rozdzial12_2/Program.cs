@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+
 namespace Rozdzial12_2
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var x = new Program();
             Console.CursorVisible = false;
             x.Sketch();
         }
+
         // TYPY GENERYCZNE
         public void Sketch()
         {
@@ -21,16 +23,17 @@ namespace Rozdzial12_2
             do
             {
                 key = Console.ReadKey();
-                    switch(key.Key)
+                switch (key.Key)
                 {
                     case ConsoleKey.Z:
-                        if(path.Count > 0)
+                        if (path.Count > 0)
                         {
                             currentPosition = path.Pop();
                             Console.SetCursorPosition(currentPosition.x, currentPosition.y);
                             Undo();
                         }
                         break;
+
                     case ConsoleKey.UpArrow:
                         currentPosition = new Cell(Console.CursorLeft, Console.CursorTop - 1);
                         path.Push(currentPosition);
@@ -54,12 +57,9 @@ namespace Rozdzial12_2
                     default:
                         Console.Beep();
                         break;
-
                 }
                 Move(path);
-
             } while (key.Key != ConsoleKey.X);
-        
         }
 
         private void Undo()
@@ -84,10 +84,12 @@ namespace Rozdzial12_2
             }
         }
     }
+
     public struct Cell
     {
         public int x;
         public int y;
+
         public Cell(int x, int y)
         {
             this.x = x;

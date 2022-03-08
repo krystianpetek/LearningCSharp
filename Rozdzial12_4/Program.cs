@@ -1,17 +1,18 @@
-﻿using System;
-namespace Rozdzial12_4
+﻿namespace Rozdzial12_4
 {
     public class Program
     {
-        public class ValueTuple { }
+        public class ValueTuple
+        { }
+
         public class ValueTuple<T1> : IComparable<ValueTuple<T1>>
         {
             public int CompareTo(ValueTuple<T1>? other)
             {
                 throw new NotImplementedException();
-
             }
         }
+
         public class ValueTuple<T1, T2>
         {
             private string v;
@@ -23,13 +24,26 @@ namespace Rozdzial12_4
                 this.contact = contact;
             }
         }
-        public class ValueTuple<T1, T2, T3> { };
-        public class ValueTuple<T1, T2, T3, T4> { };
-        public class ValueTuple<T1, T2, T3, T4, T5> { };
-        public class ValueTuple<T1, T2, T3, T4, T5, T6> { };
-        public class ValueTuple<T1, T2, T3, T4, T5, T6, T7> { };
+
+        public class ValueTuple<T1, T2, T3>
+        { };
+
+        public class ValueTuple<T1, T2, T3, T4>
+        { };
+
+        public class ValueTuple<T1, T2, T3, T4, T5>
+        { };
+
+        public class ValueTuple<T1, T2, T3, T4, T5, T6>
+        { };
+
+        public class ValueTuple<T1, T2, T3, T4, T5, T6, T7>
+        { };
+
         // teoretycznie 8 argumentów MAX, ale ostania krotka to kolejny ValueTuple więc mozna robić w nieskończoność
-        public class ValueTuple<T1, T2, T3, T4, T5, T6, T7, nextValueTuple> { };
+        public class ValueTuple<T1, T2, T3, T4, T5, T6, T7, nextValueTuple>
+        { };
+
         public static void Main()
         {
             // krotki - typy o różnej arności
@@ -41,17 +55,18 @@ namespace Rozdzial12_4
             ValueTuple<string, Contact> keyValueParaPrzed7;
             keyValueParaPrzed7 = new ValueTuple<string, Contact>("555-55-5555", new Contact("Inigo", "Montoya"));
         }
+
         public class Contact
         {
             public string Imie { get; set; }
             public string Nazwisko { get; set; }
+
             public Contact(string imie, string nazwisko)
             {
                 Imie = imie;
                 Nazwisko = nazwisko;
             }
         }
-
 
         // zagnieżdzone typy generyczne
         public class Container<T1, T2>
@@ -60,7 +75,6 @@ namespace Rozdzial12_4
             {
                 public void Method(T1 param0, T2 param2)
                 {
-
                 }
             }
         }
@@ -73,16 +87,20 @@ namespace Rozdzial12_4
                 First = first;
                 Second = second;
             }
+
             public T First { get; set; }
             public T Second { get; set; }
         }
+
         public class BinaryTree<T> where T : System.IComparable<T>
         {
             public BinaryTree(T item)
             {
                 _item = item;
             }
+
             public T _item { get; set; }
+
             public Pair<BinaryTree<T>> SubItems
             {
                 get { return _SubItems; }
@@ -107,15 +125,24 @@ namespace Rozdzial12_4
                                 // Element second jest mniejszy lub równy względem first.
                             }
                             break;
+
                         default:
                             throw new InvalidCastException(@$"Nie da się posortować elementów. Typ {typeof(T) } nie obsługuje interfejsu IComparable<T>");
                     }
                     _SubItems = value;
                 }
-
             }
+
             private Pair<BinaryTree<T>?>? _SubItems;
         }
-        // 497
+
+        // ograniczenia parametru
+        public class EntityDictionary<Tkey, Tvalue> : Dictionary<Tkey, Tvalue> where Tkey : notnull where Tvalue : EntityBase
+        {
+        }
+
+        public class EntityBase
+        {
+        }
     }
 }
