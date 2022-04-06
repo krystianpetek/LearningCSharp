@@ -16,7 +16,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsynchronicznyTask", "Async
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfejsy_CS", "Interfejsy_CS\Interfejsy_CS.csproj", "{535C28A5-3ADA-4091-90E4-443B018C506F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfejsy_8.0", "Interfejsy_8.0\Interfejsy_8.0.csproj", "{02C68E5E-F91C-4B63-A8EB-92C44174F113}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfejsy_8.0", "Interfejsy_8.0\Interfejsy_8.0.csproj", "{02C68E5E-F91C-4B63-A8EB-92C44174F113}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypyCS", "TypyCS\TypyCS.csproj", "{244BF008-DBCC-498A-B4C5-F958F7701CE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{02C68E5E-F91C-4B63-A8EB-92C44174F113}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02C68E5E-F91C-4B63-A8EB-92C44174F113}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02C68E5E-F91C-4B63-A8EB-92C44174F113}.Release|Any CPU.Build.0 = Release|Any CPU
+		{244BF008-DBCC-498A-B4C5-F958F7701CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{244BF008-DBCC-498A-B4C5-F958F7701CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{244BF008-DBCC-498A-B4C5-F958F7701CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{244BF008-DBCC-498A-B4C5-F958F7701CE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
