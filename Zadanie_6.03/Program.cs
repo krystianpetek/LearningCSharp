@@ -1,5 +1,4 @@
-﻿
-Prostokat[] tablica =
+﻿Prostokat[] tablica =
             {
                 new Prostokat(6,4), new Prostokat(6,10), new Prostokat(6,9)
             };

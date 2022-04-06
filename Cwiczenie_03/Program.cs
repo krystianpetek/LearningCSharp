@@ -1,5 +1,4 @@
-﻿
-Console.WriteLine($"Liczba pracowników {Pracownik.liczbaPrac}");
+﻿Console.WriteLine($"Liczba pracowników {Pracownik.liczbaPrac}");
 
 Pracownik p1 = new Pracownik("Petek", 3300);
 p1.Nazwisko = "Kowalski";

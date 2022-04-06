@@ -1,5 +1,4 @@
-﻿
-Console.WriteLine("wprowadz poczatkowy stan licznika: ");
+﻿Console.WriteLine("wprowadz poczatkowy stan licznika: ");
 int poczatkowy = int.Parse(Console.ReadLine());
 Console.WriteLine("wprowadz poczatkowy stan licznika: ");
 int biezacy = int.Parse(Console.ReadLine());

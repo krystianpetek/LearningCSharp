@@ -1,6 +1,4 @@
-﻿
-
-//Pracownik[] tab = new Pracownik[3];
+﻿//Pracownik[] tab = new Pracownik[3];
 //tab[0] = new Pracownik("Petek", 1250.0);
 //tab[1] = new Pracownik("Zemlik", 1340.0);
 //tab[2] = new Pracownik("Kosarski", 2210.0);

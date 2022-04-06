@@ -1,5 +1,4 @@
-﻿
-KandydatNaStudia[] tablica = new KandydatNaStudia[]
+﻿KandydatNaStudia[] tablica = new KandydatNaStudia[]
             {
                 new KandydatNaStudia("Petek",75,68,52),
                 new KandydatNaStudia("Merek",53,12,13),

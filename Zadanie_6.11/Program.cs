@@ -18,7 +18,6 @@
 //            }
 //        case "D2":
 //            {
-
 //                BMI.Oblicz();
 //                break;
 //            }

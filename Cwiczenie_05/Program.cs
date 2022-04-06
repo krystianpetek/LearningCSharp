@@ -1,5 +1,4 @@
-﻿
-MojaKlasa p1 = new MojaKlasa(5);
+﻿MojaKlasa p1 = new MojaKlasa(5);
 
 MojaKlasa p2 = new(p1);
 

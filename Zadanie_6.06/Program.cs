@@ -1,5 +1,4 @@
-﻿
-Punkt[] tablica = new Punkt[3];
+﻿Punkt[] tablica = new Punkt[3];
 for (int i = 0; i < 3; i++)
 {
     Console.WriteLine("Podaj x i y");

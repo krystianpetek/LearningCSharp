@@ -1,5 +1,4 @@
-﻿
-Prostokat ProKAT = new Prostokat(5, 3);
+﻿Prostokat ProKAT = new Prostokat(5, 3);
 ProKAT.Prezentuj();
 
 Prostokat[] tablica = new Prostokat[]

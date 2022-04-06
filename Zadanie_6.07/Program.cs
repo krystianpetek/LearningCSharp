@@ -1,5 +1,4 @@
-﻿
-Punkt[] tablica = new Punkt[2];
+﻿Punkt[] tablica = new Punkt[2];
 Console.WriteLine("Podaj współrzędną X punktu A: ");
 double x = double.Parse(Console.ReadLine());
 Console.WriteLine("Podaj współrzędną Y punktu A: ");

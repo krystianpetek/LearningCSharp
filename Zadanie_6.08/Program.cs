@@ -1,5 +1,4 @@
-﻿
-var A = new Prostopadloscian(1, 6, 4);
+﻿var A = new Prostopadloscian(1, 6, 4);
 var B = new Prostopadloscian(6, 4.21, 9);
 
 Console.WriteLine(A.ObliczObjetosc());
