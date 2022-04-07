@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Zadanie_3._01
+namespace Zadanie_3._02
 {
     /// <summary>
     /// Interaction logic for App.xaml

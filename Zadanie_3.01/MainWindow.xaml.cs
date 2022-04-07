@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Zadanie_3._01
 {
@@ -24,20 +13,51 @@ namespace Zadanie_3._01
         {
             InitializeComponent();
         }
+
         private void lblBok_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             txtBok.Focus();
         }
 
-        private void lblPole_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void txtBok_TextChanged(object sender, TextChangedEventArgs e)
         {
-            txtPole.Focus();
+            var wartoscBok = txtBok.Text;
+
+            if (wartoscBok == string.Empty)
+            {
+                lblKomunikat.Content = "Wpisz wymiar bloku";
+                txtPole.Text = "";
+                txtObwod.Text = "";
+                return;
+            }
+            wartoscBok = wartoscBok.Replace('.', ',');
+
+            bool prawidlowa = double.TryParse(wartoscBok, out double wejscie);
+
+            if (!prawidlowa)
+            {
+                lblKomunikat.Content = "Podaj wartość liczbową";
+                txtPole.Text = "";
+                txtObwod.Text = "";
+                return;
+            }
+
+            if (wejscie < 0)
+            {
+                lblKomunikat.Content = "Podaj wartość dodatnią";
+                txtPole.Text = "";
+                txtObwod.Text = "";
+                return;
+            }
+
+            lblKomunikat.Content = "";
+            txtPole.Text = $"{wejscie * wejscie:F2}";
+            txtObwod.Text = $"{(wejscie * 4):F2}";
         }
 
-        private void lblObwod_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void btnWyczysc_Click(object sender, RoutedEventArgs e)
         {
-            txtObwod.Focus();
+            txtBok.Text = "";
         }
-
     }
 }
