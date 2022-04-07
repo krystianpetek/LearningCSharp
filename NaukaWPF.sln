@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{17C9824B-BB74-4E61-8366-F69E0FF40211}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rozdzial2_Zadania", "WpfApp1\Rozdzial2_Zadania.csproj", "{17C9824B-BB74-4E61-8366-F69E0FF40211}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rozdzial2", "Rozdzial2", "{B7BA5998-B5F8-43B4-8900-5E1341DC698F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rozdzial3", "Rozdzial3", "{F375EA51-AA83-41A7-90E4-E6391253BD8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zadanie_3.01", "Zadanie_3.01\Zadanie_3.01.csproj", "{DDC1D263-02EF-4258-B8FC-500A310F4913}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +21,17 @@ Global
 		{17C9824B-BB74-4E61-8366-F69E0FF40211}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17C9824B-BB74-4E61-8366-F69E0FF40211}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17C9824B-BB74-4E61-8366-F69E0FF40211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDC1D263-02EF-4258-B8FC-500A310F4913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDC1D263-02EF-4258-B8FC-500A310F4913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDC1D263-02EF-4258-B8FC-500A310F4913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDC1D263-02EF-4258-B8FC-500A310F4913}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{17C9824B-BB74-4E61-8366-F69E0FF40211} = {B7BA5998-B5F8-43B4-8900-5E1341DC698F}
+		{DDC1D263-02EF-4258-B8FC-500A310F4913} = {F375EA51-AA83-41A7-90E4-E6391253BD8C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB6F7D3-04AF-4B0E-BAF8-5D36C366D42D}
