@@ -1,0 +1,15 @@
+﻿<Window x:Class="Zadanie_4._02_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="StackPanel" Height="150" Width="260">
+    <StackPanel Orientation="Vertical">
+        <Label x:Name="lblPytanie" Content="Jaką porę roku lubisz najbardziej?" />
+        <RadioButton x:Name="radioBtn1" Content="Wiosna" GroupName="poraRoku" />
+        <RadioButton x:Name="radioBtn2" Content="Lato" GroupName="poraRoku" />
+        <RadioButton x:Name="radioBtn3" Content="Jesień" GroupName="poraRoku" />
+        <RadioButton x:Name="radioBtn4" Content="Zima" GroupName="poraRoku" />
+    </StackPanel>
+</Window>

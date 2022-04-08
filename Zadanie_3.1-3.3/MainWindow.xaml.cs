@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Zadanie_3._02
+namespace Zadanie_3._1_3._3
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -13,6 +13,7 @@ namespace Zadanie_3._02
         public MainWindow()
         {
             InitializeComponent();
+            ukryjRysunekON.IsChecked = true;
         }
 
         private void lblBok_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -65,7 +66,7 @@ namespace Zadanie_3._02
         {
             string kolor = cmbKolor.Text;
             lblRysujBlad.Content = "";
-            rectRysuj.Opacity = (cbPrzezroczysty.IsChecked.Value) ? 0.5 : 1;
+            rectRysuj.Opacity = cbPrzezroczysty.IsChecked.Value ? 0.5 : 1;
             rectRysuj.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(kolor);
 
             if (txtBok.Text == string.Empty)
@@ -88,6 +89,16 @@ namespace Zadanie_3._02
                 rectRysuj.Width = wartosc;
                 rectRysuj.Height = wartosc;
             }
+        }
+
+        private void ukryjRysunekON_Checked(object sender, RoutedEventArgs e)
+        {
+            rectRysuj.Visibility = Visibility.Visible;
+        }
+
+        private void ukryjRysunekOFF_Checked(object sender, RoutedEventArgs e)
+        {
+            rectRysuj.Visibility = Visibility.Hidden;
         }
     }
 }
