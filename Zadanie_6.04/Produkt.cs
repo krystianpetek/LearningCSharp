@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Zadanie_6._04
+﻿namespace Zadanie_6._04
 {
     internal class Produkt
     {

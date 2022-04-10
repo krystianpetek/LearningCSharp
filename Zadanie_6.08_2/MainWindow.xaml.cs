@@ -5,14 +5,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Zadanie_6._07
+namespace Zadanie_6._08_2
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<Produkt> ListaProduktow = null;
+        internal ObservableCollection<Produkt> ListaProduktow = null;
 
         public MainWindow()
         {
@@ -42,6 +42,27 @@ namespace Zadanie_6._07
         {
             Window1 okno1 = new(this);
             okno1.ShowDialog();
+        }
+
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            var produkt = lstProdukty.SelectedItem as Produkt;
+            if (produkt != null)
+            {
+                MessageBoxResult odpowiedz = MessageBox.Show("Czy wykasować produkt: " + produkt.ToString() + "?", "Pytanie", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (odpowiedz == MessageBoxResult.Yes)
+                {
+                    ListaProduktow.Remove(produkt);
+                    var query = from x in ListaProduktow where x.Nazwa.Contains(txtFilter.Text, StringComparison.OrdinalIgnoreCase) orderby x.Magazyn, x.Nazwa select x;
+                    lstProdukty.ItemsSource = query;
+                }
+            }
+        }
+
+        private void add_Click(object sender, RoutedEventArgs e)
+        {
+            WindowAdd oknoDodawania = new(this);
+            oknoDodawania.ShowDialog();
         }
     }
 }

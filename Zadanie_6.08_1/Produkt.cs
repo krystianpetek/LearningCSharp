@@ -1,4 +1,4 @@
-﻿namespace Zadanie_6._07
+﻿namespace Zadanie_6._08_1
 {
     internal class Produkt
     {
