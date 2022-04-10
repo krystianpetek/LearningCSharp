@@ -10,10 +10,10 @@
         <ListView x:Name="lstProdukty">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Symbol" DisplayMemberBinding="{Binding Symbol}"/>
-                    <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Nazwa}"/>
-                    <GridViewColumn Header="Liczba sztuk" DisplayMemberBinding="{Binding LiczbaSztuk}"/>
-                    <GridViewColumn Header="Magazyn" DisplayMemberBinding="{Binding Magazyn}"/>
+                    <GridViewColumn Header="Symbol" DisplayMemberBinding="{Binding Symbol}" />
+                    <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Nazwa}" />
+                    <GridViewColumn Header="Liczba sztuk" DisplayMemberBinding="{Binding LiczbaSztuk}" />
+                    <GridViewColumn Header="Magazyn" DisplayMemberBinding="{Binding Magazyn}" />
                 </GridView>
             </ListView.View>
         </ListView>

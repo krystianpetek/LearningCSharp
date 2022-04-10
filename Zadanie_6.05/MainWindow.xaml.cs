@@ -1,7 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 
-namespace Zadanie_6._02
+namespace Zadanie_6._05
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,7 +24,16 @@ namespace Zadanie_6._02
             ListaProduktow.Add(new Produkt("PW-20", "pióro wieczne", 75, "Katowice 2"));
             ListaProduktow.Add(new Produkt("DZ-10", "długopis żelowy", 1121, "Katowice 1"));
             ListaProduktow.Add(new Produkt("DZ-12", "długopis kulkowy", 280, "Katowice 2"));
-            lstProdukty.ItemsSource = ListaProduktow;
+
+            // LINQ
+            var query = from x in ListaProduktow orderby x.Magazyn, x.Nazwa select x;
+            lstProdukty.ItemsSource = query;
+
+            // CollectionView
+            //lstProdukty.ItemsSource = ListaProduktow;
+            //var widok = CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource);
+            //widok.SortDescriptions.Add(new SortDescription("Magazyn", ListSortDirection.Ascending));
+            //widok.SortDescriptions.Add(new SortDescription("Nazwa", ListSortDirection.Ascending));
         }
     }
 }

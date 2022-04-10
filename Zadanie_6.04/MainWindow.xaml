@@ -9,9 +9,9 @@ Title="Lista produktów" Height="450" Width="800">
     <Grid>
         <ListView x:Name="lstProdukty">
             <ListView.View>
-                <GridView >
-                    <GridViewColumn Header="Symbol" DisplayMemberBinding="{Binding Symbol}"/>
-                    <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Nazwa}"/>
+                <GridView>
+                    <GridViewColumn Header="Symbol" DisplayMemberBinding="{Binding Symbol}" />
+                    <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Nazwa}" />
                     <GridViewColumn x:Name="xLs" Header="Liczba sztuk">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -19,7 +19,7 @@ Title="Lista produktów" Height="450" Width="800">
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Magazyn" DisplayMemberBinding="{Binding Magazyn}"/>
+                    <GridViewColumn Header="Magazyn" DisplayMemberBinding="{Binding Magazyn}" />
                 </GridView>
             </ListView.View>
         </ListView>

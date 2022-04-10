@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Zadanie_6._04
+namespace Zadanie_6._05
 {
     internal class Produkt
     {
@@ -19,7 +19,7 @@ namespace Zadanie_6._04
 
         public override string ToString()
         {
-            return string.Format("{0} {1} {2} {3}", Symbol, Nazwa, LiczbaSztuk, Magazyn);
+            return String.Format("{0} {1} {2} {3}", Symbol, Nazwa, LiczbaSztuk, Magazyn);
         }
     }
 }
