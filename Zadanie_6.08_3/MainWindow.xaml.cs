@@ -11,14 +11,12 @@ namespace Zadanie_6._08_3
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<Produkt> produkty;
-
+        List<Produkt> produkty;
         public MainWindow()
         {
             InitializeComponent();
             Wiazanie();
         }
-
         private void Wiazanie()
         {
             produkty = new List<Produkt>();
@@ -46,7 +44,6 @@ namespace Zadanie_6._08_3
 
         private void dodajBtn_Click(object sender, RoutedEventArgs e)
         {
-            listaView.SelectedValue = null;
             CLEAR();
             Symbol.Focus();
         }
@@ -66,11 +63,17 @@ namespace Zadanie_6._08_3
         private void zatwierdzBtn_Click(object sender, RoutedEventArgs e)
         {
             var produkt = listaView.SelectedItem as Produkt;
-            if (produkt == null)
-                if (Nazwa.Text == "" || Symbol.Text == "" || Magazyn.Text == "")
-                    return;
-            produkt = new Produkt(Symbol.Text, Nazwa.Text, int.Parse(LiczbaSztuk.Text), Magazyn.Text);
+            if (listaView.SelectedIndex > 0)
+            {
+                if (produkt == null)
+                    if (Nazwa.Text == "" || Symbol.Text == "" || Magazyn.Text == "")
+                        return;
 
+            }
+            else
+            {
+                produkt = new Produkt(Symbol.Text, Nazwa.Text, int.Parse(LiczbaSztuk.Text), Magazyn.Text);
+            }
             var index = produkty.IndexOf(produkt);
             if (index < 0)
             {
@@ -101,6 +104,7 @@ namespace Zadanie_6._08_3
             Magazyn.Text = "";
             LiczbaSztuk.Text = "";
             filter.Text = "";
+            listaView.SelectedValue = null;
         }
 
         private void listaView_SelectionChanged(object sender, SelectionChangedEventArgs e)
