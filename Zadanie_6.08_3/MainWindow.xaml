@@ -5,8 +5,165 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zadanie_6._08_3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Lista Produktów" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
         
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="75*"></RowDefinition>
+            <RowDefinition Height="15*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"></ColumnDefinition>
+            <ColumnDefinition Width="60*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label
+            Grid.Column="0"
+            Grid.Row="0"
+            Content="Produkt: "
+            VerticalAlignment="Center"
+             Foreground="#3399FF"/>
+
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="60*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label 
+                Grid.Row="0" 
+                Margin="10"
+                Content="Symbol:"
+                Foreground="#3399FF"/>
+            <Label 
+                Margin="10"
+                Grid.Row="1" 
+                Content="Nazwa:" 
+                Foreground="#3399FF"/>
+            <Label 
+                Margin="10"
+                Grid.Row="2" 
+                Content="Liczba sztuk:" 
+                Foreground="#3399FF"/>
+            <Label 
+                Margin="10"
+                Grid.Row="3" 
+                VerticalContentAlignment="Center"
+                Content="Magazyn:"
+                Foreground="#3399FF"/>
+
+            <Button x:Name="zatwierdzBtn" 
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.Row="4" 
+                Content="ZATWIERDŹ"
+                Width="150"
+                Height="40" 
+                Margin="10"
+                BorderThickness="1"
+                Background="White"
+                BorderBrush="black" Click="zatwierdzBtn_Click"
+                
+                ></Button>
+            <TextBox
+                x:Name="Symbol"
+                Margin="7"
+                Grid.Row="0"
+                VerticalContentAlignment="Center"
+                Grid.Column="1"
+                />
+            <TextBox
+                x:Name="Nazwa"
+                Margin="7"
+                Grid.Row="1"
+                VerticalContentAlignment="Center"
+                Grid.Column="1"
+                />
+            <TextBox
+                x:Name="LiczbaSztuk"
+                Margin="7"
+                Grid.Row="2"
+                VerticalContentAlignment="Center"
+                Grid.Column="1"
+                />
+            <TextBox
+                x:Name="Magazyn"
+                Margin="7"
+                Grid.Row="3"
+                VerticalContentAlignment="Center"
+                Grid.Column="1"
+                />
+            </Grid>
+        <ListView Grid.Column="1" Grid.Row="1" x:Name="listaView" SelectionMode="Extended" SelectionChanged="listaView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Symbol" DisplayMemberBinding="{Binding Path=Symbol}"/>
+                    <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Path=Nazwa}"/>
+                    <GridViewColumn Header="Liczba sztuk" DisplayMemberBinding="{Binding Path=LiczbaSztuk}"/>
+                    <GridViewColumn Header="Magazyn" DisplayMemberBinding="{Binding Path=Magazyn}"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            
+            <Button x:Name="dodajBtn" 
+                Grid.Column="0"
+                Content="DODAJ"
+                Width="150"
+                HorizontalAlignment="Center"
+                Height="40" 
+                Margin="10"
+                BorderThickness="1"
+                Background="White"
+                BorderBrush="black" Click="dodajBtn_Click"/>
+            
+            <Button x:Name="usunBtn" 
+                Grid.Column="1"
+                Content="USUŃ"
+                Width="150"
+                HorizontalAlignment="Center"
+                Height="40" 
+                Margin="10"
+                BorderThickness="1"
+                Background="White"
+                BorderBrush="black" Click="usunBtn_Click"/>
+        </Grid>
+        
+        <Label
+            Grid.Column="1"
+            Grid.Row="0"
+            Content="Filtruj według nazwy produktu:"
+            VerticalAlignment="Center"
+            Foreground="#3399FF"/>
+
+        <TextBox
+            x:Name="filter"
+            TextChanged="TextBox_TextChanged"
+            Grid.Column="1"
+            Grid.Row="0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            FontSize="20px"
+            Width="280"
+            Height="30"
+            Margin="5"/>
+
+
     </Grid>
+
 </Window>
