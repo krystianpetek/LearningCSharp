@@ -8,23 +8,22 @@
         Title="Lista produktów" Height="450" Width="800" MinHeight="200" MinWidth="250">
     <Window.Resources>
         <Style TargetType="ListViewItem">
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         </Style>
-
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Label Content="Filtruj według nazwy produktu:" Grid.Row="0" Grid.Column="0" Margin="5" Foreground="#3399FF"/>
+        <Label Content="Filtruj według nazwy produktu:" Grid.Row="0" Grid.Column="0" Margin="5" Foreground="#3399FF" />
         <TextBox Name="txtFilter" Grid.Row="0" Grid.Column="1" Margin="5" TextChanged="txtFilter_TextChanged"></TextBox>
-        
+
         <ListView x:Name="lstProdukty" Grid.Row="1" Grid.Column="0" Margin="5" Grid.ColumnSpan="2" MouseDoubleClick="lstProdukty_MouseDoubleClick">
             <ListView.View>
                 <GridView x:Name="ggd">
@@ -44,11 +43,11 @@
         <Button VerticalAlignment="Stretch"
                 HorizontalAlignment="Stretch"
                 Grid.ColumnSpan="2"
-                Grid.Row="2" 
+                Grid.Row="2"
                 Width="150"
                 Height="40"
-                Content="Usuń element" 
-                Click="delete_Click" 
+                Content="Usuń element"
+                Click="delete_Click"
                 x:Name="delete"></Button>
     </Grid>
 </Window>

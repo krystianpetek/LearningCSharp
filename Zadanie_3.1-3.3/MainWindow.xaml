@@ -128,20 +128,20 @@
                      Content="ON"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Top"
-                     Margin="220,200,0,0" Checked="ukryjRysunekON_Checked"/>
+                     Margin="220,200,0,0" Checked="ukryjRysunekON_Checked" />
 
         <RadioButton Name="ukryjRysunekOFF"
                      GroupName="ukryjRysunek"
                      Content="OFF"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Top"
-                     Margin="220,220,0,0" Checked="ukryjRysunekOFF_Checked"/>
+                     Margin="220,220,0,0" Checked="ukryjRysunekOFF_Checked" />
 
-        <Image Source="images/1.png" 
+        <Image Source="images/1.png"
                VerticalAlignment="Top"
                HorizontalAlignment="Left"
-               Margin="5,350,0,0" 
-               Height="60" 
-               Width="60" Stretch="Fill"/>
+               Margin="5,350,0,0"
+               Height="60"
+               Width="60" Stretch="Fill" />
     </Grid>
 </Window>

@@ -11,12 +11,14 @@ namespace Zadanie_6._08_3
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Produkt> produkty;
+        private List<Produkt> produkty;
+
         public MainWindow()
         {
             InitializeComponent();
             Wiazanie();
         }
+
         private void Wiazanie()
         {
             produkty = new List<Produkt>();

@@ -10,10 +10,12 @@ namespace Zadanie_6._08_2
     public partial class WindowAdd : Window
     {
         private MainWindow mainWindow;
+
         public WindowAdd()
         {
             InitializeComponent();
         }
+
         public WindowAdd(MainWindow mainWindow)
         {
             InitializeComponent();

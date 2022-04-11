@@ -27,7 +27,7 @@ namespace Zadanie_6._06
             ListaProduktow.Add(new Produkt("DZ-10", "długopis żelowy", 1121, "Katowice 1"));
             ListaProduktow.Add(new Produkt("DZ-12", "długopis kulkowy", 280, "Katowice 2"));
 
-            //// CollectionView 
+            //// CollectionView
             //lstProdukty.ItemsSource = ListaProduktow;
             //CollectionView widok = (CollectionView)CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource);
             //widok.SortDescriptions.Add(new SortDescription("Magazyn", ListSortDirection.Ascending));

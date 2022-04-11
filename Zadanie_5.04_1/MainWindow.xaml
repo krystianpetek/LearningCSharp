@@ -9,63 +9,63 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Label Content="Rozmiar" 
-               Margin="5" 
-               Grid.Column="0" 
-               Grid.Row="0"/>
-        
-        <Label Content="Kolor" 
-               Margin="5" 
-               Grid.Column="0" 
+        <Label Content="Rozmiar"
+               Margin="5"
+               Grid.Column="0"
+               Grid.Row="0" />
+
+        <Label Content="Kolor"
+               Margin="5"
+               Grid.Column="0"
                Grid.Row="1" />
-        
-        <Label Content="Tekst" 
-               Margin="5" 
-               Grid.Column="0" 
+
+        <Label Content="Tekst"
+               Margin="5"
+               Grid.Column="0"
                Grid.Row="2" />
-        
-        <Slider x:Name="rozmiarTekstu" 
+
+        <Slider x:Name="rozmiarTekstu"
                 Grid.Column="1"
                 Grid.Row="0"
                 Margin="5"
                 Minimum="10"
-                Value="15" 
-                Maximum="45"/>
-        
-        <ComboBox x:Name="kolorComboBox" 
-                  Grid.Column="1" 
-                  Grid.Row="1" 
+                Value="15"
+                Maximum="45" />
+
+        <ComboBox x:Name="kolorComboBox"
+                  Grid.Column="1"
+                  Grid.Row="1"
                   Margin="5"
                   SelectedIndex="0">
-            <ComboBoxItem Content="Black"/>
-            <ComboBoxItem Content="Red"/>
-            <ComboBoxItem Content="Green"/>
-            <ComboBoxItem Content="Blue"/>
-            <ComboBoxItem Content="Yellow"/>
+            <ComboBoxItem Content="Black" />
+            <ComboBoxItem Content="Red" />
+            <ComboBoxItem Content="Green" />
+            <ComboBoxItem Content="Blue" />
+            <ComboBoxItem Content="Yellow" />
         </ComboBox>
-        
-        <TextBox x:Name="textBox" 
-                 Grid.Column="1" 
-                 Grid.Row="2" 
+
+        <TextBox x:Name="textBox"
+                 Grid.Column="1"
+                 Grid.Row="2"
                  Margin="5"
-                 Text="Testujemy wiązanie danych"/>
-        
-        <TextBlock Grid.Column="0" 
-                   Grid.Row="3" 
+                 Text="Testujemy wiązanie danych" />
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="3"
                    Grid.ColumnSpan="3"
-                   Foreground="{Binding Path=SelectedValue.Content, ElementName=kolorComboBox}" 
-                   FontSize="{Binding Path=Value, ElementName=rozmiarTekstu}" 
+                   Foreground="{Binding Path=SelectedValue.Content, ElementName=kolorComboBox}"
+                   FontSize="{Binding Path=Value, ElementName=rozmiarTekstu}"
                    Text="{Binding Path=Text, ElementName=textBox}" />
     </Grid>
 </Window>

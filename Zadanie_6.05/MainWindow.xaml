@@ -8,7 +8,7 @@
 Title="Lista produktów" Height="450" Width="800">
     <Window.Resources>
         <Style TargetType="ListViewItem">
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         </Style>
     </Window.Resources>
     <Grid>

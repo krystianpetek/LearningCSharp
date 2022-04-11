@@ -12,8 +12,8 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-
         }
+
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             btnStart.Visibility = Visibility.Hidden;

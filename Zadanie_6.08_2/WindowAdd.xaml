@@ -25,11 +25,10 @@
         <Label Content="Nazwa:" Grid.Row="1" Grid.Column="0" Margin="5" />
         <TextBox x:Name="nazwa" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="5" />
         <Label Content="Liczba sztuk:" Grid.Row="2" Grid.Column="0" Margin="5" />
-        <TextBox x:Name="liczbaSztuk" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="5"/>
+        <TextBox x:Name="liczbaSztuk" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="5" />
         <Label Content="Magazyn:" Grid.Row="3" Grid.Column="0" Margin="5" />
-        <TextBox x:Name="magazyn" VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="1" Margin="5"/>
+        <TextBox x:Name="magazyn" VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="1" Margin="5" />
         <Button x:Name="btnPotwierdz" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="4" MinWidth="120" MinHeight="30"
                 HorizontalAlignment="Center" Content="Potwierdź" Click="btnPotwierdz_Click" />
     </Grid>
-
 </Window>

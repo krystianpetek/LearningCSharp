@@ -31,5 +31,4 @@
         <Button x:Name="btnPotwierdz" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="4" MinWidth="120"
                 HorizontalAlignment="Center" Content="Potwierdź" Click="btnPotwierdz_Click" />
     </Grid>
-
 </Window>

@@ -8,16 +8,19 @@ namespace Zadanie_6._08_1
     public partial class Window1 : Window
     {
         private MainWindow mainWindow = null;
+
         public Window1()
         {
             InitializeComponent();
         }
+
         public Window1(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
             PrzygotujWiazanie();
         }
+
         private void PrzygotujWiazanie()
         {
             Produkt produktZListy = mainWindow.lstProdukty.SelectedItem as Produkt;
@@ -26,6 +29,7 @@ namespace Zadanie_6._08_1
                 gridProdukt.DataContext = produktZListy;
             }
         }
+
         private void btnPotwierdz_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
