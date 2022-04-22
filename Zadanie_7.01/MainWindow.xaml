@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zadanie_7._01"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Background="#303030">
-        
+        Title="Edycja produktów" Height="180" Width="350">
+
+
+    <Grid Margin="10" Background="#303030">
+        <DataGrid 
+            Name="gridProdukty"
+            IsReadOnly="True"  
+            GridLinesVisibility="None" 
+            AlternatingRowBackground="Beige"
+            AlternationCount="3"/>
     </Grid>
+
 </Window>
