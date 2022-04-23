@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Zadanie_7._03
+﻿namespace Zadanie_7._03
 {
     internal class Produkt
     {
@@ -12,7 +6,10 @@ namespace Zadanie_7._03
         public string Nazwa { get; set; }
         public int LiczbaSztuk { get; set; }
         public string Magazyn { get; set; }
-        public Produkt() { }
+
+        public Produkt()
+        { }
+
         public Produkt(string symbol, string nazwa, int liczbaSztuk, string magazyn)
         {
             Symbol = symbol;
@@ -20,6 +17,7 @@ namespace Zadanie_7._03
             LiczbaSztuk = liczbaSztuk;
             Magazyn = magazyn;
         }
+
         public override string ToString()
         {
             return $"{Symbol} {Nazwa} {LiczbaSztuk} {Magazyn}";

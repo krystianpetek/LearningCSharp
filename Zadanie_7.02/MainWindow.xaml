@@ -11,24 +11,20 @@
 
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}"/>
-                <DataGridTextColumn Header="Nazwa" Binding="{Binding Nazwa}"/>
+                <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" />
+                <DataGridTextColumn Header="Nazwa" Binding="{Binding Nazwa}" />
                 <DataGridTextColumn Header="Liczba sztuk" Binding="{Binding LiczbaSztuk}">
 
                     <DataGridTextColumn.ElementStyle>
 
                         <Style TargetType="{x:Type TextBlock}">
 
-                            <Setter Property="HorizontalAlignment" Value="Right"/>
-
+                            <Setter Property="HorizontalAlignment" Value="Right" />
                         </Style>
-                        
                     </DataGridTextColumn.ElementStyle>
-                    
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Magazyn" Binding="{Binding Magazyn}"/>
+                <DataGridTextColumn Header="Magazyn" Binding="{Binding Magazyn}" />
             </DataGrid.Columns>
-            
         </DataGrid>
     </Grid>
 </Window>

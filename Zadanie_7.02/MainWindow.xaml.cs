@@ -1,18 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Zadanie_7._02
 {
@@ -28,8 +15,8 @@ namespace Zadanie_7._02
             InitializeComponent();
             PrzygotujWiazanie();
         }
-        
-        private void PrzygotujWiazanie() 
+
+        private void PrzygotujWiazanie()
         {
             ListaProduktow = new ObservableCollection<Produkt>();
 
@@ -37,7 +24,7 @@ namespace Zadanie_7._02
             ListaProduktow.Add(new Produkt("PW-20", "pióro wieczne", 75, "Katowice 2"));
             ListaProduktow.Add(new Produkt("DZ-10", "długopis żelowy", 1121, "Katowice 1"));
             ListaProduktow.Add(new Produkt("DZ-12", "długopis kulowy", 280, "Katowice 2"));
-            
+
             gridProdukty.ItemsSource = ListaProduktow;
         }
     }

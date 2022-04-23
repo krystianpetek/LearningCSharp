@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 
 namespace Zadanie_6._03
 {
@@ -29,11 +31,11 @@ namespace Zadanie_6._03
             var query = from x in ListaProduktow orderby x.Magazyn, x.Nazwa select x;
             lstProdukty.ItemsSource = query;
 
-            // CollectionView
-            //lstProdukty.ItemsSource = ListaProduktow;
-            //var widok = CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource);
-            //widok.SortDescriptions.Add(new SortDescription("Magazyn", ListSortDirection.Ascending));
-            //widok.SortDescriptions.Add(new SortDescription("Nazwa", ListSortDirection.Ascending));
+            //CollectionView
+            lstProdukty.ItemsSource = ListaProduktow;
+            var widok = CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource);
+            widok.SortDescriptions.Add(new SortDescription("Magazyn", ListSortDirection.Ascending));
+            widok.SortDescriptions.Add(new SortDescription("Nazwa", ListSortDirection.Ascending));
         }
     }
 }

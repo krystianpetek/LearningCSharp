@@ -7,28 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid Name="gridProdukty" AutoGenerateColumns="False" AlternatingRowBackground="LightBlue" GridLinesVisibility="None">
 
+        <DataGrid x:Name="gridProdukty"
+                  AutoGenerateColumns="False"
+                  AlternatingRowBackground="Lavender"
+                  GridLinesVisibility="None"
+                  Margin="10">
             <DataGrid.Columns>
-
-                <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}"/>
-                <DataGridTextColumn Header="Nazwa" Binding="{Binding Nazwa}"/>
-                <DataGridTextColumn Header="Liczba sztuk" Binding="{Binding LiczbaSztuk}">
-
-                    <DataGridTextColumn.ElementStyle>
-
-                        <Style TargetType="{x:Type TextBlock}">
-
-                            <Setter Property="HorizontalAlignment" Value="Right"/>
-
-                        </Style>
-
-                    </DataGridTextColumn.ElementStyle>
-
-                </DataGridTextColumn>
+                <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" />
+                <DataGridTextColumn Header="Nazwa" Binding="{Binding Nazwa}" />
+                <DataGridTextColumn Header="Liczba sztuk" Binding="{Binding LiczbaSztuk}" />
                 <DataGridComboBoxColumn x:Name="nazwaMagazynu" Header="Magazyn" SelectedItemBinding="{Binding Magazyn}" />
             </DataGrid.Columns>
-
         </DataGrid>
     </Grid>
 </Window>

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Zadanie_7._01
+﻿namespace Zadanie_7._01
 {
     internal class Produkt
     {
         public Produkt()
         {
-
         }
 
         public string Symbol { get; set; }

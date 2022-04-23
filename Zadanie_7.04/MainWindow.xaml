@@ -19,12 +19,11 @@
         <DataGrid x:Name="gridProdukty" AutoGenerateColumns="False" Margin="10" AlternatingRowBackground="Lavender" GridLinesVisibility="None"
                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Path=Elements[Produkt]}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Symbol" Binding="{Binding Element[Symbol].Value}"/>
-                <DataGridTextColumn Header="Nazwa" Binding="{Binding Element[Nazwa].Value}"/>
-                <DataGridTextColumn Header="Liczba sztuk" Binding="{Binding Element[LiczbaSztuk].Value}"/>
-                <DataGridComboBoxColumn x:Name="nazwaMagazynu" Header="Magazyn" SelectedItemBinding="{Binding Element[Magazyn].Value}"/>
+                <DataGridTextColumn Header="Symbol" Binding="{Binding Element[Symbol].Value}" />
+                <DataGridTextColumn Header="Nazwa" Binding="{Binding Element[Nazwa].Value}" />
+                <DataGridTextColumn Header="Liczba sztuk" Binding="{Binding Element[LiczbaSztuk].Value}" />
+                <DataGridComboBoxColumn x:Name="nazwaMagazynu" Header="Magazyn" SelectedItemBinding="{Binding Element[Magazyn].Value}" />
             </DataGrid.Columns>
-
         </DataGrid>
         <Button x:Name="btnZapisz" Grid.Row="1" Grid.Column="1" Margin="5" MinWidth="120" HorizontalAlignment="Right" Height="30" Content="Zapisz" Click="btnZapisz_Click"></Button>
     </Grid>

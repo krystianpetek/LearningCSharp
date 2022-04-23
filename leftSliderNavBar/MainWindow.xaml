@@ -15,15 +15,14 @@
         <Label Content="tekst" Grid.Column="1" Foreground="red"></Label>
 
         <StackPanel Width="80" x:Name="navPanel"
-                    Background="#404040" Grid.ColumnSpan="2" 
+                    Background="#404040" Grid.ColumnSpan="2"
                     Panel.ZIndex="2" HorizontalAlignment="Left">
-            <Button HorizontalAlignment="Left" x:Name="expandPanel" Grid.Column="0" 
-                    Width="50" Height="50" Content="" Background="#303030" 
-                    Margin="15,20,0,0" Click="expandPanel_Click"/>
-            <Label x:Name="homeLabelInPanel" Width="50" Height="50" HorizontalAlignment="Left" Margin="15,20,0,0" Background="#808080"/>
-            <Label x:Name="home2LabelInPanel" Width="50" Height="50" Margin="0,20,0,0" Background="BlanchedAlmond"/>
-            <Label Width="50" Height="50" Margin="0,20,0,0" Background="AntiqueWhite"/>
+            <Button HorizontalAlignment="Left" x:Name="expandPanel" Grid.Column="0"
+                    Width="50" Height="50" Content="" Background="#303030"
+                    Margin="15,20,0,0" Click="expandPanel_Click" />
+            <Label x:Name="homeLabelInPanel" Width="50" Height="50" HorizontalAlignment="Left" Margin="15,20,0,0" Background="#808080" />
+            <Label x:Name="home2LabelInPanel" Width="50" Height="50" Margin="0,20,0,0" Background="BlanchedAlmond" />
+            <Label Width="50" Height="50" Margin="0,20,0,0" Background="AntiqueWhite" />
         </StackPanel>
-
     </Grid>
 </Window>
