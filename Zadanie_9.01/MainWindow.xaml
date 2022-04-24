@@ -5,8 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zadanie_9._01"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Odtwarzacz" Height="300" Width="650">
     <Grid>
 
+        <TabControl TabStripPlacement="Top">
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Audio" Foreground="Brown" Padding="5"></TextBlock>
+                        </StackPanel>
+                </TabItem.Header>
+                <StackPanel Margin="10">
+                    <WrapPanel>
+
+                        <Button x:Name="btnWybierz" Click="btnWybierz_Click" Content="Wybierz utwór" Padding="5" Margin="20,10"></Button>
+                        <TextBlock x:Name="txtUtwor" Text="" MinWidth="150" Margin="10"></TextBlock>
+                        <TextBlock x:Name="txtCzas" Text="" Foreground="blue" Margin="10"></TextBlock>
+                    </WrapPanel>
+                    <Grid>
+                        <ProgressBar x:Name="pbGra" Margin="20" Height="20" />
+                        <TextBlock Text="{Binding ElementName=pbGra, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <WrapPanel HorizontalAlignment="Center">
+                        <Button x:Name="btnPlay" Click="btnPlay_Click" Margin="10" Padding="5" Width="50" ToolTip="Odtwórz" IsEnabled="False">
+                            <Image Source="ico/play.png"></Image>
+                        </Button>
+                        <Button x:Name="btnPause" Click="btnPause_Click" Content="Pause" Margin="10" Padding="5" Width="50" ToolTip="Odtwórz" IsEnabled="False"></Button>
+                        <Button x:Name="btnStop" Click="btnStop_Click" Content="Stop" Margin="10" Padding="5" Width="50" ToolTip="Odtwórz" IsEnabled="False"></Button>
+                    </WrapPanel>
+                    <WrapPanel HorizontalAlignment="Center">
+                        <Slider x:Name="slGra" MinWidth="200" Maximum="100" Minimum="0" Thumb.DragStarted="slGra_DragStarted" Thumb.DragCompleted="slGra_DragCompleted" ></Slider>
+                    </WrapPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Ustawienia">
+                <StackPanel>
+                    <Label x:Name="lblKolor" Content="Wybierz kolor" />
+                    <RadioButton Content="Niebieski" Checked="RadioButton_Checked" IsChecked="True"></RadioButton>
+                    <RadioButton Content="Zielony" Checked="RadioButton_Checked"></RadioButton>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
