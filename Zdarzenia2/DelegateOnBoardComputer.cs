@@ -3,6 +3,7 @@
     public class DelegateOnBoardComputer
     {
         public delegate void CarsComputerHandler(string info);
+
         public event CarsComputerHandler CarsComputerEventLog;
 
         public void LogProcess()
@@ -22,7 +23,7 @@
 
         protected void OnCarsComputerEventLog(string info)
         {
-            if(CarsComputerEventLog != null)
+            if (CarsComputerEventLog != null)
             {
                 CarsComputerEventLog(info);
             }

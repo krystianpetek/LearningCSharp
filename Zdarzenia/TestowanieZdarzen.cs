@@ -4,9 +4,12 @@ namespace Zdarzenia
 {
     internal partial class Program
     {
-        public class TestowanieZdarzen {
+        public class TestowanieZdarzen
+        {
             public int value;
+
             public delegate void NumberManipulationHandler();
+
             public event NumberManipulationHandler ChangeNumber;
 
             // aktywacja zdarzenia
@@ -21,6 +24,7 @@ namespace Zdarzenia
                     Console.WriteLine("Zdarzenie!");
                 }
             }
+
             public TestowanieZdarzen(int i)
             {
                 SetValue(i);
@@ -37,4 +41,3 @@ namespace Zdarzenia
         }
     }
 }
-

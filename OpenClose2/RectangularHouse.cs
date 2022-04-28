@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OpenClose2
+﻿namespace OpenClose2
 {
     public class RectangularHouse : Facility
     {
@@ -13,8 +7,7 @@ namespace OpenClose2
 
         public override double CalculateSurface()
         {
-            return (2*Width + 2* Height);
+            return (2 * Width + 2 * Height);
         }
     }
-
 }

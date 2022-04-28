@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DependencyInversion
+﻿namespace DependencyInversion
 {
     internal class Program
     {
@@ -15,6 +9,5 @@ namespace DependencyInversion
             LogToFile log = new LogToFile(emailSender);
             log.Notify("s");
         }
-
     }
 }

@@ -3,6 +3,7 @@
     internal class VIPBankAccount : IAccountFees
     {
         public readonly decimal _vipAccountFee;
+
         public VIPBankAccount(decimal accountFee)
         {
             _vipAccountFee = accountFee;

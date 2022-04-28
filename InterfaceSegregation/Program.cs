@@ -1,13 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace InterfaceSegregation
+﻿namespace InterfaceSegregation
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
         }
     }
@@ -16,6 +11,7 @@ namespace InterfaceSegregation
     {
         void Call(int number);
     }
+
     public interface ITextable
     {
         void Text(int number, string textMessage);
@@ -23,19 +19,16 @@ namespace InterfaceSegregation
 
     public interface IConnectable
     {
-
         void ConnectInternet();
     }
 
     public interface ITransferable
     {
-
         void TransferFiles(int blueID);
     }
 
     public interface INavigable
     {
-
         void UseGPS();
     }
 

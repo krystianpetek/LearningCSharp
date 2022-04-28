@@ -4,6 +4,7 @@
     {
         private int temperature;
         private int pressure;
+
         public CarsComputer(int t, int p)
         {
             temperature = t;
@@ -14,6 +15,7 @@
         {
             return pressure;
         }
+
         public int GetTemperature()
         {
             return temperature;
