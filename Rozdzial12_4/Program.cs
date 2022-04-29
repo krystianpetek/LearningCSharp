@@ -1,4 +1,7 @@
-﻿namespace Rozdzial12_4
+﻿using System;
+using System.Collections.Generic;
+
+namespace Rozdzial12_4
 {
     public class Program
     {

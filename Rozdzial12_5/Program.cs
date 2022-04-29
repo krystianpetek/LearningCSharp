@@ -3,31 +3,24 @@ using System.Collections.Generic;
 
 namespace Rozdzial12_5
 {
-    internal class Program
+
+    public struct Nullable<T> : IFormattable, IComparable, IComparable<Nullable<T>>, System.Data.SqlTypes.INullable where T : struct
     {
-        static void Main(string[] args)
+        //public static implicit operator T?(T value) => new T?(value);
+        //public static explicit operator T(T? value) => value!.Value;
+        public bool IsNull => throw new NotImplementedException();
+        public int CompareTo(object obj)
         {
-            
+            throw new NotImplementedException();
         }
-        public struct Nullable<T> : IFormattable, IComparable, IComparable<Nullable<T>>, System.Data.SqlTypes.INullable where T : struct
+        public int CompareTo(Nullable<T> other)
         {
-            //public static implicit operator T?(T value) => new T?(value);
-            //public static explicit operator T(T? value) => value!.Value;
-            public bool IsNull => throw new NotImplementedException();
-            public int CompareTo(object obj)
-            {
-                throw new NotImplementedException();
-            }
-            public int CompareTo(Nullable<T> other)
-            {
-                throw new NotImplementedException();
-            }
-            public string ToString(string format, IFormatProvider formatProvider)
-            {
-                throw new NotImplementedException();
-            }
+            throw new NotImplementedException();
         }
-        
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     // zestawy ograniczen, ograniczenia konstruktora
@@ -93,7 +86,7 @@ namespace Rozdzial12_5
 
     public static class MathEx
     {
-        public static T Max<T>(T first, T[] values) where T : IComparable<T>
+        public static T Max<T>(T first, params T[] values) where T : IComparable<T>
         {
             T maximum = first;
             foreach(T item in values)
@@ -104,7 +97,7 @@ namespace Rozdzial12_5
             return maximum;
         }
 
-        public static T Min<T>(T first, T[] values) where T : IComparable<T>
+        public static T Min<T>(T first, params T[] values) where T : IComparable<T>
         {
             T minimum = first;
             foreach(T item in values)
@@ -115,6 +108,20 @@ namespace Rozdzial12_5
             return minimum;
         }
 
+        public static void Main(string[] args)
+        {
+            Console.WriteLine(MathEx.Max<int>(7,490));
+            Console.WriteLine(MathEx.Min<string>("R.O.U.S.", "Fireswamp"));
+
+            // inferencja argumentu określającego typ, na podstawie przekazanych argumentów
+            Console.WriteLine(MathEx.Max(7, 490));
+            Console.WriteLine(MathEx.Max("R.O.U.S.", "Fireswamp"));
+
+
+            IEnumerable<string> strings = new List<string>();
+            IEnumerable<object> objects = strings;
+
+        }
     }
 
 }

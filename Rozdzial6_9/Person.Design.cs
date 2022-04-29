@@ -2,9 +2,9 @@
 {
     internal partial class Person
     {
-        private partial void OnLastNameChanging(string value);
+        partial void OnLastNameChanging(string value);
 
-        private partial void OnFirstNameChanging(string value);
+        partial void OnFirstNameChanging(string value);
 
         public string LastName
         {

@@ -9,10 +9,10 @@ namespace Rozdzial6_9
         }
     }
 
-    internal partial class Person
+    partial class Person
     {
         // Metody częściowe, można tworzyc tylko w klasach częściowych
-        private partial void OnLastNameChanging(string value)
+        partial void OnLastNameChanging(string value)
         {
             if (value is null)
             {
