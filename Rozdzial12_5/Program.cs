@@ -43,6 +43,8 @@ namespace Rozdzial12_5
             return newEntity;
         }
     }
+
+    // Używanie interfejsu fabrycznego zamiast ograniczenia dotyczącego konstruktora
     public class EntityBase <TKEY> where TKEY : notnull
     {
         public EntityBase(TKEY key)
@@ -52,5 +54,67 @@ namespace Rozdzial12_5
         public TKEY Key { get; set; }
     }
 
-    //503
+    public interface IEntityFactory<TKey, TValue> 
+    {
+        TValue CreateNew(TKey key);
+    }
+
+    public class EntityDictionary<TKey, TValue, TFactory> : Dictionary<TKey, TValue> 
+        where TKey : IComparable, IFormattable 
+        where TValue : EntityBase<TKey> 
+        where TFactory : IEntityFactory<TKey, TValue>, new()
+    {
+        public TValue New(TKey key)
+        {
+            TFactory factory = new TFactory();
+            TValue newEntity = factory.CreateNew(key);
+            Add(newEntity.Key, newEntity);
+            return newEntity;
+        }
+    }
+
+
+    // Deklarowanie typu encji używanych w typie EntityDictionary<…>
+    public class Order : EntityBase<Guid>
+    {
+        public Order(Guid key) : base(key)
+        {
+            
+        }
+    }
+
+    public class OrderFactory :IEntityFactory<Guid, Order>
+    {
+        public Order CreateNew(Guid key)
+        {
+            return new Order(key);
+        }
+    }
+
+    public static class MathEx
+    {
+        public static T Max<T>(T first, T[] values) where T : IComparable<T>
+        {
+            T maximum = first;
+            foreach(T item in values)
+            {
+                if(item.CompareTo(maximum) > 0)
+                    maximum = item;
+            }
+            return maximum;
+        }
+
+        public static T Min<T>(T first, T[] values) where T : IComparable<T>
+        {
+            T minimum = first;
+            foreach(T item in values)
+            {
+                if (item.CompareTo(minimum) < 0)
+                    minimum = item;
+            }
+            return minimum;
+        }
+
+    }
+
 }
