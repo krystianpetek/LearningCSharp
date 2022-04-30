@@ -39,6 +39,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleWith_TaskAsync", "Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "httpClientRequest", "httpClientRequest\httpClientRequest.csproj", "{AB2774ED-B94A-4A0B-A927-215EA3EED225}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refleksja", "Refleksja\Refleksja.csproj", "{C9B87D22-F861-499A-809C-191A3D12A022}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rekordy", "Rekordy\Rekordy.csproj", "{58EA1AFA-6FA3-4CD7-B157-657FF19CADFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +109,14 @@ Global
 		{AB2774ED-B94A-4A0B-A927-215EA3EED225}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB2774ED-B94A-4A0B-A927-215EA3EED225}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB2774ED-B94A-4A0B-A927-215EA3EED225}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9B87D22-F861-499A-809C-191A3D12A022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B87D22-F861-499A-809C-191A3D12A022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B87D22-F861-499A-809C-191A3D12A022}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B87D22-F861-499A-809C-191A3D12A022}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58EA1AFA-6FA3-4CD7-B157-657FF19CADFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58EA1AFA-6FA3-4CD7-B157-657FF19CADFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58EA1AFA-6FA3-4CD7-B157-657FF19CADFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58EA1AFA-6FA3-4CD7-B157-657FF19CADFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
