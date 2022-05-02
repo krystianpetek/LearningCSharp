@@ -39,9 +39,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleWith_TaskAsync", "Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "httpClientRequest", "httpClientRequest\httpClientRequest.csproj", "{AB2774ED-B94A-4A0B-A927-215EA3EED225}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refleksja", "Refleksja\Refleksja.csproj", "{C9B87D22-F861-499A-809C-191A3D12A022}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refleksja", "Refleksja\Refleksja.csproj", "{C9B87D22-F861-499A-809C-191A3D12A022}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rekordy", "Rekordy\Rekordy.csproj", "{58EA1AFA-6FA3-4CD7-B157-657FF19CADFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rekords", "Rekordy\Rekords.csproj", "{58EA1AFA-6FA3-4CD7-B157-657FF19CADFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
