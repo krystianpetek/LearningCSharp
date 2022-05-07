@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Zadanie_10._02
+namespace Zadanie_10._04
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

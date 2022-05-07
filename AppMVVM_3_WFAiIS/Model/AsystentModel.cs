@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppMVVM_3_WFAiIS.Model
 {
@@ -18,7 +14,7 @@ namespace AppMVVM_3_WFAiIS.Model
             bool warunek = CzyKwotaJestPoprawna(kwota);
             if (!warunek)
                 throw new ArgumentOutOfRangeException("Kwota zbyt duża lub ujemna");
-            
+
             suma += kwota;
         }
 

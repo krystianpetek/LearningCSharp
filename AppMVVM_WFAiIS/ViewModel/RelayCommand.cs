@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 public class RelayCommand : ICommand
@@ -21,7 +17,7 @@ public class RelayCommand : ICommand
 
     private Action<object> execute;
     private Func<object, bool>? canExecute;
-    public RelayCommand(Action<object> execute, Func<object,bool> canExecute = null)
+    public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
     {
         if (execute == null)
             throw new ArgumentNullException(nameof(execute));

@@ -1,10 +1,5 @@
 ﻿using AppMVVM_3_WFAiIS.Model;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AppMVVM_3_WFAiIS.ViewModel
@@ -13,7 +8,7 @@ namespace AppMVVM_3_WFAiIS.ViewModel
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         private AsystentModel asystentModel = new AsystentModel(1000);
-        
+
         public string Suma
         {
             get { return asystentModel.Suma.ToString(); }

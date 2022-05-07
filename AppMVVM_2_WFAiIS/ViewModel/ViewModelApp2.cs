@@ -1,10 +1,5 @@
 ﻿using AppMVVM_2_WFAiIS.Model;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AppMVVM_2_WFAiIS.ViewModel
@@ -17,7 +12,7 @@ namespace AppMVVM_2_WFAiIS.ViewModel
 
         private void onPropertyChanged(string value)
         {
-            if(PropertyChanged != null)
+            if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(value));
 
         }
@@ -51,7 +46,7 @@ namespace AppMVVM_2_WFAiIS.ViewModel
                 return textModel.Text;
             }
             set
-            { 
+            {
                 textModel.Text = value;
                 onPropertyChanged(nameof(Text));
             }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AppMVVM_2_WFAiIS.ViewModel
@@ -35,8 +31,8 @@ namespace AppMVVM_2_WFAiIS.ViewModel
         {
             _execute?.Invoke(parameter);
         }
-    
-        public RelayCommand(Action<object> action, Func<object,bool> func)
+
+        public RelayCommand(Action<object> action, Func<object, bool> func)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));

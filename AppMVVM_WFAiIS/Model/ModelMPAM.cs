@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AppMVVM_WFAiIS.Model
+﻿namespace AppMVVM_WFAiIS.Model
 {
     public class ModelMPAM
     {

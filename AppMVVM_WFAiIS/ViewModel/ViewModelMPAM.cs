@@ -1,10 +1,5 @@
 ﻿using AppMVVM_WFAiIS.Model;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AppMVVM_WFAiIS.ViewModel
@@ -12,10 +7,10 @@ namespace AppMVVM_WFAiIS.ViewModel
     internal class ViewModelMPAM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-    
+
         private void onPropertyChanged(string nameOfProperty)
         {
-            if(PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(nameOfProperty));
+            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(nameOfProperty));
         }
 
         private ModelMPAM model = FileHelper.Read();
@@ -39,8 +34,9 @@ namespace AppMVVM_WFAiIS.ViewModel
         private ICommand reset;
         public ICommand ResetVM
         {
-            get 
-            { if (reset == null)
+            get
+            {
+                if (reset == null)
                     reset = new RelayCommand(
                         (o) =>
                         {

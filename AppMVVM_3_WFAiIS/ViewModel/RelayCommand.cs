@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AppMVVM_3_WFAiIS.ViewModel
@@ -30,7 +26,7 @@ namespace AppMVVM_3_WFAiIS.ViewModel
         }
 
         private Action<object> _execute;
-        private Func<object,bool> _canExecute;
+        private Func<object, bool> _canExecute;
 
         public bool CanExecute(object? parameter)
         {
