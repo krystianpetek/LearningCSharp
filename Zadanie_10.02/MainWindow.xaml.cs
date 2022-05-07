@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Zadanie_10._01
+namespace Zadanie_10._02
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,10 +23,6 @@ namespace Zadanie_10._01
         public MainWindow()
         {
             InitializeComponent();
-
-            // binary resources
-            Image s = new Image();
-            //s.Source = new BitmapImage(new Uri("pack://application:,,,/Rysunki/rys1.png"));
         }
     }
 }
