@@ -1,6 +1,6 @@
 ﻿namespace FactoryMethod;
 
-public interface IBaseProduct
+public interface IProduct
 {
     public void WykonajDzialanie();
 }

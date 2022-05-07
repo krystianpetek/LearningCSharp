@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryMethod;
 
-internal class ProduktB : IBaseProduct
+internal class ProductB : IProduct
 {
     public void WykonajDzialanie()
     {

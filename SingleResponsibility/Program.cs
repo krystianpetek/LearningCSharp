@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using SingleResponsibility;
+
+ErrorLogger logger = new ErrorLogger();
+Product product = new Product();
+if(product.Name == null)
+    logger.WriteToErrorLog("path","error");

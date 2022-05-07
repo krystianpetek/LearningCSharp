@@ -1,2 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using FactoryMethod;
+
+ICreator[] creators = new ICreator[]
+{
+    new CreatorProductA(),
+    new CreatorProductB()
+};
+
+foreach (ICreator creator in creators)
+{
+    Console.WriteLine(creator);
+}

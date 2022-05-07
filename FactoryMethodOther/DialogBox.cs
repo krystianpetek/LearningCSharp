@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FactoryMethod;
-
-internal class ProductA : IProduct
+namespace FactoryMethodOther
 {
-    public void WykonajDzialanie()
+    public abstract class DialogBox
     {
-        Console.WriteLine("Produkt A");
+        public abstract Button CreateButton();
     }
 }

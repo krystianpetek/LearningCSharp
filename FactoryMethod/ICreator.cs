@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FactoryMethod;
-
-internal class ProductA : IProduct
+namespace FactoryMethod
 {
-    public void WykonajDzialanie()
+    internal interface ICreator
     {
-        Console.WriteLine("Produkt A");
+        public IProduct FactoryMethod();
     }
 }
