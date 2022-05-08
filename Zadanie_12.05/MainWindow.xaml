@@ -36,7 +36,7 @@
             AutoGenerateColumns="False"
             ItemsSource="{StaticResource kolekcja}">
             <DataGrid.RowValidationRules>
-                <DataErrorValidationRule/>
+                <DataErrorValidationRule />
             </DataGrid.RowValidationRules>
             <DataGrid.Columns>
                 <DataGridTextColumn
