@@ -1,3 +1,10 @@
 krystian
 petek
+<<<<<<< Updated upstream
 23
+=======
+<<<<<<< HEAD
+=======
+23
+>>>>>>> asp
+>>>>>>> Stashed changes
