@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,9 +20,9 @@ namespace AsyncMSDN
             var eggsTask = FryEggAsync(2);
             var baconTask = FryBaconAsync(3);
             var toastTask = MakeToastWithButterAndJamAsync(2);
-            var task = downloadURL(client, "https://google.com/");
+            var task = downloadURL(client, "https://dotnetfoundation.org");
 
-            List<Task> listOfTasks = new List<Task>() { eggsTask, baconTask, toastTask };
+            List <Task> listOfTasks = new List<Task>() { eggsTask, baconTask, toastTask };
 
 
             while (listOfTasks.Count > 0)
@@ -56,29 +57,32 @@ namespace AsyncMSDN
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            var task = Task.Run( async() =>
+            var task = await Task.Run( async() =>
             {
                 await Task.Delay(5000);
                 Console.WriteLine("done task1");
-                return "";
+                return "wynik task";
             });
 
             var task2 = Task.Run(async () =>
             {
                 await Task.Delay(5000);
                 Console.WriteLine("done task2");
-                return "";
+                return "wynik task2";
             });
 
-            await Task.WhenAll(task, task2);
+            var x = await Task.WhenAll(task2);
 
             stopwatch.Stop();
+            Console.WriteLine(task);
+            Console.WriteLine(x[0]);
             return stopwatch.ElapsedMilliseconds + "ms";
         }
 
         private static async Task<string> downloadURL(HttpClient client, string url)
         {
-            return await client.GetStringAsync(url);
+            var html = await client.GetStringAsync(url);
+            return $"Task with searching phrases `.NET` on web page, found: {Regex.Matches(html, @"\.NET").Count} matches";
 
         }
 
