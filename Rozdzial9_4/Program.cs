@@ -104,7 +104,7 @@ namespace Rozdzial9_4
 
             // WYLICZENIA JAKO FLAGI
             string fileName = @"enumtest.txt";
-            if(!File.Exists(fileName))
+            if (!File.Exists(fileName))
                 File.Create(fileName);
             System.IO.FileInfo file = new System.IO.FileInfo(fileName);
             file.Attributes = FileAttributes.Hidden | FileAttributes.ReadOnly;

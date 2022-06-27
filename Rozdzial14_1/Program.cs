@@ -8,12 +8,12 @@ class Cooler
     private float _temperature { get; set; }
     public void OnTemperatureChanged(float newTemperature)
     {
-        if(newTemperature > _temperature)
+        if (newTemperature > _temperature)
             Console.WriteLine("Cooler: On");
         else
             Console.WriteLine("Cooler: Off");
     }
-    
+
 }
 class Heater
 {

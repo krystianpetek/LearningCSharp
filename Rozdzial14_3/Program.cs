@@ -25,7 +25,7 @@ class Cooler
 
     public void OnTemperatureChanged(object sender, TemperatureArgs e)
     {
-        if ( e.NewTemperature > temperature)
+        if (e.NewTemperature > temperature)
             Console.WriteLine("Cooler: On");
         else
             Console.WriteLine("Cooler: Off");
@@ -45,7 +45,7 @@ public class Thermostat
 
     public delegate void TemperatureChangeHandler(object sender, TemperatureArgs newTemperature);
 
-    public event EventHandler<TemperatureArgs> OnTemperatureChange; 
+    public event EventHandler<TemperatureArgs> OnTemperatureChange;
 
     public float CurrentTemperature
     {
@@ -55,7 +55,7 @@ public class Thermostat
         }
         set
         {
-            if(value != CurrentTemperature)
+            if (value != CurrentTemperature)
             {
                 _currentTemperature = value;
                 OnTemperatureChange?.Invoke(this, new TemperatureArgs(value));

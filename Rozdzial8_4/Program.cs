@@ -64,7 +64,8 @@ namespace Rozdzial8_4
         string Title { get; set; }
         string Author { get; set; }
         string Year { get; set; }
-        int YearIndex = 0;
+
+        readonly int YearIndex = 0;
     }
     class Program
     {
@@ -240,7 +241,7 @@ namespace Rozdzial8_4
     {
         // Prywatna, a więc niewirtualna
         private void Start() => Console.WriteLine("IWorkflowActivity.Start()...");
- 
+
         // Modyfikator sealed, aby uniemożliwić przesłanianie
         sealed void Run()
         {
@@ -259,7 +260,7 @@ namespace Rozdzial8_4
     }
 
     // MODYFIKATOR ABSTRACT - Modyfikator abstract jest dozwolony dla składowych bez implementacji.
-    public interface IPersonAbstract 
+    public interface IPersonAbstract
     // To słowo kluczowe nic jednak nie zmienia, ponieważ takie składowe domyślnie są abstrakcyjne
     {
         abstract string FirstName { get; set; }

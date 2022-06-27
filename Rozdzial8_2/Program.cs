@@ -47,7 +47,7 @@ namespace Rozdzial8_2
         public string? Phone { get; }
 
         public static string GetName(string firstName, string lastName)
-        => $"{ firstName } { lastName }";
+        => $"{firstName} {lastName}";
 
         #region IComparable Members
 
@@ -58,7 +58,7 @@ namespace Rozdzial8_2
             Contact { LastName: string lastName } when LastName.CompareTo(lastName) != 0 => LastName.CompareTo(lastName),
             Contact { FirstName: string firstName } when FirstName.CompareTo(firstName) != 0 => FirstName.CompareTo(firstName),
             Contact _ => 0,
-            _ => throw new ArgumentException($"Parametr nie jest wartością typu { nameof(Contact) }",
+            _ => throw new ArgumentException($"Parametr nie jest wartością typu {nameof(Contact)}",
             nameof(obj))
         };
 

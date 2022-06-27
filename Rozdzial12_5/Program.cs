@@ -38,7 +38,7 @@ namespace Rozdzial12_5
     }
 
     // Używanie interfejsu fabrycznego zamiast ograniczenia dotyczącego konstruktora
-    public class EntityBase <TKEY> where TKEY : notnull
+    public class EntityBase<TKEY> where TKEY : notnull
     {
         public EntityBase(TKEY key)
         {
@@ -47,14 +47,14 @@ namespace Rozdzial12_5
         public TKEY Key { get; set; }
     }
 
-    public interface IEntityFactory<TKey, TValue> 
+    public interface IEntityFactory<TKey, TValue>
     {
         TValue CreateNew(TKey key);
     }
 
-    public class EntityDictionary<TKey, TValue, TFactory> : Dictionary<TKey, TValue> 
-        where TKey : IComparable, IFormattable 
-        where TValue : EntityBase<TKey> 
+    public class EntityDictionary<TKey, TValue, TFactory> : Dictionary<TKey, TValue>
+        where TKey : IComparable, IFormattable
+        where TValue : EntityBase<TKey>
         where TFactory : IEntityFactory<TKey, TValue>, new()
     {
         public TValue New(TKey key)
@@ -72,11 +72,11 @@ namespace Rozdzial12_5
     {
         public Order(Guid key) : base(key)
         {
-            
+
         }
     }
 
-    public class OrderFactory :IEntityFactory<Guid, Order>
+    public class OrderFactory : IEntityFactory<Guid, Order>
     {
         public Order CreateNew(Guid key)
         {
@@ -89,9 +89,9 @@ namespace Rozdzial12_5
         public static T Max<T>(T first, params T[] values) where T : IComparable<T>
         {
             T maximum = first;
-            foreach(T item in values)
+            foreach (T item in values)
             {
-                if(item.CompareTo(maximum) > 0)
+                if (item.CompareTo(maximum) > 0)
                     maximum = item;
             }
             return maximum;
@@ -100,7 +100,7 @@ namespace Rozdzial12_5
         public static T Min<T>(T first, params T[] values) where T : IComparable<T>
         {
             T minimum = first;
-            foreach(T item in values)
+            foreach (T item in values)
             {
                 if (item.CompareTo(minimum) < 0)
                     minimum = item;
@@ -110,7 +110,7 @@ namespace Rozdzial12_5
 
         public static void Main(string[] args)
         {
-            Console.WriteLine(MathEx.Max<int>(7,490));
+            Console.WriteLine(MathEx.Max<int>(7, 490));
             Console.WriteLine(MathEx.Min<string>("R.O.U.S.", "Fireswamp"));
 
             // inferencja argumentu określającego typ, na podstawie przekazanych argumentów

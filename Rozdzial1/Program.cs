@@ -37,7 +37,7 @@ namespace Rozdzial1
             firstName = Console.ReadLine();
             Console.Write("Podaj nazwisko: ");
             lastName = Console.ReadLine();
-            Console.WriteLine($"Twoje imię i nazwisko to { firstName } { lastName}.");
+            Console.WriteLine($"Twoje imię i nazwisko to {firstName} {lastName}.");
             Console.WriteLine("Twoje imię i nazwisko to {0} {1}.", firstName, lastName);
             Console.WriteLine("Twoje nazwisko i imię to {1} {0}", firstName, lastName);
 

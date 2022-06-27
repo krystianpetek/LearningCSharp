@@ -99,5 +99,5 @@ var items = fileList.Select(file =>
     };
 });
 
-foreach(var item in items)
+foreach (var item in items)
     Console.WriteLine(item);

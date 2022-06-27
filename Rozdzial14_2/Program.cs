@@ -7,7 +7,7 @@
     private float temperature { get; set; }
     public void OnTemperatureChanged(float temp)
     {
-        if(temp < temperature)
+        if (temp < temperature)
             Console.WriteLine("Heater: On");
         else
             Console.WriteLine("Heater: Off");
@@ -43,10 +43,10 @@ class Thermostat
                 _CurrentTemperature = value;
                 Action<float>? onTemperatureChange = OnTemperatureChange;
 
-                if(onTemperatureChange != null)
+                if (onTemperatureChange != null)
                 {
                     List<Exception> exceptionCollection = new List<Exception>();
-                    foreach(Delegate handler in onTemperatureChange.GetInvocationList())
+                    foreach (Delegate handler in onTemperatureChange.GetInvocationList())
                     {
                         try
                         {
@@ -78,7 +78,7 @@ class Program
 
         delegate1 = heater.OnTemperatureChanged;
         delegate2 = cooler.OnTemperatureChanged;
-        
+
         Console.WriteLine("Invoke both delegates:");
         delegate3 = delegate1 + delegate2;
         delegate3(90);

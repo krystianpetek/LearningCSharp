@@ -5,7 +5,7 @@ namespace Rozdzial6_2 // Hermetyzacja, część 2. Ukrywanie informacji
     public class Employee
     {
         // niezaszyfrowane hasła są tylko w celach edukacyjnych, nie zaleca się tego podejścia
-        private string Password;
+        private readonly string Password;
 
         private bool IsAuthenticated;
 

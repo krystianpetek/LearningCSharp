@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Rozdzial12_6
+﻿namespace Rozdzial12_6
 {
     internal class Program
     {
@@ -17,8 +11,8 @@ namespace Rozdzial12_6
         }
         interface IPair<T>
         {
-            T First { get;}
-            T Second { get;}
+            T First { get; }
+            T Second { get; }
         }
 
         public struct Pair<T> : IPair<T>, IReadOnlyPair<T>
@@ -32,8 +26,8 @@ namespace Rozdzial12_6
 
         public class Fruit { }
         public class Apple : Fruit { }
-        public class Orange : Fruit {}
-    
+        public class Orange : Fruit { }
+
         interface ICompareThings<in T>
         {
             bool FirstIsBetter(T t1, T t2);
@@ -45,13 +39,13 @@ namespace Rozdzial12_6
                 throw new NotImplementedException();
             }
         }
-        
 
-        static void Main() 
-        { 
+
+        static void Main()
+        {
             ICompareThings<Fruit> fc = new FruitComparer();
-            Apple apple1 = new Apple();    
-            Apple apple2 = new Apple();    
+            Apple apple1 = new Apple();
+            Apple apple2 = new Apple();
             Orange orange = new Orange();
 
             // można porównywać jabłko z pomarańczą

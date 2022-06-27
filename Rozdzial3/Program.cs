@@ -18,7 +18,7 @@ namespace Rozdzial3
             }
             else
             {
-                Console.WriteLine($"Podwojna wartość 'number': { number * 2 }.");
+                Console.WriteLine($"Podwojna wartość 'number': {number * 2}.");
             }
 #nullable enable
             string? text = null;
@@ -72,10 +72,10 @@ namespace Rozdzial3
             Console.WriteLine(language);
             Console.WriteLine();
             Console.WriteLine(string.Join(",", languages));
-            Console.WriteLine($@"^4..^2: { string.Join(", ", languages[^4..^2]) }"); // wypisze Pascal, Python
-            Console.WriteLine($@"^3..: { string.Join(", ", languages[^3..]) }");
-            Console.WriteLine($@" 3..^3: { string.Join(", ", languages[3..^3]) }");
-            Console.WriteLine($@" ..^6: { string.Join(", ", languages[..^6]) }");
+            Console.WriteLine($@"^4..^2: {string.Join(", ", languages[^4..^2])}"); // wypisze Pascal, Python
+            Console.WriteLine($@"^3..: {string.Join(", ", languages[^3..])}");
+            Console.WriteLine($@" 3..^3: {string.Join(", ", languages[3..^3])}");
+            Console.WriteLine($@" ..^6: {string.Join(", ", languages[..^6])}");
             Console.WriteLine(languages[^languages.Length]); // pierwszy element tablicy
 
             //Zmiana pozycji danych w tablicy
@@ -125,14 +125,14 @@ namespace Rozdzial3
             };
             komorkiDwuWymiarowe[1][0] = 1;
 
-            Console.WriteLine($"Liczba języków w tablicy to { languages.Length }.");
+            Console.WriteLine($"Liczba języków w tablicy to {languages.Length}.");
 
             // ROZWAŻ  sprawdzanie wartości null przed dostępem do tablicy, zamiast przyjmować, że instancja tablicy istnieje.
             // ROZWAŻ sprawdzanie długości tablicy przed użyciem indeksu, zamiast zakładać, że ma ona określoną wielkość.
             // ROZWAŻ używanie w wersjach C# 8.0 i nowszych operatora indeksowania od końca tablicy(^) zamiast wyrażenia Length – 1
 
             // .. - operator przedziału Dostępny od C# 8.0
-            Console.WriteLine($@" ..: { string.Join(", ", languages[..])} ");
+            Console.WriteLine($@" ..: {string.Join(", ", languages[..])} ");
 
             // INDEX and RANGE
             Index indeks = 3;
@@ -146,14 +146,14 @@ namespace Rozdzial3
             Console.WriteLine($"Język przyszłości to {searchString} można go znaleźć na pozycji o indeksie {indexSearch}.");
 
             Console.WriteLine();
-            Console.WriteLine($"{ "Pierwszy element",-20 }\t{ "Ostatni element",-20 }");
-            Console.WriteLine($"{ "----------------",-20 }\t{ "----------------",-20 }");
-            Console.WriteLine($"{ languages[0],-20 }\t{ languages[^1],-20}"); Array.Reverse(languages);
-            Console.WriteLine($"{ languages[0],-20 }\t{ languages[^1],-20}");
+            Console.WriteLine($"{"Pierwszy element",-20}\t{"Ostatni element",-20}");
+            Console.WriteLine($"{"----------------",-20}\t{"----------------",-20}");
+            Console.WriteLine($"{languages[0],-20}\t{languages[^1],-20}"); Array.Reverse(languages);
+            Console.WriteLine($"{languages[0],-20}\t{languages[^1],-20}");
 
             Array.Clear(languages, 0, languages.Length);
-            Console.WriteLine($"{ languages[0],-20 }\t{ languages[^1],-20}");
-            Console.WriteLine($"Po wywołaniu Clear wielkość tablicy to: { languages.Length }");
+            Console.WriteLine($"{languages[0],-20}\t{languages[^1],-20}");
+            Console.WriteLine($"Po wywołaniu Clear wielkość tablicy to: {languages.Length}");
 
             cells = new bool[2, 3, 3];
             Console.WriteLine(cells.GetLength(0)); // ilość elementów w 1(0) wymiarze tablicy wielowymiarowej

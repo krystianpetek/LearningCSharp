@@ -12,10 +12,10 @@ class Door
 {
     public delegate void DoorChangeState(object sender, DoorEvent doorEvent);
     public event EventHandler<DoorEvent> ChangeDoorState;
-        
+
     protected virtual void OnDoorStateChanged()
     {
-        if(ChangeDoorState != null)
+        if (ChangeDoorState != null)
         {
             ChangeDoorState(this, new DoorEvent(_otwarteDrzwi));
         }
@@ -28,7 +28,7 @@ class Door
         }
         set
         {
-            if(value != _otwarteDrzwi)
+            if (value != _otwarteDrzwi)
             {
                 _otwarteDrzwi = value;
                 OnDoorStateChanged();
@@ -43,7 +43,7 @@ class Phone
     bool _door = false;
     public void PowiadomienieODrzwiach(object sender, DoorEvent doorEvent)
     {
-        if(doorEvent.drzwiOtwarte != _door)
+        if (doorEvent.drzwiOtwarte != _door)
         {
             _door = doorEvent.drzwiOtwarte;
             Console.WriteLine($"Drzwi otwarte: {_door}");

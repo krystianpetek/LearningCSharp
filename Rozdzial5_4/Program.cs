@@ -24,7 +24,7 @@ namespace Rozdzial5_4
             // wczytywanie obrazu
             int index = new Random().Next(0, image.Length - 1);
             image[index] = (byte)ConsoleColor.Red;
-            Console.WriteLine($"image[{index}]={ (ConsoleColor)image[index]}");
+            Console.WriteLine($"image[{index}]={(ConsoleColor)image[index]}");
 
             // Pobieranie referencji do pierwszego czerwonego pixela
             ref byte redPixel = ref FindFirstRedEyePixel(image);

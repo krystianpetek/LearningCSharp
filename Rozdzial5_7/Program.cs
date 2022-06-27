@@ -50,7 +50,7 @@ namespace Rozdzial5_7
             catch (Exception exception)
             {
                 Console.WriteLine($"Nieoczekiwany błąd: {exception.Message}");
-                Console.WriteLine($@"Ponowne zgłaszanie nieoczekiwanego błędu: {exception.Message }");
+                Console.WriteLine($@"Ponowne zgłaszanie nieoczekiwanego błędu: {exception.Message}");
                 // Ponowne zgłoszenie wyjątku - wpisz w tym bloku 'throw;'
                 // throw;
             }

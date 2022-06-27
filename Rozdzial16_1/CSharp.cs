@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 
 namespace Rozdzial16_1
 {
@@ -33,7 +28,7 @@ namespace Rozdzial16_1
             "unchecked", "void", "volatile", "where*", "while", "yield*"
             };
 
-        public static ReadOnlyCollection<string> KEYWORDS = new ReadOnlyCollection<string>(Keywords);
+        public static ReadOnlyCollection<string> readOnlyKeywords = new ReadOnlyCollection<string>(Keywords);
     }
 
 }

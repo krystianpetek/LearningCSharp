@@ -232,7 +232,7 @@ namespace Rozdzial4
             and &= 7; // and = 4
             or |= 7; // or = 15
             xor ^= 7; // xor = 11
-            Console.WriteLine($"and = { and } \nor = { or }\nxor = { xor }");
+            Console.WriteLine($"and = {and} \nor = {or}\nxor = {xor}");
         }
     }
 }

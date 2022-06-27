@@ -23,7 +23,7 @@ namespace Rozdzial4_2
             // FOR
             for (int x = 0, y = 5; ((x <= 5) && (y >= 0)); y--, x++)
             {
-                Console.Write($"{ x }{ ((x > y) ? '>' : '<')}{ y }\t");
+                Console.Write($"{x}{((x > y) ? '>' : '<')}{y}\t");
             }
 
             // FOREACH
@@ -35,7 +35,7 @@ namespace Rozdzial4_2
             {
                 if (cell != 'O' && cell != 'X')
                 {
-                    Console.Write($"{ cell } ");
+                    Console.Write($"{cell} ");
                 }
             }
             Console.WriteLine();

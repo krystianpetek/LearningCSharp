@@ -67,7 +67,7 @@ namespace Rozdzial7
     {
         public override string Name
         {
-            get { return $"{ FirstName } { LastName }"; }
+            get { return $"{FirstName} {LastName}"; }
             set
             {
                 string[] names = value.Split(' ');
@@ -103,7 +103,7 @@ namespace Rozdzial7
             VirtualContact virtualcontact = new VirtualContact();
             virtualpdaitem = virtualcontact;
             virtualpdaitem.Name = "Inigo Montoya";
-            Console.WriteLine($"{virtualcontact.FirstName} { virtualcontact.LastName}");
+            Console.WriteLine($"{virtualcontact.FirstName} {virtualcontact.LastName}");
         }
     }
 }

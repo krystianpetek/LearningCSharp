@@ -58,6 +58,6 @@ namespace Rozdzial5
         private static string GetFullName2(string firstname, string lastname) => $"{firstname} {lastname}";
 
         // ALIAS USING System.Timers.Timer;
-        private CountDownTimer timer; // alias
+        private readonly CountDownTimer timer; // alias
     }
 }

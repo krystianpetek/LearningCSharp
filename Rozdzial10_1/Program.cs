@@ -140,9 +140,9 @@ namespace Rozdzial10_1
 
     public sealed class ProductSerialNumber
     {
-        private string v1;
-        private int v2;
-        private int v3;
+        private readonly string v1;
+        private readonly int v2;
+        private readonly int v3;
 
         public ProductSerialNumber(string v1, int v2, int v3)
         {

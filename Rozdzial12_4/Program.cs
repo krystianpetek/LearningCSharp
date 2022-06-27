@@ -18,8 +18,8 @@ namespace Rozdzial12_4
 
         public class ValueTuple<T1, T2>
         {
-            private string v;
-            private Contact contact;
+            private readonly string v;
+            private readonly Contact contact;
 
             public ValueTuple(string v, Contact contact)
             {
@@ -130,7 +130,7 @@ namespace Rozdzial12_4
                             break;
 
                         default:
-                            throw new InvalidCastException(@$"Nie da się posortować elementów. Typ {typeof(T) } nie obsługuje interfejsu IComparable<T>");
+                            throw new InvalidCastException(@$"Nie da się posortować elementów. Typ {typeof(T)} nie obsługuje interfejsu IComparable<T>");
                     }
                     _SubItems = value;
                 }

@@ -1,9 +1,7 @@
 ﻿using System.Diagnostics;
-using System.Linq;
-using System.Linq.Expressions;
 
-IEnumerable<Process> processes = Process.GetProcesses().Where(process => { return process.WorkingSet64 > 1000000000; } );
-foreach( Process process in processes )
+IEnumerable<Process> processes = Process.GetProcesses().Where(process => { return process.WorkingSet64 > 1000000000; });
+foreach (Process process in processes)
     Console.WriteLine(process);
 
 Func<string> getUserInput = () =>
@@ -51,13 +49,13 @@ Func<string, object> functionReverse = function;
 var items = new string[] { "Moe", "Larry", "Curly" };
 var actions = new List<Action>();
 
-foreach(string item in items)
+foreach (string item in items)
 {
     string _item = item; // w cs 5.0 zostało naprawione, przed 5.0 trzeba uzyc przypisania do wewnetrznej wartosci
     actions.Add(() => Console.WriteLine(_item));
 }
 
-foreach(Action action in actions)
+foreach (Action action in actions)
 {
     action();
 }

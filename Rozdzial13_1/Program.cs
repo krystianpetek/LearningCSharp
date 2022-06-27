@@ -2,7 +2,7 @@
 {
     public static int[] BubbleSorting(int[] items, SortType sortType)
     {
-     
+
         for (int i = items.Length - 1; i >= 0; i--)
         {
             for (int j = 1; j <= i; j++)
@@ -32,7 +32,7 @@
     public static void Main2()
     {
         var x = BubbleSort.BubbleSorting(new int[] { 1, 3, 4, 2, }, SortType.Descending);
-        foreach(var item in x)
+        foreach (var item in x)
             Console.WriteLine(item);
     }
 }
@@ -50,17 +50,17 @@ class BubbleSortWithDelegate
     //public static int[] BubbleSortDelegate(int[] items, Func<int,int,bool> compare)
     public static int[] BubbleSortDelegate(int[] items, BubbleSortWithDelegate.Comparer compare)
     {
-        if(compare == null)
+        if (compare == null)
             throw new ArgumentNullException(nameof(compare));
 
-        for(int i = items.Length-1;i >=0; i--)
+        for (int i = items.Length - 1; i >= 0; i--)
         {
             for (int j = 1; j <= i; j++)
             {
-                if(compare(items[j-1], items[j]))
+                if (compare(items[j - 1], items[j]))
                 {
                     int temp = items[j - 1];
-                    items[j-1] = items[j];
+                    items[j - 1] = items[j];
                     items[j] = temp;
                 }
             }
@@ -68,11 +68,11 @@ class BubbleSortWithDelegate
         return items;
 
     }
-    
+
 
     //public delegate TResult Func<in T1, in T2, out TResult>(in T1 arg1, in T2 t2);
     public delegate TResult Func<in T1, in T2, in T3, out TResult>(T1 arg1, T2 arg2, T3 arg3);
-    
+
     public delegate bool Comparer(int first, int second);
 
     // Examples of method for delegates to comparison
@@ -93,12 +93,12 @@ class BubbleSortWithDelegate
         Display(firstSortByLambdaDelegate);
 
         Console.WriteLine($"\nAscending sorting");
-        var secondSortByDelegateWithMethod = BubbleSortWithDelegate.BubbleSortDelegate(new int[] { 1,22, 5, 6, 11, 9, 3, 2, 0 }, new Comparer(GreaterThan));
+        var secondSortByDelegateWithMethod = BubbleSortWithDelegate.BubbleSortDelegate(new int[] { 1, 22, 5, 6, 11, 9, 3, 2, 0 }, new Comparer(GreaterThan));
         Display(secondSortByDelegateWithMethod);
 
 
         Console.WriteLine($"\nAlphabetical sorting");
-        var thirdSortByDelegateWithMethod = BubbleSortWithDelegate.BubbleSortDelegate(new int[] { 1,22, 5, 6, 11, 9, 3, 2, 0 }, AlphabeticalGreaterThan);// in c# 3.0 not necessary new statement delegate
+        var thirdSortByDelegateWithMethod = BubbleSortWithDelegate.BubbleSortDelegate(new int[] { 1, 22, 5, 6, 11, 9, 3, 2, 0 }, AlphabeticalGreaterThan);// in c# 3.0 not necessary new statement delegate
         Display(thirdSortByDelegateWithMethod);
 
 
@@ -108,9 +108,9 @@ class BubbleSortWithDelegate
     }
 
     // generic display method, works with IEnumerable collection whose is IComparable
-    public static void Display<T> (IEnumerable<T> collection) where T : IComparable<T>
+    public static void Display<T>(IEnumerable<T> collection) where T : IComparable<T>
     {
-        foreach(T item in collection)
+        foreach (T item in collection)
         {
             Console.WriteLine(item);
         }
