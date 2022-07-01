@@ -1,6 +1,8 @@
-﻿/// CHAPTER 17: Building Custom Collections
+﻿// CHAPTER 17: Building Custom Collections
 
-// Using List<T>
+using System.Diagnostics.CodeAnalysis;
+
+#region Using List<T>
 static void UsingListT()
 {
     List<string> list = new List<string>()
@@ -13,8 +15,9 @@ static void UsingListT()
     list.Remove("Grumpy");
 }
 UsingListT();
+#endregion
 
-// Implementing IComparer<Contact>
+#region Implementing IComparer<Contact>
 List<Contact> contacts = new()
 {
     new Contact("Krystian", "Petek"),
@@ -24,8 +27,9 @@ List<Contact> contacts = new()
 };
 contacts.Sort(new ByNameComparison());
 contacts.ForEach((x) => Console.WriteLine(x.ToString()));
+#endregion
 
-// Searching a List<T>
+#region Searching a List<T>
 void SearchingAListT()
 {
     List<string> listToSearch = new List<string>();
@@ -45,8 +49,9 @@ void SearchingAListT()
     }
 }
 SearchingAListT();
+#endregion
 
-// Finding Multiple Items with FindAll()
+#region Finding Multiple Items with FindAll()
 void FindingMultipleItems()
 {
     static bool Even(int value) => value % 2 == 0;
@@ -59,8 +64,9 @@ void FindingMultipleItems()
     }
 }
 FindingMultipleItems();
+#endregion
 
-// Dictionary Collections: Dictionary<TKey, TValue>
+#region Dictionary Collections: Dictionary<TKey, TValue>
 var colorMap = new Dictionary<string, ConsoleColor>()
 {
     ["Error"] = ConsoleColor.Cyan,
@@ -80,9 +86,58 @@ static void PrintKeyValuePair(IEnumerable<KeyValuePair<string, ConsoleColor>> it
         Console.WriteLine(item.Key);
     }
 }
+#endregion
 
-//743
+#region Equality two Contacts
+var contact1 = new Contact("Krystian", "Petek");
+var contact2 = new Contact("Krystian", "Petek");
+ContactEquality contactEquality = new ContactEquality();
 
+Console.WriteLine($"Equality two contact is: " + contactEquality.Equals(contact1, contact2));
+#endregion
+
+#region Sorted Collection: SortedDictionary<TKey, TValue> and SortedList<T>
+SortedDictionary<string, int> sortedDictionary = new();
+sortedDictionary.Add("Krystian", 1);
+
+SortedList<string, int> sortedList = new SortedList<string, int>();
+sortedList.Add("Krystian", 1);
+#endregion
+
+#region Stack<T> / Queue<T> / LinkedList<T>
+Console.Write("Stack: ");
+Stack<int> stack = new();
+stack.Push(1);
+stack.Push(2);
+stack.Push(3);
+foreach (var item in stack)
+    Console.Write(item + " ");
+
+Console.Write("\nQueue: ");
+Queue<int> queue = new();
+queue.Enqueue(1);
+queue.Enqueue(2);
+queue.Enqueue(3);
+foreach (var item in queue)
+    Console.Write(item + " ");
+
+Console.Write("\nLinked list: ");
+LinkedList<int> linkedList = new();
+linkedList.AddLast(1);
+linkedList.AddLast(2);
+linkedList.AddLast(3);
+foreach (var item in linkedList)
+{
+    Console.Write(item + " ");
+}
+
+#endregion
+
+#region Providing an Indexer
+//750
+#endregion
+
+#region Contact
 class Contact
 {
     public string FirstName { get; private set; }
@@ -117,3 +172,24 @@ class ByNameComparison : IComparer<Contact>
         return lastNameX.CompareTo(lastNameY);
     }
 }
+
+class ContactEquality : IEqualityComparer<Contact>
+{
+    public bool Equals(Contact? x, Contact? y)
+    {
+        if (Object.ReferenceEquals(x, y))
+            return true;
+        if (x == null || y == null)
+            return false;
+
+        return x.LastName == y.LastName && x.FirstName == y.FirstName;
+    }
+
+    public int GetHashCode([DisallowNull] Contact obj)
+    {
+        int h1 = obj.FirstName == null ? 0 : obj.FirstName.GetHashCode();
+        int h2 = obj.LastName == null ? 0 : obj.LastName.GetHashCode();
+        return h1 * 23 + h2;
+    }
+}
+#endregion
