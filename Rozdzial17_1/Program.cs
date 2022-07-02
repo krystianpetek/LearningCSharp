@@ -195,6 +195,19 @@ foreach (var name in jfkFamilyTree)
 
 #endregion
 
+#region Iterate via Custom Enumerator for example by ReverseEnumerator
+var reverse = new Pair<string>("Krystian", "Petek");
+
+Console.Write("\nIterate in standard order: ");
+foreach (string name in reverse.GetNotNullEnumerator())
+    Console.Write(name + " ");
+
+Console.Write("\nIterate in reverse order: ");
+foreach (string name in reverse.GetReverseEnumerator())
+    Console.Write(name + " ");
+#endregion
+
+
 
 
 
@@ -258,13 +271,18 @@ class ContactEquality : IEqualityComparer<Contact>
 #region Pair<T> Providing an Indexer IMPLEMENTATION
 struct Pair<T> : IPair<T>, IEnumerable<T>
 {
-
-    public IEnumerator<T> GetNotNullEnumerator()
+    public IEnumerable<T> GetNotNullEnumerator()
     {
         if (First == null || Second == null)
             yield break;
         yield return First;
         yield return Second;
+    }
+
+    public IEnumerable<T> GetReverseEnumerator()
+    {
+        yield return Second;
+        yield return First;
     }
 
     [System.Runtime.CompilerServices.IndexerName("Entry")] // i don't know why i use this instruction, in book author same doesn't know
@@ -287,9 +305,8 @@ struct Pair<T> : IPair<T>, IEnumerable<T>
 
     public IEnumerator<T> GetEnumerator()
     {
-        return GetNotNullEnumerator();
-        //yield return First;
-        //yield return Second;
+        yield return First;
+        yield return Second;
     }
 
     IEnumerator IEnumerable.GetEnumerator()
