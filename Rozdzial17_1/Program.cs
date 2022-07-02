@@ -1,5 +1,7 @@
 ﻿// CHAPTER 17: Building Custom Collections
 
+using Rozdzial17_1;
+using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
 #region Using List<T>
@@ -133,11 +135,70 @@ foreach (var item in linkedList)
 
 #endregion
 
-#region Providing an Indexer
-//750
+#region Providing an Indexer USE
+Pair<int> pair = new Pair<int>(6, 10);
+Console.Write("\nPair: ");
+Console.Write(pair[PairItem.First]);
+Console.Write(" ");
+Console.Write(pair[PairItem.Second]);
 #endregion
 
-#region Contact
+#region Index operator with variable parameters USE
+var binaryTree = new BinaryTree<int>(5);
+//var search = binaryTree[PairItem.First, PairItem.Second].Value;
+#endregion
+
+#region Yeilding Some C# Keywords
+CSharpBuiltInTypes keywords = new();
+Console.Write("\nKeywords using GetEnumerator: ");
+foreach (var item in keywords)
+{
+    Console.Write(item + " ");
+}
+#endregion
+
+#region Using Pait<T>.GetEnumerator() via foreach
+var fullName = new Pair<string>("Inigo", "Montoya");
+Console.Write("\nPair<T> foreach: ");
+foreach (var name in fullName)
+{
+    Console.Write(name + " ");
+}
+#endregion
+
+#region Iterate over BinaryTree via foreach
+var jfkFamilyTree = new BinaryTree<string>("John Fitzgerald Kennedy")
+{
+    SubItems = new Pair<BinaryTree<string>>(
+        // Father
+        new BinaryTree<string>("Joseph Patrick Kennedy")
+        {
+            SubItems = new Pair<BinaryTree<string>>(
+                // Grandparents (Father side)
+                new BinaryTree<string>("Patrick Joseph Kennedy"),
+                new BinaryTree<string>("Mary Augusta Hickey"))
+        },
+        // Mother
+        new BinaryTree<string>("Rose Elizabeth Fitzgerald")
+        {
+            SubItems = new Pair<BinaryTree<string>>(
+                // Grandparents (Mother size)
+                new BinaryTree<string>("John Francis Fitzgerald"),
+                new BinaryTree<string>("Mary Josephine Hannon"))
+        })
+};
+
+Console.Write("\n\nFitzgerald Kennedy family: \n");
+foreach (var name in jfkFamilyTree)
+    Console.WriteLine(name);
+
+
+#endregion
+
+
+
+
+#region Contact IMPLEMENTATION 
 class Contact
 {
     public string FirstName { get; private set; }
@@ -191,5 +252,120 @@ class ContactEquality : IEqualityComparer<Contact>
         int h2 = obj.LastName == null ? 0 : obj.LastName.GetHashCode();
         return h1 * 23 + h2;
     }
+}
+#endregion
+
+#region Pair<T> Providing an Indexer IMPLEMENTATION
+struct Pair<T> : IPair<T>, IEnumerable<T>
+{
+
+    public IEnumerator<T> GetNotNullEnumerator()
+    {
+        if (First == null || Second == null)
+            yield break;
+        yield return First;
+        yield return Second;
+    }
+
+    [System.Runtime.CompilerServices.IndexerName("Entry")] // i don't know why i use this instruction, in book author same doesn't know
+    public T this[PairItem index] => index switch
+    {
+        PairItem.First => First,
+        PairItem.Second => Second,
+        _ => throw new NotImplementedException($"The enum {index} has not been implemented")
+    };
+
+    public T First { get; }
+
+    public T Second { get; }
+
+    public Pair(T first, T second) : this()
+    {
+        First = first;
+        Second = second;
+    }
+
+    public IEnumerator<T> GetEnumerator()
+    {
+        return GetNotNullEnumerator();
+        //yield return First;
+        //yield return Second;
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+}
+
+interface IPair<T>
+{
+    T First { get; }
+    T Second { get; }
+    T this[PairItem index] { get; }
+}
+enum PairItem
+{
+    First,
+    Second
+}
+#endregion
+
+#region BinaryTree<T> Index operator with variable parameters IMPLEMENTATION
+class BinaryTree<T> : IEnumerable<T>
+{
+    public IEnumerator<T> GetEnumerator()
+    {
+        yield return Value;
+
+        foreach (var tree in SubItems)
+        {
+            if (tree != null)
+            {
+                foreach (T item in tree)
+                {
+                    yield return item;
+                }
+            }
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    public BinaryTree(T value)
+    {
+        Value = value;
+    }
+
+    public T Value { get; }
+
+    public Pair<BinaryTree<T>> SubItems { get; set; }
+
+    public BinaryTree<T> this[params PairItem[]? branches]
+    {
+        get
+        {
+            BinaryTree<T> currentNode = this;
+            int totalLevels = branches?.Length ?? 0;
+            int currentLevel = 0;
+
+            while (currentLevel < totalLevels)
+            {
+                System.Diagnostics.Debug.Assert(branches != null, $"{nameof(branches)} != null");
+                currentNode = currentNode.SubItems[branches[currentLevel]];
+
+                if (currentNode == null)
+                    throw new IndexOutOfRangeException();
+
+                currentLevel++;
+            }
+            return currentNode;
+        }
+    }
+
+
 }
 #endregion
