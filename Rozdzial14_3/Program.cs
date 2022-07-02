@@ -1,6 +1,4 @@
-﻿using static Thermostat;
-
-class Heater
+﻿class Heater
 {
     public Heater(float temp)
     {
@@ -32,17 +30,17 @@ class Cooler
     }
 }
 
+public class TemperatureArgs : EventArgs
+{
+    public TemperatureArgs(float newTemperature)
+    {
+        NewTemperature = newTemperature;
+    }
+    public float NewTemperature { get; set; }
+}
+
 public class Thermostat
 {
-    public class TemperatureArgs : EventArgs
-    {
-        public TemperatureArgs(float newTemperature)
-        {
-            NewTemperature = newTemperature;
-        }
-        public float NewTemperature { get; set; }
-    }
-
     public delegate void TemperatureChangeHandler(object sender, TemperatureArgs newTemperature);
 
     public event EventHandler<TemperatureArgs> OnTemperatureChange;
