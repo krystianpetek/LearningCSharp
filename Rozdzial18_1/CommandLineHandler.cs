@@ -16,6 +16,7 @@ namespace Rozdzial18_1
         {
             bool success = false;
             errorMessage = null;
+
             foreach (string arg in args)
             {
                 string option;
