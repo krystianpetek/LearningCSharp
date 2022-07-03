@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿// CHAPTER 17: Building Custom Collections
+
+using System.Collections;
 
 namespace Rozdzial17_1
 {
