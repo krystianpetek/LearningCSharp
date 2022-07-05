@@ -1,4 +1,8 @@
-﻿namespace Rozdzial18_2
+﻿#define CONDITIONAL_A
+
+using System.Diagnostics;
+
+namespace Rozdzial18_2
 {
     internal partial class Program
     {
@@ -40,6 +44,33 @@
             }
             else
                 Console.WriteLine("File not exists");
+            #endregion
+
+            #region Using ConditionalAttributes to eliminate a call method
+            Console.WriteLine("Begin...");
+            MethodA();
+            MethodB();
+            Console.WriteLine("End...");
+
+            [Conditional("CONDITIONAL_A")]
+            static void MethodA()
+            {
+                Console.WriteLine("MethodA() executing...");
+            }
+
+            [Conditional("CONDITIONAL_B")]
+            static void MethodB()
+            {
+                Console.WriteLine("MethodB() executing...");
+            }
+            #endregion
+
+            #region Using ObsoleteAttribute
+            [Obsolete]
+            static void ObsoleteMethod()
+            { }
+
+            ObsoleteMethod();
             #endregion
         }
     }
