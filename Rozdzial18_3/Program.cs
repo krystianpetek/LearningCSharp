@@ -41,7 +41,7 @@ namespace Rozdzial18_3
             Console.WriteLine($"{personDynamic.FirstName} {personDynamic.LastName}");
             #endregion
 
-            var x = IntPtr.MaxValue;
+
         }
     }
 }
