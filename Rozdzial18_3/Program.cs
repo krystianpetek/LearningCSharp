@@ -1,4 +1,6 @@
-﻿namespace Rozdzial18_3
+﻿using System.Xml.Linq;
+
+namespace Rozdzial18_3
 {
     internal class Program
     {
@@ -19,6 +21,27 @@
                 data.NonExistentMethodCallStillCompiles();
             }
             #endregion
+
+            #region Binding to XML Element without dynamic
+            XElement person = XElement.Parse(@"
+<Person>
+<FirstName>Inigo</FirstName>
+<LastName>Montoya</LastName>
+</Person>");
+            Console.WriteLine($"{person.Descendants("FirstName").FirstOrDefault().Value}");
+            Console.WriteLine($"{person.Descendants("LastName").FirstOrDefault().Value}");
+            #endregion
+
+            #region Biding to XML Elements using dynamic
+            dynamic personDynamic = DynamicXml.Parse(@"
+<Person>
+<FirstName>Inigo</FirstName>
+<LastName>Montoya</LastName>
+</Person>");
+            Console.WriteLine($"{personDynamic.FirstName} {personDynamic.LastName}");
+            #endregion
+
+            var x = IntPtr.MaxValue;
         }
     }
 }
