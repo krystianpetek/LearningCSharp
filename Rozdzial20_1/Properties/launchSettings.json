@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Rozdzial20_1": {
+      "commandName": "Project",
+      "commandLineArgs": "IntelliTect"
+    }
+  }
+}
