@@ -7,9 +7,8 @@ namespace Rozdzial20_1
     internal class Program
     {
         public const string DefaultUrl = "https://IntelliTect.com";
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            #region Synchronous Web Request
             if (args.Length == 0)
             {
                 Console.WriteLine("ERROR: No findText argument specified.");
@@ -23,6 +22,8 @@ namespace Rozdzial20_1
                 url = args[1];
             }
 
+            #region Synchronous Web Request
+            Console.WriteLine("Synchronous invoking");
             Console.Write($"Searching for '{findText}' at URL '{url}'.\n");
 
             Console.WriteLine("Downloading...");
@@ -37,19 +38,17 @@ namespace Rozdzial20_1
             #endregion
 
             #region Asynchronous Invoking a High-Latency operation using the TPL
-
-            Console.WriteLine();
-
+            Console.WriteLine("\nTask Parallel Library");
             Console.Write($"Searching for '{findText}' at URL '{url}'.\n");
 
             Console.WriteLine("Downloading...");
             Console.Write("Searching");
 
-            using WebClient webClientAsync = new();
-            Task task = webClient.DownloadDataTaskAsync(url).ContinueWith(antecedent =>
+            using WebClient webClientTPL = new();
+            Task task = webClientTPL.DownloadDataTaskAsync(url).ContinueWith(antecedent =>
             {
                 byte[] downloadData = antecedent.Result;
-                return CountOccurrencesAsync(downloadData, findText);
+                return CountOccurrencesTPL(downloadData, findText);
             })
                 .Unwrap()
                 .ContinueWith(antecedent =>
@@ -88,6 +87,24 @@ namespace Rozdzial20_1
 
                 }
             }
+            #endregion
+
+            #region Asynchronous High-Latency Invocation with the Task-Based Asynchronous Pattern
+            Console.WriteLine("\nTask-Based Asynchronous Pattern");
+            Console.WriteLine($"Searching for '{findText}' at URL '{url}'");
+
+            using WebClient webClientAsync = new();
+            Task<byte[]> taskDownload = webClientAsync.DownloadDataTaskAsync(url);
+
+            Console.WriteLine("Downloading...");
+            byte[] downloadDataAsync = await taskDownload;
+            Task<int> taskSearch = CountOccurrencesAsync(downloadDataAsync, findText);
+            while (!taskSearch.Wait(100)) { Console.Write("."); }
+
+            Console.Write("Searching...");
+            int textOccurrenceCountAsync = await taskSearch;
+
+            Console.WriteLine($@"{Environment.NewLine}'{findText}' appears {textOccurrenceCount} times at URL '{url}'.");
             #endregion
         }
 
@@ -130,7 +147,7 @@ namespace Rozdzial20_1
         #endregion
 
         #region Asynchronous Invoking a High-Latency operation using the TPL
-        private static Task<int> CountOccurrencesAsync(byte[] downloadData, string findText)
+        private static Task<int> CountOccurrencesTPL(byte[] downloadData, string findText)
         {
             return Task.Run<int>(() =>
             {
@@ -145,6 +162,47 @@ namespace Rozdzial20_1
                 {
                     char[] data = new char[reader.BaseStream.Length];
                     length = reader.Read(data);
+
+                    for (int i = 0; i < length; i++)
+                    {
+                        if (findText[findIndex++] == data[i])
+                        {
+                            if (findIndex == findText.Length)
+                            {
+                                // text was found
+                                textOccurrenceCount++;
+                                findIndex = 0;
+                            }
+                        }
+                        else
+                        {
+                            findIndex = 0;
+                        }
+                    }
+                }
+                while (length != 0);
+
+                return textOccurrenceCount;
+            });
+        }
+        #endregion
+
+        #region Asynchronous Invoking a High-Latency operation using the TPL
+        private static Task<int> CountOccurrencesAsync(byte[] downloadData, string findText)
+        {
+            return Task.Run<int>(async () =>
+            {
+                int textOccurrenceCount = 0;
+
+                using MemoryStream stream = new MemoryStream(downloadData);
+                using StreamReader reader = new StreamReader(stream);
+
+                int findIndex = 0;
+                int length = 0;
+                do
+                {
+                    char[] data = new char[reader.BaseStream.Length];
+                    length = await reader.ReadAsync(data);
 
                     for (int i = 0; i < length; i++)
                     {
