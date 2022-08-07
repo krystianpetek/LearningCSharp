@@ -102,7 +102,7 @@ namespace Rozdzial20_1
             while (!taskSearch.Wait(100)) { Console.Write("."); }
 
             Console.Write("Searching...");
-            int textOccurrenceCountAsync = await taskSearch;
+            int textOccurrenceCountvAsync = await taskSearch;
 
             Console.WriteLine($@"{Environment.NewLine}'{findText}' appears {textOccurrenceCount} times at URL '{url}'.");
             #endregion
@@ -187,7 +187,7 @@ namespace Rozdzial20_1
         }
         #endregion
 
-        #region Asynchronous Invoking a High-Latency operation using the TPL
+        #region Asynchronous Invoking a High-Latency operation using the Task-Based Asynchronous Pattern
         private static Task<int> CountOccurrencesAsync(byte[] downloadData, string findText)
         {
             return Task.Run<int>(async () =>
