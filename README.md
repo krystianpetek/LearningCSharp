@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # FirstStepsCSharp
  My first steps with C# programming language
 =======
@@ -9,4 +10,8 @@
 =======
 # dodawanieLogikiDoAplikacji
  Dodawanie logiki do aplikacji za pomocą języka C#
+>>>>>>> zxc/main
+=======
+# WorkWithFileAndDirectoriesInNetApp
+ 
 >>>>>>> zxc/main

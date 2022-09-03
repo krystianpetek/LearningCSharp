@@ -1,0 +1,9 @@
+C:\GITHUB\WorkWithFileAndDirectoriesInNetApp\CreateFilesAndDirectories\stores\sales.json
+C:\GITHUB\WorkWithFileAndDirectoriesInNetApp\CreateFilesAndDirectories\stores\201\sales.json
+C:\GITHUB\WorkWithFileAndDirectoriesInNetApp\CreateFilesAndDirectories\stores\201\salestotals.json
+C:\GITHUB\WorkWithFileAndDirectoriesInNetApp\CreateFilesAndDirectories\stores\202\sales.json
+C:\GITHUB\WorkWithFileAndDirectoriesInNetApp\CreateFilesAndDirectories\stores\202\salestotals.json
+C:\GITHUB\WorkWithFileAndDirectoriesInNetApp\CreateFilesAndDirectories\stores\203\sales.json
+C:\GITHUB\WorkWithFileAndDirectoriesInNetApp\CreateFilesAndDirectories\stores\203\salestotals.json
+C:\GITHUB\WorkWithFileAndDirectoriesInNetApp\CreateFilesAndDirectories\stores\204\sales.json
+C:\GITHUB\WorkWithFileAndDirectoriesInNetApp\CreateFilesAndDirectories\stores\204\salestotals.json
