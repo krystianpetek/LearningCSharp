@@ -1,2 +1,2 @@
-# SPOJ_2
- spoj cześć 2
+# NaukaCS_Zadania
+ 
