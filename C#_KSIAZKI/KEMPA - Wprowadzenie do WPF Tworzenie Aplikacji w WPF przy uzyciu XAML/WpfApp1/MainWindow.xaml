@@ -1,0 +1,46 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Przywitanie" Height="450" Width="800">
+    <Grid Background="WhiteSmoke">
+        <Button Click="btnStart_Click" x:Name="btnStart" Content="Start" HorizontalAlignment="Left" Margin="75,50,0,0" VerticalAlignment="Top" Width="135" Height="60"
+                FontFamily="Times New Roman" FontSize="20pt" FontWeight="Bold"
+                IsEnabled="False"
+                Background="DarkKhaki"
+                BorderBrush="Beige"
+                Foreground="DarkGreen" />
+
+        <Button MouseEnter="btnTime_MouseEnter"
+                MouseLeave="btnTime_MouseLeave"
+                x:Name="btnTime"
+                Margin="75,150,0,0"
+                Width="135"
+                Height="60"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Content="Time"
+                FontFamily="Times New Roman"
+                FontSize="20pt"
+                FontWeight="Bold" />
+
+        <Button Width="135" Height="60"
+                Margin="75,250,0,0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Content="Uaktywnij start"
+                FontSize="13pt"
+                FontWeight="bold"
+                FontFamily="Times new roman"
+                x:Name="btnWlaczStart"
+                Click="btnWlaczStart_Click"></Button>
+
+        <TextBlock VerticalAlignment="Center" Width="150" TextAlignment="Center"
+                   >Czy chcesz podwyżkę?</TextBlock>
+        <Button x:Name="btnPodwyzkaTak" Width="50" Height="20" Content="Tak" Margin="0,50,80,0" MouseEnter="btnPodwyzkaTak_MouseEnter"></Button>
+        <Button x:Name="btnPodwyzkaNie" Width="50" Height="20" Content="Nie" Margin="80,50,0,0"></Button>
+    </Grid>
+</Window>

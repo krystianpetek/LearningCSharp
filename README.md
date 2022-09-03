@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# cwiczenia
- cwiczenia
-=======
-# cwiczenia2
- Cwiczenia#2
->>>>>>> zxc/main
+# NaukaWPF
+ 
+Nauka C# WPF oraz XAML z książki p. Anny Kempy + własne implementacje

@@ -1,0 +1,30 @@
+﻿<Window
+    x:Class="Zadanie_10._02.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Zadanie_10._02"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    FontSize="25"
+    FontWeight="Bold"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Foreground" Value="DodgerBlue" />
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <TextBox Text="Wpisz imię..." />
+        <TextBox Text="Wpisz nazwisko..." />
+        <TextBox Style="{x:Null}" Text="Wpisz numer..." />
+
+        <TextBlock FontSize="15" Text="Potwierdź lub anuluj" />
+        <WrapPanel TextElement.FontSize="50">
+            <Button Margin="10" Content="Zapisz" />
+            <Button Margin="10" Content="Anuluj" />
+        </WrapPanel>
+    </StackPanel>
+</Window>
