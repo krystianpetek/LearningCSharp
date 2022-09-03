@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="ExampleWith_TaskAsync.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ExampleWith_TaskAsync"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources />
+</Application>
