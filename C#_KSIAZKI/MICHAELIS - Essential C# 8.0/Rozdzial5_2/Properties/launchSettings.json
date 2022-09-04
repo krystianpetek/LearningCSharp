@@ -1,0 +1,8 @@
+{
+    "profiles": {
+        "Rozdzial5_2": {
+            "commandName": "Project",
+            "commandLineArgs": "C:\\GITHUB\\CS8.0_Ksiazka\\Rozdzial5_2\\bin\\Debug\\net5.0"
+        }
+    }
+}
