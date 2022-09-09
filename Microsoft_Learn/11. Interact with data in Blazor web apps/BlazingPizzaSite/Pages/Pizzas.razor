@@ -1,0 +1,46 @@
+﻿@page "/pizzas";
+@using BlazingPizzaSite.Models;
+@inject HttpClient httpClient;
+@inject NavigationManager navigationManager;
+
+<h1>Choose your pizza</h1>
+
+<p>We have all these delicious recipes: </p>
+@if(_pizzas is null || _pizzas.Count() == 0)
+{
+    <p>We're finding out what pizzas are available today...</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Pizza Name</th>
+                <th>Description</th>
+                <th>Vegetarian?</th>
+                <th>Vegan?</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pizza in _pizzas)
+            {
+                <tr>@pizza.Name</tr>
+                <tr>@pizza.Description</tr>
+                <tr>@pizza.Vegetarian</tr>
+                <tr>@pizza.Vegan</tr>
+                <tr>@pizza.Price</tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<OldPizza> _pizzas;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _pizzas = await httpClient.GetFromJsonAsync<List<OldPizza>>(navigationManager.BaseUri + "oldPizzas");
+    }
+
+}
