@@ -17,7 +17,6 @@ public class PizzaStoreContext : DbContext
     public DbSet<PizzaSpecial> Specials { get; set; }
 
     public DbSet<Topping> Toppings { get; set; }
-    public DbSet<OldPizza> OldPizzas { get; internal set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

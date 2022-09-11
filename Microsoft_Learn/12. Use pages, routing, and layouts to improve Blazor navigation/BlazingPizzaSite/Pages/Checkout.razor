@@ -5,28 +5,11 @@
 @using BlazingPizzaSite.Models
 @using BlazingPizzaSite.Services
 
-<div class="top-bar">
-
-    <a class="logo" href="">
-        <img src="img/logo.svg" />
-    </a>
-
-    <NavLink href="" class="nav-tab" Match="NavLinkMatch.All">
-        <img src="img/pizza-slice.svg" />
-        <div>Get Pizza</div>
-    </NavLink>
-
-    <NavLink href="myorders" class="nav-tab">
-        <img src="img/bike.svg" />
-        <div>My Orders</div>
-    </NavLink>
-</div>
-
 <div class="main">
     <div class="checkout-cols">
         <div class="checkout-order-details">
             <h4>Review order</h4>
-            @foreach(var pizza in Order.Pizzas)
+            @foreach (var pizza in Order.Pizzas)
             {
                 <p>
                     <strong>
@@ -61,6 +44,6 @@
         var response = await httpClient.PostAsJsonAsync(navigationManager.BaseUri + "orders", orderState.Order);
         var newOrderId = await response.Content.ReadFromJsonAsync<int>();
         orderState.ResetOrder();
-        navigationManager.NavigateTo("/myorders");
+        navigationManager.NavigateTo($"/myorders/{newOrderId}");
     }
 }
