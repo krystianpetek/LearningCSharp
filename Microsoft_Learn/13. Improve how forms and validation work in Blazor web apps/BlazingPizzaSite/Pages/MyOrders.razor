@@ -1,0 +1,50 @@
+﻿@page "/myorders"
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+
+<div class="main">
+    @if(ordersWithStatus == null){
+        <text>Loading...</text>
+    }
+    else if(!ordersWithStatus.Any())
+    {
+        <h2>No orders palced</h2>
+        <a class="btn btn-success" href="">Order some pizza</a>
+    }
+    else
+    {
+        <div class="list-group orders-list">
+            @foreach(var order in ordersWithStatus)
+            {
+                <div class="list-group-item">
+                    <div class="col">
+                        <h5>@order.Order.CreatedTime.ToLongDateString()</h5>
+                        Items:
+                        <strong>@order.Order.Pizzas.Count</strong>
+                        Total price:
+                        <strong>£@order.Order.GetFormattedTotalPrice()</strong>
+                    </div>
+                    <div class="col">
+                        Status: <strong>@order.StatusText</strong>
+                    </div>
+                    @if(@order.StatusText != "Delivered")
+                    {
+                        <div class="col flex-grow-0">
+                            <a href="myorders/@order.Order.OrderId" class="btn btn-success">
+                                Track &gt;</a>
+                                </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    List<OrderWithStatus> ordersWithStatus = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        ordersWithStatus = await httpClient.GetFromJsonAsync<List<OrderWithStatus>>($"{navigationManager.BaseUri}orders");
+    }
+}
