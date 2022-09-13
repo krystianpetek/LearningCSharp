@@ -22,9 +22,9 @@ public class Program
             });
             x.RunAsLocalSystem();
 
-            x.SetDescription("Blazing Pizza Site");
-            x.SetDisplayName("BPS");
-            x.SetServiceName("BPS.Service");
+            x.SetDescription("BlazingPizzaSite");
+            x.SetDisplayName("BlazingPizzaSite");
+            x.SetServiceName("BlazingPizzaSite");
         });
 
         var exitCode = (int)Convert.ChangeType(rc, rc.GetTypeCode());
