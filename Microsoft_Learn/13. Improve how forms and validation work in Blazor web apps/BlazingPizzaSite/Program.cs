@@ -1,14 +1,13 @@
 using BlazingPizzaSite.Data;
 using BlazingPizzaSite.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting.WindowsServices;
 using Topshelf;
 
 namespace BlazingPizzaSite;
 
-public class Program
+public static class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var rc = HostFactory.Run(x =>
         {
@@ -17,14 +16,14 @@ public class Program
             x.Service<StartApp>(s =>
             {
                 s.ConstructUsing(host => new StartApp());
-                s.WhenStarted(tc => tc.Start());
+                s.WhenStarted(async tc => await tc.Start());
                 s.WhenStopped(tc => tc.Stop());
             });
             x.RunAsLocalSystem();
 
-            x.SetDescription("BlazingPizzaSite");
-            x.SetDisplayName("BlazingPizzaSite");
-            x.SetServiceName("BlazingPizzaSite");
+            x.SetDescription("BPS.Service");
+            x.SetDisplayName("BPS.Service");
+            x.SetServiceName("BPS.Service");
         });
 
         var exitCode = (int)Convert.ChangeType(rc, rc.GetTypeCode());
@@ -39,15 +38,9 @@ public class StartApp
         Environment.Exit(0);
     }
 
-    public void Start()
+    public async Task Start()
     {
-
-        var options = new WebApplicationOptions()
-        {
-            ContentRootPath = WindowsServiceHelpers.IsWindowsService() ? AppContext.BaseDirectory : default
-        };
-
-        var builder = WebApplication.CreateBuilder(options);
+        var builder = WebApplication.CreateBuilder();
         builder.WebHost.UseIIS();
         builder.WebHost.UseIISIntegration();
 
@@ -61,7 +54,6 @@ public class StartApp
 
         // Register services
         builder.Services.AddSingleton<OrderState>();
-        builder.Host.UseWindowsService();
 
         var app = builder.Build();
 
@@ -87,6 +79,6 @@ public class StartApp
             SeedData.Initialize(db);
         }
 
-        app.Run();
+        await app.RunAsync();
     }
 }
