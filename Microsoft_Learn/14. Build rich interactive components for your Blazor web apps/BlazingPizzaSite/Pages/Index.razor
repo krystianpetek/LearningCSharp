@@ -2,7 +2,7 @@
 @inject HttpClient httpClient
 @inject NavigationManager navigationManager
 @inject OrderState orderState
-@inject IJSRuntime JsRuntime
+@inject IJSRuntime jsRuntime
 @using BlazingPizzaSite.Services
 
 <div class="main">
@@ -38,7 +38,7 @@
             @foreach (var configuredPizza in order.Pizzas)
             {
                 <div class="cart-item">
-                    <a @onclick="@( async () => await ShowConfirm(configuredPizza))" class="delete-item">x</a>
+                    <a @onclick=@(async () => await ShowConfirm(configuredPizza)) class="delete-item">x</a>
                     <div class="title">@(configuredPizza.Size)" @configuredPizza.Special.Name</div>
                     <div class="item-price">
                         @configuredPizza.GetFormattedTotalPrice()
@@ -54,7 +54,7 @@
         <div class="empty-cart">Choose a pizza<br>to get started</div>
     }
 
-    <div class="order-total @(order.Pizzas.Any() ? "" : "hidden")">
+    <div class="order-total @( order.Pizzas.Any() ? "" : "hidden")">
         Total:
         <span class="total-price">@order.GetFormattedTotalPrice()</span>
         <a href="checkout"
@@ -74,13 +74,12 @@
         specials = await httpClient.GetFromJsonAsync<List<PizzaSpecial>>(navigationManager.BaseUri + "specials");
 
     }
-
     private async Task ShowConfirm(Pizza removePizza)
     {
         var messageParams = new
         {
             title = "Are you sure?",
-            text = $"Do you want to remove the { removePizza.Special.Name } from your order?",
+            text = $"Do you want to remove the {removePizza.Special.Name}from your order?",
             icon = "warning",
             buttons = new
             {
@@ -98,7 +97,9 @@
             dangerMode = true
         };
 
-        if (await JsRuntime.InvokeAsync<bool>("swal", messageParams))
+        if (await jsRuntime.InvokeAsync<bool>("swal", messageParams))
+        {
             orderState.RemoveConfiguredPizza(removePizza);
+        }
     }
 }

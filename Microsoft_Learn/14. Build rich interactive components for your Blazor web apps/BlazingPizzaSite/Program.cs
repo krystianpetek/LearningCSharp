@@ -7,7 +7,7 @@ namespace BlazingPizzaSite;
 
 public static class Program
 {
-    public static async Task Main(string[] args)
+    public static async Task Main()
     {
         var rc = HostFactory.Run(x =>
         {
@@ -15,7 +15,7 @@ public static class Program
             Directory.SetCurrentDirectory(path);
             x.Service<StartApp>(s =>
             {
-                s.ConstructUsing(host => new StartApp());
+                s.ConstructUsing(_ => new StartApp());
                 s.WhenStarted(async tc => await tc.Start());
                 s.WhenStopped(tc => tc.Stop());
             });

@@ -26,5 +26,4 @@ public class PizzaStoreContext : DbContext
         modelBuilder.Entity<PizzaTopping>().HasOne<Pizza>().WithMany(ps => ps.Toppings);
         modelBuilder.Entity<PizzaTopping>().HasOne(pst => pst.Topping).WithMany();
     }
-
 }

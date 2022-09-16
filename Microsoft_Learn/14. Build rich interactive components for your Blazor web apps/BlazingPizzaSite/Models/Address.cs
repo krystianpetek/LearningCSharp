@@ -21,7 +21,7 @@ namespace BlazingPizzaSite.Models
         [Required, MinLength(3, ErrorMessage = "Please use a Region bigger than 3 letters."), MaxLength(20, ErrorMessage = "Please use a Region less than 20 letters.")]
         public string Region { get; set; }
 
-        [Required, RegularExpression(@"^([0-9]{5})$", ErrorMessage = "Please use a valid Postal Code with five numbers.")]
+        [Required, RegularExpression("^([0-9]{5})$", ErrorMessage = "Please use a valid Postal Code with five numbers.")]
         public string PostalCode { get; set; }
     }
 }
