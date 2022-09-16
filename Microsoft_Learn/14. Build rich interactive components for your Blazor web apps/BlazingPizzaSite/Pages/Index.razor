@@ -11,7 +11,7 @@
         {
             @foreach (var special in specials)
             {
-                <li @onclick="@(() => orderState.ShowConfigurePizzaDialog(special))"
+                <li @onclick=@(() => orderState.ShowConfigurePizzaDialog(special))
             style="background-image: url('@special.ImageUrl')">
                     <div class="pizza-info">
                         <span class="title">@special.Name</span>
@@ -45,8 +45,6 @@
                     </div>
                 </div>
             }
-
-
         </div>
     }
     else
@@ -71,8 +69,8 @@
 
     protected override async Task OnInitializedAsync()
     {
+        await base.OnInitializedAsync();
         specials = await httpClient.GetFromJsonAsync<List<PizzaSpecial>>(navigationManager.BaseUri + "specials");
-
     }
     private async Task ShowConfirm(Pizza removePizza)
     {

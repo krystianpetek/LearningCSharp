@@ -14,11 +14,11 @@ public class OrderState
         {
             Special = special,
             SpecialId = special.Id,
-            Size = Pizza.DefaultSize,
             Toppings = new List<PizzaTopping>(),
         };
 
         ShowingConfigureDialog = true;
+        ConfiguringPizza.Size = ConfiguringPizza.DefaultSize;
     }
 
     public void CancelConfigurePizzaDialog()
