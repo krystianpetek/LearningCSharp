@@ -1,8 +1,0 @@
-﻿<Application
-    x:Class="AppMVVM_2_WFAiIS.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:AppMVVM_2_WFAiIS"
-    StartupUri="MainWindow.xaml">
-    <Application.Resources />
-</Application>

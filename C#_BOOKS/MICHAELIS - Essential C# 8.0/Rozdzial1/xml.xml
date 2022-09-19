@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<body>
+	<book title="C# 8.0. Praktyczny podręcznik">
+		<chapters>
+			<chapter title="Wprowadzenie do języka C#" />
+			<chapter title="Typy danych" />
+			...
+		</chapters>
+	</book>
+</body>
