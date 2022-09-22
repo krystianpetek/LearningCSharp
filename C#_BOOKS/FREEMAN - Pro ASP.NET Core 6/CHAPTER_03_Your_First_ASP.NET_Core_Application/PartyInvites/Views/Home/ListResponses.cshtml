@@ -1,0 +1,41 @@
+@model IEnumerable<GuestResponse>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css"/>
+    <title>Responses!</title>
+</head>
+
+<body>
+    <div class="p-2 text-center">
+        <h2 class="text-center">Here is the list of people attending the party</h2>
+        <table class="table table-bordered table-striped table-sm">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (GuestResponse guest in Model)
+            {
+                <tr>
+                    <td>@guest.Name</td>
+                    <td>@guest.Email</td>
+                    <td>@guest.Phone</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
