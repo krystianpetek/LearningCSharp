@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LanguageFeatures.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using LanguageFeatures.Models;
 
 namespace LanguageFeatures.Controllers;
@@ -70,29 +71,28 @@ public class HomeController : Controller
 
     public ViewResult ShoppingCart()
     {
-        ShoppingCart shoppingCart = new()
-        {
-            Products = Models.Product.GetProducts()
-        };
+        IProductSelection shoppingCart = new ShoppingCart(Models.Product.GetProducts()!);
 
         Product[] productArray =
         {
             new Product() { Name = "Kayak", Price = 275M },
             new Product() { Name = "Lifejacket", Price = 48.95M }
         };
-        
+
         decimal cartTotal = shoppingCart.TotalPrices();
         decimal arrayTotal = productArray.TotalPrices();
-        
+
         return View("Index", new string[] { $"Cart total: {cartTotal:C2}", $"Array total: {arrayTotal:C2}" });
     }
-    
+
     public ViewResult FilterShoppingCart()
     {
-        ShoppingCart shoppingCart = new()
-        {
-            Products = Models.Product.GetProducts()
-        };
+
+        bool FilterByPrice(Product? p) => (p?.Price ?? 0) >= 20;
+
+        Func<Product?, bool> FilterByName = delegate(Product? product) { return product?.Name?[0] == 'S'; };
+
+        IProductSelection shoppingCart = new ShoppingCart(Models.Product.GetProducts()!);
 
         Product[] productArray =
         {
@@ -101,9 +101,82 @@ public class HomeController : Controller
             new Product() { Name = "Soccer ball", Price = 19.50M },
             new Product() { Name = "Corner flag", Price = 34.95M }
         };
-        
-        decimal arrayTotal = productArray.FilterByPrice(20).TotalPrices();
-        
-        return View("Index", new string[] { $"Array total: {arrayTotal:C2}" });
+
+        decimal priceFilterTotal = productArray.FilterByPrice(20).TotalPrices();
+        decimal nameFilterTotal = productArray.FilterByName('S').TotalPrices();
+
+        decimal priceGenericFilterTotal = productArray.Filter(FilterByPrice).TotalPrices();
+        decimal nameGenericFilterTotal = productArray.Filter(FilterByName).TotalPrices();
+        // or lambda expression
+        priceGenericFilterTotal = productArray.Filter(product => (product?.Price ?? 0) > 20).TotalPrices();
+        nameGenericFilterTotal = productArray.Filter(product => product?.Name[0] == 'S').TotalPrices();
+
+
+        return View("Index", new string[]
+        {
+            $"Price total: {priceFilterTotal:C2}",
+            $"Name total: {nameFilterTotal:C2}",
+            $"Price generic filter total: {priceGenericFilterTotal:C2}",
+            $"Name generic filter total: {nameGenericFilterTotal:C2}"
+        });
+    }
+
+    public ViewResult LambdaMethod() => View("Index", Models.Product.GetProducts().Select(product => product?.Name));
+
+    public ViewResult AnonymousTypes()
+    {
+        var products = new[]
+        {
+            new { Name = "Kayak", Price = 275M },
+            new { Name = "Lifejacket", Price = 48.95M },
+            new { Name = "Soccer ball", Price = 19.50M },
+            new { Name = "Corner flag", Price = 34.95M },
+        };
+
+        return View("Index", products.Select(product => product.Name));
+    }
+
+    public ViewResult DefaultImplementation()
+    {
+        IProductSelection cart = new ShoppingCart(
+            new Product() { Name = "Kayak", Price = 275M },
+            new Product() { Name = "Lifejacket", Price = 48.95M },
+            new Product() { Name = "Soccer ball", Price = 19.50M },
+            new Product() { Name = "Corner flag", Price = 34.95M }
+        );
+        //return View("Index",cart.Products?.Select(p => p.Name));
+        //or
+        return View("Index",cart.Names);
+    }
+
+    public async Task<ViewResult> AsynchronousPageLength()
+    {
+        long? length = await MyAsyncMethods.GetPageLengthAsync();
+        return View("Index",new string[] {$"Length: {length}"});
+    }
+
+    public async Task<ViewResult> AsynchronousPageLengths()
+    {
+        List<string> output = new();
+        foreach (long? len in await MyAsyncMethods.GetPageLengthsAsync(output, "apress.com", "microsoft.com",
+                     "amazon.com"))
+        {
+            output.Add($"Page length: {len}");
+        }
+
+        return View("Index", output);
+    }
+
+    public ViewResult GettingNames()
+    {
+        var products = new[]
+        {
+            new { Name = "Kayak", Price = 275M },
+            new { Name = "Lifejacket", Price = 48.95M },
+            new { Name = "Soccer ball", Price = 19.50M },
+            new { Name = "Corner flag", Price = 34.95M },
+        };
+
+        return View("Index", products.Select(product => $"{nameof(product.Name)}: {product.Name}, {nameof(product.Price)}: {product.Price}"));
     }
 }

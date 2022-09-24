@@ -1,10 +1,21 @@
 ﻿using System.Collections;
+using LanguageFeatures.Interfaces;
 
 namespace LanguageFeatures.Models;
 
-public class ShoppingCart : IEnumerable<Product?>
+public class ShoppingCart : IEnumerable<Product?>, IProductSelection
 {
-    public IEnumerable<Product?>? Products { get; set; }
+    private List<Product> _products = new();
+
+    public ShoppingCart(params Product[] prods)
+    {
+        _products.AddRange(prods);
+    }
+
+    public IEnumerable<Product>? Products
+    {
+        get => _products;
+    }
 
     public IEnumerator<Product?> GetEnumerator() =>
         Products?.GetEnumerator() ?? Enumerable.Empty<Product?>().GetEnumerator();
@@ -14,5 +25,3 @@ public class ShoppingCart : IEnumerable<Product?>
         return GetEnumerator();
     }
 }
-
-public record ShoppingCartRecord(IEnumerable<Product?>? Products);
