@@ -13,5 +13,8 @@ var app = builder.Build();
 
 app.EnsureData();
 app.UseStaticFiles();
+app.MapControllerRoute(
+    "pagination", "Products/Page{productPage}",
+    new { Controller = "Home", action = "Index" });
 app.MapDefaultControllerRoute();
 app.Run();
