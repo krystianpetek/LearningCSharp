@@ -1,4 +1,4 @@
-﻿namespace SportsStore.ViewModels;
+﻿namespace SportsStore.Models.ViewModels;
 
 public class PagingInfo
 {

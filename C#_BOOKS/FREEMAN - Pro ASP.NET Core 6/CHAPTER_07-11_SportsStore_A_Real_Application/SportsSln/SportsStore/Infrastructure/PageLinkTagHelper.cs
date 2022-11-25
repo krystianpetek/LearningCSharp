@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using SportsStore.ViewModels;
+using SportsStore.Models.ViewModels;
 
 namespace SportsStore.Infrastructure;
 
@@ -16,12 +16,13 @@ public class PageLinkTagHelper : TagHelper
     {
         _urlHelperFactory = urlHelperFactory;
     }
-    
+
     [ViewContext]
     [HtmlAttributeNotBound]
     public ViewContext? ViewContext { get; set; }
     public PagingInfo? PageModel { get; set; }
     public string? PageAction { get; set; }
+
     [HtmlAttributeName(DictionaryAttributePrefix = "page-url-")]
     public Dictionary<string, object> PageUrlValues { get; set; } = new();
     public bool PageClassesEnabled { get; set; } = false;

@@ -9,7 +9,7 @@ public static class SeedData
         StoreDbContext context =
             app.ApplicationServices.CreateScope().ServiceProvider.GetRequiredService<StoreDbContext>();
 
-        if (context.Database.GetPendingMigrations().Any())
+        if (context.Database.IsRelational() && context.Database.GetPendingMigrations().Any())
         {
             context.Database.Migrate();
         }

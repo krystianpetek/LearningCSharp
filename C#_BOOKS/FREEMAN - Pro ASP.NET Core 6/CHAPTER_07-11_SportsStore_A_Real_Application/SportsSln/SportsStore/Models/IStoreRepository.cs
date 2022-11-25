@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-
-namespace SportsStore.Models;
+﻿namespace SportsStore.Models;
 
 public interface IStoreRepository
 {
