@@ -14,6 +14,9 @@ builder.Services.AddDbContext<StoreDbContext>(options =>
 builder.Services.AddScoped<IStoreRepository, EFStoreRepository>();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
+builder.Services.AddScoped<Cart>(SessionCart.GetCart);
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 var app = builder.Build();
 
 app.EnsureData();
