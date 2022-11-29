@@ -7,12 +7,13 @@ builder.Services.AddControllersWithViews(); // mvc framework
 builder.Services.AddRazorPages(); // Razor pages framework
 builder.Services.AddDbContext<StoreDbContext>(options =>
 {
-    // var connectionString = builder.Configuration["ConnectionStrings:SportsStoreDocker"];
-    // options.UseSqlServer(connectionString);
+    var connectionString = builder.Configuration["ConnectionStrings:SportsStoreDocker"];
+    options.UseSqlServer(connectionString);
 
-    options.UseInMemoryDatabase(databaseName: "SportsStore");
+    //options.UseInMemoryDatabase(databaseName: "SportsStore");
 });
 builder.Services.AddScoped<IStoreRepository, EFStoreRepository>();
+builder.Services.AddScoped<IOrderRepository, EFOrderRepository>();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));

@@ -34,9 +34,3 @@ public class Cart
 
     public virtual void Clear() => Lines.Clear();
 }
-public class CartLine
-{
-    public int CartLineId { get; init; }
-    public Product? Product { get; init; }
-    public int Quantity { get; set; }
-}
