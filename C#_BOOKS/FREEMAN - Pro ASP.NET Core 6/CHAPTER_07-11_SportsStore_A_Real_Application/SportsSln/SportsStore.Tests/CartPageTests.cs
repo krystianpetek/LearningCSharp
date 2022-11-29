@@ -1,4 +1,6 @@
-﻿namespace SportsStore.Tests;
+﻿using SportsStore.Data;
+
+namespace SportsStore.Tests;
 
 public class CartPageTests
 {

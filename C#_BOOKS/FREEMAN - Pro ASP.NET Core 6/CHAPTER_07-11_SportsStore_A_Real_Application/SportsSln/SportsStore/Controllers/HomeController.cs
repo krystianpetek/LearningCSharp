@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using SportsStore.Models;
+using SportsStore.Data;
 using SportsStore.Models.ViewModels;
 
 namespace SportsStore.Controllers;
