@@ -1,4 +1,6 @@
-﻿namespace SportsStore.Tests
+﻿using SportsStore.Data.Interface;
+
+namespace SportsStore.Tests
 {
     public class OrderControllerTests
     {

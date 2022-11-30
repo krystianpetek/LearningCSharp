@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Data;
+using SportsStore.Data.Interface;
+using SportsStore.Data.Models;
 using SportsStore.Models;
 
 var builder = WebApplication.CreateBuilder(args);

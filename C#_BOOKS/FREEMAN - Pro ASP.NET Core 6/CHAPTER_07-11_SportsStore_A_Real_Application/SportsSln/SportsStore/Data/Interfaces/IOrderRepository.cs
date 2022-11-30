@@ -1,6 +1,6 @@
 ﻿using SportsStore.Models;
 
-namespace SportsStore.Data
+namespace SportsStore.Data.Interface
 {
     public interface IOrderRepository
     {

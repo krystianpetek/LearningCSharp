@@ -1,4 +1,4 @@
-﻿using SportsStore.Data;
+﻿using SportsStore.Data.Interface;
 
 namespace SportsStore.Tests;
 

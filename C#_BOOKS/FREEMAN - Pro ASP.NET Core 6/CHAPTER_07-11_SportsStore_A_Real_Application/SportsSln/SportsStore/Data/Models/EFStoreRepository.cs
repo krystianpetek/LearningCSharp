@@ -1,6 +1,7 @@
-﻿using SportsStore.Models;
+﻿using SportsStore.Data.Interface;
+using SportsStore.Models;
 
-namespace SportsStore.Data;
+namespace SportsStore.Data.Models;
 
 public class EFStoreRepository : IStoreRepository
 {

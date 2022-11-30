@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SportsStore.Data.Interface;
 using SportsStore.Models;
 
-namespace SportsStore.Data
+namespace SportsStore.Data.Models
 {
     public class EFOrderRepository : IOrderRepository
     {
@@ -19,7 +20,7 @@ namespace SportsStore.Data
         public Task SaveOrder(Order order)
         {
             _storeDbContext.AttachRange(order.Lines.Select(cartLine => cartLine.Product));
-            if(order.OrderId == 0)
+            if (order.OrderId == 0)
             {
                 _storeDbContext.Orders.Add(order);
             }
