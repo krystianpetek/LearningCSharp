@@ -1,6 +1,4 @@
-﻿using SportsStore.Data;
-
-namespace SportsStore.Tests;
+﻿namespace SportsStore.Tests;
 
 public class HomeControllerTests
 {

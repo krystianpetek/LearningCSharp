@@ -12,3 +12,4 @@ global using SportsStore.Pages;
 global using SportsStore.Infrastructure;
 global using SportsStore.Models.ViewModels;
 global using SportsStore.Components;
+global using SportsStore.Data;
