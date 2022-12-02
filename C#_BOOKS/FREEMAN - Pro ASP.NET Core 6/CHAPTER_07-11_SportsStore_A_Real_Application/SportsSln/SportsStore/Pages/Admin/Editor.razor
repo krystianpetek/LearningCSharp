@@ -1,0 +1,80 @@
+﻿@page "/admin/products/edit/{id:long}"
+@page "/admin/products/create"
+@inherits OwningComponentBase<IStoreRepository>
+
+    <style>
+        div.validation-message { 
+            color: rgb(220,53,69);
+            font-weight: 500;
+        }
+    </style>
+
+    <h3 class="bg-@ThemeColor text-white text-center p-1">
+    @TitleText a Product
+    </h3>
+    <EditForm Model="Product" OnValidSubmit="SaveProductAsync">
+        <DataAnnotationsValidator />
+    @if (Product.ProductId != 0)
+    {
+                <div>
+                    <label class="form-label">ID
+                    <input id="Id" class="form-control" disabled value="@Product.ProductId" />
+                        </label>
+                </div> 
+    }
+        <div class="form-group">
+            <label class="form-label">Name</label>
+            <ValidationMessage For="@(() => Product.Name)" />
+            <InputText class="form-control" @bind-Value="Product.Name" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Description</label>
+            <ValidationMessage For="@(() => Product.Description)" />
+            <InputText class="form-control" @bind-Value="Product.Description"></InputText>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Category</label>
+            <ValidationMessage For="@(() => Product.Category)" />
+            <InputText class="form-control" @bind-Value="Product.Category"></InputText>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Price</label>
+            <ValidationMessage For="@(() => Product.Price)" />
+            <InputNumber class="form-control" @bind-Value="Product.Price"></InputNumber>
+        </div>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-@ThemeColor">Save</button>
+            <NavLink type="submit" class="btn btn-secondary" href="/admin/products">Cancel</NavLink>
+        </div>
+    </EditForm>
+
+@code {
+    public IStoreRepository Repository => Service;
+
+    [Inject]
+    NavigationManager? navigationManager { get; set; }
+
+    [Parameter]
+    public long Id { get; set; } = 0;
+
+    public Product Product { get; set; } = new Product();
+
+    protected override void OnParametersSet()
+    {
+        if (Id != 0)
+            Product = Repository.Products.FirstOrDefault(product => product.ProductId == Id) ?? new();
+    }
+
+    public async Task SaveProductAsync()
+    {
+        if (Id == 0)
+            await Repository.CreateProductAsync(Product);
+        else
+            await Repository.ModifyProductAsync(Product);
+
+        navigationManager?.NavigateTo("/admin/products");
+    }
+
+    public string ThemeColor => Id == 0 ? "primary" : "warning";
+    public string TitleText => Id == 0 ? "Create" : "Edit";
+}

@@ -6,8 +6,8 @@ public interface IStoreRepository
 {
     IQueryable<Product> Products { get; }
 
-    Task SaveProduct(Product product);
-    Task ModifyProduct(Product product);
-    Task CreateProduct(Product product);
-    Task DeleteProduct(Product product);
+    Task SaveProductAsync(Product product);
+    Task ModifyProductAsync(Product product);
+    Task CreateProductAsync(Product product);
+    Task DeleteProductAsync(Product product);
 }

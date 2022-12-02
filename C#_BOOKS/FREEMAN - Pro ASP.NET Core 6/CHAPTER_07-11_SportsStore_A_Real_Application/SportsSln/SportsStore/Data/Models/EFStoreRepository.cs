@@ -15,25 +15,25 @@ public class EFStoreRepository : IStoreRepository
 
     public IQueryable<Product> Products => _context.Products;
 
-    public async Task CreateProduct(Product product)
+    public async Task CreateProductAsync(Product product)
     {
         await _context.Products.AddAsync(product);
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteProduct(Product product)
+    public async Task DeleteProductAsync(Product product)
     {
         _context.Products.Remove(product);
         await _context.SaveChangesAsync();
     }
 
-    public async Task ModifyProduct(Product product)
+    public async Task ModifyProductAsync(Product product)
     {
         _context.Products.Update(product);
         await _context.SaveChangesAsync();
     }
 
-    public async Task SaveProduct(Product product)
+    public async Task SaveProductAsync(Product product)
     {
         await _context.SaveChangesAsync();
     }
