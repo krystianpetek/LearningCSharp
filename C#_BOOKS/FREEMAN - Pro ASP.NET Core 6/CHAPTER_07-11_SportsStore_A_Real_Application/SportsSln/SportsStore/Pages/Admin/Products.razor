@@ -29,6 +29,7 @@
                                 <NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(product.ProductId ?? 0)">
                                     Edit
                                 </NavLink>
+                                <button class="btn btn-danger btn-sm" @onclick="@(e => DeleteProductAsync(product))">Delete</button>
                             </td>
                         </tr>
                     }
@@ -43,7 +44,8 @@
         </tbody>
     </table>
 
-        <NavLink class="btn btn-primary" href="/admin/products/create">Create</NavLink>
+    <p>@Error</p>
+    <NavLink class="btn btn-primary" href="/admin/products/create">Create</NavLink>
 
 @code {
     public IStoreRepository Repository => Service;
@@ -59,6 +61,21 @@
     {
         ProductData = await Repository.Products.ToListAsync();
     }
+
+    public async Task DeleteProductAsync(Product product)
+    {
+        try
+        {
+            await Repository.DeleteProductAsync(product);
+            await UpdateData();
+        }
+        catch (Exception ex)
+        {
+            Error = $"{ex.Message}";
+        }
+    }
+
+    public string Error { get; set; } = string.Empty;
 
     public string GetDetailsUrl(long id) => $"/admin/products/details/{id}";
     public string GetEditUrl(long id) => $"/admin/products/edit/{id}";
