@@ -3,7 +3,7 @@
     Layout = null;
 }
 
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width" />
@@ -22,14 +22,14 @@
                 <input type="hidden" asp-for="ReturnUrl" />
                 <div class="mt-2">
                     <label class="form-label" asp-for="Name"></label>
-                    <input asp-for="Name" class="form-control" />
+                    <input type="text" asp-for="Name" class="form-control" />
                     <div>
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="mt-2">
                     <label class="form-label" asp-for="Password"></label>
-                    <input asp-for="Password" class="form-control" />
+                    <input type="password" asp-for="Password" class="form-control" />
                     <div>
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>

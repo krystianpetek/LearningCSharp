@@ -39,6 +39,18 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 var app = builder.Build();
 
+if(app.Environment.IsProduction())
+{
+    app.UseExceptionHandler("/error");
+}
+
+app.UseRequestLocalization(options =>
+{
+    options.AddSupportedCultures("en-US", "pl-PL")
+    .AddSupportedUICultures("en-US", "pl-PL")
+    .SetDefaultCulture("en-US");
+});
+
 app.UseStaticFiles();
 app.UseSession();
 
