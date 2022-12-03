@@ -1,0 +1,41 @@
+﻿@model LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>SportsStore</title>
+        <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="bg-dark text-white p-2">
+            <span class="navbar-brand ml-2">
+                SPORTS STORE
+            </span>
+        </div>
+        <div class="m-1 p-1">
+            <div class="text-danger" asp-validation-summary="All"></div>
+            <form asp-action="Login" asp-controller="Account" method="post">
+                <input type="hidden" asp-for="ReturnUrl" />
+                <div class="mt-2">
+                    <label class="form-label" asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <div>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <label class="form-label" asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <div>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <button class="btn btn-primary mt-2" type="submit">Log In</button>
+            </form>
+        </div>
+    </body>
+</html>
