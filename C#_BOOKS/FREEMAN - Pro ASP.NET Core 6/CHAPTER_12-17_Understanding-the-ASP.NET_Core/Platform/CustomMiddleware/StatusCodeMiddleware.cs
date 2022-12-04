@@ -1,4 +1,4 @@
-﻿namespace Platform
+﻿namespace Platform.CustomMiddleware
 {
     public class StatusCodeMiddleware : IMiddleware
     {

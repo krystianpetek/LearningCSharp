@@ -1,11 +1,10 @@
-﻿namespace Platform
+﻿namespace Platform.CustomMiddleware
 {
     public class QueryStringMiddleware
     {
         private readonly RequestDelegate _requestDelegate;
 
-        public QueryStringMiddleware() { 
-        }
+        public QueryStringMiddleware() { }
 
         public QueryStringMiddleware(RequestDelegate requestDelegate)
         {
@@ -14,7 +13,7 @@
 
         public async Task Invoke(HttpContext context)
         {
-            if(context.Request.Method == HttpMethods.Get &&
+            if (context.Request.Method == HttpMethods.Get &&
                 context.Request.Query["custom"] == "true")
             {
                 if (!context.Response.HasStarted)
@@ -23,7 +22,7 @@
                 }
                 await context.Response.WriteAsync("Class-based Middleware in /branch !\n");
             }
-            if(_requestDelegate!= null)
+            if (_requestDelegate != null)
                 await _requestDelegate(context);
         }
     }
