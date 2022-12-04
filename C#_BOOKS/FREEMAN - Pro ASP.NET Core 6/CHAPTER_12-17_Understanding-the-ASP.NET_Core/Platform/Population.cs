@@ -4,6 +4,7 @@
     {
         private RequestDelegate? _requestDelegate;
 
+        public Population() { }
         public Population(RequestDelegate requestDelegate)
         {
             _requestDelegate = requestDelegate;

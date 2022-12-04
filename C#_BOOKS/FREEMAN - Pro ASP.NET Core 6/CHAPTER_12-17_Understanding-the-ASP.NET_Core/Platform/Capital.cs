@@ -8,6 +8,7 @@
             _requestDelegate = requestDelegate;
         }
 
+        public Capital() { }
         public async Task Invoke(HttpContext httpContext)
         {
             string[] parts = httpContext.Request.Path.ToString().Split('/', StringSplitOptions.RemoveEmptyEntries);
