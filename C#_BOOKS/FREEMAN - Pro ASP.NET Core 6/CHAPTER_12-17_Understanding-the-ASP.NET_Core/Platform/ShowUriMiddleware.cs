@@ -15,7 +15,7 @@ namespace Platform
 
         public async Task Invoke(HttpContext context)
         {
-            UriBuilder baseUrl = new UriBuilder("https", "localhost", 7200);
+            UriBuilder baseUrl = new UriBuilder("https", "localhost", 7200,context.Request.Path);
             UriBuilder baseUrlWithQuery = new UriBuilder("https", "localhost", 7200, context.Request.QueryString.Value);
 
             //var parsedQuery = HttpUtility.ParseQueryString(context.Request.QueryString.Value);
