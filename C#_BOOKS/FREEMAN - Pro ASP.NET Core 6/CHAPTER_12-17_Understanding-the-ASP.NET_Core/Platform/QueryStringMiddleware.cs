@@ -18,7 +18,7 @@
                 {
                     context.Response.ContentType = "text/plain";
                 }
-                await context.Response.WriteAsync("Class-based Middleware !\n");
+                await context.Response.WriteAsync("Class-based Middleware in /branch !\n");
             }
             await _requestDelegate(context);
         }

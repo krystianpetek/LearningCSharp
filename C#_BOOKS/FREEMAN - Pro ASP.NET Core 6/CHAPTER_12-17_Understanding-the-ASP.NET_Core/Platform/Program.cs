@@ -6,7 +6,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<StatusCodeMiddleware>();
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+
+// short-circuiting request pipeline, check https://localhost:7200/short?custom=true
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path == "/short")
+        await context.Response.WriteAsync($"Request short circuited");
+    else
+        await next();
+});
 
 // my custom middleware fetching request and response middleware
 app.Use(async (httpContext, requestDelegate) =>
@@ -43,11 +51,8 @@ app.Use(async (httpContext, requestDelegate) =>
 // custom middleware to show uri in browser response
 app.UseMiddleware<ShowUriMiddleware>();
 
-// custom class middleware when call to api via url https://localhost:7200?custom=true
-app.UseMiddleware<QueryStringMiddleware>();
-
 // custom middleware when call to api via url https://localhost:7200?custom=true
-app.Use(async (context, next) =>
+app.Use(async (HttpContext context, Func<Task> next) =>
 {
     if (context.Request.Method == HttpMethods.Get && context.Request.Query["custom"] == "true")
     {
@@ -59,5 +64,18 @@ app.Use(async (context, next) =>
 
 // custom middleware with implementation of interface IMiddleware, invoked in return path 
 app.UseMiddleware<StatusCodeMiddleware>();
+
+// creating middleware pipeline branches
+app.Map("/branch", (IApplicationBuilder branch) =>
+{
+    // custom class middleware when call to api via url https://localhost:7200/branch?custom=true
+    branch.UseMiddleware<QueryStringMiddleware>();
+    branch.Use(async (HttpContext context, Func<Task> next) =>
+    {
+        await context.Response.WriteAsync($"Branch Middleware !");
+    });
+});
+
+app.MapGet("/", () => "Hello World!");
 
 app.Run();
