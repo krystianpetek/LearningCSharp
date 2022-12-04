@@ -2,6 +2,7 @@ using Microsoft.Extensions.Options;
 using Platform;
 using Platform.CustomMiddleware;
 using Platform.MessageOptions;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,33 +19,33 @@ var app = builder.Build();
 app.UseMiddleware<Population>(); // UseMiddleware immediately invoke this middleware
 app.UseMiddleware<Capital>();
 
+app.MapGet("routing", async (HttpContext context) =>
+{
+    await context.Response.WriteAsync("Request was routed");
+});
+app.MapGet("capital/uk", async (HttpContext context) =>
+{
+    var capital = app.Services.GetRequiredService<Capital>();
+    await capital.Invoke(context);
+});
+app.MapGet("population/paris", async (HttpContext context) =>
+{
+    var population = app.Services.GetRequiredService<Population>();
+    await population.Invoke(context);
+});
+
+app.MapGet("404", () => "Not found");
+
 app.UseRouting();
-#pragma warning disable ASP0014 // Suggest using top level route registrations
-app.UseEndpoints(endpoints =>
+app.UseEndpoints(_ => { }); // Everything after UseEndpoints - will only run if there was no match before.
+
+app.Use(async (HttpContext httpContext, RequestDelegate _) =>
 {
-    endpoints.MapGet("routing", async (HttpContext context) =>
-    {
-        await context.Response.WriteAsync("Request was routed");
-    });
-
-    endpoints.MapGet("capital/uk", async (HttpContext context) =>
-    {
-        var capital = app.Services.GetRequiredService<Capital>();
-        await capital.Invoke(context);
-    });
-
-    endpoints.MapGet("population/paris", async (HttpContext context) =>
-    {
-        var population = app.Services.GetRequiredService<Population>();
-        await population.Invoke(context);
-    });
-});
-#pragma warning restore ASP0014 // Suggest using top level route registrations
-
-app.Run(async (HttpContext httpContext) =>
-{
+    await _(httpContext);
     await httpContext.Response.WriteAsync("Terminal middleware reached");
+    httpContext.Response.Redirect("/404");
 });
+app.Run(); // prevents calling next middlewares, runs application and block the calling thread until
 
 // chapter 12
 app.CustomMiddleware_Chapter12();
