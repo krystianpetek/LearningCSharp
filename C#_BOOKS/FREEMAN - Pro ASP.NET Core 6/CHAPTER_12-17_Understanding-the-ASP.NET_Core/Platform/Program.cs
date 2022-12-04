@@ -8,10 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.RegisterCustomMiddlewareDependencies_Chapter12();
 builder.Services.RegisterMessageOptionsConfiguration_Chapter12();
 
+// registering middleware class always must be SINGLETON
+builder.Services.AddSingleton<Population>();
+builder.Services.AddSingleton<Capital>();
+
 var app = builder.Build();
 
 // chapter 13
-app.UseMiddleware<Population>();
+app.UseMiddleware<Population>(); // UseMiddleware immediately invoke this middleware
 app.UseMiddleware<Capital>();
 
 app.UseRouting();
@@ -22,8 +26,18 @@ app.UseEndpoints(endpoints =>
     {
         await context.Response.WriteAsync("Request was routed");
     });
-    endpoints.MapGet("capital/uk", new Capital().Invoke);
-    endpoints.MapGet("population/paris", new Population().Invoke);
+
+    endpoints.MapGet("capital/uk", async (HttpContext context) =>
+    {
+        var capital = app.Services.GetRequiredService<Capital>();
+        await capital.Invoke(context);
+    });
+
+    endpoints.MapGet("population/paris", async (HttpContext context) =>
+    {
+        var population = app.Services.GetRequiredService<Population>();
+        await population.Invoke(context);
+    });
 });
 #pragma warning restore ASP0014 // Suggest using top level route registrations
 
