@@ -65,6 +65,14 @@ app.Use(async (HttpContext context, Func<Task> next) =>
 // custom middleware with implementation of interface IMiddleware, invoked in return path 
 app.UseMiddleware<StatusCodeMiddleware>();
 
+// create branch with a predicate MapWhen
+app.MapWhen((HttpContext context) => context.Request.Query.Keys.Contains("branch"),
+    (IApplicationBuilder branch) =>
+    {
+        branch.Use((HttpContext context, RequestDelegate b) => b(context));
+    }
+);
+
 // creating middleware pipeline branches
 app.Map("/branch", (IApplicationBuilder branch) =>
 {
@@ -73,6 +81,14 @@ app.Map("/branch", (IApplicationBuilder branch) =>
     branch.Use(async (HttpContext context, Func<Task> next) =>
     {
         await context.Response.WriteAsync($"Branch Middleware !");
+        await next();
+    });
+
+    // .Run implicitly used .Use
+    branch.Run(new QueryStringMiddleware().Invoke);
+    branch.Run(async (HttpContext context) =>
+    {
+        await context.Response.WriteAsync($"End point of middleware /branch");
     });
 });
 

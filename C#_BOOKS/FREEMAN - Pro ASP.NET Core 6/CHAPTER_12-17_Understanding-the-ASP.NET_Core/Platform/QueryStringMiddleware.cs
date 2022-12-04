@@ -4,6 +4,9 @@
     {
         private readonly RequestDelegate _requestDelegate;
 
+        public QueryStringMiddleware() { 
+        }
+
         public QueryStringMiddleware(RequestDelegate requestDelegate)
         {
             _requestDelegate = requestDelegate;
@@ -20,7 +23,8 @@
                 }
                 await context.Response.WriteAsync("Class-based Middleware in /branch !\n");
             }
-            await _requestDelegate(context);
+            if(_requestDelegate!= null)
+                await _requestDelegate(context);
         }
     }
 }
