@@ -8,12 +8,12 @@ builder.Services.RegisterCustomMiddlewareDependencies_Chapter12();
 builder.Services.RegisterMessageOptionsConfiguration_Chapter12();
 
 // registering middleware class always must be SINGLETON
-builder.Services.AddSingleton<Population>();
+builder.Services.AddSingleton<PopulationMiddleware>();
 
 var app = builder.Build();
 
 // chapter 13
-app.UseMiddleware<Population>(); // UseMiddleware immediately invoke this middleware
+app.UseMiddleware<PopulationMiddleware>(); // UseMiddleware immediately invoke this middleware
 
 app.MapGet("routing", async (HttpContext context) =>
 {
@@ -21,10 +21,11 @@ app.MapGet("routing", async (HttpContext context) =>
 });
 
 app.MapGet("capital/{country}", Capital.Endpoint);
+app.MapGet("population/{city}", Population.Endpoint);
 
 app.MapGet("population/paris", async (HttpContext context) =>
 {
-    var population = app.Services.GetRequiredService<Population>();
+    var population = app.Services.GetRequiredService<PopulationMiddleware>();
     await population.Invoke(context);
 });
 

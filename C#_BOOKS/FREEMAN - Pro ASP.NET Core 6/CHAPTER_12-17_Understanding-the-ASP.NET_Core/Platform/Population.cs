@@ -2,34 +2,29 @@
 {
     public class Population
     {
-        private RequestDelegate? _requestDelegate;
-
-        public Population() { }
-        public Population(RequestDelegate requestDelegate)
+        public static async Task Endpoint(HttpContext httpContext)
         {
-            _requestDelegate = requestDelegate;
-        }
-
-        public async Task Invoke(HttpContext httpContext)
-        {
-            string[] parts = httpContext.Request.Path.ToString().Split("/",StringSplitOptions.RemoveEmptyEntries);
-
-            if (parts.Length == 2 && parts[0] == "population")
+            string? city = httpContext.Request.RouteValues["city"] as string;
+            int? pop = null;
+            switch ((city ?? "").ToLower())
             {
-                string city = parts[1];
-                int population = city switch
-                {
-                    "london" => 8_136_000,
-                    "paris" => 2_141_000,
-                    "monaco" => 39_000,
-                    _ => 0
-                };
-                await httpContext.Response.WriteAsync($"City: {city}, Population: {population}\n");
+                case "london":
+                    pop = 8_136_000;
+                    break;
+                case "paris":
+                    pop = 2_141_000;
+                    break;
+                case "monaco":
+                    pop = 39_000;
+                    break;
             }
-
-            if(_requestDelegate != null)
+            if (pop.HasValue)
             {
-                await _requestDelegate(httpContext);
+                await httpContext.Response.WriteAsync($"City: {city}, Population: {pop}");
+            }
+            else
+            {
+                httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
             }
         }
     }
