@@ -1,8 +1,6 @@
-using Microsoft.Extensions.Options;
 using Platform;
 using Platform.CustomMiddleware;
 using Platform.MessageOptions;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,27 +9,32 @@ builder.Services.RegisterMessageOptionsConfiguration_Chapter12();
 
 // registering middleware class always must be SINGLETON
 builder.Services.AddSingleton<Population>();
-builder.Services.AddSingleton<Capital>();
 
 var app = builder.Build();
 
 // chapter 13
 app.UseMiddleware<Population>(); // UseMiddleware immediately invoke this middleware
-app.UseMiddleware<Capital>();
 
 app.MapGet("routing", async (HttpContext context) =>
 {
     await context.Response.WriteAsync("Request was routed");
 });
-app.MapGet("capital/uk", async (HttpContext context) =>
-{
-    var capital = app.Services.GetRequiredService<Capital>();
-    await capital.Invoke(context);
-});
+
+app.MapGet("capital/{country}", Capital.Endpoint);
+
 app.MapGet("population/paris", async (HttpContext context) =>
 {
     var population = app.Services.GetRequiredService<Population>();
     await population.Invoke(context);
+});
+
+app.MapGet("{first}/{second}/{third}", async (HttpContext httpContext) => // https://localhost:7200/apples/oranges/cherries
+{
+    await httpContext.Response.WriteAsync("Request was routed\n");
+    foreach (var route in httpContext.Request.RouteValues)
+    {
+        await httpContext.Response.WriteAsync($"{route.Key}: {route.Value}\n");
+    }
 });
 
 app.MapGet("404", () => "Not found");
@@ -43,7 +46,6 @@ app.Use(async (HttpContext httpContext, RequestDelegate _) =>
 {
     await _(httpContext);
     await httpContext.Response.WriteAsync("Terminal middleware reached");
-    httpContext.Response.Redirect("/404");
 });
 app.Run(); // prevents calling next middlewares, runs application and block the calling thread until
 
@@ -52,3 +54,13 @@ app.CustomMiddleware_Chapter12();
 app.MessageOptionsMiddleware_Chapter12();
 app.MapGet("/", () => "Hello World!");
 app.Run();
+
+
+//app.MapGet("files/{filename}.{ext}", async (HttpContext httpContext) =>
+//{
+//    await httpContext.Response.WriteAsync($"Request was routed\n");
+//    foreach (var route in httpContext.Request.RouteValues)
+//    {
+//        await httpContext.Response.WriteAsync($"{route.Key}: {route.Value}");
+//    }
+//});
