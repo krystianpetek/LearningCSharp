@@ -21,7 +21,8 @@ app.MapGet("routing", async (HttpContext context) =>
 });
 
 app.MapGet("capital/{country}", Capital.Endpoint);
-app.MapGet("population/{city}", Population.Endpoint);
+app.MapGet("population/{city}", Population.Endpoint)
+    .WithMetadata(new RouteNameMetadata("population"));
 
 app.MapGet("population/paris", async (HttpContext context) =>
 {
