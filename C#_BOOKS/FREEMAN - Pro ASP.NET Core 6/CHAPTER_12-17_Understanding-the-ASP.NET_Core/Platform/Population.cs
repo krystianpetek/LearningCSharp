@@ -4,9 +4,9 @@
     {
         public static async Task Endpoint(HttpContext httpContext)
         {
-            string? city = httpContext.Request.RouteValues["city"] as string;
+            string? city = httpContext.Request.RouteValues["city"] as string ?? "london";
             int? pop = null;
-            switch ((city ?? "").ToLower())
+            switch (city.ToLower())
             {
                 case "london":
                     pop = 8_136_000;

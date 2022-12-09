@@ -1,6 +1,7 @@
 using Platform;
 using Platform.CustomMiddleware;
 using Platform.MessageOptions;
+using static System.Net.WebRequestMethods;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +21,8 @@ app.MapGet("routing", async (HttpContext context) =>
     await context.Response.WriteAsync("Request was routed");
 });
 
-app.MapGet("capital/{country}", Capital.Endpoint);
-app.MapGet("population/{city}", Population.Endpoint)
+app.MapGet("capital/{country=France}", Capital.Endpoint);
+app.MapGet("population/{city?}", Population.Endpoint)
     .WithMetadata(new RouteNameMetadata("population"));
 
 app.MapGet("population/paris", async (HttpContext context) =>
@@ -33,6 +34,15 @@ app.MapGet("population/paris", async (HttpContext context) =>
 app.MapGet("{first}/{second}/{third}", async (HttpContext httpContext) => // https://localhost:7200/apples/oranges/cherries
 {
     await httpContext.Response.WriteAsync("Request was routed\n");
+    foreach (var route in httpContext.Request.RouteValues)
+    {
+        await httpContext.Response.WriteAsync($"{route.Key}: {route.Value}\n");
+    }
+});
+
+app.MapGet("files/{filename}.{ext}", async (HttpContext httpContext) => // https://localhost:7200/files/myfile.txt
+{
+    await httpContext.Response.WriteAsync($"Request was routed\n");
     foreach (var route in httpContext.Request.RouteValues)
     {
         await httpContext.Response.WriteAsync($"{route.Key}: {route.Value}\n");
@@ -56,13 +66,3 @@ app.CustomMiddleware_Chapter12();
 app.MessageOptionsMiddleware_Chapter12();
 app.MapGet("/", () => "Hello World!");
 app.Run();
-
-
-//app.MapGet("files/{filename}.{ext}", async (HttpContext httpContext) =>
-//{
-//    await httpContext.Response.WriteAsync($"Request was routed\n");
-//    foreach (var route in httpContext.Request.RouteValues)
-//    {
-//        await httpContext.Response.WriteAsync($"{route.Key}: {route.Value}");
-//    }
-//});
