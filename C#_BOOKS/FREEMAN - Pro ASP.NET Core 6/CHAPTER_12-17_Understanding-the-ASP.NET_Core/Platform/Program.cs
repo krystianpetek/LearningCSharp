@@ -31,9 +31,18 @@ app.MapGet("population/paris", async (HttpContext context) =>
     await population.Invoke(context);
 });
 
-app.MapGet("{first}/{second}/{third}", async (HttpContext httpContext) => // https://localhost:7200/apples/oranges/cherries
+app.MapGet("{first:alpha:length(3)}/{second:bool}", async (HttpContext httpContext) => // https://localhost:7200/abc/true
 {
-    await httpContext.Response.WriteAsync("Request was routed\n");
+    await httpContext.Response.WriteAsync("Constraint segment match, first is alpha and has exactly 3 letters and second segment is bool\n");
+    foreach (var route in httpContext.Request.RouteValues)
+    {
+        await httpContext.Response.WriteAsync($"{route.Key}: {route.Value}\n");
+    }
+});
+
+app.MapGet("{first}/{second}/{*catchall}", async (HttpContext httpContext) => // https://localhost:7200/apples/oranges/cherries
+{
+    await httpContext.Response.WriteAsync("Catchall matched. Request was routed\n");
     foreach (var route in httpContext.Request.RouteValues)
     {
         await httpContext.Response.WriteAsync($"{route.Key}: {route.Value}\n");
