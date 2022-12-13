@@ -21,6 +21,7 @@ app.MapGet("routing", async (HttpContext context) =>
     await context.Response.WriteAsync("Request was routed");
 });
 
+app.MapGet("capital/{country:regex(^uk|france|monaco$)}", Capital.Endpoint);
 app.MapGet("capital/{country=France}", Capital.Endpoint);
 app.MapGet("population/{city?}", Population.Endpoint)
     .WithMetadata(new RouteNameMetadata("population"));
@@ -60,14 +61,8 @@ app.MapGet("files/{filename}.{ext}", async (HttpContext httpContext) => // https
 
 app.MapGet("404", () => "Not found");
 
-app.UseRouting();
-app.UseEndpoints(_ => { }); // Everything after UseEndpoints - will only run if there was no match before.
+app.MapFallback(async (HttpContext httpContext) => await httpContext.Response.WriteAsync("Terminal middleware reached\nRouted to fallback endpoint"));
 
-app.Use(async (HttpContext httpContext, RequestDelegate _) =>
-{
-    await _(httpContext);
-    await httpContext.Response.WriteAsync("Terminal middleware reached");
-});
 app.Run(); // prevents calling next middlewares, runs application and block the calling thread until
 
 // chapter 12

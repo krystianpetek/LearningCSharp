@@ -27,6 +27,6 @@ public class Capital
         if (!string.IsNullOrEmpty(capital))
             await httpContext.Response.WriteAsync($"{capital} is the capital of {country}\n");
         else
-            httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+            httpContext.Response.Redirect("/404");
     }
 }

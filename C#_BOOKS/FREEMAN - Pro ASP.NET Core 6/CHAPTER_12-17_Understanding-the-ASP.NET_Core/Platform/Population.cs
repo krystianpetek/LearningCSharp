@@ -19,13 +19,10 @@
                     break;
             }
             if (pop.HasValue)
-            {
                 await httpContext.Response.WriteAsync($"City: {city}, Population: {pop}");
-            }
             else
-            {
-                httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
-            }
+                httpContext.Response.Redirect("/404");
+            //httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
         }
     }
 }
