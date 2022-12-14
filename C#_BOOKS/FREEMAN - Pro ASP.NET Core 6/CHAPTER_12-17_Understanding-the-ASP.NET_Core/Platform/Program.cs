@@ -11,6 +11,11 @@ builder.Services.RegisterMessageOptionsConfiguration_Chapter12();
 // registering middleware class always must be SINGLETON
 builder.Services.AddSingleton<PopulationMiddleware>();
 
+builder.Services.Configure<RouteOptions>(routeOptions =>
+{
+    routeOptions.ConstraintMap.Add("countryName", typeof(CountryRouteConstraint));
+});
+
 var app = builder.Build();
 
 // chapter 13
@@ -21,7 +26,11 @@ app.MapGet("routing", async (HttpContext context) =>
     await context.Response.WriteAsync("Request was routed");
 });
 
-app.MapGet("capital/{country:regex(^uk|france|monaco$)}", Capital.Endpoint);
+app.MapGet("capital/{country:countryName}",Capital.Endpoint)
+    .Add(route => ((RouteEndpointBuilder)route).Order = 1); // order to ambigious route
+
+app.MapGet("capital/{country:regex(^uk|france|monaco|poland$)}", Capital.Endpoint)
+    .Add( route => ((RouteEndpointBuilder)route).Order = 2); // ambigious route
 app.MapGet("capital/{country=France}", Capital.Endpoint);
 app.MapGet("population/{city?}", Population.Endpoint)
     .WithMetadata(new RouteNameMetadata("population"));
@@ -31,6 +40,15 @@ app.MapGet("population/paris", async (HttpContext context) =>
     var population = app.Services.GetRequiredService<PopulationMiddleware>();
     await population.Invoke(context);
 });
+
+app.Map("{number:int}", async context => {
+    await context.Response.WriteAsync("Routed to the int endpoint");
+}).Add(route => ((RouteEndpointBuilder)route).Order = 1);
+
+app.Map("{number:double}", async context => {
+    await context.Response
+    .WriteAsync("Routed to the double endpoint");
+}).Add(route => ((RouteEndpointBuilder)route).Order = 2);
 
 app.MapGet("{first:alpha:length(3)}/{second:bool}", async (HttpContext httpContext) => // https://localhost:7200/abc/true
 {
