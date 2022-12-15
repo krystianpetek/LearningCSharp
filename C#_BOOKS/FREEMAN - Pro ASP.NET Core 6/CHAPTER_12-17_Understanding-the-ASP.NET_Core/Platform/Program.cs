@@ -19,6 +19,18 @@ builder.Services.Configure<RouteOptions>(routeOptions =>
 var app = builder.Build();
 
 // chapter 13
+
+app.Use( async (HttpContext httpContext, RequestDelegate requestDelegate) =>
+{
+    Endpoint? endpoint = httpContext.GetEndpoint();
+    if (endpoint != null)
+        await httpContext.Response.WriteAsync($"{endpoint.DisplayName} selected\n");
+    else
+        await httpContext.Response.WriteAsync($"No endpoint selected\n");
+    
+    await requestDelegate(httpContext);
+});
+
 app.UseMiddleware<PopulationMiddleware>(); // UseMiddleware immediately invoke this middleware
 
 app.MapGet("routing", async (HttpContext context) =>
@@ -43,12 +55,16 @@ app.MapGet("population/paris", async (HttpContext context) =>
 
 app.Map("{number:int}", async context => {
     await context.Response.WriteAsync("Routed to the int endpoint");
-}).Add(route => ((RouteEndpointBuilder)route).Order = 1);
+})
+    .WithDisplayName($"Int endpoint")
+    .Add(route => ((RouteEndpointBuilder)route).Order = 1);
 
 app.Map("{number:double}", async context => {
     await context.Response
     .WriteAsync("Routed to the double endpoint");
-}).Add(route => ((RouteEndpointBuilder)route).Order = 2);
+})
+    .WithDisplayName($"Double endpoint")
+    .Add(route => ((RouteEndpointBuilder)route).Order = 2);
 
 app.MapGet("{first:alpha:length(3)}/{second:bool}", async (HttpContext httpContext) => // https://localhost:7200/abc/true
 {
