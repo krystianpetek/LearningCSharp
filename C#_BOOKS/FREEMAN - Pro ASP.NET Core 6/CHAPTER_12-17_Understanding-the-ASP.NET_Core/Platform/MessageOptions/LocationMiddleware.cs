@@ -5,8 +5,8 @@ namespace Platform.MessageOptions
     public class LocationMiddleware
     {
         private RequestDelegate _requestDelegate;
-        private MessageOptions _messageOptions;
-        public LocationMiddleware(RequestDelegate requestDelegate, IOptions<MessageOptions> messageOptions)
+        private MessageOption _messageOptions;
+        public LocationMiddleware(RequestDelegate requestDelegate, IOptions<MessageOption> messageOptions)
         {
             _requestDelegate = requestDelegate;
             _messageOptions = messageOptions.Value;

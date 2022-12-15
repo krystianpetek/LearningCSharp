@@ -1,4 +1,4 @@
-﻿namespace Platform
+﻿namespace Platform.UrlRouting
 {
     public class PopulationMiddleware
     {
@@ -12,7 +12,7 @@
 
         public async Task Invoke(HttpContext httpContext)
         {
-            string[] parts = httpContext.Request.Path.ToString().Split("/",StringSplitOptions.RemoveEmptyEntries);
+            string[] parts = httpContext.Request.Path.ToString().Split("/", StringSplitOptions.RemoveEmptyEntries);
 
             if (parts.Length == 2 && parts[0] == "population")
             {
@@ -27,7 +27,7 @@
                 await httpContext.Response.WriteAsync($"City: {city}, Population: {population}\n");
             }
 
-            if(_requestDelegate != null)
+            if (_requestDelegate != null)
             {
                 await _requestDelegate(httpContext);
             }

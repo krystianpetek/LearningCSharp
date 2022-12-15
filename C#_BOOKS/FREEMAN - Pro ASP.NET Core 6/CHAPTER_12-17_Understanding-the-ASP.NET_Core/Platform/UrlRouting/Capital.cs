@@ -1,4 +1,4 @@
-﻿namespace Platform;
+﻿namespace Platform.UrlRouting;
 
 public class Capital
 {

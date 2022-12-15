@@ -1,4 +1,6 @@
-﻿namespace Platform.CustomMiddleware
+﻿using Platform.CustomMiddleware;
+
+namespace Platform.Extensions
 {
     public static class CustomMiddlewareExtensions
     {
