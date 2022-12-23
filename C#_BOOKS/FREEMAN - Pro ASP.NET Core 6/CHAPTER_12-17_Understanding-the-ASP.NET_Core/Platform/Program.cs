@@ -10,29 +10,35 @@ builder.Services.RegisterMessageOptionsConfiguration_Chapter12();
 
 builder.Services.RegisterUrlRouting_Chapter13();
 
-//builder.Services.
+builder.Services.AddSingleton<IResponseFormatter, HtmlResponseFormatter>();
 
 var app = builder.Build();
 
 // chapter 14
 app.UseMiddleware<WeatherMiddleware>();
 IResponseFormatter responseFormatter = new TextResponseFormatter();
-app.MapGet("middleware/function/singleton", async (HttpContext httpContext) => // first instance of TextResponseFormatter
+app.MapGet("middleware/function/", async (HttpContext httpContext) => // first instance of TextResponseFormatter
 {
     await responseFormatter.Format(httpContext, "Middleware function: It is snowing in Chicago.");
 });
 
 app.MapGet("endpoint/class", WeatherEndpoint.Endpoint);
 
-app.MapGet("endpoint/function/singleton", async (HttpContext httpContext) => // second instance of TextResponseFormatter
+app.MapGet("endpoint/function/", async (HttpContext httpContext) => // second instance of TextResponseFormatter
 {
-    await TextResponseFormatter.Singleton.Format(httpContext,$"Endpoint function: It is sunny in Los Angeles."); 
+    await TextResponseFormatter.Singleton.Format(httpContext, $"Endpoint function: It is sunny in Los Angeles.");
 });
 
-app.MapGet("endpoint/function/typebroker", async (HttpContext httpContext) => // second instance of TextResponseFormatter
+app.MapGet("endpoint/typebroker", async (HttpContext httpContext) => // instance of HtmlResponseFormatter, defined only in one place
 {
-    await TypeBroker.Formatter.Format(httpContext,$"Endpoint function: It is sunny in Los Angeles."); 
+    await TypeBroker.Formatter.Format(httpContext, $"Endpoint function: It is sunny in Los Angeles. (Type broker)");
 });
+
+app.MapGet("endpoint/dependencyinjection", async (HttpContext httpContext, IResponseFormatter responseFormatter) =>
+{
+    await responseFormatter.Format(httpContext, "Endpoint function: It is sunny in LA. (DI containter)");
+});
+
 app.Run();
 
 // chapter 13
