@@ -1,8 +1,7 @@
-﻿namespace Platform.MessageOptions
+﻿namespace Platform.MessageOptions;
+
+public class MessageOption
 {
-    public class MessageOption
-    {
-        public string CityName { get; set; } = "New York";
-        public string CountryName { get; set; } = "USA";
-    }
+    public string CityName { get; set; } = "New York";
+    public string CountryName { get; set; } = "USA";
 }

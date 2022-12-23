@@ -2,33 +2,32 @@
 using System.Text;
 using System.Web;
 
-namespace Platform.CustomMiddleware
+namespace Platform.CustomMiddleware;
+
+public class ShowUriMiddleware
 {
-    public class ShowUriMiddleware
+    private readonly RequestDelegate _requestDelegate;
+
+    public ShowUriMiddleware(RequestDelegate requestDelegate)
     {
-        private readonly RequestDelegate _requestDelegate;
+        _requestDelegate = requestDelegate;
+    }
 
-        public ShowUriMiddleware(RequestDelegate requestDelegate)
+    public async Task Invoke(HttpContext context)
+    {
+        UriBuilder baseUrl = new UriBuilder("https", "localhost", 7200, context.Request.Path);
+        UriBuilder baseUrlWithQuery = new UriBuilder("https", "localhost", 7200, context.Request.QueryString.Value);
+
+        //var parsedQuery = HttpUtility.ParseQueryString(context.Request.QueryString.Value);
+
+
+        if (!context.Response.HasStarted)
         {
-            _requestDelegate = requestDelegate;
+            context.Response.ContentType = "text/plain";
         }
 
-        public async Task Invoke(HttpContext context)
-        {
-            UriBuilder baseUrl = new UriBuilder("https", "localhost", 7200, context.Request.Path);
-            UriBuilder baseUrlWithQuery = new UriBuilder("https", "localhost", 7200, context.Request.QueryString.Value);
+        await context.Response.WriteAsync($"{baseUrl}{context.Request.QueryString.Value}\n");
 
-            //var parsedQuery = HttpUtility.ParseQueryString(context.Request.QueryString.Value);
-
-
-            if (!context.Response.HasStarted)
-            {
-                context.Response.ContentType = "text/plain";
-            }
-
-            await context.Response.WriteAsync($"{baseUrl}{context.Request.QueryString.Value}\n");
-
-            await _requestDelegate(context);
-        }
+        await _requestDelegate(context);
     }
 }
