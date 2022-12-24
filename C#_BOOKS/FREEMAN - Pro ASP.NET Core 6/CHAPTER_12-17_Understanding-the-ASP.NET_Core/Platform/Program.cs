@@ -16,15 +16,16 @@ var app = builder.Build();
 
 // chapter 14
 app.UseMiddleware<WeatherMiddleware>();
+
 IResponseFormatter responseFormatter = new TextResponseFormatter();
-app.MapGet("middleware/function/", async (HttpContext httpContext) => // first instance of TextResponseFormatter
+app.MapGet("middleware/function", async (HttpContext httpContext) => // first instance of TextResponseFormatter
 {
     await responseFormatter.Format(httpContext, "Middleware function: It is snowing in Chicago.");
 });
 
 app.MapWeather("endpoint/class");
 
-app.MapGet("endpoint/function/", async (HttpContext httpContext) => // second instance of TextResponseFormatter
+app.MapGet("endpoint/function", async (HttpContext httpContext) => // second instance of TextResponseFormatter
 {
     await TextResponseFormatter.Singleton.Format(httpContext, $"Endpoint function: It is sunny in Los Angeles.");
 });
@@ -38,6 +39,8 @@ app.MapGet("endpoint/dependencyinjection", async (HttpContext httpContext, IResp
 {
     await responseFormatter.Format(httpContext, "Endpoint function: It is sunny in LA. (DI containter)");
 });
+
+app.MapEndpoint<WeatherEndpointActivator>("endpoint/activator");
 
 app.Run();
 
