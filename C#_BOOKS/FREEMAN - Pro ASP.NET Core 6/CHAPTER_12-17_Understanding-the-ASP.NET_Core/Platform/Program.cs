@@ -34,7 +34,7 @@ app.MapGet("endpoint/typebroker", async (HttpContext httpContext) => // instance
     await TypeBroker.Formatter.Format(httpContext, $"Endpoint function: It is sunny in Los Angeles. (Type broker)");
 });
 
-app.MapGet("endpoint/dependencyinjection", async (HttpContext httpContext, IResponseFormatter responseFormatter) =>
+app.MapGet("endpoint/dependencyinjection", async (HttpContext httpContext, IResponseFormatter responseFormatter) => // instance of HtmlResponseFormatter from DI container
 {
     await responseFormatter.Format(httpContext, "Endpoint function: It is sunny in LA. (DI containter)");
 });
