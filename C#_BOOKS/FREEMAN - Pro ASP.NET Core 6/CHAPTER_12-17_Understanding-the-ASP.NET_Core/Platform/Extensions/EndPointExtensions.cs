@@ -32,22 +32,26 @@ public static class EndpointExtensions
         });
     }
 
-    public static IServiceCollection RegisterDependencyInjection_Chapter14(this IServiceCollection services, IWebHostEnvironment env)
+    public static IServiceCollection RegisterDependencyInjection_Chapter14(this WebApplicationBuilder builder)
     {
-        if (env.IsDevelopment())
+        if (builder.Environment.IsDevelopment())
         {
-            services.AddScoped<ITimeStamper, DefaultTimeStamper>();
-            services.AddScoped<IResponseFormatter, TimeResponseFormatter>();
+            builder.Services.AddScoped<ITimeStamper, DefaultTimeStamper>();
+            builder.Services.AddScoped<IResponseFormatter, TimeResponseFormatter>();
         }
         else
         {
-            services.AddScoped<IResponseFormatter, HtmlResponseFormatter>();
+            builder.Services.AddScoped<IResponseFormatter>((IServiceProvider serviceProvider) =>
+            {
+                string? typeName = builder.Configuration.GetSection("services").GetValue<string>("IResponseFormatter");
+                return (IResponseFormatter)ActivatorUtilities.CreateInstance(serviceProvider, typeName != null ? Type.GetType(typeName, true) : typeof(GuidService));
+            });
         }
 
-        //services.AddScoped<IResponseFormatter, GuidService>();
-        services.AddScoped<IGuidGiver, GuidGiver>();
+        //builder.Services.AddScoped<IResponseFormatter, GuidService>();
+        builder.Services.AddScoped<IGuidGiver, GuidGiver>();
 
-        return services;
+        return builder.Services;
     }
 
     public static IApplicationBuilder DependencyInjectionMiddleware_Chapter14(this WebApplication app)
