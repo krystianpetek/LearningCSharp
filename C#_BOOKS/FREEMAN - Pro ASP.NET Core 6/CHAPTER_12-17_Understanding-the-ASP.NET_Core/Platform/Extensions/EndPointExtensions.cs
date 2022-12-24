@@ -36,6 +36,10 @@ public static class EndpointExtensions
     {
         if (builder.Environment.IsDevelopment())
         {
+            builder.Services.AddScoped<IResponseFormatter, TextResponseFormatter>();
+            builder.Services.AddScoped<IResponseFormatter, HtmlResponseFormatter>();
+            builder.Services.AddScoped<IResponseFormatter, GuidService>();
+
             builder.Services.AddScoped<ITimeStamper, DefaultTimeStamper>();
             builder.Services.AddScoped<IResponseFormatter, TimeResponseFormatter>();
         }
@@ -93,6 +97,16 @@ public static class EndpointExtensions
         var guidGiver = app.Services.CreateScope().ServiceProvider.GetRequiredService<IGuidGiver>(); // accessing scoped service when you create a new scope
         //var guidGiver2 = app.Services.GetRequiredService<IGuidGiver>(); // accessing scoped service directly from registered services throws error
 
+        app.MapGet("single", async (HttpContext httpContext) =>
+        {
+            IResponseFormatter formatter = httpContext.RequestServices.GetRequiredService<IResponseFormatter>();
+            await formatter.FormatAsync(httpContext, "Single service");
+        });
+        app.MapGet("multiple", async (HttpContext httpContext) =>
+        {
+            IResponseFormatter formatter = httpContext.RequestServices.GetServices<IResponseFormatter>().First(f => f.RichOutput);
+            await formatter.FormatAsync(httpContext, "Multiple services");
+        });
         return app;
     }
 }
