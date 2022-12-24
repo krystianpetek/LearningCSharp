@@ -32,10 +32,19 @@ public static class EndpointExtensions
         });
     }
 
-    public static IServiceCollection RegisterDependencyInjection_Chapter14(this IServiceCollection services)
+    public static IServiceCollection RegisterDependencyInjection_Chapter14(this IServiceCollection services, IWebHostEnvironment env)
     {
-        //services.AddSingleton<IResponseFormatter, HtmlResponseFormatter>();
-        services.AddScoped<IResponseFormatter, GuidService>();
+        if (env.IsDevelopment())
+        {
+            services.AddScoped<ITimeStamper, DefaultTimeStamper>();
+            services.AddScoped<IResponseFormatter, TimeResponseFormatter>();
+        }
+        else
+        {
+            services.AddScoped<IResponseFormatter, HtmlResponseFormatter>();
+        }
+
+        //services.AddScoped<IResponseFormatter, GuidService>();
         services.AddScoped<IGuidGiver, GuidGiver>();
 
         return services;
@@ -77,6 +86,8 @@ public static class EndpointExtensions
 
             await formatter.FormatAsync(httpContext, "Endpoint lambda expression: It is sunny in LA. (Lambda expression)");
         });
+        var guidGiver = app.Services.CreateScope().ServiceProvider.GetRequiredService<IGuidGiver>(); // accessing scoped service when you create a new scope
+        //var guidGiver2 = app.Services.GetRequiredService<IGuidGiver>(); // accessing scoped service directly from registered services throws error
 
         return app;
     }

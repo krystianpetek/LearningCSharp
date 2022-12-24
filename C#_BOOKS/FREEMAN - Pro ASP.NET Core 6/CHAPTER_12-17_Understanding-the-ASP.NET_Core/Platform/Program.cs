@@ -7,7 +7,7 @@ builder.Services.RegisterMessageOptionsConfiguration_Chapter12();
 
 builder.Services.RegisterUrlRouting_Chapter13();
 
-builder.Services.RegisterDependencyInjection_Chapter14();
+builder.Services.RegisterDependencyInjection_Chapter14(builder.Environment);
 
 var app = builder.Build();
 
