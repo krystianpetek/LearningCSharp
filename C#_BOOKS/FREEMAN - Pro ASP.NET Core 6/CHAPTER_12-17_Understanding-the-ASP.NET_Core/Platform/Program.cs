@@ -10,7 +10,8 @@ builder.Services.RegisterMessageOptionsConfiguration_Chapter12();
 
 builder.Services.RegisterUrlRouting_Chapter13();
 
-builder.Services.AddSingleton<IResponseFormatter, HtmlResponseFormatter>();
+//builder.Services.AddSingleton<IResponseFormatter, HtmlResponseFormatter>();
+builder.Services.AddTransient<IResponseFormatter, GuidService>();
 
 var app = builder.Build();
 

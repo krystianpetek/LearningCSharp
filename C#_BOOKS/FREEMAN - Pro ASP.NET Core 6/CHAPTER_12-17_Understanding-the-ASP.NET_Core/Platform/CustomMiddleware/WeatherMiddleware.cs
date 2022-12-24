@@ -5,17 +5,17 @@ namespace Platform.CustomMiddleware;
 public class WeatherMiddleware
 {
     private readonly RequestDelegate _requestDelegate;
-    private readonly IResponseFormatter _responseFormatter;
+    //private readonly IResponseFormatter _responseFormatter;
 
-    public WeatherMiddleware(RequestDelegate requestDelegate, IResponseFormatter responseFormatter)
+    public WeatherMiddleware(RequestDelegate requestDelegate /*, IResponseFormatter responseFormatter*/)
     {
         _requestDelegate = requestDelegate;
-        _responseFormatter = responseFormatter;
+        //_responseFormatter = responseFormatter;
     }
-    public async Task InvokeAsync(HttpContext httpContext)
+    public async Task InvokeAsync(HttpContext httpContext, IResponseFormatter responseFormatter)
     {
         if (httpContext.Request.Path == "/middleware/class")
-            await _responseFormatter.Format(httpContext, $"Middleware class: It is raining in London. (WeatherMiddleware)");
+            await responseFormatter.Format(httpContext, $"Middleware class: It is raining in London. (WeatherMiddleware)");
         else
             await _requestDelegate(httpContext);
     }

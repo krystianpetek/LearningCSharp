@@ -23,4 +23,16 @@ public static class EndPointExtensions
 
         app.MapGet(path, methodInfo.CreateDelegate(typeof(RequestDelegate), endpointInstance));
     }
+
+
+    public static IServiceCollection RegisterDependencyInjection_Chapter14(this IServiceCollection services)
+    {
+
+        return services;
+    }
+    public static IApplicationBuilder DependencyInjectionMiddleware_Chapter14(this WebApplication app)
+    {
+
+        return app;
+    }
 }
