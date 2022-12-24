@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http;
-using System.Text;
-using System.Web;
-
-namespace Platform.CustomMiddleware;
+﻿namespace Platform.CustomMiddleware;
 
 public class ShowUriMiddleware
 {

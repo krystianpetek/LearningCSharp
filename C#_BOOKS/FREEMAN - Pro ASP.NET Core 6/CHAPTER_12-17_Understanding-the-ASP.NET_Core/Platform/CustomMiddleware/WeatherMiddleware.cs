@@ -15,7 +15,7 @@ public class WeatherMiddleware
     public async Task InvokeAsync(HttpContext httpContext)
     {
         if (httpContext.Request.Path == "/middleware/class")
-            await _responseFormatter.Format(httpContext,$"Middleware class: It is raining in London. (WeatherMiddleware)");
+            await _responseFormatter.Format(httpContext, $"Middleware class: It is raining in London. (WeatherMiddleware)");
         else
             await _requestDelegate(httpContext);
     }

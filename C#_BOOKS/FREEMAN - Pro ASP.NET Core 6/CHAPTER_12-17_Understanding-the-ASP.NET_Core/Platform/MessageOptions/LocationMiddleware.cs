@@ -14,7 +14,7 @@ public class LocationMiddleware
 
     public async Task InvokeAsync(HttpContext context)
     {
-        if(context.Request.Path == "/location")
+        if (context.Request.Path == "/location")
         {
             await context.Response.WriteAsync($"LocationClass: {_messageOptions.CityName}, {_messageOptions.CountryName}");
         }

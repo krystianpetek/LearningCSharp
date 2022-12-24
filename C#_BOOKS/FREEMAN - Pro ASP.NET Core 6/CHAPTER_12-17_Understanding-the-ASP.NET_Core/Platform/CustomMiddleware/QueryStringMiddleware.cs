@@ -2,7 +2,7 @@
 
 public class QueryStringMiddleware
 {
-    private readonly RequestDelegate _requestDelegate;
+    private readonly RequestDelegate? _requestDelegate;
 
     public QueryStringMiddleware() { }
 

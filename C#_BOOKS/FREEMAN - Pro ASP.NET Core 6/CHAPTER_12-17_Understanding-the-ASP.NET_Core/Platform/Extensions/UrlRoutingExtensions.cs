@@ -44,9 +44,9 @@ public static class UrlRoutingExtensions
 
         app.MapGet("capital/{country:regex(^uk|france|monaco|poland$)}", Capital.Endpoint)
             .Add(route => ((RouteEndpointBuilder)route).Order = 2); // ambigious route
-        
+
         app.MapGet("capital/{country=France}", Capital.Endpoint);
-        
+
         app.MapGet("population/{city?}", Population.Endpoint)
             .WithMetadata(new RouteNameMetadata("population"));
 
@@ -58,13 +58,15 @@ public static class UrlRoutingExtensions
         #endregion
 
         #region Number ambigious route in when passed some values for example 1(int) and 1.3(double)
-        app.Map("{number:int}", async context => {
+        app.Map("{number:int}", async context =>
+        {
             await context.Response.WriteAsync("Routed to the int endpoint");
         })
             .WithDisplayName($"Int endpoint")
             .Add(route => ((RouteEndpointBuilder)route).Order = 1);
 
-        app.Map("{number:double}", async context => {
+        app.Map("{number:double}", async context =>
+        {
             await context.Response
             .WriteAsync("Routed to the double endpoint");
         })

@@ -7,7 +7,7 @@ public static class MessageOptionsExtensions
 {
     public static IServiceCollection RegisterMessageOptionsConfiguration_Chapter12(this IServiceCollection services)
     {
-        services.Configure< MessageOption>(options =>
+        services.Configure<MessageOption>(options =>
         {
             options.CityName = "Albany";
         });
