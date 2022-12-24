@@ -1,6 +1,6 @@
 ﻿namespace Platform.UrlRouting;
 
-public class Population
+public static class Population
 {
     public static async Task Endpoint(HttpContext httpContext)
     {

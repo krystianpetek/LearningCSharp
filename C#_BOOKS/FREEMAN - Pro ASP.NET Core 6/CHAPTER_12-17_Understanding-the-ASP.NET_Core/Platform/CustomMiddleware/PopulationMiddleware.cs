@@ -2,7 +2,7 @@
 
 public class PopulationMiddleware
 {
-    private RequestDelegate? _requestDelegate;
+    private readonly RequestDelegate? _requestDelegate;
 
     public PopulationMiddleware() { }
     public PopulationMiddleware(RequestDelegate requestDelegate)

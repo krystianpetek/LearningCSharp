@@ -1,6 +1,8 @@
 ﻿using Platform.CustomMiddleware;
 using Platform.GuidGiverService;
-using Platform.Services;
+using Platform.Services.Formatter;
+using Platform.Services.Interfaces;
+using Platform.Services.TimeStamper;
 using Platform.UrlRouting;
 using System.Reflection;
 
@@ -40,7 +42,7 @@ public static class EndpointExtensions
         {
             services.AddScoped<IResponseFormatter, TextResponseFormatter>();
             services.AddScoped<IResponseFormatter, HtmlResponseFormatter>();
-            services.AddScoped<IResponseFormatter, GuidService>();
+            services.AddScoped<IResponseFormatter, GuidServiceFormatter>();
 
             services.AddScoped<ITimeStamper, DefaultTimeStamper>();
             services.AddScoped<IResponseFormatter, TimeResponseFormatter>();
@@ -50,11 +52,10 @@ public static class EndpointExtensions
             services.AddScoped<IResponseFormatter>((IServiceProvider serviceProvider) =>
             {
                 string? typeName = builder.Configuration.GetSection("services").GetValue<string>("IResponseFormatter");
-                return (IResponseFormatter)ActivatorUtilities.CreateInstance(serviceProvider, typeName != null ? Type.GetType(typeName, true) : typeof(GuidService));
+                return (IResponseFormatter)ActivatorUtilities.CreateInstance(serviceProvider, typeName != null ? Type.GetType(typeName, true) : typeof(GuidServiceFormatter));
             });
         }
 
-        //services.AddScoped<IResponseFormatter, GuidService>();
         services.AddScoped<IGuidGiver, GuidGiver>();
 
         services.AddSingleton(typeof(ICollection<>), typeof(List<>)); // register generic collection

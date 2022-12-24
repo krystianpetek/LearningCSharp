@@ -1,4 +1,4 @@
-﻿using Platform.Services;
+﻿using Platform.Services.Formatter;
 
 namespace Platform.CustomMiddleware;
 

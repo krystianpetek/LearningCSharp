@@ -1,6 +1,6 @@
 ﻿namespace Platform.UrlRouting;
 
-public class Capital
+public static class Capital
 {
     public static async Task Endpoint(HttpContext httpContext)
     {

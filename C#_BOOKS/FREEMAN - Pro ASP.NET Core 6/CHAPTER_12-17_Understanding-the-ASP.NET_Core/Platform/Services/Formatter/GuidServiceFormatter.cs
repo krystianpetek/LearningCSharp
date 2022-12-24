@@ -1,6 +1,6 @@
-﻿namespace Platform.Services;
+﻿namespace Platform.Services.Formatter;
 
-public class GuidService : IResponseFormatter
+public class GuidServiceFormatter : IResponseFormatter
 {
     private Guid guid = Guid.NewGuid();
     public async Task FormatAsync(HttpContext httpContext, string content)

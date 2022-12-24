@@ -1,4 +1,6 @@
-﻿namespace Platform.Services;
+﻿using Platform.Services.Interfaces;
+
+namespace Platform.Services.Formatter;
 
 public class TimeResponseFormatter : IResponseFormatter
 {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using Platform.CustomMiddleware;
 using Platform.MessageOptions;
 
 namespace Platform.Extensions;

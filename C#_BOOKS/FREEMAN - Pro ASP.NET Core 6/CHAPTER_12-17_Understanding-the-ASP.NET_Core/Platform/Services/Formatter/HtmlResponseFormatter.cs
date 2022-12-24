@@ -1,4 +1,4 @@
-﻿namespace Platform.Services;
+﻿namespace Platform.Services.Formatter;
 
 public class HtmlResponseFormatter : IResponseFormatter
 {

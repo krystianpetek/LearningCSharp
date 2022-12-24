@@ -1,9 +1,6 @@
-﻿namespace Platform.Services;
+﻿using Platform.Services.Interfaces;
 
-public interface ITimeStamper
-{
-    string TimeStamp { get; }
-}
+namespace Platform.Services.TimeStamper;
 
 public class DefaultTimeStamper : ITimeStamper
 {
