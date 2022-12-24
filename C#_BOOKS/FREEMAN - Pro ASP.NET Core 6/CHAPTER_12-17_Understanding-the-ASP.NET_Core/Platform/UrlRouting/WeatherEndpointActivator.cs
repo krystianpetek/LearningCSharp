@@ -10,10 +10,10 @@ public class WeatherEndpointActivator
     {
         _responseFormatter = responseFormatter;
     }
-    
-    public async Task Endpoint(HttpContext httpContext)
+
+    public async Task EndpointAsync(HttpContext httpContext)
     {
-        await _responseFormatter.Format(httpContext, $"Endpoint class: It is cloudy in Milan. (WeatherEndpointActivator)");
+        await _responseFormatter.FormatAsync(httpContext, $"Endpoint class: It is cloudy in Milan. (WeatherEndpointActivator)");
 
     }
 }

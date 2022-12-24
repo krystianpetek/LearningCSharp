@@ -12,9 +12,9 @@ public class GuidGiverMiddleware
     {
         if (httpContext.Request.Path == "/giveguid")
         {
-            await guidGiver1.TakeGuid(httpContext);
-            await guidGiver2.TakeGuid(httpContext);
-            await guidGiver3.TakeGuid(httpContext);
+            await guidGiver1.TakeGuidAsync(httpContext);
+            await guidGiver2.TakeGuidAsync(httpContext);
+            await guidGiver3.TakeGuidAsync(httpContext);
         }
         else
         {

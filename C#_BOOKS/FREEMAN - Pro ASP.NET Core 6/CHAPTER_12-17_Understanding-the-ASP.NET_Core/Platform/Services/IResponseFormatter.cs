@@ -2,5 +2,5 @@
 
 public interface IResponseFormatter
 {
-    Task Format(HttpContext httpContext, string content);
+    Task FormatAsync(HttpContext httpContext, string content);
 }

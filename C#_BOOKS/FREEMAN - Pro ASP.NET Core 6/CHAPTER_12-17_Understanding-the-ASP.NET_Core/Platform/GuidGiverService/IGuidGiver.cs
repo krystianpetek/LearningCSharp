@@ -2,6 +2,6 @@
 {
     public interface IGuidGiver
     {
-        Task TakeGuid(HttpContext httpContext);
+        Task TakeGuidAsync(HttpContext httpContext);
     }
 }

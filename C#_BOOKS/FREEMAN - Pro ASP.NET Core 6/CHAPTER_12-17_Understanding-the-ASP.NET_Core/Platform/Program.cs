@@ -1,8 +1,4 @@
-using Platform.CustomMiddleware;
 using Platform.Extensions;
-using Platform.GuidGiverService;
-using Platform.Services;
-using Platform.UrlRouting;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -2,7 +2,7 @@
 
 public class HtmlResponseFormatter : IResponseFormatter
 {
-    public async Task Format(HttpContext httpContext, string content)
+    public async Task FormatAsync(HttpContext httpContext, string content)
     {
         httpContext.Response.ContentType = "text/html";
         await httpContext.Response.WriteAsync($@"
