@@ -1,5 +1,6 @@
 using Platform.CustomMiddleware;
 using Platform.Extensions;
+using Platform.GuidGiver;
 using Platform.Services;
 using Platform.UrlRouting;
 
@@ -12,11 +13,13 @@ builder.Services.RegisterUrlRouting_Chapter13();
 
 //builder.Services.AddSingleton<IResponseFormatter, HtmlResponseFormatter>();
 builder.Services.AddTransient<IResponseFormatter, GuidService>();
+builder.Services.AddScoped<IGuidGiver, GuidGiver>();
 
 var app = builder.Build();
 
 // chapter 14
 app.UseMiddleware<WeatherMiddleware>();
+app.UseMiddleware<GuidGiverMiddleware>();
 
 IResponseFormatter responseFormatter = new TextResponseFormatter();
 app.MapGet("middleware/function", async (HttpContext httpContext) => // first instance of TextResponseFormatter
