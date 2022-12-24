@@ -1,4 +1,4 @@
-﻿namespace Platform.GuidGiver;
+﻿namespace Platform.GuidGiverService;
 
 public class GuidGiver : IGuidGiver
 {
