@@ -4,9 +4,8 @@ namespace Platform.UrlRouting;
 
 public static class WeatherEndpoint
 {
-    public static async Task Endpoint(HttpContext httpContext)
+    public static async Task Endpoint(HttpContext httpContext, IResponseFormatter responseFormatter)
     {
-        IResponseFormatter responseFormatter = httpContext.RequestServices.GetRequiredService<IResponseFormatter>();
-        await responseFormatter.Format(httpContext, $"Endpoint class: It is cloudy in Milan.");
+        await responseFormatter.Format(httpContext, $"Endpoint class: It is cloudy in Milan. (MapWeather)");
     }
 }

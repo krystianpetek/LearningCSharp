@@ -22,7 +22,7 @@ app.MapGet("middleware/function/", async (HttpContext httpContext) => // first i
     await responseFormatter.Format(httpContext, "Middleware function: It is snowing in Chicago.");
 });
 
-app.MapGet("endpoint/class", WeatherEndpoint.Endpoint);
+app.MapWeather("endpoint/class");
 
 app.MapGet("endpoint/function/", async (HttpContext httpContext) => // second instance of TextResponseFormatter
 {
