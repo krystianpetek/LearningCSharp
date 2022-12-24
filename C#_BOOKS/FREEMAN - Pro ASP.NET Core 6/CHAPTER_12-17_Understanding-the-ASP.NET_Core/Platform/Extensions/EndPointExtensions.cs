@@ -34,28 +34,31 @@ public static class EndpointExtensions
 
     public static IServiceCollection RegisterDependencyInjection_Chapter14(this WebApplicationBuilder builder)
     {
+        var services = builder.Services;
+
         if (builder.Environment.IsDevelopment())
         {
-            builder.Services.AddScoped<IResponseFormatter, TextResponseFormatter>();
-            builder.Services.AddScoped<IResponseFormatter, HtmlResponseFormatter>();
-            builder.Services.AddScoped<IResponseFormatter, GuidService>();
+            services.AddScoped<IResponseFormatter, TextResponseFormatter>();
+            services.AddScoped<IResponseFormatter, HtmlResponseFormatter>();
+            services.AddScoped<IResponseFormatter, GuidService>();
 
-            builder.Services.AddScoped<ITimeStamper, DefaultTimeStamper>();
-            builder.Services.AddScoped<IResponseFormatter, TimeResponseFormatter>();
+            services.AddScoped<ITimeStamper, DefaultTimeStamper>();
+            services.AddScoped<IResponseFormatter, TimeResponseFormatter>();
         }
         else
         {
-            builder.Services.AddScoped<IResponseFormatter>((IServiceProvider serviceProvider) =>
+            services.AddScoped<IResponseFormatter>((IServiceProvider serviceProvider) =>
             {
                 string? typeName = builder.Configuration.GetSection("services").GetValue<string>("IResponseFormatter");
                 return (IResponseFormatter)ActivatorUtilities.CreateInstance(serviceProvider, typeName != null ? Type.GetType(typeName, true) : typeof(GuidService));
             });
         }
 
-        //builder.Services.AddScoped<IResponseFormatter, GuidService>();
-        builder.Services.AddScoped<IGuidGiver, GuidGiver>();
+        //services.AddScoped<IResponseFormatter, GuidService>();
+        services.AddScoped<IGuidGiver, GuidGiver>();
 
-        return builder.Services;
+        services.AddSingleton(typeof(ICollection<>), typeof(List<>)); // register generic collection
+        return services;
     }
 
     public static IApplicationBuilder DependencyInjectionMiddleware_Chapter14(this WebApplication app)
@@ -107,6 +110,27 @@ public static class EndpointExtensions
             IResponseFormatter formatter = httpContext.RequestServices.GetServices<IResponseFormatter>().First(f => f.RichOutput);
             await formatter.FormatAsync(httpContext, "Multiple services");
         });
+
+        app.MapGet("stringCollection", async (HttpContext httpContext) =>
+        {
+            ICollection<string> strings = httpContext.RequestServices.GetRequiredService<ICollection<string>>();
+            strings.Add($"Request: {DateTime.Now.ToLongTimeString()}");
+
+            foreach (string str in strings)
+            {
+                await httpContext.Response.WriteAsync($"String: {str}\n");
+            }
+        });
+        app.MapGet("intCollection", async (HttpContext httpContext) =>
+        {
+            ICollection<int> ints = httpContext.RequestServices.GetRequiredService<ICollection<int>>();
+            ints.Add(ints.Count + 1);
+            foreach(int value in ints)
+            {
+                await httpContext.Response.WriteAsync($"Int: {value}\n");
+            }
+        });
+        
         return app;
     }
 }
