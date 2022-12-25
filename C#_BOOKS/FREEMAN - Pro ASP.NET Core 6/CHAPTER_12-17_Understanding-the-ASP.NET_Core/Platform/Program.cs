@@ -20,6 +20,12 @@ builder.Services.AddCookiePolicy(cookiePolicyOptions =>
 {
     cookiePolicyOptions.CheckConsentNeeded = (HttpContext context) => true;
 });
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession((SessionOptions session) =>
+{
+    session.IdleTimeout = TimeSpan.FromMinutes(30);
+    session.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
@@ -30,8 +36,9 @@ app.MapFallback(async context =>
 
 try
 {
-    // chapter 16 - cookies
+    // chapter 16 - cookies, session, memory cache
     app.UseCookiePolicy();
+
     app.MapGet("/cookie", async (HttpContext httpContext) =>
     {
         int counter1 = int.Parse(httpContext.Request.Cookies["counter1"] ?? "0") + 1;
@@ -56,6 +63,20 @@ try
     });
 
     app.UseMiddleware<ConsentMiddleware>();
+    app.UseSession();
+    
+    app.MapGet("session", async (HttpContext httpContext) =>
+    {
+        int counter1 = (httpContext.Session.GetInt32("sessionCounter1") ?? 0) + 1;
+        int counter2 = (httpContext.Session.GetInt32("sessionCounter2") ?? 0) + 1;
+        httpContext.Session.SetInt32("sessionCounter1", counter1);
+        httpContext.Session.SetInt32("sessionCounter2", counter2);
+
+        await httpContext.Session.CommitAsync();
+        await httpContext.Response.WriteAsync($"Session counter1: {counter1}, Session counter2: {counter2}");
+    });
+
+    app.Run();
 
     // chapter 15 - configuration, environment, logging
     app.EnvironmentLoggingConfiguration_Chapter15();

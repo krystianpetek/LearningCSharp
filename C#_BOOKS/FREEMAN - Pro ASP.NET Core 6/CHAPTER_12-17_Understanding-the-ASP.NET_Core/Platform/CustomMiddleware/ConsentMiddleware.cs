@@ -24,8 +24,8 @@ public class ConsentMiddleware
 
                 await httpContext.Response.WriteAsync(trackingConsentFeature.HasConsent ? "Consent granted\n" : "Consent withdraw\n");
             }
-            else
-                await _nextDelegate(httpContext);
         }
+        else
+            await _nextDelegate(httpContext);
     }
 }
