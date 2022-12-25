@@ -12,19 +12,27 @@ builder.Services.RegisterUrlRouting_Chapter13();
 builder.RegisterDependencyInjection_Chapter14();
 
 var servicesConfig = builder.Configuration; // use configuration settings to set up services
+var serviceEnv = builder.Environment; // use environment to set up services
 builder.Services.Configure<MessageOption>(servicesConfig.GetSection("Location"));
 var app = builder.Build();
 
 // chapter 15 - configuration, environment
-app.MapGet("config", async (HttpContext httpContext, IConfiguration configuration) =>
+var pipelineConfig = app.Configuration; // use configuration settings to set up pipeline
+var pipelineEnv = app.Environment; // use environment to set up pipeline
+
+app.MapGet("config", async (HttpContext httpContext, IConfiguration configuration, IWebHostEnvironment env) =>
 {
     string? defaultDebug = configuration.GetRequiredSection("Logging:LogLevel").GetValue<string>("Default");
     await httpContext.Response.WriteAsync($"The config setting is: {defaultDebug}");
+
     string? environment = configuration["ASPNETCORE_ENVIRONMENT"];
-    await httpContext.Response.WriteAsync($"\nThe env setting is: {environment}");
+    string? envFromDI = env.EnvironmentName;
+    await httpContext.Response.WriteAsync($"\nThe env setting is: {envFromDI}");
+
+    string? wsId = configuration["WebService:Id"];
+    await httpContext.Response.WriteAsync($"\nThe secret ID is: {wsId}");
 });
 
-var pipelineConfig = app.Configuration; // use configuration settings to set up pipeline
 app.UseMiddleware<LocationMiddleware>();
 
 app.Run();
