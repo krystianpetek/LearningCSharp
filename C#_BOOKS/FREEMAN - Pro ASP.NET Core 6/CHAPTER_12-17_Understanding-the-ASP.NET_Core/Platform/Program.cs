@@ -26,17 +26,25 @@ builder.Services.AddSession((SessionOptions session) =>
     session.IdleTimeout = TimeSpan.FromMinutes(30);
     session.Cookie.IsEssential = true;
 });
+builder.Services.AddHttpsRedirection(httpsRedirectionOptions =>
+{
+    httpsRedirectionOptions.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+    httpsRedirectionOptions.HttpsPort = 7200;
+});
 
 var app = builder.Build();
 
 app.Map("/favicon.ico", delegate { }); // ignore favicon
 
-app.MapFallback(async context =>
-    await context.Response.WriteAsync("Hello World!"));
-
+app.MapFallback(async httpContext =>
+{
+    await httpContext.Response.WriteAsync($"HTTPS Request: {httpContext.Request.IsHttps}\n");
+    await httpContext.Response.WriteAsync($"Hello World!");
+});
 try
 {
-    // chapter 16 - cookies, session, memory cache
+    // chapter 16 - cookies, session, sessionCache , https
+    app.UseHttpsRedirection();
     app.UseCookiePolicy();
 
     app.MapGet("/cookie", async (HttpContext httpContext) =>
@@ -64,7 +72,7 @@ try
 
     app.UseMiddleware<ConsentMiddleware>();
     app.UseSession();
-    
+
     app.MapGet("session", async (HttpContext httpContext) =>
     {
         int counter1 = (httpContext.Session.GetInt32("sessionCounter1") ?? 0) + 1;
