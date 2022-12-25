@@ -16,12 +16,51 @@ builder.RegisterDependencyInjection_Chapter14();
 
 builder.RegisterConfigurationEnvironment_Chapter15();
 
+builder.Services.AddCookiePolicy(cookiePolicyOptions =>
+{
+    cookiePolicyOptions.CheckConsentNeeded = (HttpContext context) => true;
+});
+
 var app = builder.Build();
 
 app.Map("/favicon.ico", delegate { }); // ignore favicon
 
+app.MapFallback(async context =>
+    await context.Response.WriteAsync("Hello World!"));
+
 try
 {
+    // chapter 16 - cookies
+    app.UseCookiePolicy();
+    app.MapGet("/cookie", async (HttpContext httpContext) =>
+    {
+        int counter1 = int.Parse(httpContext.Request.Cookies["counter1"] ?? "0") + 1;
+        httpContext.Response.Cookies.Append("counter1", $"{counter1}");
+
+        int counter2 = int.Parse(httpContext.Request.Cookies["counter2"] ?? "0") + 1;
+        httpContext.Response.Cookies.Append("counter2", $"{counter2}", new CookieOptions
+        {
+            MaxAge = TimeSpan.FromMinutes(30),
+            HttpOnly = true,
+            Secure = true,
+            IsEssential = true
+        });
+        await httpContext.Response.WriteAsync($"Counter1: {counter1}, Counter2: {counter2}");
+    });
+
+    app.MapGet("clear", (HttpContext httpContext) =>
+    {
+        httpContext.Response.Cookies.Delete("counter1");
+        httpContext.Response.Cookies.Delete("counter2");
+        httpContext.Response.Redirect("/");
+    });
+
+    app.UseMiddleware<ConsentMiddleware>();
+
+    // chapter 15 - configuration, environment, logging
+    app.EnvironmentLoggingConfiguration_Chapter15();
+    app.Run();
+
     // chapter 15 - configuration, environment, logging
     app.EnvironmentLoggingConfiguration_Chapter15();
     app.Run();
@@ -37,9 +76,6 @@ try
     // chapter 12 - middleware
     app.CustomMiddleware_Chapter12();
     app.MessageOptionsMiddleware_Chapter12();
-    app.Run();
-
-    app.MapGet("/", () => "Hello World!");
     app.Run();
 }
 catch (Exception ex)
