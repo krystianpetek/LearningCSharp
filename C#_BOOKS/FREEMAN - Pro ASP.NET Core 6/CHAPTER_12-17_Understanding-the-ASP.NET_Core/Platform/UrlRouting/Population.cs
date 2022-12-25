@@ -1,11 +1,11 @@
 ﻿namespace Platform.UrlRouting;
 
-public class Population
+public partial class Population
 {
-    public static async Task Endpoint(HttpContext httpContext, ILogger<Population>? logger)
+    public static async Task Endpoint(HttpContext httpContext, ILogger<Population> logger)
     {
-        logger.LogDebug($"Started processing for {httpContext.Request.Path}");
-
+        //logger.LogDebug($"Started processing for {httpContext.Request.Path}");
+        StartingResponse(logger, $"{httpContext.Request.Path}");
         string? city = httpContext.Request.RouteValues["city"] as string ?? "london";
         int? pop = null;
         switch (city.ToLower())
@@ -27,4 +27,7 @@ public class Population
         //httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
         logger.LogDebug($"Finished processing for {httpContext.Request.Path}");
     }
+
+    [LoggerMessage(0, LogLevel.Debug, "Starting response for {path}")]
+    public static partial void StartingResponse(ILogger logger, string path);
 }
