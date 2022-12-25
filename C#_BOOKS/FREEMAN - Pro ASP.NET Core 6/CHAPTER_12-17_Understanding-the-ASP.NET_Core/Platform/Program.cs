@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Routing.Patterns;
 using Microsoft.Extensions.FileProviders;
+using Platform;
 using Platform.CustomMiddleware;
 using Platform.Extensions;
 using Platform.MessageOptions;
@@ -31,19 +32,35 @@ builder.Services.AddHttpsRedirection(httpsRedirectionOptions =>
     httpsRedirectionOptions.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
     httpsRedirectionOptions.HttpsPort = 7200;
 });
+builder.Services.AddHsts(hstsOptions =>
+{
+    hstsOptions.MaxAge = TimeSpan.FromDays(1);
+    hstsOptions.IncludeSubDomains = true;
+});
+builder.Services.AddHostFiltering(hostFilteringOptions =>
+{
+    hostFilteringOptions.AllowedHosts.Clear();
+    //hostFilteringOptions.AllowedHosts.Add("*.example.com");
+});
 
 var app = builder.Build();
 
 app.Map("/favicon.ico", delegate { }); // ignore favicon
-
-app.MapFallback(async httpContext =>
-{
-    await httpContext.Response.WriteAsync($"HTTPS Request: {httpContext.Request.IsHttps}\n");
-    await httpContext.Response.WriteAsync($"Hello World!");
-});
 try
 {
-    // chapter 16 - cookies, session, sessionCache , https
+    // chapter 16 - cookies, session, sessionCache, https, hsts, handling exceptions and errors
+
+    if (app.Environment.IsProduction())
+    {
+        app.UseHsts();
+    }
+
+    if (!app.Environment.IsDevelopment())
+    {
+        app.UseExceptionHandler("/error.html");
+        app.UseStaticFiles();
+    }
+
     app.UseHttpsRedirection();
     app.UseCookiePolicy();
 
@@ -84,11 +101,31 @@ try
         await httpContext.Response.WriteAsync($"Session counter1: {counter1}, Session counter2: {counter2}");
     });
 
-    app.Run();
+    app.MapFallback(async httpContext =>
+    {
+        await httpContext.Response.WriteAsync($"HTTPS Request: {httpContext.Request.IsHttps}\n");
+        await httpContext.Response.WriteAsync($"Hello World!");
+    });
 
-    // chapter 15 - configuration, environment, logging
-    app.EnvironmentLoggingConfiguration_Chapter15();
-    app.Run();
+    app.UseStatusCodePages("text/html", ResponseStrings.DefaultResponse);
+    app.Use(async (HttpContext httpContext, RequestDelegate requestDelegate) =>
+    {
+        if (httpContext.Request.Path == "/error")
+        {
+            httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+            await Task.CompletedTask;
+        }
+        else
+        {
+            await requestDelegate(httpContext);
+        }
+    });
+    app.Run(
+    //    context =>
+    //{
+    //    throw new Exception("Something has gone wrong!");
+    //}
+    );
 
     // chapter 15 - configuration, environment, logging
     app.EnvironmentLoggingConfiguration_Chapter15();
