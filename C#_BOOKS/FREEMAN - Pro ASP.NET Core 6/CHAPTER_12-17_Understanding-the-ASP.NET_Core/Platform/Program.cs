@@ -20,6 +20,8 @@ app.MapGet("config", async (HttpContext httpContext, IConfiguration configuratio
 {
     string? defaultDebug = configuration.GetRequiredSection("Logging:LogLevel").GetValue<string>("Default");
     await httpContext.Response.WriteAsync($"The config setting is: {defaultDebug}");
+    string? environment = configuration["ASPNETCORE_ENVIRONMENT"];
+    await httpContext.Response.WriteAsync($"\nThe env setting is: {environment}");
 });
 
 var pipelineConfig = app.Configuration; // use configuration settings to set up pipeline
