@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Routing.Patterns;
 using Platform.CustomMiddleware;
 using Platform.Extensions;
@@ -15,11 +16,20 @@ builder.RegisterDependencyInjection_Chapter14();
 var servicesConfig = builder.Configuration; // use configuration settings to set up services
 var serviceEnv = builder.Environment; // use environment to set up services
 builder.Services.Configure<MessageOption>(servicesConfig.GetSection("Location"));
+
+builder.Services.AddHttpLogging(options =>
+{
+    options.LoggingFields = HttpLoggingFields.RequestMethod | HttpLoggingFields.RequestPath | HttpLoggingFields.ResponseStatusCode;
+});
+
 var app = builder.Build();
+
+app.Map("/favicon.ico", delegate { }); // ignore favicon
 
 try
 {
     // chapter 15 - configuration, environment, logging
+    app.UseHttpLogging();
 
     ILogger logger = app.Services.GetRequiredService<ILoggerFactory>().CreateLogger("Pipeline");
     logger.LogDebug("Pipeline configuration starting");
@@ -62,7 +72,7 @@ try
     app.MapGet("/", () => "Hello World!");
     app.Run();
 }
-catch(Exception ex)
+catch (Exception ex)
 {
     Console.WriteLine(ex.Message);
 }
