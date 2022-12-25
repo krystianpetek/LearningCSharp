@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Routing.Patterns;
+using Microsoft.Extensions.FileProviders;
 using Platform.CustomMiddleware;
 using Platform.Extensions;
 using Platform.MessageOptions;
@@ -37,7 +38,7 @@ try
     var pipelineConfig = app.Configuration; // use configuration settings to set up pipeline
     var pipelineEnv = app.Environment; // use environment to set up pipeline
 
-    app.MapGet("config", async (HttpContext httpContext, IConfiguration configuration, IWebHostEnvironment env) =>
+    app.MapGet("config", async (HttpContext httpContext, IConfiguration configuration, IWebHostEnvironment env) => // https://localhost:7200/config
     {
         string? defaultDebug = configuration.GetRequiredSection("Logging:LogLevel").GetValue<string>("Default");
         await httpContext.Response.WriteAsync($"The config setting is: {defaultDebug}");
@@ -51,9 +52,17 @@ try
     });
 
     app.UseMiddleware<LocationMiddleware>();
-    app.MapGroup("chapter15").PopulationAPI();
+    app.MapGroup("chapter15").PopulationAPI(); // https://localhost:7200/chapter15/population
 
     logger.LogDebug("Pipeline configuration complete");
+    var path = builder.Environment.ContentRootPath;
+    app.UseStaticFiles(); // wwwroot
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider($"{builder.Environment.ContentRootPath}/staticfiles"),
+        RequestPath = "/files"
+    });
+
     app.Run();
 
     // chapter 14 - dependency injection
