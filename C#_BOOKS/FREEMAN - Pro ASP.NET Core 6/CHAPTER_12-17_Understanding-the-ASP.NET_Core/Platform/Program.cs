@@ -1,5 +1,6 @@
 using Platform;
 using Platform.Extensions;
+using Platform.Services.Formatter;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,9 @@ builder.Services.AddDistributedSqlServerCache(options =>
     options.SchemaName = "dbo";
 });
 
+builder.Services.AddResponseCaching();
+builder.Services.AddSingleton<IResponseFormatter, HtmlResponseFormatter>();
+
 var app = builder.Build();
 
 app.Map("/favicon.ico", delegate { }); // ignore favicon
@@ -29,7 +33,9 @@ app.MapGet("/", async context => await context.Response.WriteAsync("Hello World!
 
 try
 {
+    app.UseResponseCaching();
     app.MapEndpoint<SumEndpoint>("/sum/{count:int=2000000000}");
+    app.MapEndpoint<SumEndpoint>("/cachedSum/{count:int=2000000000}", "CachedResponseAsync");
     app.Run();
 
     // chapter 16 - cookies, session, sessionCache, https, hsts, handling exceptions and errors
