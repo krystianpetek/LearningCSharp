@@ -1,6 +1,4 @@
-﻿using Platform.Services.Interfaces;
-
-namespace Platform.Services.Formatter;
+﻿namespace Platform.Services.Formatter;
 
 public static class TypeBroker
 {

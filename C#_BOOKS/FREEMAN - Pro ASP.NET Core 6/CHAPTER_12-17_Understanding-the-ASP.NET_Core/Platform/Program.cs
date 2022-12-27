@@ -1,26 +1,30 @@
-using Microsoft.AspNetCore.HttpLogging;
-using Microsoft.AspNetCore.Routing.Patterns;
-using Microsoft.Extensions.FileProviders;
 using Platform;
-using Platform.CustomMiddleware;
 using Platform.Extensions;
-using Platform.MessageOptions;
 
-var services = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
-services.Services.RegisterCustomMiddlewareDependencies_Chapter12();
-services.Services.RegisterMessageOptionsConfiguration_Chapter12();
-services.Services.RegisterUrlRouting_Chapter13();
-services.RegisterDependencyInjection_Chapter14();
-services.RegisterConfigurationEnvironment_Chapter15();
-services.Services.RegisterCookiesSessionHttps_Chapter16();
+builder.Services.RegisterCustomMiddlewareDependencies_Chapter12();
+builder.Services.RegisterMessageOptionsConfiguration_Chapter12();
+builder.Services.RegisterUrlRouting_Chapter13();
+builder.RegisterDependencyInjection_Chapter14();
+builder.RegisterConfigurationEnvironment_Chapter15();
+builder.Services.RegisterCookiesSessionHttps_Chapter16();
 
+builder.Services.AddDistributedMemoryCache(options =>
+{
+    options.SizeLimit = 200;
+});
 
-var app = services.Build();
+var app = builder.Build();
 
 app.Map("/favicon.ico", delegate { }); // ignore favicon
+app.MapGet("/", async context => await context.Response.WriteAsync("Hello World!"));
+
 try
 {
+    app.MapEndpoint<SumEndpoint>("/sum/{count:int=2000000000}");
+    app.Run();
+
     // chapter 16 - cookies, session, sessionCache, https, hsts, handling exceptions and errors
     app.CookieSessionSessionCacheHttpsHstsExceptions_Chapter16();
     app.Run();

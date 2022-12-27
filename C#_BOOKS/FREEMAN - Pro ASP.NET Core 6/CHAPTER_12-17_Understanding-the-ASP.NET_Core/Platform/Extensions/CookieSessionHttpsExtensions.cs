@@ -1,5 +1,4 @@
 ﻿using Platform.CustomMiddleware;
-using System;
 
 namespace Platform.Extensions;
 

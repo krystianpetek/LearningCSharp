@@ -126,12 +126,12 @@ public static class EndpointExtensions
         {
             ICollection<int> ints = httpContext.RequestServices.GetRequiredService<ICollection<int>>();
             ints.Add(ints.Count + 1);
-            foreach(int value in ints)
+            foreach (int value in ints)
             {
                 await httpContext.Response.WriteAsync($"Int: {value}\n");
             }
         });
-        
+
         return app;
     }
 }

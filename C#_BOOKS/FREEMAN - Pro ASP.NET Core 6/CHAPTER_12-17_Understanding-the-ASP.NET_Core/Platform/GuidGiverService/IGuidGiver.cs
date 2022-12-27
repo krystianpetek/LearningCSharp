@@ -1,7 +1,6 @@
-﻿namespace Platform.GuidGiverService
+﻿namespace Platform.GuidGiverService;
+
+public interface IGuidGiver
 {
-    public interface IGuidGiver
-    {
-        Task TakeGuidAsync(HttpContext httpContext);
-    }
+    Task TakeGuidAsync(HttpContext httpContext);
 }
