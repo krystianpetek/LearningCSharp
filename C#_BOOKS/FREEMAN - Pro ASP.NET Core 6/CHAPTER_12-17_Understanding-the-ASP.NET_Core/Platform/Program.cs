@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using Platform;
 using Platform.Extensions;
+using Platform.Models;
 using Platform.Services.Formatter;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,9 +25,14 @@ builder.Services.AddDistributedSqlServerCache(options =>
     options.SchemaName = "dbo";
 });
 
-builder.Services.AddResponseCaching();
 builder.Services.AddSingleton<IResponseFormatter, HtmlResponseFormatter>();
+builder.Services.AddResponseCaching();
 
+builder.Services.AddDbContext<CalculationContext>(options =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("CalcConnection");
+    options.UseSqlServer(connectionString);
+});
 var app = builder.Build();
 
 app.Map("/favicon.ico", delegate { }); // ignore favicon
