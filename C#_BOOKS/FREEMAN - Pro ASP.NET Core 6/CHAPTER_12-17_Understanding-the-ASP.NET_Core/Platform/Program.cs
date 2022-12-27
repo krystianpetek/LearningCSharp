@@ -10,9 +10,16 @@ builder.RegisterDependencyInjection_Chapter14();
 builder.RegisterConfigurationEnvironment_Chapter15();
 builder.Services.RegisterCookiesSessionHttps_Chapter16();
 
-builder.Services.AddDistributedMemoryCache(options =>
+//builder.Services.AddDistributedMemoryCache(options =>
+//{
+//    options.SizeLimit = 200;
+//});
+
+builder.Services.AddDistributedSqlServerCache(options =>
 {
-    options.SizeLimit = 200;
+    options.ConnectionString = builder.Configuration.GetConnectionString("CacheConnection");
+    options.TableName = "DataCache";
+    options.SchemaName = "dbo";
 });
 
 var app = builder.Build();
