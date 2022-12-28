@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using Platform;
 using Platform.Extensions;
 using Platform.Models;
 using Platform.Services.Formatter;
+using Platform.UrlRouting;
 
 internal class Program
 {
@@ -16,30 +16,7 @@ internal class Program
         builder.RegisterDependencyInjection_Chapter14();
         builder.RegisterConfigurationEnvironment_Chapter15();
         builder.Services.RegisterCookiesSessionHttps_Chapter16();
-
-        //builder.Services.AddDistributedMemoryCache(options =>
-        //{
-        //    options.SizeLimit = 200;
-        //});
-
-        builder.Services.AddDistributedSqlServerCache(options =>
-        {
-            options.ConnectionString = builder.Configuration.GetConnectionString("CacheConnection");
-            options.TableName = "DataCache";
-            options.SchemaName = "dbo";
-        });
-
-        builder.Services.AddSingleton<IResponseFormatter, HtmlResponseFormatter>();
-        builder.Services.AddResponseCaching();
-
-        builder.Services.AddDbContext<CalculationContext>(options =>
-        {
-            var connectionString = builder.Configuration.GetConnectionString("CalcConnection");
-            options.UseSqlServer(connectionString);
-            options.EnableSensitiveDataLogging();
-        });
-
-        builder.Services.AddTransient<SeedData>();
+        builder.RegisterCacheMemoryDbAndResponseDbContext_Chapter17();
 
         var app = builder.Build();
 
@@ -48,18 +25,8 @@ internal class Program
 
         try
         {
-            app.UseResponseCaching();
-            app.MapEndpoint<SumEndpoint>("/sum/{count:int=2000000000}");
-            app.MapEndpoint<SumEndpoint>("/cachedSum/{count:int=2000000000}", "CachedResponseAsync");
-            app.MapEndpoint<SumEndpoint>("/databaseSum/{count:int=2000000000}", "DatabaseResponseAsync");
-
-            bool cmdLineInit = (app.Configuration["INITDB"] ?? "false") == "true";
-            if (app.Environment.IsDevelopment() && cmdLineInit)
-            {
-                var seedData = app.Services.CreateScope().ServiceProvider.GetRequiredService<SeedData>();
-                seedData.SeedDatabase();
-                return;
-            }
+            // chapter 17 - in memory cache, sql cache, caching response, seed database with parameter, sensitive data logging
+            app.CacheMemoryDbAndResponseDbContext();
             app.Run();
 
             // chapter 16 - cookies, session, sessionCache, https, hsts, handling exceptions and errors

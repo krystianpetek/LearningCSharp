@@ -2,7 +2,7 @@
 using Platform.Models;
 using Platform.Services.Formatter;
 
-namespace Platform;
+namespace Platform.UrlRouting;
 
 public class SumEndpoint
 {
