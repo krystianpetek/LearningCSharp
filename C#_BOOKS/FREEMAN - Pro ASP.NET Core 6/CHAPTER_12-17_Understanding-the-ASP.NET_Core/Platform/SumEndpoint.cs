@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
+using Platform.Models;
 using Platform.Services.Formatter;
 
 namespace Platform;
@@ -49,5 +50,28 @@ public class SumEndpoint
             $"<div>({DateTime.Now.ToLongTimeString()}) Total for {count}" +
             $" values:</div><div>{totalString}</div>" +
             $"<a href={url}>Reload</a>");
+    }
+
+    public async Task DatabaseResponseAsync(HttpContext httpContext, CalculationContext calculationContext)
+    {
+        int.TryParse((string?)httpContext.Request.RouteValues["count"], out int count);
+
+        long total = calculationContext.Calculations?.FirstOrDefault(c => c.Count == count)?.Result ?? 0;
+
+        if (total == 0)
+        {
+            for (int i = 1; i <= count; i++)
+                total += i;
+
+            calculationContext.Calculations?.Add(new Calculation()
+            {
+                Count = count,
+                Result = total
+            });
+            await calculationContext.SaveChangesAsync();
+        }
+
+        string totalString = $"({DateTime.Now.ToLongTimeString()}) {total}";
+        await httpContext.Response.WriteAsync($"({DateTime.Now.ToLongTimeString()}) Total for {count} values:\n{totalString}\n");
     }
 }

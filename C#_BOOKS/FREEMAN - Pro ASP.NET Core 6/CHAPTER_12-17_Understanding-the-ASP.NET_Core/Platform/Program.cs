@@ -4,69 +4,88 @@ using Platform.Extensions;
 using Platform.Models;
 using Platform.Services.Formatter;
 
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.RegisterCustomMiddlewareDependencies_Chapter12();
-builder.Services.RegisterMessageOptionsConfiguration_Chapter12();
-builder.Services.RegisterUrlRouting_Chapter13();
-builder.RegisterDependencyInjection_Chapter14();
-builder.RegisterConfigurationEnvironment_Chapter15();
-builder.Services.RegisterCookiesSessionHttps_Chapter16();
-
-//builder.Services.AddDistributedMemoryCache(options =>
-//{
-//    options.SizeLimit = 200;
-//});
-
-builder.Services.AddDistributedSqlServerCache(options =>
+internal class Program
 {
-    options.ConnectionString = builder.Configuration.GetConnectionString("CacheConnection");
-    options.TableName = "DataCache";
-    options.SchemaName = "dbo";
-});
+    private static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IResponseFormatter, HtmlResponseFormatter>();
-builder.Services.AddResponseCaching();
+        builder.Services.RegisterCustomMiddlewareDependencies_Chapter12();
+        builder.Services.RegisterMessageOptionsConfiguration_Chapter12();
+        builder.Services.RegisterUrlRouting_Chapter13();
+        builder.RegisterDependencyInjection_Chapter14();
+        builder.RegisterConfigurationEnvironment_Chapter15();
+        builder.Services.RegisterCookiesSessionHttps_Chapter16();
 
-builder.Services.AddDbContext<CalculationContext>(options =>
-{
-    var connectionString = builder.Configuration.GetConnectionString("CalcConnection");
-    options.UseSqlServer(connectionString);
-});
-var app = builder.Build();
+        //builder.Services.AddDistributedMemoryCache(options =>
+        //{
+        //    options.SizeLimit = 200;
+        //});
 
-app.Map("/favicon.ico", delegate { }); // ignore favicon
-app.MapGet("/", async context => await context.Response.WriteAsync("Hello World!"));
+        builder.Services.AddDistributedSqlServerCache(options =>
+        {
+            options.ConnectionString = builder.Configuration.GetConnectionString("CacheConnection");
+            options.TableName = "DataCache";
+            options.SchemaName = "dbo";
+        });
 
-try
-{
-    app.UseResponseCaching();
-    app.MapEndpoint<SumEndpoint>("/sum/{count:int=2000000000}");
-    app.MapEndpoint<SumEndpoint>("/cachedSum/{count:int=2000000000}", "CachedResponseAsync");
-    app.Run();
+        builder.Services.AddSingleton<IResponseFormatter, HtmlResponseFormatter>();
+        builder.Services.AddResponseCaching();
 
-    // chapter 16 - cookies, session, sessionCache, https, hsts, handling exceptions and errors
-    app.CookieSessionSessionCacheHttpsHstsExceptions_Chapter16();
-    app.Run();
+        builder.Services.AddDbContext<CalculationContext>(options =>
+        {
+            var connectionString = builder.Configuration.GetConnectionString("CalcConnection");
+            options.UseSqlServer(connectionString);
+            options.EnableSensitiveDataLogging();
+        });
 
-    // chapter 15 - configuration, environment, logging
-    app.EnvironmentLoggingConfiguration_Chapter15();
-    app.Run();
+        builder.Services.AddTransient<SeedData>();
 
-    // chapter 14 - dependency injection
-    app.DependencyInjectionMiddleware_Chapter14();
-    app.Run();
+        var app = builder.Build();
 
-    // chapter 13 - url routing
-    app.UrlRoutingMiddleware_Chapter13();
-    app.Run(); // prevents calling next middlewares, runs application and block the calling thread until
+        app.Map("/favicon.ico", delegate { }); // ignore favicon
+        app.MapGet("/", async context => await context.Response.WriteAsync("Hello World!"));
 
-    // chapter 12 - middleware
-    app.CustomMiddleware_Chapter12();
-    app.MessageOptionsMiddleware_Chapter12();
-    app.Run();
-}
-catch (Exception ex)
-{
-    Console.WriteLine(ex.Message);
+        try
+        {
+            app.UseResponseCaching();
+            app.MapEndpoint<SumEndpoint>("/sum/{count:int=2000000000}");
+            app.MapEndpoint<SumEndpoint>("/cachedSum/{count:int=2000000000}", "CachedResponseAsync");
+            app.MapEndpoint<SumEndpoint>("/databaseSum/{count:int=2000000000}", "DatabaseResponseAsync");
+
+            bool cmdLineInit = (app.Configuration["INITDB"] ?? "false") == "true";
+            if (app.Environment.IsDevelopment() && cmdLineInit)
+            {
+                var seedData = app.Services.CreateScope().ServiceProvider.GetRequiredService<SeedData>();
+                seedData.SeedDatabase();
+                return;
+            }
+            app.Run();
+
+            // chapter 16 - cookies, session, sessionCache, https, hsts, handling exceptions and errors
+            app.CookieSessionSessionCacheHttpsHstsExceptions_Chapter16();
+            app.Run();
+
+            // chapter 15 - configuration, environment, logging
+            app.EnvironmentLoggingConfiguration_Chapter15();
+            app.Run();
+
+            // chapter 14 - dependency injection
+            app.DependencyInjectionMiddleware_Chapter14();
+            app.Run();
+
+            // chapter 13 - url routing
+            app.UrlRoutingMiddleware_Chapter13();
+            app.Run(); // prevents calling next middlewares, runs application and block the calling thread until
+
+            // chapter 12 - middleware
+            app.CustomMiddleware_Chapter12();
+            app.MessageOptionsMiddleware_Chapter12();
+            app.Run();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
 }
