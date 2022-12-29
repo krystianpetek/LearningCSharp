@@ -4,23 +4,24 @@ namespace WebApp.Middlewares;
 
 public class TestMiddleware
 {
-    RequestDelegate _nextDelegate;
-    public TestMiddleware(RequestDelegate nextDelegate)
+    private readonly RequestDelegate _requestDelegate;
+
+    public TestMiddleware(RequestDelegate requestDelegate)
     {
-        _nextDelegate = nextDelegate;
+        _requestDelegate = requestDelegate;
     }
 
-    public async Task InvokeAsync(HttpContext context, DataContext dataContext)
+    public async Task InvokeAsync(HttpContext httpContext, DataContext dataContext)
     {
-        if (context.Request.Path == "/test")
+        if (httpContext.Request.Path == "/test")
         {
-            await context.Response.WriteAsync($"There are {dataContext.Products.Count()} products\n");
-            await context.Response.WriteAsync($"There are {dataContext.Categories.Count()} categories\n");
-            await context.Response.WriteAsync($"There are {dataContext.Suppliers.Count()} suppliers\n");
+            await httpContext.Response.WriteAsync($"There are {dataContext.Products.Count()} products\n");
+            await httpContext.Response.WriteAsync($"There are {dataContext.Categories.Count()} categories\n");
+            await httpContext.Response.WriteAsync($"There are {dataContext.Suppliers.Count()} suppliers\n");
         }
         else
         {
-            await _nextDelegate(context);
+            await _requestDelegate(httpContext);
         }
     }
 }
