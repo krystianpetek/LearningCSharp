@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WebApp.Middlewares;
 using WebApp.Models;
 
 namespace WebApp;
@@ -16,11 +17,12 @@ public static class Program {
         });
 
         var app = builder.Build();
-
-        app.MapGet("/", () => "Hello World!");
-
         var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<DataContext>();
         context.SeedDatabase();
+
+        app.UseMiddleware<TestMiddleware>();
+
+        app.MapGet("/", () => "Hello World!");
         
         await app.RunAsync();        
     }
