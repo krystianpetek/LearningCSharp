@@ -1,6 +1,27 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Microsoft.EntityFrameworkCore;
+using WebApp.Models;
 
-app.MapGet("/", () => "Hello World!");
+namespace WebApp;
 
-app.Run();
+public static class Program {
+
+    public async static Task Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
+        builder.Services.AddDbContext<DataContext>(options =>
+        {
+            var connectionString = builder.Configuration.GetConnectionString("ProductConnectionPgSql");
+            options.UseNpgsql(connectionString);
+            options.EnableSensitiveDataLogging(true);
+        });
+
+        var app = builder.Build();
+
+        app.MapGet("/", () => "Hello World!");
+
+        var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<DataContext>();
+        context.SeedDatabase();
+        
+        await app.RunAsync();        
+    }
+}
