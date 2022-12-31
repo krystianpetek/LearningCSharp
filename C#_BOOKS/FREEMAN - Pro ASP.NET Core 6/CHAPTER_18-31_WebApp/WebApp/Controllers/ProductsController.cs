@@ -75,6 +75,8 @@ public class ProductsController : ControllerBase
     [HttpGet("redirect")]
     public IActionResult Redirect()
     {
-        return RedirectToAction(nameof(GetProduct), new { id = 1 });
+        return RedirectToRoute(new { controller = "Products", action = "GetProduct", id = 1 });
+        return RedirectToAction(nameof(GetProduct), new { Id = 1 });
+        return Redirect("/api/products/1");
     }
 }
