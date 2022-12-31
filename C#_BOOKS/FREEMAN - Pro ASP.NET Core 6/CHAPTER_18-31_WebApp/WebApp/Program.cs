@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -23,6 +24,11 @@ public static class Program
         {
             policy.AllowAnyOrigin();
         }));
+
+        builder.Services.Configure<JsonOptions>(options =>
+        {
+            options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        });
 
         var app = builder.Build();
         var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<DataContext>();

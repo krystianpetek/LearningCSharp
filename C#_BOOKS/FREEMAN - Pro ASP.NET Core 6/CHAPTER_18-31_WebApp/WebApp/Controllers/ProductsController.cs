@@ -29,25 +29,30 @@ public class ProductsController : ControllerBase
         if (product == null)
             return NotFound();
 
-        return Ok(product);
+        return Ok(
+            new
+            {
+                ProductId = product.ProductId,
+                Name = product.Name,
+                Price = product.Price,
+                CategoryId = product.CategoryId,
+                SupplierId = product.SupplierId,
+            }
+        );
     }
 
     [HttpPost]
     public async Task<IActionResult> SaveProduct([FromBody] ProductBindingTarget target)
     {
-        if (ModelState.IsValid)
-        {
-            Product product = target.ToProduct();
+        Product product = target.ToProduct();
 
-            await _dataContext.Products.AddAsync(product);
-            await _dataContext.SaveChangesAsync();
-            return Created($"{product.ProductId}", product);
-        }
-        return BadRequest(ModelState);
+        await _dataContext.Products.AddAsync(product);
+        await _dataContext.SaveChangesAsync();
+        return Created($"{product.ProductId}", product);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateProduct(long id, [FromBody] Product product)
+    public async Task UpdateProduct(long id, Product product)
     {
         var entity = await _dataContext.Products.FirstOrDefaultAsync(x => x.ProductId == id);
         if (entity != null)
@@ -58,12 +63,10 @@ public class ProductsController : ControllerBase
             entity.Price = product.Price;
 
             await _dataContext.SaveChangesAsync();
-            return Ok();
         }
         _dataContext.Products.Update(product);
         await _dataContext.SaveChangesAsync();
 
-        return NoContent();
     }
 
     [HttpDelete("{id}")]
