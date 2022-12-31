@@ -19,6 +19,10 @@ public static class Program
             options.EnableSensitiveDataLogging(true);
         });
         builder.Services.AddControllers();
+        builder.Services.AddCors(cors => cors.AddPolicy(name: "MyAllowSpecificOrigins", policy =>
+        {
+            policy.AllowAnyOrigin();
+        }));
 
         var app = builder.Build();
         var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<DataContext>();

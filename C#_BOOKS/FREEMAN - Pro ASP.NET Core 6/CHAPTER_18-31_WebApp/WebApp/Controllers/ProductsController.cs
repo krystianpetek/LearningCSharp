@@ -17,26 +17,29 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IEnumerable<Product>> GetProducts()
+    public IAsyncEnumerable<Product> GetProducts()
     {
-        IEnumerable<Product> products = _dataContext.Products;
-        return await Task.FromResult(products);
+        return _dataContext.Products.AsAsyncEnumerable();
     }
 
-    [HttpGet("{id:int}")]
-    public async Task<Product?> GetProduct(int id, [FromServices] ILogger<ProductsController> logger)
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetProduct(long id)
     {
-        logger.LogDebug("GetProduct Action Invoked");
-
         Product? product = await _dataContext.Products.FirstOrDefaultAsync(c => c.ProductId == id);
-        return product;
+        if (product == null)
+            return NotFound();
+        
+        return Ok(product);
     }
 
     [HttpPost]
-    public async Task<IActionResult> SaveProduct([FromBody] Product product)
+    public async Task<IActionResult> SaveProduct([FromBody] ProductBindingTarget target)
     {
+        Product product = target.ToProduct();
+        
         await _dataContext.Products.AddAsync(product);
         await _dataContext.SaveChangesAsync();
+
         return Created($"{product.ProductId}", product);
     }
 
@@ -67,5 +70,11 @@ public class ProductsController : ControllerBase
         await _dataContext.SaveChangesAsync();
 
         return Ok();
+    }
+
+    [HttpGet("redirect")]
+    public IActionResult Redirect()
+    {
+        return RedirectToAction(nameof(GetProduct), new { id = 1 });
     }
 }
