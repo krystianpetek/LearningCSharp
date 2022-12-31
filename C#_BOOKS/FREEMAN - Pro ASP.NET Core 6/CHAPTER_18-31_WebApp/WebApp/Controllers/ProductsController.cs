@@ -27,16 +27,45 @@ public class ProductsController : ControllerBase
     public async Task<Product?> GetProduct(int id, [FromServices] ILogger<ProductsController> logger)
     {
         logger.LogDebug("GetProduct Action Invoked");
-        
+
         Product? product = await _dataContext.Products.FirstOrDefaultAsync(c => c.ProductId == id);
         return product;
     }
 
     [HttpPost]
-    public async Task<ActionResult> SaveProduct([FromBody] Product product)
+    public async Task<IActionResult> SaveProduct([FromBody] Product product)
     {
         await _dataContext.Products.AddAsync(product);
         await _dataContext.SaveChangesAsync();
-        return Created($"{product.ProductId}",product);
+        return Created($"{product.ProductId}", product);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateProduct(long id, [FromBody] Product product)
+    {
+        var entity = await _dataContext.Products.FirstOrDefaultAsync(x => x.ProductId == id);
+        if (entity != null)
+        {
+            entity.CategoryId = product.CategoryId;
+            entity.SupplierId = product.SupplierId;
+            entity.Name = product.Name;
+            entity.Price = product.Price;
+
+            await _dataContext.SaveChangesAsync();
+            return Ok();
+        }
+        _dataContext.Products.Update(product);
+        await _dataContext.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteProduct(long id)
+    {
+        _dataContext.Products.Remove(new Product() { ProductId = id });
+        await _dataContext.SaveChangesAsync();
+
+        return Ok();
     }
 }

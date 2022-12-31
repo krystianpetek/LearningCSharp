@@ -1,8 +1,8 @@
 ﻿namespace WebApp.Models;
 
-public record Category
+public class Category
 {
-    public long CategoryId { get; init; }
-    public string Name { get; init; } = string.Empty;
-    public IEnumerable<Product>? Products { get; init; }
+    public long CategoryId { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public IEnumerable<Product>? Products { get; set; }
 }
