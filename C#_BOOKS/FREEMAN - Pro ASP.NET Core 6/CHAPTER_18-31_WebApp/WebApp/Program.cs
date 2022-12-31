@@ -28,6 +28,7 @@ public static class Program
         builder.Services.Configure<JsonOptions>(options =>
         {
             options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+            options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
         });
 
         var app = builder.Build();
