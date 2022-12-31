@@ -28,19 +28,22 @@ public class ProductsController : ControllerBase
         Product? product = await _dataContext.Products.FirstOrDefaultAsync(c => c.ProductId == id);
         if (product == null)
             return NotFound();
-        
+
         return Ok(product);
     }
 
     [HttpPost]
     public async Task<IActionResult> SaveProduct([FromBody] ProductBindingTarget target)
     {
-        Product product = target.ToProduct();
-        
-        await _dataContext.Products.AddAsync(product);
-        await _dataContext.SaveChangesAsync();
+        if (ModelState.IsValid)
+        {
+            Product product = target.ToProduct();
 
-        return Created($"{product.ProductId}", product);
+            await _dataContext.Products.AddAsync(product);
+            await _dataContext.SaveChangesAsync();
+            return Created($"{product.ProductId}", product);
+        }
+        return BadRequest(ModelState);
     }
 
     [HttpPut("{id}")]
