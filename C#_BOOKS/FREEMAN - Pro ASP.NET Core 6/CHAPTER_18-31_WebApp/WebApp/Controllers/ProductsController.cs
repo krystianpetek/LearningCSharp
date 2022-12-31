@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using WebApp.Models;
 using WebApp.Routes;
+using Microsoft.AspNetCore.Http;
 
 namespace WebApp.Controllers;
 
@@ -23,6 +24,9 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesDefaultResponseType]
     public async Task<IActionResult> GetProduct(long id)
     {
         Product? product = await _dataContext.Products.FirstOrDefaultAsync(c => c.ProductId == id);

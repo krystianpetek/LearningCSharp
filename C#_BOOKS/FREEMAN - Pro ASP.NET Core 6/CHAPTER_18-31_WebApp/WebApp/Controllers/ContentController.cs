@@ -20,8 +20,9 @@ public class ContentController : ControllerBase
         return "This is a string response";
     }
 
-    [Produces("application/json")]
-    [HttpGet("object")]
+    [Produces("application/json", "application/xml")]
+    [HttpGet("object/{format?}")]
+    [FormatFilter] // format eg. xml or json after uri
     public async Task<ProductBindingTarget> GetObject()
     {
         Product product = await _dataContext.Products.FirstAsync();
@@ -33,5 +34,19 @@ public class ContentController : ControllerBase
             CategoryId = product.CategoryId,
             SupplierId = product.SupplierId
         };
+    }
+
+    //[HttpPost]
+    //[Consumes("application/xml")]
+    //public string SaveProductXml([FromBody] ProductBindingTarget product)
+    //{
+    //    return $"XML: {product.Name}";
+    //}
+
+    [HttpPost]
+    [Consumes("application/json")]
+    public string SaveProductJson(ProductBindingTarget product)
+    {
+        return $"JSON: {product.Name}";
     }
 }

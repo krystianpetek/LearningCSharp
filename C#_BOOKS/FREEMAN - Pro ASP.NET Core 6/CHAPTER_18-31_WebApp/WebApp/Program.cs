@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using WebApp.Middlewares;
@@ -43,6 +44,15 @@ public static class Program
             options.RespectBrowserAcceptHeader = true;
         });
 
+        builder.Services.AddSwaggerGen(swagger =>
+        {
+            swagger.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Version = "v1",
+                Title = "WebApp"
+            });
+        });
+
         var app = builder.Build();
         var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<DataContext>();
         dbContext.SeedDatabase();
@@ -54,6 +64,12 @@ public static class Program
         app.MapControllers();
 
         app.MapGet("/", () => "Hello World!");
+
+        app.UseSwagger();
+        app.UseSwaggerUI(options =>
+        {
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApp");
+        });
 
         await app.RunAsync();
     }
