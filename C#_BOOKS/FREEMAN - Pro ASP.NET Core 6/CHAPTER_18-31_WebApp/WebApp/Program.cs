@@ -19,16 +19,28 @@ public static class Program
             options.UseNpgsql(connectionString);
             options.EnableSensitiveDataLogging(true);
         });
-        builder.Services.AddControllers();
+        builder.Services.AddControllers().AddNewtonsoftJson().AddXmlSerializerFormatters();
         builder.Services.AddCors(cors => cors.AddPolicy(name: "MyAllowSpecificOrigins", policy =>
         {
             policy.AllowAnyOrigin();
         }));
 
-        builder.Services.Configure<JsonOptions>(options =>
+        //builder.Services.Configure<JsonOptions>(options =>
+        //{
+        //    options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        //    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        //});
+
+        builder.Services.Configure<MvcNewtonsoftJsonOptions>(options =>
         {
-            options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-            options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+            options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+        });
+
+        builder.Services.Configure<MvcOptions>(options =>
+        {
+            options.ReturnHttpNotAcceptable = true;
+            options.RespectBrowserAcceptHeader = true;
         });
 
         var app = builder.Build();

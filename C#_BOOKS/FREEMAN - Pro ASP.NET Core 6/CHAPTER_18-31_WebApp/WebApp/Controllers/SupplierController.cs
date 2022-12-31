@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
 
@@ -30,5 +31,14 @@ public class SupplierController : ControllerBase
         return supplier;
     }
 
-
+    [HttpPatch("{id}")]
+    public async Task<Supplier?> PatchSupplier(long id, JsonPatchDocument<Supplier>patchSupplier)
+    {
+        Supplier? supplier = await _dataContext.Suppliers.FirstOrDefaultAsync(x => x.SupplierId == id);
+        if(supplier != null) {
+            patchSupplier.ApplyTo(supplier);
+            await _dataContext.SaveChangesAsync();
+        }
+        return supplier;
+    }
 }
