@@ -14,6 +14,19 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index(long id = 1)
     {
-        return View(await _dataContext.Products.FindAsync(id));
+        Product? product = await _dataContext.Products.FindAsync(id);
+        if(product.CategoryId == 1)
+        {
+            return View(
+                viewName: "Watersports",
+                model: product);
+        }
+
+        return View(product);
+    }
+
+    public IActionResult Common()
+    {
+        return View();
     }
 }
