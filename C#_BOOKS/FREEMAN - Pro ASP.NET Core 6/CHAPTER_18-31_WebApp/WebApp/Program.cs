@@ -24,6 +24,8 @@ public static class Program
             options.EnableSensitiveDataLogging(true);
         });
 
+        builder.Services.AddControllersWithViews();
+
         var app = builder.Build();
         app.Pre21ChapterApp();
         
@@ -32,8 +34,11 @@ public static class Program
 
         app.UseStaticFiles();
         app.MapControllers();
+        app.MapControllerRoute(
+            name: "Default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
 
-        app.MapGet("/", () => "Hello World!");
+        app.MapGet("/hello", () => "Hello World!");
 
         await app.RunAsync();
     }

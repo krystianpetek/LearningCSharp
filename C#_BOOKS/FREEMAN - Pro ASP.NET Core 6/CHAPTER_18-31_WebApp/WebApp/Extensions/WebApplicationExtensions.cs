@@ -47,9 +47,11 @@ public static class WebApplicationExtensions
 
     public static void Pre21ChapterApp(this WebApplication _)
     {
-        var app = WebApplication.Create();
+        var builder = WebApplication.CreateBuilder();
+        var app = builder.Build();
+
         app.UseMiddleware<TestMiddleware>();
-        app.MapProducts(ApiRoutes.MinProducts);
+        //app.MapProducts(ApiRoutes.MinProducts);
 
         app.UseSwagger();
         app.UseSwaggerUI(options =>
