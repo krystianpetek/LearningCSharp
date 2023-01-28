@@ -25,6 +25,7 @@ public static class Program
         });
 
         builder.Services.AddControllersWithViews();
+        builder.Services.AddRazorPages();
         builder.Chapter22Builder();
 
         var app = builder.Build();
@@ -34,8 +35,9 @@ public static class Program
 
         app.Pre21ChapterApp();
         app.Chapter22App();
-        
+
         app.UseStaticFiles();
+        app.MapRazorPages();
         app.MapControllers();
         app.MapControllerRoute(
             name: "Default",
