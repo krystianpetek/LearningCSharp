@@ -7,6 +7,10 @@
     Product Information
 }
 
+@section Footer{
+    @(((Model?.Price / ViewBag.AveragePrice) * 100).ToString("F2"))% of average price
+ }
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,6 +55,3 @@
         </div>
     </body>
 </html>
-@section Footer{
-    @(((Model?.Price / ViewBag.AveragePrice) * 100).ToString("F2"))% of average price
- }

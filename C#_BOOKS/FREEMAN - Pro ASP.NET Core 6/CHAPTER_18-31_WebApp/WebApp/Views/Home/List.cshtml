@@ -2,6 +2,7 @@
 @{
     Layout = null;
     decimal average = Model?.Average(p => p.Price) ?? 0;
+    Func<Product, object> row = @<tr><td>@item.Name</td><td>@item.Price</td></tr>;
 }
 
 <!DOCTYPE html>
@@ -25,6 +26,7 @@
                             <td>@(p.Name)</td><td>@(p.Price)</td>
                             <td>@((p.Price / average * 100).ToString("F1")) % of average</td>
                         </tr>
+                        @row(p)
                     }
                 }
             </tbody>
