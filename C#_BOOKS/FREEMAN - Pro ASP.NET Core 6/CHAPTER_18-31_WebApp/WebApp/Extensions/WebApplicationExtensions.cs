@@ -60,4 +60,18 @@ public static class WebApplicationExtensions
         });
 
     }
+
+    public static void Chapter22Builder(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddDistributedMemoryCache();
+        builder.Services.AddSession(session =>
+        {
+            session.Cookie.IsEssential = true;
+        });
+    }
+
+    public static void Chapter22App(this WebApplication app)
+    {
+        app.UseSession();
+    }
 }
