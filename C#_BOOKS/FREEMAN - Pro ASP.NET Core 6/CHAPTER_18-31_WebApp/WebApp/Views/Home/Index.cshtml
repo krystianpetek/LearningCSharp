@@ -1,12 +1,16 @@
 ﻿@model Product
-
+@{
+    Layout = Model.Price > 100 ? "_ImportantLayout" : "_Layout";
+    ViewBag.Title = "Product Table" ?? "Product Table";
+}
 <!DOCTYPE html>
 <html>
     <head>
+        <title>@ViewBag.Title</title>
         <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
-        <h6 class="bg-primary text-white text-center m-2 p-2">Product Table</h6>
+        <h6 class="bg-primary text-white text-center m-2 p-2">@(ViewBag.Title ?? "Layout")</h6>
         <div class="m-2">
             <table class="table table-sm table-striped table-bordered">
                 <tbody>
