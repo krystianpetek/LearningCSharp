@@ -5,7 +5,13 @@
         <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     </head>
     <body>
-        <h3 class="bg-warning text-white text-center p-2 m-2">Important</h3>
+    @{
+        IgnoreSection("Header");
+    }
+    <h3 class="bg-warning text-white text-center p-2 m-2">Important</h3>
         @RenderBody()
+    @{
+        IgnoreSection("Footer");
+    }
     </body>
 </html>
