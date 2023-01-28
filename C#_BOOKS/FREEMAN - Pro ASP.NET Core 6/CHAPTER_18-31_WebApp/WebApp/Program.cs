@@ -25,13 +25,19 @@ public static class Program
         });
 
         builder.Services.AddControllersWithViews();
+        builder.Services.AddDistributedMemoryCache();
+        builder.Services.AddSession(session =>
+        {
+            session.Cookie.IsEssential = true;
+        });
 
         var app = builder.Build();
-        app.Pre21ChapterApp();
-        
         var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<DataContext>();
         dbContext.SeedDatabase();
 
+        app.Pre21ChapterApp();
+        app.UseSession();
+        
         app.UseStaticFiles();
         app.MapControllers();
         app.MapControllerRoute(
