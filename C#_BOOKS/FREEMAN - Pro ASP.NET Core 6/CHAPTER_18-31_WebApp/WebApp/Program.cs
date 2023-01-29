@@ -32,6 +32,7 @@ public static class Program
             razorOptions.Conventions.AddPageRoute("/Index", "/extra/page/{id:long?}");
         });
         builder.Chapter22Builder();
+        builder.Services.AddSingleton<CitiesData>();
 
         var app = builder.Build();
 

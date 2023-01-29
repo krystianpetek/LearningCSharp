@@ -35,6 +35,7 @@
         public async Task OnGetAsync(long id = 1)
         {
             Products = _dataContext.Products.ToList();
+            await Task.CompletedTask;
         }
     }
 }
