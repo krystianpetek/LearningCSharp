@@ -1,18 +1,18 @@
 ﻿@page
-@inject CitiesData CitiesData;
+@model WebApp.Pages.CitiesModel
 
 <div class="m-2">
     <table class="table table-sm table-striped table-bordered">
         <tbody>
             @{
-            foreach(City city in CitiesData.Cities)
-            {
-            <tr>
-                <td>@city.Name</td>
-                <td>@city.Country</td>
-                <td>@city.Population</td>
-            </tr>
-            }
+                foreach(City city in Model?.CitiesData?.Cities ?? Enumerable.Empty<City>())
+                {
+                    <tr>
+                        <td>@city.Name</td>
+                        <td>@city.Country</td>
+                        <td>@city.Population</td>
+                    </tr>
+                }
             }
         </tbody>
     </table>
