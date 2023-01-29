@@ -28,6 +28,12 @@ public class HomeController : Controller
         return View(product);
     }
 
+    public async Task<IActionResult> SimpleIndex(long id = 1)
+    {
+        Product? product = await _dataContext.Products.FindAsync(id);
+        return View(product);
+    }
+
     public IActionResult Common()
     {
         return View();
