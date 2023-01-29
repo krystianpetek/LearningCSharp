@@ -14,6 +14,8 @@
     @section Summary{
         <div class="bg-info text-white p-2 m-2">
             @Json.Serialize(Model)
+            <br />
+            @await Component.InvokeAsync("CitySummary")
         </div>
     }
 }
