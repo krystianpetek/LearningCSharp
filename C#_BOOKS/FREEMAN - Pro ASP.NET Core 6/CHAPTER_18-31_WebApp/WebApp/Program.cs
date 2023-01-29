@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Text.Json;
@@ -16,7 +17,7 @@ public static class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.Pre21ChapterBuilder();
-        
+
         builder.Services.AddDbContext<DataContext>(options =>
         {
             var connectionString = builder.Configuration.GetConnectionString("ProductConnectionPgSql");
@@ -26,6 +27,10 @@ public static class Program
 
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
+        builder.Services.Configure<RazorPagesOptions>(razorOptions =>
+        {
+            razorOptions.Conventions.AddPageRoute("/Index", "/extra/page/{id:long?}");
+        });
         builder.Chapter22Builder();
 
         var app = builder.Build();
@@ -37,7 +42,11 @@ public static class Program
         app.Chapter22App();
 
         app.UseStaticFiles();
-        app.MapRazorPages().Add(endpoints => ((RouteEndpointBuilder)endpoints).Order = 2);
+        app.MapRazorPages().Add(endpoints =>
+        {
+            ((RouteEndpointBuilder)endpoints).Order = 2;
+        });
+
         app.MapControllers();
         app.MapControllerRoute(
             name: "Default",

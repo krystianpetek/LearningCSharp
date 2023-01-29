@@ -1,5 +1,5 @@
-﻿@page
-@model IndexModel
+﻿@page "{id:long?}"
+@model WebApp.Pages.IndexModel
 @using Microsoft.AspNetCore.Mvc.RazorPages
 @using WebApp.Models
 
@@ -12,19 +12,3 @@
         <div class="bg-primary text-white text-center m-2 p-2">@Model.Product?.Name</div>
     </body>
 </html>
-
-@functions{
-    public class IndexModel : PageModel
-    {
-        private DataContext _dataContext;
-        public Product? Product{ get; set; }
-        public IndexModel(DataContext dataContext)
-        {
-            _dataContext = dataContext;
-        }
-        public async Task OnGetAsync(long id = 1)
-        {
-            Product = await _dataContext.Products.FindAsync(id);
-        }
-    }
-}
