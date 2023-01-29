@@ -15,7 +15,7 @@ public class CitySummary : ViewComponent
         _citiesData = citiesData;
     }
 
-    public IViewComponentResult Invoke(string themeName)
+    public IViewComponentResult Invoke(string themeName = "success")
     {
         ViewBag.Theme = themeName;
 
