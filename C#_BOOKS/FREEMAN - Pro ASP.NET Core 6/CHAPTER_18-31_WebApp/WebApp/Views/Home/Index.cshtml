@@ -1,7 +1,7 @@
 ﻿@model Product
 @{
     Layout = Model.Price > 100 ? "_ImportantLayout" : "_Layout";
-    ViewBag.Title = "Product Table" ?? "Product Table";
+    ViewBag.Title = ViewBag.Title ?? "Product Table";
 
     @section Header{
     Product Information
@@ -20,7 +20,7 @@
             <p>Component.InvokeAsync: </p>@await Component.InvokeAsync("CitySummary")
         </div>
         <div class="bg-info text-white p-2 m-2">
-            <p>vc:city-summary: </p><vc:city-summary />
+            <p>vc:city-summary: </p><vc:city-summary theme-name="secondary" />
         </div>
     }
 }
