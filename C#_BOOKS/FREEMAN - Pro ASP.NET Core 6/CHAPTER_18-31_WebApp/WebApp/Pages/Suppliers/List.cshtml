@@ -33,6 +33,7 @@
         public async Task OnGetAsync()
         {
             Suppliers = _dataContext.Suppliers.Select(supplier => supplier.Name);
+            await Task.CompletedTask;
         }
     }
 }

@@ -37,7 +37,7 @@ public static class Program
         app.Chapter22App();
 
         app.UseStaticFiles();
-        app.MapRazorPages();
+        app.MapRazorPages().Add(endpoints => ((RouteEndpointBuilder)endpoints).Order = 2);
         app.MapControllers();
         app.MapControllerRoute(
             name: "Default",
