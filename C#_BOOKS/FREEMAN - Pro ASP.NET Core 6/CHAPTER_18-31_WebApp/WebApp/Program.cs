@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Text.Json;
@@ -8,6 +9,7 @@ using WebApp.Extensions;
 using WebApp.Middlewares;
 using WebApp.Models;
 using WebApp.Routes;
+using WebApp.TagHelpers.Components;
 
 namespace WebApp;
 
@@ -33,6 +35,8 @@ public static class Program
         });
         builder.Chapter22Builder();
         builder.Services.AddSingleton<CitiesData>();
+        builder.Services.AddTransient<ITagHelperComponent, TimeTagHelperComponent>();
+        builder.Services.AddTransient<ITagHelperComponent, TableFooterTagHelperComponent>();
 
         var app = builder.Build();
 
