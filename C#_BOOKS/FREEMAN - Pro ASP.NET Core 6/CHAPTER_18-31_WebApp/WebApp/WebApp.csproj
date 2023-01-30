@@ -15,6 +15,10 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\" />
+  </ItemGroup>
   <PropertyGroup>
     <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
