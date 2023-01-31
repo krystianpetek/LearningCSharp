@@ -35,6 +35,15 @@
                 src="/images/city.jpg" 
                 asp-append-version="true" 
                 class="m-2 w-50 img-fluid mx-auto d-block rounded-4" />
+
+                <h6 class="bg-primary text-white p-2 m-2">
+                    Uncached timestamp: @DateTime.Now.ToLongTimeString()
+                </h6>
+                <cache expires-after="@TimeSpan.FromSeconds(15)" >
+                    <h6 class="bg-primary text-white m-2 p-2">
+                        Cached timestamp: @DateTime.Now.ToLongTimeString()
+                    </h6>
+                </cache>
             @RenderBody()
         </div>
     </body>
