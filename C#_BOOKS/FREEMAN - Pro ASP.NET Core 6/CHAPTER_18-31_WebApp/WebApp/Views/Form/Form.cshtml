@@ -5,10 +5,23 @@
 }
 <h5 class="bg-primary text-white text-center p-2">HTML Form</h5>
 
-<form action="/controllers/form/submitform" method="post">
+<form 
+    id="htmlform"
+    method="post" 
+    action="/controllers/form/submitform" >
     <div class="form-group">
         <label>Name</label>
-        <input class="form-control" name="Name" value="@Model?.Name" />
+        <input 
+            asp-for="Name" 
+            name="Name" 
+            value="@Model?.Name" 
+            class="form-control" />
     </div>
     <button type="submit" class="btn btn-primary mt-2">Submit</button>
 </form>
+<button 
+    asp-action="submitform" 
+    form="htmlform" 
+    class="btn btn-primary mt-2">
+    Submit (Outside Form)
+</button>
