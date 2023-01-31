@@ -1,5 +1,6 @@
 ﻿@page "/pages/form/{id:long?}"
 @using Microsoft.AspNetCore.Mvc.RazorPages;
+@using Microsoft.EntityFrameworkCore;
 @model FormHandlerModel
 
 <div class="m-2">
@@ -7,7 +8,19 @@
     <form action="/pages/form" method="post" id="htmlform">
         <div class="form-group">
             <label>Name</label>
-            <input class="form-control" name="Name" value="@Model.Product?.Name" />
+            <input class="form-control" asp-for="Product.Name" />
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input class="form-control" asp-for="Product.Price" />
+        </div>
+        <div class="form-group">
+                <label>Category</label>
+                <input class="form-control" asp-for="Product.Category.Name" />
+        </div>
+        <div class="form-group">
+                <label>Supplier</label>
+                <input class="form-control" asp-for="Product.Supplier.Name" />
         </div>
         <button type="submit" class="btn btn-primary mt-2">Submit</button>
     </form>
@@ -31,7 +44,10 @@
 
         public async Task OnGetAsync(long id = 1)
         {
-            Product = await _dataContext.Products.FindAsync(id);
+            Product = await _dataContext.Products
+            .Include(supplier => supplier.Supplier)
+            .Include(category => category.Category)
+            .FirstOrDefaultAsync(product => product.ProductId == id);
         }
 
         public IActionResult OnPost()
