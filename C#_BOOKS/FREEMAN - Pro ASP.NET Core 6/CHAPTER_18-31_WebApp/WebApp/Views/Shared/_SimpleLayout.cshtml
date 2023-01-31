@@ -2,6 +2,16 @@
 <html>
     <head>
         <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" />
+        <script 
+            asp-src-include="/lib/jquery/**/*.min.js" 
+            asp-src-exclude="**.slim.**"
+            asp-append-version="true">
+        </script>
+        <script 
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+            asp-asp-fallback-src="/lib/jquery/jquery.min.js"
+            asp-fallback-test="window.jQuery">
+        </script>
     </head>
     <body>
         <div class="m-2">
