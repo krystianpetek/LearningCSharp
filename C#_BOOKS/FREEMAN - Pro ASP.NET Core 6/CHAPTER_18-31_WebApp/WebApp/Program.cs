@@ -56,6 +56,7 @@ public static class Program
         app.MapControllerRoute(
             name: "Default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
+        app.MapControllerRoute("forms", "controllers/{controller=Home}/{action=Index}/{id?}");
 
         app.MapGet("/hello", () => "Hello World!");
 
