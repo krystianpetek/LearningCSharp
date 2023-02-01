@@ -13,7 +13,7 @@ public class FormController : Controller
         _dataContext = dataContext;
     }
 
-    public async Task<IActionResult> Index(long id = 1)
+    public async Task<IActionResult> Index(long id)
     {
         ViewBag.Categories = new SelectList(_dataContext.Categories, "CategoryId", "Name");
         return View("Form",
@@ -24,8 +24,10 @@ public class FormController : Controller
     }
 
     [HttpPost]
-    public IActionResult SubmitForm()
+    public IActionResult SubmitForm(string name, decimal price)
     {
+        TempData["name param"] = name;
+        TempData["price param"] = $"{price}";
         foreach (string key in Request.Form.Keys /*.Where(key => !key.StartsWith("_"))*/ )
         {
             TempData[key] = string.Join(", ", Request.Form[key]);

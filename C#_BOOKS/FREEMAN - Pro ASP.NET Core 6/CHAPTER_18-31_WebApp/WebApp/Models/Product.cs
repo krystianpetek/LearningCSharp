@@ -11,7 +11,7 @@ public class Product
     public string Name { get; set; } = string.Empty;
     
     [Column(TypeName = "decimal(8,2)")]
-    [DisplayFormat(DataFormatString = "0:c2", ApplyFormatInEditMode = true)]
+    //[DisplayFormat(DataFormatString = "0:c2", ApplyFormatInEditMode = true)]
     public decimal Price { get; set; }
     
     public long CategoryId { get; set; }

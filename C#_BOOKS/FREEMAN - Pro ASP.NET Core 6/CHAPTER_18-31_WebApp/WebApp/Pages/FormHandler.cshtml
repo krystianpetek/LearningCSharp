@@ -8,11 +8,11 @@
     <form action="/pages/form" method="post" id="htmlform">
         <div class="form-group">
             <label>Name</label>
-            <input class="form-control" asp-for="Product.Name" />
+            <input class="form-control" asp-for="Product.Name" name="name" />
         </div>
         <div class="form-group">
             <label>Price</label>
-            <input class="form-control" asp-for="Product.Price" />
+            <input class="form-control" asp-for="Product.Price" name="price" />
         </div>
         <div class="form-group">
                 <label>Category</label>
@@ -29,7 +29,7 @@
     </button>
 </div>
 
-@functions {
+@functions{
 
     [IgnoreAntiforgeryToken]
     public class FormHandlerModel : PageModel
@@ -50,8 +50,10 @@
             .FirstOrDefaultAsync(product => product.ProductId == id);
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(string name, string price)
         {
+            TempData["name parameter"] = name;
+            TempData["price parameter"] = $"{price}";
             foreach (string key in Request.Form.Keys.Where(k => !k.StartsWith("_")))
             {
                 TempData[key] = string.Join(", ", Request.Form[key]);
