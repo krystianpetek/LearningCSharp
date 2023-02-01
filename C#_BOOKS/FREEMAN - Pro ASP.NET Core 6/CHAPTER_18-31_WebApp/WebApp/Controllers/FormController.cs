@@ -26,7 +26,7 @@ public class FormController : Controller
     [HttpPost]
     public IActionResult SubmitForm()
     {
-        foreach (string key in Request.Form.Keys.Where(key => !key.StartsWith("_")))
+        foreach (string key in Request.Form.Keys /*.Where(key => !key.StartsWith("_"))*/ )
         {
             TempData[key] = string.Join(", ", Request.Form[key]);
         }
