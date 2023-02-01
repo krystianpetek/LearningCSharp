@@ -40,6 +40,9 @@
         [BindProperty]
         public Product? Product { get; set; }
 
+        [BindProperty(Name = "Product.Category")]
+        public Category? Category { get; set; }
+
         public FormHandlerModel(DataContext dataContext)
         {
             _dataContext = dataContext;
@@ -53,11 +56,17 @@
             .FirstOrDefaultAsync(product => product.ProductId == id);
         }
 
-        public IActionResult OnPost(/*string name, string price*/ Product product)
+        public IActionResult OnPost(
+            //string name, string price
+            Product product
+            //[Bind(Prefix = "Product.Category")] Category category
+            )
         {
             //TempData["name parameter"] = name;
             //TempData["price parameter"] = $"{price}";
             TempData["product"] = JsonSerializer.Serialize(product);
+            TempData["category"] = JsonSerializer.Serialize(Category);
+            
             foreach (string key in Request.Form.Keys.Where(k => !k.StartsWith("_")))
             {
                 TempData[key] = string.Join(", ", Request.Form[key]);
