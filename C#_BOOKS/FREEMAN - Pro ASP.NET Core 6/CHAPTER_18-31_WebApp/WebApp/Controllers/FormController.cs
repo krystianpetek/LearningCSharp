@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 using WebApp.Models;
 
 namespace WebApp.Controllers;
@@ -24,10 +25,11 @@ public class FormController : Controller
     }
 
     [HttpPost]
-    public IActionResult SubmitForm(string name, decimal price)
+    public IActionResult SubmitForm(/*string name, decimal price*/ Product product)
     {
-        TempData["name param"] = name;
-        TempData["price param"] = $"{price}";
+        //TempData["name param"] = name;
+        //TempData["price param"] = $"{price}";
+        TempData["product"] = JsonSerializer.Serialize(product);
         foreach (string key in Request.Form.Keys /*.Where(key => !key.StartsWith("_"))*/ )
         {
             TempData[key] = string.Join(", ", Request.Form[key]);

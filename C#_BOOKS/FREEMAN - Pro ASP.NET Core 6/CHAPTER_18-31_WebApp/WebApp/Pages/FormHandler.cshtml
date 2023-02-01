@@ -1,6 +1,7 @@
 ﻿@page "/pages/form/{id:long?}"
 @using Microsoft.AspNetCore.Mvc.RazorPages;
 @using Microsoft.EntityFrameworkCore;
+@using System.Text.Json;
 @model FormHandlerModel
 
 <div class="m-2">
@@ -35,6 +36,8 @@
     public class FormHandlerModel : PageModel
     {
         private DataContext _dataContext;
+
+        [BindProperty]
         public Product? Product { get; set; }
 
         public FormHandlerModel(DataContext dataContext)
@@ -50,10 +53,11 @@
             .FirstOrDefaultAsync(product => product.ProductId == id);
         }
 
-        public IActionResult OnPost(string name, string price)
+        public IActionResult OnPost(/*string name, string price*/ Product product)
         {
-            TempData["name parameter"] = name;
-            TempData["price parameter"] = $"{price}";
+            //TempData["name parameter"] = name;
+            //TempData["price parameter"] = $"{price}";
+            TempData["product"] = JsonSerializer.Serialize(product);
             foreach (string key in Request.Form.Keys.Where(k => !k.StartsWith("_")))
             {
                 TempData[key] = string.Join(", ", Request.Form[key]);
