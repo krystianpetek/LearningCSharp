@@ -58,12 +58,12 @@
 
         public IActionResult OnPost(
             //string name, string price
-            Product product
-            //[Bind(Prefix = "Product.Category")] Category category
+            Product product,
+            [Bind(Prefix = "Product.Category")] Category category
             )
         {
-            //TempData["name parameter"] = name;
-            //TempData["price parameter"] = $"{price}";
+            TempData["name parameter"] = product.Name;
+            TempData["price parameter"] = $"{product.Price}";
             TempData["product"] = JsonSerializer.Serialize(product);
             TempData["category"] = JsonSerializer.Serialize(Category);
             

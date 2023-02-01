@@ -28,13 +28,14 @@ public class FormController : Controller
     public IActionResult SubmitForm(
         //string name, decimal price
         //Product product,
-        [Bind(Prefix = "Category")] Category category
+        [Bind(Prefix = "Category")] Category category,
+        [Bind("Name","Category")] Product product
         )
     {
-        //TempData["name param"] = name;
-        //TempData["price param"] = $"{price}";
-        //TempData["product"] = JsonSerializer.Serialize(product);
-        TempData["product"] = JsonSerializer.Serialize(category);
+        TempData["name param"] = product.Name;
+        TempData["price param"] = $"{product.Price}";
+        TempData["product"] = JsonSerializer.Serialize(product);
+        TempData["category"] = JsonSerializer.Serialize(category);
         foreach (string key in Request.Form.Keys /*.Where(key => !key.StartsWith("_"))*/ )
         {
             TempData[key] = string.Join(", ", Request.Form[key]);
