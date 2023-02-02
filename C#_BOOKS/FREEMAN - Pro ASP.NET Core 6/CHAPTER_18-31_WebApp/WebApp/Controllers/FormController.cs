@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 using WebApp.Models;
 
@@ -14,7 +15,7 @@ public class FormController : Controller
         _dataContext = dataContext;
     }
 
-    public async Task<IActionResult> Index(long id)
+    public async Task<IActionResult> Index([FromQuery] long? id)
     {
         ViewBag.Categories = new SelectList(_dataContext.Categories, "CategoryId", "Name");
         return View("Form",
@@ -46,5 +47,17 @@ public class FormController : Controller
     public IActionResult Results()
     {
         return View();
+    }
+
+    public string Header([FromHeader(Name = "Accept-Language")] string accept)
+    {
+        return $"Header: {accept}";
+    }
+
+    [IgnoreAntiforgeryToken]
+    [HttpPost]
+    public Product Body([FromBody] Product product)
+    {
+        return product;
     }
 }
