@@ -34,15 +34,22 @@ public class FormController : Controller
         [Bind("Name","Category")] Product product
         )
     {
-        TempData["name param"] = product.Name;
-        TempData["price param"] = $"{product.Price}";
-        TempData["product"] = JsonSerializer.Serialize(product);
-        TempData["category"] = JsonSerializer.Serialize(category);
-        foreach (string key in Request.Form.Keys /*.Where(key => !key.StartsWith("_"))*/ )
+        if (ModelState.IsValid)
         {
-            TempData[key] = string.Join(", ", Request.Form[key]);
+            TempData["name param"] = product.Name;
+            TempData["price param"] = $"{product.Price}";
+            TempData["product"] = JsonSerializer.Serialize(product);
+            TempData["category"] = JsonSerializer.Serialize(category);
+            foreach (string key in Request.Form.Keys /*.Where(key => !key.StartsWith("_"))*/ )
+            {
+                TempData[key] = string.Join(", ", Request.Form[key]);
+            }
+            return RedirectToAction(nameof(Results));
         }
-        return RedirectToAction(nameof(Results));
+        else
+        {
+            return View("Form");
+        }
     }
 
     public IActionResult Results()
