@@ -6,6 +6,7 @@ using System.Text.Json;
 using WebApp.Models;
 
 namespace WebApp.Controllers;
+
 public class FormController : Controller
 {
     private readonly DataContext _dataContext;
@@ -15,7 +16,7 @@ public class FormController : Controller
         _dataContext = dataContext;
     }
 
-    public async Task<IActionResult> Index([FromQuery] long? id)
+    public async Task<IActionResult> Index([FromRoute] long? id)
     {
         ViewBag.Categories = new SelectList(_dataContext.Categories, "CategoryId", "Name");
         return View("Form",
