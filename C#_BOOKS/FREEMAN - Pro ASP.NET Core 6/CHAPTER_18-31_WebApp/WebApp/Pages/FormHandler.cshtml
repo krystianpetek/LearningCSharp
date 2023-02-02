@@ -6,7 +6,7 @@
 
 <div class="m-2">
     <h5 class="bg-primary text-white text-center p-2">HTML Form</h5>
-    <form action="/pages/form" method="post" id="htmlform">
+    <form asp-page="FormHandler" method="post" id="htmlform">
         <div class="form-group">
             <label>Name</label>
             <input class="form-control" asp-for="Product.Name" name="name" />

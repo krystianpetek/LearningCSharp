@@ -47,10 +47,12 @@ public static class Program
         app.Chapter22App();
 
         app.UseStaticFiles();
-        app.MapRazorPages().Add(endpoints =>
-        {
-            ((RouteEndpointBuilder)endpoints).Order = 2;
-        });
+
+        app.MapRazorPages();
+        //    .Add(endpoints =>
+        //{
+        //    ((RouteEndpointBuilder)endpoints).Order = 2;
+        //});
 
         app.MapControllers();
         app.MapControllerRoute(
@@ -58,6 +60,7 @@ public static class Program
             pattern: "{controller=Home}/{action=Index}/{id?}");
         app.MapControllerRoute("forms", "controllers/{controller=Home}/{action=Index}/{id?}");
 
+        
         app.MapGet("/hello", () => "Hello World!");
 
         await app.RunAsync();
