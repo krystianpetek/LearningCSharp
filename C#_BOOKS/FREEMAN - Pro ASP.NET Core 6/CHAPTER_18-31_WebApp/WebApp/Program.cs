@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -38,6 +39,9 @@ public static class Program
         builder.Services.AddTransient<ITagHelperComponent, TimeTagHelperComponent>();
         builder.Services.AddTransient<ITagHelperComponent, TableFooterTagHelperComponent>();
 
+        builder.Services.Configure<AntiforgeryOptions>(options => options.HeaderName = "X-XSRF-TOKEN");
+        builder.Services.Configure<MvcOptions>(options => options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(value => "Please enter a value."));
+
         var app = builder.Build();
 
         var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<DataContext>();
@@ -59,8 +63,22 @@ public static class Program
             name: "Default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
         app.MapControllerRoute("forms", "controllers/{controller=Home}/{action=Index}/{id?}");
-
         
+        IAntiforgery antiforgery = app.Services.GetRequiredService<IAntiforgery>();
+        app.Use(async (context, next) => {
+            if (!context.Request.Path.StartsWithSegments("/api"))
+            {
+                string? token = antiforgery.GetAndStoreTokens(context).RequestToken;
+                if (token != null)
+                {
+                    context.Response.Cookies.Append("XSRF-TOKEN",
+                    token,
+                    new CookieOptions { HttpOnly = false });
+                }
+            }
+            await next();
+        });
+
         app.MapGet("/hello", () => "Hello World!");
 
         await app.RunAsync();

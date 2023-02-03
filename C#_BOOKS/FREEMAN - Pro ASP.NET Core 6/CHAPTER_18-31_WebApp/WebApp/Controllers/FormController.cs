@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata.Ecma335;
@@ -31,9 +32,31 @@ public class FormController : Controller
         //string name, decimal price
         //Product product,
         [Bind(Prefix = "Category")] Category category,
-        [Bind("Name","Category")] Product product
+        [Bind("ProductId","Name","Price","CategoryId","SupplierId")] Product product
         )
     {
+        if (ModelState.GetValidationState(nameof(Product.Price)) == ModelValidationState.Valid && 
+            product.Price <= 0)
+        {
+            ModelState.AddModelError(nameof(product.Price), "Enter a positive price");
+        }
+        if (ModelState.GetValidationState(nameof(Product.Name)) == ModelValidationState.Valid &&
+            ModelState.GetValidationState(nameof(Product.Price)) == ModelValidationState.Valid && 
+            product.Name.ToLower().StartsWith("small") &&
+            product.Price > 100){
+            ModelState.AddModelError("", "Small products cannot cost more than $100");
+        }
+        if(ModelState.GetValidationState(nameof(product.SupplierId)) == ModelValidationState.Valid && 
+            !_dataContext.Suppliers.Any(supplier => supplier.SupplierId == product.SupplierId))
+        {
+            ModelState.AddModelError(nameof(product.SupplierId), "Enter an existing supplier ID");
+        }
+        if(ModelState.GetValidationState(nameof(product.CategoryId)) == ModelValidationState.Valid && 
+            !_dataContext.Categories.Any(category => category.CategoryId == product.CategoryId))
+        {
+            ModelState.AddModelError(nameof(product.SupplierId), "Enter an existing supplier ID");
+        }
+
         if (ModelState.IsValid)
         {
             TempData["name param"] = product.Name;
