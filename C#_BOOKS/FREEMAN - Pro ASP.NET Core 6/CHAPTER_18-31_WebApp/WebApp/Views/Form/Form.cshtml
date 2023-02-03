@@ -45,8 +45,9 @@
 
     <div class="form-group">
         <label asp-for="Supplier.Name">Supplier</label>
-        <div><span asp-validation-for="Supplier.Name" class="text-danger"></span></div>
+        <div><span asp-validation-for="SupplierId" class="text-danger"></span></div>
         @*<input class="form-control" asp-for="Supplier.Name" />*@
+        <input class="form-control" asp-for="SupplierId" type="hidden" />
         <textarea class="form-control" asp-for="Supplier.Name"></textarea>
     </div>
 
