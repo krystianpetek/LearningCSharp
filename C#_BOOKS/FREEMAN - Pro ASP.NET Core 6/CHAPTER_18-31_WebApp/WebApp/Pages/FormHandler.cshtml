@@ -1,26 +1,41 @@
 ﻿@page "/pages/form/{id:long?}"
+@using Microsoft.AspNetCore.Mvc.ModelBinding;
 @using Microsoft.AspNetCore.Mvc.RazorPages;
 @using Microsoft.EntityFrameworkCore;
 @using System.Text.Json;
 @model FormHandlerModel
+
+<partial name="_Validation" />
 
 <div class="m-2">
     <h5 class="bg-primary text-white text-center p-2">HTML Form</h5>
     <form asp-page="FormHandler" method="post" id="htmlform">
         <div class="form-group">
             <label>Name</label>
+            <div>
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
             <input class="form-control" asp-for="Product.Name" name="name" />
         </div>
         <div class="form-group">
             <label>Price</label>
+            <div>
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
+            </div>
             <input class="form-control" asp-for="Product.Price" name="price" />
         </div>
         <div class="form-group">
                 <label>Category</label>
+                <div>
+                    <span asp-validation-for="Product.Category.Name" class="text-danger"></span>
+                </div>
                 <input class="form-control" asp-for="Product.Category.Name" />
         </div>
         <div class="form-group">
                 <label>Supplier</label>
+                <div>
+                    <span asp-validation-for="Product.Supplier.Name" class="text-danger"></span>
+                </div>
                 <input class="form-control" asp-for="Product.Supplier.Name" />
         </div>
         <button type="submit" class="btn btn-primary mt-2">Submit</button>
@@ -30,7 +45,7 @@
     </button>
 </div>
 
-@functions{
+@functions {
 
     [IgnoreAntiforgeryToken]
     public class FormHandlerModel : PageModel
@@ -62,16 +77,57 @@
             [Bind(Prefix = "Product.Category")] Category category
             )
         {
-            TempData["name parameter"] = product.Name;
-            TempData["price parameter"] = $"{product.Price}";
-            TempData["product"] = JsonSerializer.Serialize(product);
-            TempData["category"] = JsonSerializer.Serialize(Category);
-            
-            foreach (string key in Request.Form.Keys.Where(k => !k.StartsWith("_")))
+            if (ModelState.GetValidationState("Product.Price") == ModelValidationState.Valid &&
+            Product.Price < 1)
             {
-                TempData[key] = string.Join(", ", Request.Form[key]);
+                ModelState.AddModelError("Product.Price", "Enter a positive price");
             }
-            return Redirect("results");
+
+            if (ModelState.GetValidationState("Product.Name") == ModelValidationState.Valid &&
+            ModelState.GetValidationState("Product.Price") == ModelValidationState.Valid &&
+            Product.Name.ToLower().StartsWith("small") &&
+            Product.Price > 100)
+            {
+                ModelState.AddModelError("",
+                "Small products cannot cost more than $100");
+            }
+
+            if (ModelState.GetValidationState("Product.CategoryId") == ModelValidationState.Valid &&
+            !_dataContext.Categories.Any(c => c.CategoryId == Product.CategoryId))
+            {
+                ModelState.AddModelError("Product.CategoryId",
+                "Enter an existing category ID");
+            }
+
+            if (ModelState.GetValidationState("Product.SupplierId") == ModelValidationState.Valid &&
+            !_dataContext.Suppliers.Any(s => s.SupplierId == Product.SupplierId))
+            {
+                ModelState.AddModelError("Product.SupplierId",
+                "Enter an existing supplier ID");
+            }
+
+            if (ModelState.IsValid)
+            {
+
+                TempData["name parameter"] = product.Name;
+                TempData["price parameter"] = $"{product.Price}";
+                TempData["product"] = JsonSerializer.Serialize(product);
+                TempData["category"] = JsonSerializer.Serialize(Category);
+                TempData["name"] = Product.Name;
+                TempData["price"] = Product.Price.ToString();
+                TempData["categoryId"] = Product.CategoryId.ToString();
+                TempData["supplierId"] = Product.SupplierId.ToString();
+
+                foreach (string key in Request.Form.Keys.Where(k => !k.StartsWith("_")))
+                {
+                    TempData[key] = string.Join(", ", Request.Form[key]);
+                }
+                return RedirectToPage("FormResults");
+            }
+            else
+            {
+                return Page();
+            }
         }
     }
 }
