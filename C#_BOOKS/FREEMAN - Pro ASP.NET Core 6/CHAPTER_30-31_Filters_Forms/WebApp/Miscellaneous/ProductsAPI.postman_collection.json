@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "d41b2b59-c33e-45ef-9af5-abd5f74cdae5",
+		"name": "ProductsAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18753905"
+	},
+	"item": [
+		{
+			"name": "MinimalAPI",
+			"item": [
+				{
+					"name": "Get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7200/minapi/products",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"minapi",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get product by ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"id\", \"14\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7200/minapi/products/{{id}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"minapi",
+								"products",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Swimming Googles\",\r\n    \"Price\": 12.80,\r\n    \"CategoryId\": 1,\r\n    \"SupplierId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7200/minapi/products/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"minapi",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API",
+			"item": [
+				{
+					"name": "Get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7200/api/products",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get product by ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"id\", \"14\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7200/api/products/{{id}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"api",
+								"products",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Swimming Googles\",\r\n    \"Price\": 12.90,\r\n    \"CategoryId\": 1,\r\n    \"SupplierId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7200/api/products/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"api",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": ""
+		}
+	]
+}

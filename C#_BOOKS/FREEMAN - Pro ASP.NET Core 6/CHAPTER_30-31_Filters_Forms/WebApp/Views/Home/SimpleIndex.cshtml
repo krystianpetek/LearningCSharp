@@ -1,0 +1,24 @@
+﻿@model Product
+@{
+    Layout = "_SimpleLayout";
+}
+
+<div route-data="true"></div>
+
+<div class="m-2" wrap="true">Inner content</div>
+<table class="table table-sm table-bordered table-striped">
+    <thead>
+        <tr bg-color="info" text-color="white" >
+            <th colspan="2">Product Summary</th>
+        </tr>
+    </thead>
+    <tablehead bg-color="dark">Product Summary</tablehead>
+    <tbody>
+        <tr><th>Name</th><td highlight="true">@Model?.Name</td></tr>
+        <tr><th>Price</th><td bg-color="dark">@Model?.Price.ToString("c")</td></tr>
+        <tr><th>Category ID</th><td>@Model?.CategoryId</td></tr>
+        <tr for="Name" />
+        <tr for="Price" format="c" />
+        <tr for="CategoryId" />
+    </tbody>
+</table>

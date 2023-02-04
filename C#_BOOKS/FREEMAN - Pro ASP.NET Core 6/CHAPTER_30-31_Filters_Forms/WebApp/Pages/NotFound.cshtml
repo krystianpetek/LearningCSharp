@@ -1,0 +1,41 @@
+﻿@page "/noid"
+@model NotFoundModel
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@using WebApp.Models;
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <title>Not found</title>
+    </head>
+    <body>
+        <div class="bg-primary text-white text-center p-2 m-2">No matching ID</div>
+        <ul class="list-group m-2">
+        @{
+            foreach(Product product in Model.Products)
+            {
+                <li class="list-group-item">@product.Name (ID: @product.ProductId)</li>
+            }
+        }
+        </ul>
+    </body>
+</html>
+
+@functions{
+    public class NotFoundModel : PageModel
+    {
+        private DataContext _dataContext;
+        public IEnumerable<Product> Products { get; set; }
+
+        public NotFoundModel(DataContext dataContext)
+        {
+            _dataContext = dataContext;
+        }
+        public async Task OnGetAsync(long id = 1)
+        {
+            Products = _dataContext.Products.ToList();
+            await Task.CompletedTask;
+        }
+    }
+}
