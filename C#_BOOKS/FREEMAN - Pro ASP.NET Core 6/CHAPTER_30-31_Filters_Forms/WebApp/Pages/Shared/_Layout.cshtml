@@ -1,8 +1,18 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
-        <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-        <title>@ViewBag.Title</title>
+        <link 
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" 
+            asp-fallback-href="/lib/bootstrap/css/bootstrap.min.css"
+            asp-fallback-test-class="btn"
+            asp-fallback-test-property="display"
+            asp-fallback-test-value="inline-block"
+            rel="stylesheet" />
+        <script 
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+            asp-fallback-src="/lib/jquery/jquery.min.js"
+            asp-fallback-test="window.jQuery">
+        </script>
     </head>
     <body>
         <h5 class="bg-secondary text-white text-center p-2 m-2">Razor Page</h5>

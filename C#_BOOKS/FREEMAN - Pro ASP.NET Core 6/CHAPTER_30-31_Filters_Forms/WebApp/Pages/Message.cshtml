@@ -33,8 +33,17 @@
 }
 
 @functions {
+    [RequireHttps]
     public class MessageModel : PageModel
     {
         public object Message { get; set; } = "This is the Message Razor Page";
+
+        public IActionResult OnGet()
+        {
+            if (!Request.IsHttps)
+                return new StatusCodeResult(StatusCodes.Status403Forbidden);
+
+            return Page();
+        }
     }
 }

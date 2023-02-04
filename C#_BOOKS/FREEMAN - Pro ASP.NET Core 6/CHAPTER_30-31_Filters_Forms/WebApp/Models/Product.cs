@@ -7,7 +7,6 @@ using WebApp.Validation;
 
 namespace WebApp.Models;
 
-[PhraseAndPrice(Phrase = "Small", Price = "100")]
 public class Product
 {
     [Remote("ProductKey", "Validation", ErrorMessage = "Enter an existing key.")]
