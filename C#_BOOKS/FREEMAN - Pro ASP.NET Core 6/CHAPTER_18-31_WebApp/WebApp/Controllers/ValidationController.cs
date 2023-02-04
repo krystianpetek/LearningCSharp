@@ -15,20 +15,28 @@ public class ValidationController : ControllerBase
     }
 
     [HttpGet("productkey")]
-    public bool ProductKey(string productId)
+    public bool ProductKey(string? productId, [FromQuery] KeyTarget keyTarget)
     {
         return long.TryParse(productId, out long keyValue) && _dataContext.Products.Find(keyValue) != null;
     }
 
     [HttpGet("categorykey")]
-    public bool CategoryKey(string categoryId)
+    public bool CategoryKey(string? categoryId, [FromQuery] KeyTarget keyTarget)
     {
         return long.TryParse(categoryId, out long keyValue) && _dataContext.Categories.Find(keyValue) != null;
     }
 
     [HttpGet("supplierkey")]
-    public bool SupplierKey(string supplierId)
+    public bool SupplierKey(string? supplierId, [FromQuery] KeyTarget keyTarget)
     {
         return long.TryParse(supplierId, out long keyValue) && _dataContext.Suppliers.Find(keyValue) != null;
+    }
+
+    [Bind(Prefix = "Product")]
+    public class KeyTarget
+    {
+        public string? ProductId { get; set; }
+        public string? CategoryId { get; set; }
+        public string? SupplierId { get; set; }
     }
 }
