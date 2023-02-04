@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "_SimpleLayout";
+}
+@{
+    if(Model is string)
+    {
+        @Model
+    }
+    else if(Model is IDictionary<string, string>)
+    {
+        var dictionary = Model as IDictionary<string, string>;
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+            @{
+                foreach(var keyValuePair in dictionary ?? new Dictionary<string, string>())
+                {
+                    <tr>
+                        <td>@keyValuePair.Key</td>
+                        <td>@keyValuePair.Value</td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    }
+}
