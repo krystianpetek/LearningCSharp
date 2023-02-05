@@ -6,6 +6,7 @@ namespace WebApp.Controllers;
 
 [RequireHttps]
 [HttpsOnly]
+[ResultDiagnostics]
 public class HomeController : Controller
 {
     public IActionResult Index()
@@ -34,5 +35,16 @@ public class HomeController : Controller
     {
         if (context.ActionArguments.ContainsKey("message1"))
             context.ActionArguments["message1"] = "New message from HomeController filter";
+    }
+
+    [RangeException]
+    public ViewResult GenerateException(int? id)
+    {
+        if (id == null)
+            throw new ArgumentNullException(nameof(id));
+        if(id > 10)
+            throw new ArgumentOutOfRangeException(nameof(id));
+
+        return View("Message", $"The value is {id}");
     }
 }
