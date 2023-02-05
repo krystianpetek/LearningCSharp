@@ -22,4 +22,10 @@ public class HomeController : Controller
 
         return new StatusCodeResult(StatusCodes.Status403Forbidden);
     }
+
+    [ChangeArgumentsAsyncAttribute]
+    public IActionResult Message(string message1, string message2 = "None")
+    {
+        return View($"Message", $"{message1}, {message2}");
+    }
 }
