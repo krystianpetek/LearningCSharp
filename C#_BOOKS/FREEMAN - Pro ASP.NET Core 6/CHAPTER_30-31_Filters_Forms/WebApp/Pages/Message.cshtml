@@ -1,5 +1,6 @@
 ﻿@page "/pages/message"
 @using Microsoft.AspNetCore.Mvc.RazorPages
+@using WebApp.Filters;
 @model MessageModel
 
 @{
@@ -33,10 +34,12 @@
 }
 
 @functions {
+    
     [RequireHttps]
+    [SimpleCache]
     public class MessageModel : PageModel
     {
-        public object Message { get; set; } = "This is the Message Razor Page";
+        public object Message { get; set; } = $"{DateTime.Now.ToLongTimeString()}: This is the Message Razor Page";
 
         public IActionResult OnGet()
         {
