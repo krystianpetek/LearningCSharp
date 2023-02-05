@@ -1,5 +1,6 @@
 ﻿@page "/pages/message"
 @using Microsoft.AspNetCore.Mvc.RazorPages
+@using Microsoft.AspNetCore.Mvc.Filters
 @using WebApp.Filters;
 @model MessageModel
 
@@ -12,41 +13,51 @@
     {
         var dictionary = Model.Message as IDictionary<string, string>;
         <table class="table table-sm table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody>
-        @{
-            foreach (var keyValuePair in dictionary ?? new Dictionary<string, string>())
-            {
-                <tr>
-                    <td>@keyValuePair.Key</td>
-                    <td>@keyValuePair.Value</td>
-                </tr>
-            }
-        }
-            </tbody>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                @{
+                    foreach (var keyValuePair in dictionary ?? new Dictionary<string, string>())
+                    {
+                                <tr>
+                                    <td>@keyValuePair.Key</td>
+                                    <td>@keyValuePair.Value</td>
+                                </tr>
+                    }
+                }
+                    </tbody>
         </table>
     }
 }
 
 @functions {
-    
+
     [RequireHttps]
     [SimpleCacheAsyncAttribute]
+    [ChangePageArguments]
     public class MessageModel : PageModel
     {
         public object Message { get; set; } = $"{DateTime.Now.ToLongTimeString()}: This is the Message Razor Page";
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(string message1, string message2)
         {
             if (!Request.IsHttps)
                 return new StatusCodeResult(StatusCodes.Status403Forbidden);
 
+            if (message1 != null || message2 != null)
+                Message = $"{message1}, {message2}";
+
             return Page();
+        }
+
+        public override void OnPageHandlerExecuting(PageHandlerExecutingContext context)
+        {
+            if (context.HandlerArguments.ContainsKey("message1"))
+                context.HandlerArguments["message1"] = "New message from Message page filter";
         }
     }
 }

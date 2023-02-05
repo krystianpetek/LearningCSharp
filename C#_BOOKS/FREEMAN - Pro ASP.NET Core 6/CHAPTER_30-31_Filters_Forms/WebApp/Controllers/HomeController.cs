@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using WebApp.Filters;
 
 namespace WebApp.Controllers;
@@ -27,5 +28,11 @@ public class HomeController : Controller
     public IActionResult Message(string message1, string message2 = "None")
     {
         return View($"Message", $"{message1}, {message2}");
+    }
+
+    public override void OnActionExecuting(ActionExecutingContext context)
+    {
+        if (context.ActionArguments.ContainsKey("message1"))
+            context.ActionArguments["message1"] = "New message from HomeController filter";
     }
 }
