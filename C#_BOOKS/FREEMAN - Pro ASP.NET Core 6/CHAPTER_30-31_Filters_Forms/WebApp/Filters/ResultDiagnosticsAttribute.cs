@@ -19,13 +19,13 @@ public class ResultDiagnosticsAttribute : Attribute, IAsyncResultFilter
             {
                 diagData["View name"] = viewResult.ViewName;
                 diagData["Model type"] = viewResult.Model.GetType().Name;
-                diagData["Model data"] = viewResult.Model.ToString();
+                diagData["Model data"] = $"{viewResult.Model}";
             }
 
             if (context.Result is PageResult pageResult)
             {
                 diagData["Model type"] = pageResult.Model.GetType().Name;
-                diagData["Model data"] = pageResult.Model.ToString();
+                diagData["Model data"] = $"{pageResult.Model}";
             }
 
             context.Result = new ViewResult()

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Filters;
 using WebApp.Models;
@@ -20,7 +21,11 @@ public static class Program
         builder.Services.AddRazorPages();
 
         builder.Services.AddScoped<GuidResponseAttribute>();
-
+        builder.Services.Configure<MvcOptions>(mvcOptions =>
+        {
+            mvcOptions.Filters.Add<HttpsOnlyAttribute>(); 
+            mvcOptions.Filters.Add(new MessageAttribute("This is the globally-scoped filter"));
+        });
         var app = builder.Build();
 
         var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<DataContext>();

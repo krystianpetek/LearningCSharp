@@ -7,10 +7,13 @@ namespace WebApp.Controllers;
 [RequireHttps]
 [HttpsOnly]
 [ResultDiagnostics]
-[GuidResponse]
-[GuidResponse]
+//[GuidResponse]
+//[GuidResponse]
+[Message("this is the controller-scoped filter", Order = 10)]
 public class HomeController : Controller
 {
+    [Message("this is the first action-scoped filter", Order = 1)]
+    [Message("this is the second action-scoped filter", Order = -1)]
     public IActionResult Index()
     {
         if(Request.IsHttps)
