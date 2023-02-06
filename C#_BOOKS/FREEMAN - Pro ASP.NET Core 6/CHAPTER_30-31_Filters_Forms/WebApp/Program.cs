@@ -24,7 +24,7 @@ public static class Program
         builder.Services.Configure<MvcOptions>(mvcOptions =>
         {
             mvcOptions.Filters.Add<HttpsOnlyAttribute>(); 
-            mvcOptions.Filters.Add(new MessageAttribute("This is the globally-scoped filter"));
+            //mvcOptions.Filters.Add(new MessageAttribute("This is the globally-scoped filter"));
         });
         var app = builder.Build();
 
