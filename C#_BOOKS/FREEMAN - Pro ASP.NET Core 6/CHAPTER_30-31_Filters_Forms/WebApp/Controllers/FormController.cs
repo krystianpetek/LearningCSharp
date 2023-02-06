@@ -23,4 +23,24 @@ public class FormController : Controller
             .Include(product => product.Category)
             .Include(product => product.Supplier));
     }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View(
+            viewName:"ProductEditor",
+            model: new ProductViewModel
+            {
+                Action = "Create",
+                Categories = _categories,
+                Suppliers = _suppliers,
+                ShowAction = true
+            });
+    }
+
+    [HttpPost]
+    public IActionResult Create(Product product)
+    {
+        return View("productEditor", new ProductViewModel());
+    }
 }
