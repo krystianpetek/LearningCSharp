@@ -24,6 +24,19 @@ public class FormController : Controller
             .Include(product => product.Supplier));
     }
 
+    public IActionResult Details(long id)
+    {
+        Product? product = _dataContext.Products
+            .Include(product => product.Category)
+            .Include(product => product.Supplier)
+            .FirstOrDefault(product => product.ProductId == id);
+
+        ProductViewModel productViewModel = ProductViewModelFactory.Details(product);
+        return View(
+            viewName: "ProductEditor",
+            model: productViewModel);
+    }
+
     [HttpGet]
     public IActionResult Create()
     {
