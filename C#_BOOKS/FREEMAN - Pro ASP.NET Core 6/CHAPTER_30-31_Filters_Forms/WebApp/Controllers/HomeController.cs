@@ -7,6 +7,8 @@ namespace WebApp.Controllers;
 [RequireHttps]
 [HttpsOnly]
 [ResultDiagnostics]
+[GuidResponse]
+[GuidResponse]
 public class HomeController : Controller
 {
     public IActionResult Index()

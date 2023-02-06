@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WebApp.Filters;
 using WebApp.Models;
 
 namespace WebApp;
@@ -17,6 +18,8 @@ public static class Program
         });
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
+
+        builder.Services.AddScoped<GuidResponseAttribute>();
 
         var app = builder.Build();
 
