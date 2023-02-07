@@ -1,6 +1,6 @@
-﻿window.addEventListener("DOMContentLoaded", (e) => {
-    document.querySelectorAll("input.input-validation-error")
+﻿window.addEventListener('DOMContentLoaded', (e) => {
+    document.querySelectorAll('input.input-validation-error')
         .forEach((element) => {
-            element.classList.add("is-invalid");
-        });
-});
+            element.classList.add('is-invalid')
+        })
+})
