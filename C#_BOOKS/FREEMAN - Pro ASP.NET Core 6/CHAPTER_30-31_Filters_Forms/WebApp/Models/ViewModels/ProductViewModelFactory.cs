@@ -23,9 +23,37 @@ public static class ProductViewModelFactory
             Product = product,
             Categories = categories,
             Suppliers = suppliers,
-            Action= "Create",
+            Action = "Create",
             Theme = "primary",
             ReadOnly = false,
+            ShowAction = true
+        };
+    }
+
+    public static ProductViewModel Edit(Product product, IEnumerable<Category> categories, IEnumerable<Supplier> suppliers)
+    {
+        return new ProductViewModel
+        {
+            Product = product,
+            Categories = categories,
+            Suppliers = suppliers,
+            Action = "Edit",
+            Theme = "warning",
+            ReadOnly = false,
+            ShowAction = true
+        };
+    }
+
+    public static ProductViewModel Delete(Product product, IEnumerable<Category> categories, IEnumerable<Supplier> suppliers)
+    {
+        return new ProductViewModel
+        {
+            Product = product,
+            Categories = categories,
+            Suppliers = suppliers,
+            Action = "Delete",
+            ReadOnly = true,
+            Theme = "danger",
             ShowAction = true
         };
     }

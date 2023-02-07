@@ -40,7 +40,7 @@ public class FormController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        ProductViewModel productViewModel = ProductViewModelFactory.Create(new Product(),_categories, _suppliers);
+        ProductViewModel productViewModel = ProductViewModelFactory.Create(new Product(), _categories, _suppliers);
         return View(
             viewName: "ProductEditor",
             model: productViewModel);
@@ -62,5 +62,58 @@ public class FormController : Controller
         return View(
             viewName: "ProductEditor",
             model: ProductViewModelFactory.Create(product, _categories, _suppliers));
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Edit(long id)
+    {
+        Product? product = await _dataContext.Products.FindAsync(id);
+        if (product != null)
+        {
+            ProductViewModel productViewModel = ProductViewModelFactory.Edit(product, _categories, _suppliers);
+            return View(
+                viewName: "ProductEditor",
+                model: productViewModel);
+        }
+        return NotFound();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit([FromForm] Product product)
+    {
+        if (ModelState.IsValid)
+        {
+            product.Category = default;
+            product.Supplier = default;
+            _dataContext.Products.Update(product);
+            await _dataContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(
+            viewName: "ProductEditor",
+            model: ProductViewModelFactory.Edit(product, _categories, _suppliers));
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Delete(long id)
+    {
+        Product? product = await _dataContext.Products.FindAsync(id);
+        if (product != null)
+        {
+            ProductViewModel productViewModel = ProductViewModelFactory.Delete(product, _categories, _suppliers);
+            return View(
+                viewName: "ProductEditor",
+                model: productViewModel);
+        }
+        return NotFound();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete([FromForm] Product product)
+    {
+        _dataContext.Products.Remove(product);
+        await _dataContext.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
     }
 }
