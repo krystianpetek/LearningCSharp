@@ -31,6 +31,7 @@ public static class Program
         var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<DataContext>();
         dbContext.SeedDatabase();
 
+        app.UseDefaultFiles();
         app.UseStaticFiles();
         app.MapRazorPages();
         app.MapControllers();

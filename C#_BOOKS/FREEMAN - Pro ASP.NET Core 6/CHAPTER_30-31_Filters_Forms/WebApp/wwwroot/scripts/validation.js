@@ -1,6 +1,7 @@
-﻿window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('DOMContentLoaded', (e) => {
     document.querySelectorAll('input.input-validation-error')
         .forEach((element) => {
-            element.classList.add('is-invalid')
-        })
-})
+        element.classList.add('is-invalid');
+    });
+});
+//# sourceMappingURL=validation.js.map

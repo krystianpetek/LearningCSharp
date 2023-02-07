@@ -7,8 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Remove="wwwroot\scripts\validation.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\scripts\validation.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.9.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -23,4 +35,5 @@
     <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
   </PropertyGroup>
+  <ProjectExtensions><VisualStudio><UserProperties tsconfig_1json__JsonSchema="https://json.schemastore.org/tsconfig.json" /></VisualStudio></ProjectExtensions>
 </Project>

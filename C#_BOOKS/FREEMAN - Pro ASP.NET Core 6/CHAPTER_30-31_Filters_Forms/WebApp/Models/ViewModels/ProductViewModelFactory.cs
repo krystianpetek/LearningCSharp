@@ -15,4 +15,18 @@ public static class ProductViewModelFactory
             Suppliers = product == null || product.Supplier == null ? Enumerable.Empty<Supplier>() : new List<Supplier> { product.Supplier }
         };
     }
+
+    public static ProductViewModel Create(Product product, IEnumerable<Category> categories, IEnumerable<Supplier> suppliers)
+    {
+        return new ProductViewModel
+        {
+            Product = product,
+            Categories = categories,
+            Suppliers = suppliers,
+            Action= "Create",
+            Theme = "primary",
+            ReadOnly = false,
+            ShowAction = true
+        };
+    }
 }

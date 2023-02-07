@@ -40,20 +40,27 @@ public class FormController : Controller
     [HttpGet]
     public IActionResult Create()
     {
+        ProductViewModel productViewModel = ProductViewModelFactory.Create(new Product(),_categories, _suppliers);
         return View(
-            viewName:"ProductEditor",
-            model: new ProductViewModel
-            {
-                Action = "Create",
-                Categories = _categories,
-                Suppliers = _suppliers,
-                ShowAction = true
-            });
+            viewName: "ProductEditor",
+            model: productViewModel);
     }
 
     [HttpPost]
-    public IActionResult Create(Product product)
+    public async Task<IActionResult> Create([FromForm] Product product)
     {
-        return View("productEditor", new ProductViewModel());
+        if (ModelState.IsValid)
+        {
+            product.ProductId = default;
+            product.Category = default;
+            product.Supplier = default;
+            _dataContext.Add(product);
+            await _dataContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(
+            viewName: "ProductEditor",
+            model: ProductViewModelFactory.Create(product, _categories, _suppliers));
     }
 }
