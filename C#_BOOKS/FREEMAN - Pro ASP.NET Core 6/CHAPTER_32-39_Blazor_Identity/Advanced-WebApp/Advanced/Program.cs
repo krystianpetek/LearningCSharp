@@ -17,6 +17,7 @@ internal static class Program
         });
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
+        builder.Services.AddServerSideBlazor();
 
         var app = builder.Build();
 
@@ -27,6 +28,7 @@ internal static class Program
             name: "controllers",
             pattern: "controllers/{controller=Home}/{action=Index}/{id?}");
         app.MapRazorPages();
+        app.MapBlazorHub();
 
         app.SeedDatabase();
         app.Run();
