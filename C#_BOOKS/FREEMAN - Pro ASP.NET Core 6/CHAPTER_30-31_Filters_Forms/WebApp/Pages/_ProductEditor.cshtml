@@ -51,8 +51,8 @@
         ></label>
         <div>
             <span 
-                class="text-danger"
                 asp-validation-for="@Model.Product.CategoryId" 
+                class="text-d anger"
             ></span>
         </div>
         <select
@@ -66,8 +66,13 @@
                 disabled
                 selected
             >Choose a Category</option>
+            <option 
+                value="-1">
+                Create New Category...
+            </option>
             </select>
     </div>
+    <partial name="_CategoryEditor" for="@Model.Product" />
     <div class="form-group">
         <label 
             asp-for="@Model.Product.SupplierId"

@@ -10,5 +10,5 @@
   "exclude": [
     "node_modules"
   ],
-  "files": ["./wwwroot/scripts/validation.ts"]
+  "include": ["./wwwroot/scripts/"]
 }

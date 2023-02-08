@@ -16,6 +16,12 @@ module.exports = {
         sourceType: 'module'
     },
     rules: {
-        indent: ['error', 4]
+        indent: ['error', 4],
+        'space-before-function-paren': ['error', {
+            anonymous: 'always',
+            named: 'always',
+            asyncArrow: 'always'
+        }],
+        semi: [0, 'never']
     }
 }

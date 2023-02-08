@@ -18,6 +18,7 @@
 
         public async Task<IActionResult> OnPostAsync([FromForm] Product product)
         {
+            await CheckNewCategory(product);
             if (ModelState.IsValid)
             {
                 product.ProductId = default;
