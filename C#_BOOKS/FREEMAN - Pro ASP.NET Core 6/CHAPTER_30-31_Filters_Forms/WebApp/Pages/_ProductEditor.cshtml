@@ -74,9 +74,25 @@
     </div>
     <partial name="_CategoryEditor" for="@Model.Product" />
     <div class="form-group">
-        <label 
-            asp-for="@Model.Product.SupplierId"
-        ></label>
+        <label asp-for="@Model.Product.SupplierId">
+            Supplier
+            @{
+                if (Model?.ReadOnly == false)
+                {
+                    <input 
+                        type="hidden" 
+                        name="returnPage" 
+                        value="@Model?.Action"/>
+                    <button 
+                    class="btn btn-sm btn-outline-primary ml-3 my-1"
+                    asp-page="SupplierBreakOut"
+                    formmethod="get"
+                    formnovalidate>
+                    Create New Supplier
+                    ></button>
+                }
+            }
+        </label>
         <div>
             <span 
                 class="text-danger"
@@ -101,12 +117,13 @@
         {
             <button 
                 class="btn btn-@Model?.Theme mt-2"
-                type="submit"
-            >@Model?.Action</button>
+                type="submit">
+                @Model?.Action
+            </button>
         }
-        <a
-            class="btn btn-secondary mt-2"
-            asp-page="Form"
-        >Back</a>
+            <a
+                class="btn btn-secondary mt-2"
+                asp-page="Form"
+            >Back</a>
     }
 </form>

@@ -1,4 +1,5 @@
 ﻿@page
+@using System.Text.Json;
 @model CreateModel
 
 <div class="m-2">
@@ -13,7 +14,8 @@
 
         public void OnGet()
         {
-            ViewModel = ProductViewModelFactory.Create(new Product(), Categories, Suppliers);
+            Product product = TempData.ContainsKey("product") ? JsonSerializer.Deserialize<Product>((TempData["product"] as string)!) : new Product();
+            ViewModel = ProductViewModelFactory.Create(product, Categories, Suppliers);
         }
 
         public async Task<IActionResult> OnPostAsync([FromForm] Product product)

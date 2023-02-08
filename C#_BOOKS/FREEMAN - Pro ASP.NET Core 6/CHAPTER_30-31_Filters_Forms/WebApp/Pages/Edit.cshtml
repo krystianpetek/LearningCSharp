@@ -1,4 +1,5 @@
 ﻿@page
+@using System.Text.Json;
 @model EditModel
 
 <div class="m-2">
@@ -13,8 +14,11 @@
 
         public async Task OnGet(long id)
         {
-            Product product = await this.DataContext.Products.FindAsync(id) ?? new Product();
-            ViewModel = ProductViewModelFactory.Edit(product, Categories, Suppliers);
+            Product? product = TempData.ContainsKey("product") ?
+            JsonSerializer.Deserialize<Product?>((TempData["product"] as string)) :
+            await DataContext.Products.FindAsync(id);
+
+            ViewModel = ProductViewModelFactory.Edit(product ?? new Product(), Categories, Suppliers);
         }
 
         public async Task<IActionResult> OnPostAsync([FromForm] Product product)
