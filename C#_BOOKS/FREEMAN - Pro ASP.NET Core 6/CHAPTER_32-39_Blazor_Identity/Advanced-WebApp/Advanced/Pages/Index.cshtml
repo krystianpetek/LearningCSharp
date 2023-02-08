@@ -1,0 +1,72 @@
+﻿@page "/pages"
+@model IndexModel
+
+<h4 class="bg-primary text-white text-center p-2">People</h4>
+<table class="table table-sm table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Dept</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach(Person person in @Model?.People)
+            {
+                <tr class="@Model.GetClass(person.Location?.City)">
+                    <td>@person.PersonId</td>
+                    <td>@person.Surname, @person.Firstname</td>
+                    <td>@person.Department?.Name</td>
+                    <td>@person.Location?.City, @person.Location?.State</td>
+                </tr>
+            }
+        }
+    </tbody>
+ </table>
+
+ <form asp-page="Index" method="get">
+     <div class="form-group">
+         <label for="selectedCity">City</label>
+         <select name="selectedCity" class="form-control">
+             <option disabled selected>Select City</option>
+            @{
+                foreach(string city in Model?.Cities ?? Enumerable.Empty<string>())
+                {
+                    <option selected="@(city == Model?.SelectedCity)">@city</option>
+                }
+            }
+         </select>
+     </div>
+     <button class="btn btn-primary mt-2" type="submit">Select</button>
+ </form>
+
+@functions{
+    public class IndexModel : PageModel
+    {
+        private DataContext _dataContext;
+
+        public IndexModel(DataContext dataContext)
+        {
+            _dataContext = dataContext;
+        }
+
+        public IEnumerable<Person> People { get; set; } = Enumerable.Empty<Person>();
+        public IEnumerable<string> Cities { get; set; } = Enumerable.Empty<string>();
+        public string SelectedCity { get; set; } = string.Empty;
+
+        public void OnGet(string selectedCity)
+        {
+            People = _dataContext.People
+            .Include(people => people.Department)
+            .Include(people => people.Location);
+
+            Cities = _dataContext.Locations.Select(location => location.City).Distinct();
+
+            SelectedCity = selectedCity;
+        }
+
+        public string GetClass(string? city) => SelectedCity == city ? "bg-info text-white" : "";
+    }
+}

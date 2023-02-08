@@ -15,9 +15,18 @@ internal static class Program
             dbContextOptionsBuilder.UseSqlServer(connectionString);
             dbContextOptionsBuilder.EnableSensitiveDataLogging();
         });
+        builder.Services.AddControllersWithViews();
+        builder.Services.AddRazorPages();
+
         var app = builder.Build();
 
-        app.MapGet("/", () => "Hello World!");
+        app.UseStaticFiles();
+        
+        app.MapControllers();
+        app.MapControllerRoute(
+            name: "controllers",
+            pattern: "controllers/{controller=Home}/{action=Index}/{id?}");
+        app.MapRazorPages();
 
         app.SeedDatabase();
         app.Run();

@@ -8,3 +8,6 @@ dotnet tool update --global dotnet-ef
 
 dotnet ef migrations add Initial
 dotnet ef database update
+
+libman init -p cdnjs
+libman install bootstrap -d wwwroot/lib/bootstrap

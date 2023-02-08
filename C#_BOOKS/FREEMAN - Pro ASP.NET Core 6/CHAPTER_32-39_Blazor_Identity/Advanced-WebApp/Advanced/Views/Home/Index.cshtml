@@ -1,0 +1,50 @@
+﻿@model PeopleListViewModel
+
+<h4 class="bg-primary text-white text-center p-2">People</h4>
+
+
+<div class="m-2" id="ts-example">
+    <button type="button" class="btn btn-primary btn-md" onclick="TSButton()">
+        Click me
+    </button>
+</div>
+
+<table class="table table-sm table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Departament</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach(Person person in Model?.People ?? Enumerable.Empty<Person>())
+            {
+                <tr class="@Model?.GetClass(person.Location?.City)">
+                    <td>@person.PersonId</td>
+                    <td>@person.Surname, @person.Firstname</td>
+                    <td>@person.Department?.Name</td>
+                    <td>@person.Location?.City, @person.Location?.State</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<form asp-action="Index" method="get">
+    <div class="form-group">
+        <label for="selectedCity">City</label>
+        <select name="selectedCity" class="form-control">
+            <option disabled selected>Select City</option>
+            @{
+                foreach(string city in Model?.Cities ?? Enumerable.Empty<string>())
+                {
+                    <option selected="@(city == Model?.SelectedCity)">@city</option>
+                }
+            }
+        </select>
+    </div>
+    <button class="btn btn-primary mt-2" type="submit">Select</button>
+</form>
