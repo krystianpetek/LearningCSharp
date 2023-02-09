@@ -7,8 +7,8 @@
             <button 
                 class="btn btn-primary" 
                 @onclick="@(e => IncrementCounter(e, local))"
-                @onclick:preventDefault="@(EnableEventParams)">
-                >IncrementCounter #@(i + 1)</button>
+                @onclick:preventDefault="@(PreventDefault)">
+                IncrementCounter #@(i + 1)</button>
             <button
                 class="btn btn-info" 
                 @onclick="@(() => Counters.Remove(local))"
@@ -19,13 +19,22 @@
 }
 </form>
 
+<div class="form-check m-2">
+    <input 
+        type="checkbox"
+        class="form-check-input"
+        @onchange="@(() => PreventDefault = !PreventDefault)" 
+        />
+    <label class="form-check-label">Prevent default</label>
+</div>
+
 <div 
     class="m-2"
     @onclick="@((e) => IncrementCounter(e,1))">
     <button 
         class="btn btn-primary"
         @onclick="@((e) => IncrementCounter(e,0))"
-        @onclick:stopPropagation="@(EnableEventParams)"
+        @onclick:stopPropagation="@(StopPropagation)"
     >Propagation Test</button>
 </div>
 
@@ -33,7 +42,7 @@
     <input 
         class="form-check-input"
         type="checkbox"
-        @onchange="@(() => EnableEventParams = !EnableEventParams)"
+        @onchange="@(() => StopPropagation = !StopPropagation)"
         />
     <label class="form-check-label">Stop propagation</label>
 </div>
@@ -42,6 +51,7 @@
     public int ElementCount { get; set; } = 4;
     public Dictionary<int,int> Counters { get; } = new Dictionary<int,int>();
     public int GetCounter(int index) => Counters.ContainsKey(index) ? Counters[index] : 0;
-    public bool EnableEventParams { get; set; } = false;
+    public bool StopPropagation { get; set; } = false;
+    public bool PreventDefault { get; set; } = false;
     public void IncrementCounter(MouseEventArgs mouseEvent, int index) => Counters[index] = GetCounter(index) + 1;
 }
