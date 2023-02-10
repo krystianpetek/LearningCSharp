@@ -37,6 +37,8 @@
     </select>
 </div>
 
+<SelectFilter Title="City" Values="@(Cities)" autofocus="true" name="city" required="true"/>
+
 @code {
     [Inject]
     public DataContext? DataContext{ get; set; }
