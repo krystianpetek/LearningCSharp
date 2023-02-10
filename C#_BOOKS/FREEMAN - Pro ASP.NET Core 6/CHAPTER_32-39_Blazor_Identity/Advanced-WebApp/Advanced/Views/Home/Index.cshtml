@@ -2,7 +2,7 @@
 
 <h4 class="bg-primary text-white text-center p-2">People</h4>
 
-<component type="typeof(Advanced.Blazor.PeopleList)" render-mode="Server" />
+<component type="typeof(Advanced.Blazor.PeopleList)" render-mode="Server" param-SelectTitle="@("Location")" param-ItemCount="@(5)" />
 
 <div class="m-2" id="ts-example">
     <button type="button" class="btn btn-primary btn-md" onclick="TSButton()">

@@ -16,7 +16,11 @@
 <h4 class="bg-primary text-white text-center p-2">Blazor People</h4>
 
 <button id="markElements" class="btn btn-outline-primary mb-2">Mark Elements</button>
-<component type="typeof(Advanced.Blazor.PeopleList)" render-mode="Server" />
+<component 
+    type="typeof(Advanced.Blazor.PeopleList)" 
+    render-mode="Server" 
+    param-SelectTitle="@("Location")" 
+    param-ItemCount="@(5)" />
 
 <h4 class="bg-primary text-white text-center p-2 mt-2">Events</h4>
 <component type="typeof(Advanced.Blazor.Events)" render-mode="Server" />

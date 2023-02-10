@@ -3,15 +3,15 @@
     <select 
         name="select-@Title" 
         class="form-control"
-        @bind="SelectedValue"
+        @onchange="HandleSelect"
         @attributes="Attrs">
             <option disabled selected value="">Select @Title</option>
         @{
             foreach (string value in Values)
             {
-                            <option value="@value" selected="@(value == SelectedValue)">
+                <option value="@value" selected="@(value == SelectedValue)">
                     @value
-                            </option>
+                </option>
             }
         }
     </select>
@@ -21,6 +21,7 @@
     [Parameter]
     public IEnumerable<string> Values { get; set; } = Enumerable.Empty<string>();
 
+    [Parameter]
     public string? SelectedValue { get; set; }
 
     [Parameter]
@@ -28,4 +29,13 @@
 
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object>? Attrs { get; set; }
+
+    [Parameter]
+    public EventCallback<string> SelectedValueChanged { get; set; }
+
+    public async Task HandleSelect(ChangeEventArgs changeEvent)
+    {
+        SelectedValue = changeEvent.Value as string;
+        await SelectedValueChanged.InvokeAsync(SelectedValue);
+    }
 }

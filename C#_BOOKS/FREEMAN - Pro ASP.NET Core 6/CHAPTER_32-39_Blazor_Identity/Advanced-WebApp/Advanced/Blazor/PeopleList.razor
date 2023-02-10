@@ -21,7 +21,7 @@
         }
     </tbody>
 </table>
-
+@*
 <div class="form-group">
     <label for="city">City</label>
     <select name="city" class="form-control" @bind="SelectedCity">
@@ -36,8 +36,30 @@
         }
     </select>
 </div>
+*@
 
-<SelectFilter Title="City" Values="@(Cities)" autofocus="true" name="city" required="true"/>
+<SelectFilter 
+    Title="@SelectTitle" 
+    Values="@Cities" 
+    autofocus="true" 
+    name="city" 
+    required="true"
+    SelectedValueChanged="@HandleCustom"
+    />
+    
+<SelectFilter 
+    Title="@SelectTitle" 
+    Values="@Cities" 
+    autofocus="true" 
+    name="city" 
+    required="true"
+    @bind-SelectedValue="SelectedCity"
+    />
+
+<button class="btn btn-primary mt-2"
+    @onclick="@(() => SelectedCity = "Oakland")">
+    Change
+</button>
 
 @code {
     [Inject]
@@ -45,11 +67,20 @@
 
     public IEnumerable<Person>? People => DataContext?.People
     .Include(people => people.Department)
-    .Include(people => people.Location);
+    .Include(people => people.Location)
+    .Take(ItemCount);
 
     public IEnumerable<string>? Cities => DataContext?.Locations.Select(location => location.City);
 
     public string SelectedCity { get; set; } = string.Empty;
 
     public string GetClass(string? city) => SelectedCity == city ? "bg-info text-white" : "";
+
+    [Parameter]
+    public int ItemCount { get; set; } = 4;
+
+    [Parameter]
+    public string? SelectTitle{ get; set; }
+
+    public void HandleCustom(string newValue) => SelectedCity = newValue;
 }
