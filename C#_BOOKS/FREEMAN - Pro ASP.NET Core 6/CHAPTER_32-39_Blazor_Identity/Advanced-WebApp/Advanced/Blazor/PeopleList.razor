@@ -1,13 +1,13 @@
-﻿<TableTemplate>
-<Header>
+﻿<table class="table table-sm table-striped table-bordered">
+    <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Departament</th>
             <th>Location</th>
         </tr>
-    </Header>
-    <Body>
+    </thead>
+    <tbody>
         @{
             foreach(Person person in People ?? Enumerable.Empty<Person>())
             {
@@ -19,8 +19,8 @@
                 </tr>
             }
         }
-    </Body>
-</TableTemplate>
+    </tbody>
+</table>
 
 <ThemeWrapper Theme="info" Title="Location Selector">
 
