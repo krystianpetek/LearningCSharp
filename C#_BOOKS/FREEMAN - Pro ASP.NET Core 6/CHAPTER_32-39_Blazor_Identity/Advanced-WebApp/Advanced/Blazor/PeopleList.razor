@@ -1,13 +1,13 @@
-﻿<table class="table table-sm table-striped table-bordered">
-    <thead>
+﻿<TableTemplate>
+<Header>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Departament</th>
             <th>Location</th>
         </tr>
-    </thead>
-    <tbody>
+    </Header>
+    <Body>
         @{
             foreach(Person person in People ?? Enumerable.Empty<Person>())
             {
@@ -19,24 +19,10 @@
                 </tr>
             }
         }
-    </tbody>
-</table>
-@*
-<div class="form-group">
-    <label for="city">City</label>
-    <select name="city" class="form-control" @bind="SelectedCity">
-        <option disabled selected value="">Select City</option>
-        @{
-            foreach(string city in Cities ?? Enumerable.Empty<string>())
-            {
-                <option value="@city" selected="@(city == SelectedCity)">
-                    @city
-                </option>
-            }
-        }
-    </select>
-</div>
-*@
+    </Body>
+</TableTemplate>
+
+<ThemeWrapper Theme="info" Title="Location Selector">
 
 <SelectFilter 
     Title="@SelectTitle" 
@@ -61,6 +47,7 @@
     Change
 </button>
 
+</ThemeWrapper>
 @code {
     [Inject]
     public DataContext? DataContext{ get; set; }
