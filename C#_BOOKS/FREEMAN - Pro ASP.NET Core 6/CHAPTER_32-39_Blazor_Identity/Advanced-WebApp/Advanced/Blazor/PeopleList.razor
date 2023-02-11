@@ -1,4 +1,5 @@
 ﻿@page "/people"
+@page "/"
 
 <table class="table table-sm table-striped table-bordered">
     <thead>
@@ -48,8 +49,10 @@
     @onclick="@(() => SelectedCity = "Oakland")">
     Change
 </button>
-
 </ThemeWrapper>
+
+<NavLink class="btn btn-primary" href="/depts">Departments</NavLink>
+
 @code {
     [Inject]
     public DataContext? DataContext{ get; set; }

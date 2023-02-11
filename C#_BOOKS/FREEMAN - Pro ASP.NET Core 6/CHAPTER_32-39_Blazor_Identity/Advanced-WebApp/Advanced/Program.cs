@@ -31,7 +31,6 @@ internal static class Program
         app.MapBlazorHub();
         app.MapFallbackToPage("/_Host");
 
-        app.MapFallbackToPage("/_Host");
         app.SeedDatabase();
         app.Run();
     }
