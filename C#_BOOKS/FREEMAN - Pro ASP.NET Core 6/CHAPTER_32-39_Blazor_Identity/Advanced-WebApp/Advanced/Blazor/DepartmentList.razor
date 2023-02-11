@@ -1,0 +1,39 @@
+﻿<CascadingValue Name="BgTheme" Value="Theme" IsFixed="false">
+    <TableTemplate 
+        RowType="Department" 
+        RowData="@Departments"
+        SortDirection="@(direction => direction.Name)"
+        Highlight="@(highlight => highlight.Name)">
+        <Header>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>People</td>
+                <td>Locations</td>
+            </tr>
+        </Header>
+        <RowTemplate Context="departments">
+            <td>@departments.DepartmentId</td>
+            <td>@departments.Name</td>
+            <td>@(string.Join(", ", departments.People.Select(person => person.Surname)))</td>
+            <td>@(string.Join(", ", departments.People.Select(person => person.Location?.City)))</td>
+        </RowTemplate>
+    </TableTemplate>
+</CascadingValue>
+
+<SelectFilter 
+    Title="@("Theme")" 
+    Values="Themes"
+    @bind-SelectedValue="Theme"/>
+
+@code {
+    [Inject]
+    public DataContext? DataContext { get; set; }
+
+    public IEnumerable<Department>? Departments => DataContext?
+    .Departments.Include(department => department.People)
+    .ThenInclude(people => people.Location);
+
+    public string Theme { get; set; } = "info";
+    public string[] Themes = new  string[] {"primary","info","success"};
+}
