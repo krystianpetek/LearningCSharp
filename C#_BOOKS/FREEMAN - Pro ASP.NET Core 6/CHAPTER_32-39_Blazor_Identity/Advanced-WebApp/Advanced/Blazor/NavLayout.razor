@@ -15,6 +15,16 @@
                             @key
                         </NavLink>
                     }
+                    
+                    foreach(string key in MultiNavLinks.Keys)
+                    {
+                        <MultiNavLink 
+                            ActiveClass="btn-primary text-white"
+                            Class="btn btn-outline-primary btn-block"
+                            Href="@MultiNavLinks[key]">
+                            @key
+                        </MultiNavLink>
+                    }
                 }
             </div>
         </div>
@@ -30,5 +40,12 @@
         { "People", "/people" },
         {"Departments", "/depts"},
         { "Details", "/person" },
+    };
+
+    public Dictionary<string, string[]> MultiNavLinks = new Dictionary<string, string[]>
+    {
+        { "People", new string[] { "/people" ,"/" } },
+        { "Departments", new string[] { "/depts", "departments" } },
+        { "Details", new string[] { "/person" } }
     };
 }
