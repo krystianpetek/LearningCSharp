@@ -8,6 +8,7 @@
             <th>Name</th>
             <th>Departament</th>
             <th>Location</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,11 @@
                     <td>@person?.Surname, @person?.Firstname</td>
                     <td>@person?.Department?.Name</td>
                     <td>@person?.Location?.City, @person?.Location?.State</td>
+                    <td>
+                        <NavLink class="btn btn-sm btn-info" href="@(GetEditUrl(person.PersonId))">
+                            Edit
+                        </NavLink>
+                    </td>
                 </tr>
             }
         }
@@ -75,4 +81,6 @@
     public string? SelectTitle{ get; set; }
 
     public void HandleCustom(string newValue) => SelectedCity = newValue;
+
+    public string GetEditUrl(long id) => $"/person/{id}";
 }
