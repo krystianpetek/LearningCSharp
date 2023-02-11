@@ -29,6 +29,7 @@ internal static class Program
             pattern: "controllers/{controller=Home}/{action=Index}/{id?}");
         app.MapRazorPages();
         app.MapBlazorHub();
+        app.MapFallbackToPage("/_Host");
 
         app.SeedDatabase();
         app.Run();
