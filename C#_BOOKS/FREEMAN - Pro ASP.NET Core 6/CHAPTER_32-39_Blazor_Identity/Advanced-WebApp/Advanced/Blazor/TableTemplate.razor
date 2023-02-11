@@ -1,12 +1,26 @@
 ﻿@typeparam RowType
 
+<link rel="stylesheet" href="errorBoundaries.css" />
+
 <div class="container-fluid">
     <div class="row p-2">
         <div class="col">
             <SelectFilter Title="@("Sort")" Values="@SortDirectionChoices" @bind-SelectedValue="SortDirectionSelection" />
         </div>
         <div class="col">
-            <SelectFilter Title="@("Highlight")" Values="@HighlightChoices" @bind-SelectedValue="HighlightSelection" />
+            <ErrorBoundary @ref="boundary">
+                <ChildContent>
+                    <SelectFilter Title="@("Highlight")" Values="@HighlightChoices" @bind-SelectedValue="HighlightSelection" />
+                </ChildContent>
+                <ErrorContent>
+                    <h6 class="bg-danger text-white text-center h-100 p-2">
+                        Inline error: Sales Selected
+                        <div>
+                            <button class="btn  btn-light btn-sm m-1" @onclick="@(() => boundary?.Recover())">Recover</button>
+                        </div>
+                    </h6>
+                </ErrorContent>
+            </ErrorBoundary>
         </div>
     </div>
 </div>
@@ -39,7 +53,7 @@
 
     [Parameter]
     public Func<RowType, string> SortDirection { get; set; } = (row) => string.Empty;
-    
+
     public string[] SortDirectionChoices = new string[] { "Ascending", "Descending" };
     public string SortDirectionSelection { get; set; } = "Ascending";
     public IEnumerable<RowType> SortedData => SortDirectionSelection == "Ascending"
@@ -52,4 +66,6 @@
     public IEnumerable<string> HighlightChoices => RowData.Select(item => Highlight(item)).Distinct();
     public string? HighlightSelection { get; set; }
     public string IsHighlighted(RowType item) => Highlight(item) == HighlightSelection ? "table-dark text-white" : "";
+
+    ErrorBoundary? boundary;
 }
