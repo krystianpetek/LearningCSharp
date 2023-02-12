@@ -2,7 +2,12 @@
     class="@ComputedClass" 
     @onclick="HandleClick"
     href="">
-    @ChildContent
+    @{
+        if(Enabled)
+            @ChildContent
+        else
+            @("Disabled")
+    }
 </a>
 
 @code{
@@ -17,6 +22,9 @@
 
     [Parameter]
     public string ActiveClass { get; set; } = string.Empty;
+
+    [Parameter]
+    public string DisabledClass { get; set; } = string.Empty;
 
     public NavLinkMatch? Match { get; set; } 
 
@@ -40,7 +48,10 @@
         string path = NavigationManager?.ToBaseRelativePath(currentUrl);
         path = path.EndsWith("/") ? path.Substring(0, path.Length - 1) : path;
         bool match = Href.Any(href => ComputedMatch == NavLinkMatch.All ? path == href : path.StartsWith(href));
-        ComputedClass = match ? $"{Class} {ActiveClass}" : Class;
+        if (!Enabled)
+            ComputedClass = DisabledClass;
+        else
+            ComputedClass = match ? $"{Class} {ActiveClass}" : Class;
     }
 
     protected override void OnParametersSet()
@@ -49,5 +60,18 @@
         NavigationManager.LocationChanged += (sender, arg) => CheckMatch(arg.Location);
         Href = Href.Select(h => h.StartsWith("/") ? h.Substring(1) : h);
         CheckMatch(NavigationManager.Uri);
+    }
+
+    public bool Enabled { get; set; } = true;
+
+    public void SetEnabled(bool enabled)
+    {
+
+        InvokeAsync(() =>
+        {
+            Enabled = enabled;
+            CheckMatch(NavigationManager.Uri);
+            StateHasChanged();
+        });
     }
 }

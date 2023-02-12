@@ -1,4 +1,5 @@
 ﻿using Advanced.Models;
+using Advanced.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,10 +7,12 @@ namespace Advanced.Controllers;
 public class HomeController : Controller
 {
     private readonly DataContext _dataContext;
+    private readonly ToggleService _toggleService;
 
-    public HomeController(DataContext dataContext)
+    public HomeController(DataContext dataContext, ToggleService toggleService)
     {
         _dataContext = dataContext;
+        _toggleService = toggleService;
     }
 
     public IActionResult Index([FromQuery] string selectedCity)
@@ -25,6 +28,8 @@ public class HomeController : Controller
             SelectedCity = selectedCity
         });
     }
+
+    public string Toggle() => $"Enabled: {_toggleService.ToggleComponents()}";
 }
 
 public class PeopleListViewModel

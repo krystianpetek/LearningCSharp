@@ -1,4 +1,5 @@
 using Advanced.Models;
+using Advanced.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Advanced;
@@ -18,6 +19,8 @@ internal static class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
         builder.Services.AddServerSideBlazor();
+
+        builder.Services.AddSingleton<ToggleService>();
 
         var app = builder.Build();
 
