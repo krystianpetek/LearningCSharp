@@ -15,7 +15,7 @@ else
                 <th>Id</th>
                 <td>@Person.PersonId</td>
             </tr>
-            <tr>
+            <tr @ref="@RowReference">
                 <th>Surname</th>
                 <td>@Person.Surname</td>
             </tr>
@@ -38,7 +38,7 @@ else
 
 <div>
     <button 
-        class="btn btn-outline-warning" 
+        class="btn btn-outline-dark my-2" 
         @onclick="HandleInvokeJS">
         Invoke JS function
     </button>
@@ -73,6 +73,8 @@ else
 
     public async Task HandleInvokeJS()
     {
-        await JsRuntime!.InvokeVoidAsync("addTableRows", 2);
+        await JsRuntime!.InvokeVoidAsync("addTableRows", 2, RowReference);
     }
+
+    public ElementReference RowReference{ get; set; }
 }

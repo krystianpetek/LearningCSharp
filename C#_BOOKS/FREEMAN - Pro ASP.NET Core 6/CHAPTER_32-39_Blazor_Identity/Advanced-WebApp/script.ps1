@@ -11,3 +11,7 @@ dotnet ef database update
 
 libman init -p cdnjs
 libman install bootstrap -d wwwroot/lib/bootstrap
+
+npm install --save-dev @types/blazor__javascript-interop
+npm install --save-dev eslint
+New-Item -Name ".eslintrc.js"
