@@ -16,7 +16,7 @@
         OnValidSubmit="@(HandleValidSubmit)">
         <DataAnnotationsValidator />
         <ValidationSummary />
-        
+        <DeptStateValidator DepartmentId="2" State="CA" />
         @if (Mode == "Edit")
         {
             <div class="form-group">
@@ -70,10 +70,11 @@
             </CustomSelect>
         </div>
         <div class="text-center">
-            <button type="submit"
-                class="btn btn-@Theme mt-2">
+            <ValidButton 
+                type="submit" 
+                BtnTheme="@Theme">
                 Save
-            </button>
+            </ValidButton>
             <NavLink
                 class="btn btn-secondary mt-2"
                 href="/forms">
