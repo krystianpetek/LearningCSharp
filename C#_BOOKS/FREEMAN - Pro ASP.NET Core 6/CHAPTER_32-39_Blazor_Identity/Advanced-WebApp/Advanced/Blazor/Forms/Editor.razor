@@ -1,6 +1,65 @@
 ﻿@page "/forms/edit/{id:long?}"
 @layout EmptyLayout
 
+<h4 class="bg-primary text-center text-white p-2">Edit</h4>
+
+<FormSpy PersonData="@(PersonData)">
+    <EditForm Model="PersonData">
+        <div class="form-group">
+            <label>Person ID</label>
+            <InputNumber
+                class="form-control" 
+                @bind-Value="@(PersonData.PersonId)"
+                disabled />
+        </div>
+        <div class="form-group">
+            <label>Firstname</label>
+            <InputText 
+                class="form-control" 
+                @bind-Value="@(PersonData.Firstname)"
+                />
+        </div>
+        <div class="form-group">
+            <label>Surname</label>
+            <InputText 
+                class="form-control" 
+                @bind-Value="@(PersonData.Surname)"
+                />
+        </div>
+        <div class="form-group">
+            <label>Dept ID</label>
+@*            <InputNumber
+                class="form-control" 
+                @bind-Value="@(PersonData.DepartmentId)"
+                />*@
+            <CustomSelect 
+                TValue="@long"
+                Parser="@(value => long.Parse(value))"
+                Values="Departments"
+                @bind-Value="PersonData.DepartmentId">
+                <option selected disabled value="0">Choose a Department</option>
+            </CustomSelect>
+        </div>
+        <div class="form-group">
+            <label>Location ID</label>
+            <CustomSelect 
+                TValue="@long"
+                Parser="@(value => long.Parse(value))"
+                Values="Locations"
+                @bind-Value="PersonData.LocationId">
+                <option selected disabled value="0">Choose a Location</option>
+            </CustomSelect>
+        </div>
+        <div class="text-center">
+            <NavLink
+                class="btn btn-secondary"
+                href="/forms">
+                Back
+            </NavLink>
+        </div>
+    </EditForm>
+</FormSpy>
+
 @code {
     [Inject]
     public NavigationManager? NavigationManager { get; set; }
@@ -11,11 +70,18 @@
     [Parameter]
     public long? Id { get; set; }
 
+    public IDictionary<string, long> Departments { get; set; } = new Dictionary<string, long>();
+    public IDictionary<string, long> Locations { get; set; } = new Dictionary<string, long>();
+
     public Person? PersonData { get; set; } = new Person();
 
     protected override async Task OnParametersSetAsync()
     {
-        if (DataContext != null)
+        if (DataContext != null && Id != default)
+        {
             PersonData = await DataContext.People.FindAsync(Id);
+            Departments = await DataContext.Departments.ToDictionaryAsync(dep => dep.Name, dep => dep.DepartmentId);
+            Locations = await DataContext.Locations.ToDictionaryAsync(loc => $"{loc.City}, {loc.State}", loc => loc.LocationId);
+        }
     }
 }
