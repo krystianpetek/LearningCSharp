@@ -36,9 +36,19 @@ else
     Return
 </NavLink>
 
+<div>
+    <button 
+        class="btn btn-outline-warning" 
+        @onclick="HandleInvokeJS">
+        Invoke JS function
+    </button>
+</div>
 @code {
     [Inject]
     public DataContext? DataContext { get; set; }
+
+    [Inject]
+    public IJSRuntime? JsRuntime { get; set; }
 
     [Inject]
     public NavigationManager? NavigationManager { get; set; }
@@ -59,5 +69,10 @@ else
     {
         Person = null;
         NavigationManager?.NavigateTo($"/person/{(increment ? Id + 1 : Id - 1)}");
+    }
+
+    public async Task HandleInvokeJS()
+    {
+        await JsRuntime!.InvokeVoidAsync("addTableRows", 2);
     }
 }
