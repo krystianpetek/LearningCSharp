@@ -1,5 +1,7 @@
 ﻿@page "/forms/edit/{id:long?}"
 @layout EmptyLayout
+@inherits OwningComponentBase<DataContext>
+@implements IDisposable
 
 <link rel="stylesheet" href="/blazorValidation.css" />
 
@@ -93,17 +95,27 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        if (DataContext != null && Id != default)
+        if (OwnDataContext != null && Id != default)
         {
-            PersonData = await DataContext.People.FindAsync(Id);
-            Departments = await DataContext.Departments.ToDictionaryAsync(dep => dep.Name, dep => dep.DepartmentId);
-            Locations = await DataContext.Locations.ToDictionaryAsync(loc => $"{loc.City}, {loc.State}", loc => loc.LocationId);
+            PersonData = await OwnDataContext.People.FindAsync(Id);
+            Departments = await OwnDataContext.Departments.ToDictionaryAsync(dep => dep.Name, dep => dep.DepartmentId);
+            Locations = await OwnDataContext.Locations.ToDictionaryAsync(loc => $"{loc.City}, {loc.State}", loc => loc.LocationId);
         }
     }
 
     public string FormSubmitMessage { get; set; } = "Form data not submitted";
 
     public void HandleValidSubmit() => FormSubmitMessage = "Valid data submitted";
-    
+
     public void HandleInvalidSubmit() => FormSubmitMessage = "Invalid data submitted";
+
+    public void Dispose()
+    {
+        if (OwnDataContext != null)
+        {
+            OwnDataContext.Entry(PersonData).State = EntityState.Detached;
+        }
+    }
+
+    private DataContext OwnDataContext => Service;
 }
