@@ -1,0 +1,63 @@
+﻿@page "/forms"
+@page "/forms/list"
+@layout EmptyLayout
+
+<h5 class="bg-primary text-white text-center p-2">People</h5>
+
+<table class="table table-sm table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Dept</th>
+            <th>Location</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(People.Count() == 0)
+        {
+            <tr>
+                <th colspan="5"
+                    class="p-4 text-center">
+                    Loading Data...
+                </th>
+            </tr>
+        }
+        else
+        {
+            foreach (Person person in People)
+            {
+                <tr>
+                    <td>@person.PersonId</td>
+                    <td>@person.Surname, @person.Firstname</td>
+                    <td>@person.Department?.Name</td>
+                    <td>@person.Location?.City</td>
+                    <td>
+                        <NavLink 
+                            class="btn btn-sm btn-warning"
+                            href="@GetEditUrl(person.PersonId)">
+                            Edit
+                        </NavLink>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+    @code {
+    [Inject]
+    public DataContext? DataContext { get; set; }
+
+    public IEnumerable<Person> People { get; set; } = Enumerable.Empty<Person>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        People = await Task.FromResult(DataContext?.People?
+        .Include(person => person.Department)
+        .Include(person => person.Location)) ?? Enumerable.Empty<Person>();
+    }
+
+    private string GetEditUrl(long id) => $"/forms/edit/{id}";
+}
