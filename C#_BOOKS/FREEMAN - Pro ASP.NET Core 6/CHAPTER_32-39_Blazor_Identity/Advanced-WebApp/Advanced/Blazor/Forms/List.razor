@@ -1,6 +1,7 @@
 ﻿@page "/forms"
 @page "/forms/list"
 @layout EmptyLayout
+@inherits OwningComponentBase<DataContext>
 
 <h5 class="bg-primary text-white text-center p-2">People</h5>
 
@@ -33,11 +34,22 @@
                     <td>@person.Surname, @person.Firstname</td>
                     <td>@person.Department?.Name</td>
                     <td>@person.Location?.City</td>
-                    <td>
+                    <td class="text-center">
+
+                        <NavLink 
+                            class="btn btn-sm btn-info"
+                            href="@GetDetailsUrl(person.PersonId)">
+                            Details
+                        </NavLink>
                         <NavLink 
                             class="btn btn-sm btn-warning"
                             href="@GetEditUrl(person.PersonId)">
                             Edit
+                        </NavLink>
+                        <NavLink 
+                            class="btn btn-sm btn-danger"
+                            @onclick="@(() => HandleDelete(person))">
+                            Delete
                         </NavLink>
                     </td>
                 </tr>
@@ -45,6 +57,11 @@
         }
     </tbody>
 </table>
+
+<NavLink class="btn btn-primary"
+    href="/forms/create">
+    Create
+</NavLink>
 
 <button 
     class="btn btn-primary"
@@ -73,13 +90,18 @@
 </button>
 <span class="h5">Counter: @Counter</span>
 
+
 @code {
-    [Inject]
-    public DataContext? DataContext { get; set; }
+    //[Inject]
+    //public DataContext? DataContext { get; set; }
+
+    public DataContext? OwnDataContext => Service;
 
     public int Counter { get; set; } = 0;
 
     private string GetEditUrl(long id) => $"/forms/edit/{id}";
+
+    private string GetDetailsUrl(long id) => $"/forms/details/{id}";
 
     public IEnumerable<Person> People { get; set; } = Enumerable.Empty<Person>();
 
@@ -88,8 +110,8 @@
         await UpdateDataAsync();
     }
 
-    private IQueryable<Person> Query => 
-        DataContext!.People
+    private IQueryable<Person> Query =>
+        OwnDataContext!.People
         .Include(person => person.Department)
         .Include(person => person.Location);
 
@@ -106,5 +128,15 @@
     public void SortWithoutQuery()
     {
         People = People.OrderBy(person => person.Firstname);
+    }
+
+    public async Task HandleDelete(Person person)
+    {
+        if(OwnDataContext != null && person != default)
+        {
+            OwnDataContext.Remove(person);
+            await OwnDataContext.SaveChangesAsync();
+            await UpdateDataAsync();
+        }
     }
 }

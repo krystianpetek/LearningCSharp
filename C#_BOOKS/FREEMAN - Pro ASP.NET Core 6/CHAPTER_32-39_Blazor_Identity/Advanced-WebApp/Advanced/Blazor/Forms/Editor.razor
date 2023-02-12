@@ -1,11 +1,12 @@
 ﻿@page "/forms/edit/{id:long?}"
+@page "/forms/create"
 @layout EmptyLayout
 @inherits OwningComponentBase<DataContext>
 @implements IDisposable
 
 <link rel="stylesheet" href="/blazorValidation.css" />
 
-<h4 class="bg-primary text-center text-white p-2">Edit</h4>
+<h4 class="bg-@Theme text-center text-white p-2">@Mode</h4>
 <h6 class="bg-info text-center text-white p-2">@FormSubmitMessage</h6>
 
 <FormSpy PersonData="@(PersonData)">
@@ -15,13 +16,17 @@
         OnValidSubmit="@(HandleValidSubmit)">
         <DataAnnotationsValidator />
         <ValidationSummary />
-        <div class="form-group">
-            <label>Person ID</label>
-            <InputNumber
-                class="form-control" 
-                @bind-Value="@(PersonData.PersonId)"
-                disabled />
-        </div>
+        
+        @if (Mode == "Edit")
+        {
+            <div class="form-group">
+                <label>Person ID</label>
+                <InputNumber
+                    class="form-control" 
+                    @bind-Value="@(PersonData.PersonId)"
+                    readonly />
+            </div>
+        }
         <div class="form-group">
             <label>Firstname</label>
             <ValidationMessage For="@(() => PersonData.Firstname)" />
@@ -39,7 +44,7 @@
                 />
         </div>
         <div class="form-group">
-            <label>Dept ID</label>
+            <label>Departments</label>
 @*            <InputNumber
                 class="form-control" 
                 @bind-Value="@(PersonData.DepartmentId)"
@@ -54,7 +59,7 @@
             </CustomSelect>
         </div>
         <div class="form-group">
-            <label>Location ID</label>
+            <label>Location</label>
             <ValidationMessage For="@(() => PersonData.LocationId)" />
             <CustomSelect 
                 TValue="@long"
@@ -66,11 +71,11 @@
         </div>
         <div class="text-center">
             <button type="submit"
-                class="btn btn-primary mt-2">
-                Submit
+                class="btn btn-@Theme mt-2">
+                Save
             </button>
             <NavLink
-                class="btn btn-secondary"
+                class="btn btn-secondary mt-2"
                 href="/forms">
                 Back
             </NavLink>
@@ -82,8 +87,8 @@
     [Inject]
     public NavigationManager? NavigationManager { get; set; }
 
-    [Inject]
-    DataContext? DataContext { get; set; }
+    //[Inject]
+    //DataContext? DataContext { get; set; }
 
     [Parameter]
     public long? Id { get; set; }
@@ -95,9 +100,12 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        if (OwnDataContext != null && Id != default)
+        if (OwnDataContext != null)
         {
-            PersonData = await OwnDataContext.People.FindAsync(Id);
+            if (Mode == "Edit")
+            {
+                PersonData = await OwnDataContext.People.FindAsync(Id) ?? new Person();
+            }
             Departments = await OwnDataContext.Departments.ToDictionaryAsync(dep => dep.Name, dep => dep.DepartmentId);
             Locations = await OwnDataContext.Locations.ToDictionaryAsync(loc => $"{loc.City}, {loc.State}", loc => loc.LocationId);
         }
@@ -105,7 +113,17 @@
 
     public string FormSubmitMessage { get; set; } = "Form data not submitted";
 
-    public void HandleValidSubmit() => FormSubmitMessage = "Valid data submitted";
+    public async Task HandleValidSubmit()
+    {
+        FormSubmitMessage = "Valid data submitted";
+        if(OwnDataContext != null)
+        {
+            if (Mode == "Create")
+                OwnDataContext.Add(PersonData);
+        }
+        await OwnDataContext.SaveChangesAsync();
+        NavigationManager.NavigateTo("/forms");
+    }
 
     public void HandleInvalidSubmit() => FormSubmitMessage = "Invalid data submitted";
 
@@ -118,4 +136,7 @@
     }
 
     private DataContext OwnDataContext => Service;
+
+    public string Theme => Id == default ? "primary" : "warning";
+    public string Mode => Id == default ? "Create" : "Edit";
 }
