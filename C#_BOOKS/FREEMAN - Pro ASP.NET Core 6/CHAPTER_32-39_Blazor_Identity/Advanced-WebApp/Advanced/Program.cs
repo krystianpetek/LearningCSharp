@@ -19,11 +19,13 @@ internal static class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
         builder.Services.AddServerSideBlazor();
+        builder.Services.AddCors(cors => cors.AddPolicy("policy", policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 
         builder.Services.AddSingleton<ToggleService>();
 
         var app = builder.Build();
 
+        app.UseCors("policy");
         app.UseStaticFiles();
         
         app.MapControllers();

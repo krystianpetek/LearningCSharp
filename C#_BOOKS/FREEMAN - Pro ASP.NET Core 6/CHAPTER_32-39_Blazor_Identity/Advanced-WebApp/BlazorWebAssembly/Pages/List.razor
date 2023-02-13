@@ -1,0 +1,96 @@
+﻿@page "/forms"
+@page "/forms/list"
+
+<h5 class="bg-primary text-white text-center p-2">People (WebAssembly)</h5>
+
+<table class="table table-sm table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Dept</th>
+            <th>Location</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(People.Count() == 0)
+        {
+            <tr>
+                <th colspan="5"
+                    class="p-4 text-center">
+                    Loading Data...
+                </th>
+            </tr>
+        }
+        else
+        {
+            foreach (Person person in People)
+            {
+                <tr>
+                    <td>@person.PersonId</td>
+                    <td>@person.Surname, @person.Firstname</td>
+                    <td>@person.Department?.Name</td>
+                    <td>@person.Location?.City</td>
+                    <td class="text-center">
+
+                        <NavLink 
+                            class="btn btn-sm btn-info"
+                            href="@GetDetailsUrl(person.PersonId)">
+                            Details
+                        </NavLink>
+                        <NavLink 
+                            class="btn btn-sm btn-warning"
+                            href="@GetEditUrl(person.PersonId)">
+                            Edit
+                        </NavLink>
+                        <NavLink 
+                            class="btn btn-sm btn-danger"
+                            @onclick="@(() => HandleDelete(person))">
+                            Delete
+                        </NavLink>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<NavLink class="btn btn-primary"
+    href="/forms/create">
+    Create
+</NavLink>
+
+@code {
+    [Inject]
+    public HttpClient? HttpClient { get; set; }
+
+    public Person[] People { get; set; } = Array.Empty<Person>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        await UpdateData();
+    }
+
+    private async Task UpdateData()
+    {
+        if (HttpClient != null)
+        {
+            People = await HttpClient.GetFromJsonAsync<Person[]>("https://localhost:7300/api/people") ?? Array.Empty<Person>();
+        }
+    }
+
+    private string GetEditUrl(long id) => $"/forms/edit/{id}";
+
+    private string GetDetailsUrl(long id) => $"/forms/details/{id}";
+
+    public async Task HandleDelete(Person person)
+    {
+        if(HttpClient != null)
+        {
+            HttpResponseMessage httpResponseMessage = await HttpClient.DeleteAsync($"/api/people/{person.PersonId}");
+            if (httpResponseMessage.IsSuccessStatusCode)
+                await UpdateData();
+        }
+    }
+}
