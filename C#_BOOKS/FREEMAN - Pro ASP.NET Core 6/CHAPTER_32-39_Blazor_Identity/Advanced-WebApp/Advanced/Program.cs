@@ -1,5 +1,6 @@
 using Advanced.Models;
 using Advanced.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Advanced;
@@ -16,6 +17,14 @@ internal static class Program
             dbContextOptionsBuilder.UseSqlServer(connectionString);
             dbContextOptionsBuilder.EnableSensitiveDataLogging();
         });
+
+        builder.Services.AddDbContext<IdentityContext>(dbContextOptionsBuilder =>
+        {
+            string connectionString = builder.Configuration.GetConnectionString("IdentityConnection");
+            dbContextOptionsBuilder.UseSqlServer(connectionString);
+        });
+        builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
+        
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
         builder.Services.AddServerSideBlazor();

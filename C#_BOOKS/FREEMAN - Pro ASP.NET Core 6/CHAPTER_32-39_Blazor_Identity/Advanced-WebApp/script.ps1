@@ -28,3 +28,7 @@ cd .\Advanced
 dotnet add reference ..\DataModel ..\BlazorWebAssembly
 dotnet sln add ./DataModel ./BlazorWebAssembly
 dotnet add package Microsoft.AspNetCore.Components.WebAssembly.Server
+
+dotnet ef migrations add --context IdentityContext Initial
+dotnet ef database update --context IdentityContext
+dotnet ef database drop --force --context IdentityContext
