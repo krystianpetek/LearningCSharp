@@ -88,7 +88,7 @@
     {
         if(HttpClient != null)
         {
-            HttpResponseMessage httpResponseMessage = await HttpClient.DeleteAsync($"/api/people/{person.PersonId}");
+            HttpResponseMessage httpResponseMessage = await HttpClient.DeleteAsync($"https://localhost:7300/api/people/{person.PersonId}");
             if (httpResponseMessage.IsSuccessStatusCode)
                 await UpdateData();
         }
