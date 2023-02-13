@@ -21,3 +21,10 @@ dotnet add DataModel package System.ComponentModel.Annotations
 Move-Item -Path @("Models/Person.cs", "Models/Location.cs", "Models/Department.cs") ../DataModel
 dotnet sln ..\Advanced-WebApp.sln add ..\DataModel
 dotnet add reference ../DataModel
+
+dotnet new blazorwasm -o .\BlazorWebAssembly
+dotnet add .\BlazorWebAssembly reference .\DataModel
+cd .\Advanced
+dotnet add reference ..\DataModel ..\BlazorWebAssembly
+dotnet sln add ./DataModel ./BlazorWebAssembly
+dotnet add package Microsoft.AspNetCore.Components.WebAssembly.Server
