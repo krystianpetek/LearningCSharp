@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using DataModel.Models;
 
 namespace Advanced.Models;
-
 public class DataContext : DbContext
 {
     public DataContext(DbContextOptions<DataContext> dbContextOptions) : base(dbContextOptions) { }

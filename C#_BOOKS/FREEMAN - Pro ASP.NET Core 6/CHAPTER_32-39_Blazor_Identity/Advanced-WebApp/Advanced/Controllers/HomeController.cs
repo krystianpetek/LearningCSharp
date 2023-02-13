@@ -1,5 +1,6 @@
 ﻿using Advanced.Models;
 using Advanced.Services;
+using DataModel.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,5 +1,6 @@
 ﻿using Advanced.Models;
 using Microsoft.AspNetCore.Components;
+using DataModel.Models;
 using Microsoft.AspNetCore.Components.Forms;
 
 namespace Advanced.Blazor.Forms;

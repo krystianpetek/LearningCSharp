@@ -34,6 +34,10 @@
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DataModel\DataModel.csproj" />
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties tsconfig_1json__JsonSchema="https://json.schemastore.org/tsconfig.json" /></VisualStudio></ProjectExtensions>
 
 </Project>

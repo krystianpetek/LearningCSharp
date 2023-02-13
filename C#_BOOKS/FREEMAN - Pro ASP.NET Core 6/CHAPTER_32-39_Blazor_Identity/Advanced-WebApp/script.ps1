@@ -15,3 +15,9 @@ libman install bootstrap -d wwwroot/lib/bootstrap
 npm install --save-dev @types/blazor__javascript-interop
 npm install --save-dev eslint
 New-Item -Name ".eslintrc.js"
+
+dotnet new classlib -o DataModel
+dotnet add DataModel package System.ComponentModel.Annotations
+Move-Item -Path @("Models/Person.cs", "Models/Location.cs", "Models/Department.cs") ../DataModel
+dotnet sln ..\Advanced-WebApp.sln add ..\DataModel
+dotnet add reference ../DataModel

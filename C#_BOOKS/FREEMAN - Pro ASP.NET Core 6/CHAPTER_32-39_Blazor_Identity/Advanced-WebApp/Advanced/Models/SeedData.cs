@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Advanced.Models;
+namespace Advanced.Models; 
+using DataModel.Models;
 
 public static class SeedData
 {

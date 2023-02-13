@@ -1,4 +1,6 @@
-﻿<TableTemplate 
+﻿@using DataModel.Models;
+
+<TableTemplate 
     RowType="Person" RowData="People"
     SortDirection="@(p => p.Surname)" 
     Highlight="@(p => p.Location?.City)" >
