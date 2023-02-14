@@ -1,3 +1,4 @@
+using Advanced.Extensions;
 using Advanced.Models;
 using Advanced.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -40,6 +41,16 @@ internal static class Program
         {
             cookieAuthenticationOptions.LoginPath = "/Authenticate";
             cookieAuthenticationOptions.LoginPath = "/NotAllowed";
+        });
+        builder.Services.AddAuthentication(authenticationOptions =>
+        {
+            authenticationOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            authenticationOptions.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        })
+            .AddCookie(cookieOptions =>
+        {
+            cookieOptions.Events.DisableRedirectForPath(exp => exp.OnRedirectToLogin, "/api", StatusCodes.Status401Unauthorized);
+            cookieOptions.Events.DisableRedirectForPath(exp => exp.OnRedirectToAccessDenied, "/api", StatusCodes.Status403Forbidden);
         });
 
         builder.Services.AddControllersWithViews();
