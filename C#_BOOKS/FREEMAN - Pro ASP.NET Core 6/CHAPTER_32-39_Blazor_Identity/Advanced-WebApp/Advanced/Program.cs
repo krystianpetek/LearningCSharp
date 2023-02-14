@@ -48,6 +48,7 @@ internal static class Program
         app.UseStaticFiles();
         
         app.UseAuthentication();
+        app.UseAuthorization();
 
         app.UseCors("policy");
         
