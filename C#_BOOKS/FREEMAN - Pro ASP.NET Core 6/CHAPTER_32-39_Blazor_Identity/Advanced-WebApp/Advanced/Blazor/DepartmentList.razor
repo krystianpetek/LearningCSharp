@@ -2,7 +2,9 @@
 @page "/depts"
 @using DataModel.Models;
 @using Microsoft.AspNetCore.Authorization;
-@attribute [Authorize(Roles = "Admins")]
+@using Microsoft.AspNetCore.Components.Authorization
+@*@attribute [Authorize(Roles = "Admins")]*@
+@attribute [Authorize]
 
 <CascadingValue Name="BgTheme" Value="Theme" IsFixed="false">
     <TableTemplate 
@@ -21,8 +23,15 @@
         <RowTemplate Context="departments">
             <td>@departments.DepartmentId</td>
             <td>@departments.Name</td>
-            <td>@(string.Join(", ", departments.People.Select(person => person.Surname)))</td>
-            <td>@(string.Join(", ", departments.People.Select(person => person.Location?.City)))</td>
+            <AuthorizeView Roles="Admins">
+                <Authorized>
+                    <td>@(string.Join(", ", departments.People.Select(person => person.Surname)))</td>                    
+                </Authorized>
+                <NotAuthorized>
+                (Not authorized)
+                </NotAuthorized>
+            </AuthorizeView>
+            <td>@(string.Join(", ", departments.People!.Select(p => p.Location!.City).Distinct()))</td>
         </RowTemplate>
     </TableTemplate>
 </CascadingValue>
