@@ -1,5 +1,8 @@
 ﻿@page "/"
 @using Advanced.Blazor;
+@using Microsoft.AspNetCore.Authorization;
+@model HostModel
+
 @{
     Layout = null;
 }
@@ -18,3 +21,11 @@
         <script src="/js/interop.js"></script>
     </body>
 </html>
+
+@functions{
+    [Authorize]
+    public class HostModel : PageModel
+    {
+        
+    }
+}
