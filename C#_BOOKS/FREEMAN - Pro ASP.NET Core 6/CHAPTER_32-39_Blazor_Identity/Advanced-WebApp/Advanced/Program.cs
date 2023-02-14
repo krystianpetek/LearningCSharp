@@ -1,5 +1,6 @@
 using Advanced.Models;
 using Advanced.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +8,7 @@ namespace Advanced;
 
 internal static class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddDbContext<DataContext>(dbContextOptionsBuilder =>
@@ -35,6 +36,11 @@ internal static class Program
             identityOptions.User.RequireUniqueEmail = true;
             identityOptions.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
         });
+        builder.Services.Configure<CookieAuthenticationOptions>(cookieAuthenticationOptions =>
+        {
+            cookieAuthenticationOptions.LoginPath = "/Authenticate";
+            cookieAuthenticationOptions.LoginPath = "/NotAllowed";
+        });
 
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
@@ -60,7 +66,8 @@ internal static class Program
         app.MapBlazorHub();
         app.MapFallbackToPage("/_Host");
 
-        app.SeedDatabase();
-        app.Run();
+        await app.SeedIdentityDatabase();
+        await app.SeedDatabase();
+        await app.RunAsync();
     }
 }

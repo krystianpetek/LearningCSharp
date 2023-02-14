@@ -5,7 +5,7 @@ using DataModel.Models;
 
 public static class SeedData
 {
-    public static void SeedDatabase(this WebApplication app)
+    public static async Task SeedDatabase(this WebApplication app)
     {
         var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<DataContext>();
         context.Database.Migrate();
@@ -38,6 +38,6 @@ public static class SeedData
         if (!context.People.Any())
             context.People.AddRange(p1, p2, p3, p4, p5, p6, p7, p8, p9);
 
-        context.SaveChanges();
+        await context.SaveChangesAsync();
     }
 }
