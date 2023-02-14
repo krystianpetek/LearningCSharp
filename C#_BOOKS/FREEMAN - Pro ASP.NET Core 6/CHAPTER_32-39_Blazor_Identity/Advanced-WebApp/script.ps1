@@ -6,7 +6,7 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 7
 dotnet tool install --global dotnet-ef
 dotnet tool update --global dotnet-ef
 
-dotnet ef migrations add Initial
+dotnet ef migrations add --context DataContext Initial
 dotnet ef database update
 
 libman init -p cdnjs
@@ -30,5 +30,8 @@ dotnet sln add ./DataModel ./BlazorWebAssembly
 dotnet add package Microsoft.AspNetCore.Components.WebAssembly.Server
 
 dotnet ef migrations add --context IdentityContext Initial
-dotnet ef database update --context IdentityContext
+
+dotnet ef database drop --force --context DataContext
 dotnet ef database drop --force --context IdentityContext
+dotnet ef database update --context DataContext
+dotnet ef database update --context IdentityContext
