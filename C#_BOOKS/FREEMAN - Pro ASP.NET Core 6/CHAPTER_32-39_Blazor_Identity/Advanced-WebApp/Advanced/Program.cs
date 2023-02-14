@@ -24,7 +24,18 @@ internal static class Program
             dbContextOptionsBuilder.UseSqlServer(connectionString);
         });
         builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
-        
+        builder.Services.Configure<IdentityOptions>(identityOptions =>
+        {
+            identityOptions.Password.RequiredLength = 8;
+            identityOptions.Password.RequireNonAlphanumeric = true;
+            identityOptions.Password.RequireLowercase = true;
+            identityOptions.Password.RequireUppercase = true;
+            identityOptions.Password.RequireDigit = true;
+
+            identityOptions.User.RequireUniqueEmail = true;
+            identityOptions.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
+        });
+
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
         builder.Services.AddServerSideBlazor();
