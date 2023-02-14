@@ -45,8 +45,11 @@ internal static class Program
 
         var app = builder.Build();
 
-        app.UseCors("policy");
         app.UseStaticFiles();
+        
+        app.UseAuthentication();
+
+        app.UseCors("policy");
         
         app.MapControllers();
         app.MapControllerRoute(
