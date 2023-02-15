@@ -2,8 +2,12 @@ using Advanced.Extensions;
 using Advanced.Models;
 using Advanced.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using System.Text;
 
 namespace Advanced;
 
@@ -15,7 +19,7 @@ internal static class Program
         builder.Services.AddDbContext<DataContext>(dbContextOptionsBuilder =>
         {
             string connectionString = builder.Configuration.GetConnectionString("PeopleConnection");
-            
+
             dbContextOptionsBuilder.UseSqlServer(connectionString);
             dbContextOptionsBuilder.EnableSensitiveDataLogging();
         });
@@ -51,7 +55,30 @@ internal static class Program
         {
             cookieOptions.Events.DisableRedirectForPath(exp => exp.OnRedirectToLogin, "/api", StatusCodes.Status401Unauthorized);
             cookieOptions.Events.DisableRedirectForPath(exp => exp.OnRedirectToAccessDenied, "/api", StatusCodes.Status403Forbidden);
-        });
+        })
+            .AddJwtBearer(jwtBearerOptions =>
+            {
+                jwtBearerOptions.RequireHttpsMetadata = false;
+                jwtBearerOptions.SaveToken = true;
+                jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["jwtSecret"])),
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                };
+                jwtBearerOptions.Events = new JwtBearerEvents
+                {
+                    OnTokenValidated = async (TokenValidatedContext context) =>
+                    {
+                        var userManager = context.HttpContext.RequestServices.GetRequiredService<UserManager<IdentityUser>>();
+                        var signInManager = context.HttpContext.RequestServices.GetRequiredService<SignInManager<IdentityUser>>();
+                        string? username = context.Principal?.FindFirst(ClaimTypes.Name)?.Value;
+                        IdentityUser identityUser = await userManager.FindByNameAsync(username);
+                        context.Principal = await signInManager.CreateUserPrincipalAsync(identityUser);
+                    }
+                };
+            });
 
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
@@ -63,12 +90,12 @@ internal static class Program
         var app = builder.Build();
 
         app.UseStaticFiles();
-        
+
         app.UseAuthentication();
         app.UseAuthorization();
 
         app.UseCors("policy");
-        
+
         app.MapControllers();
         app.MapControllerRoute(
             name: "controllers",

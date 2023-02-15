@@ -1,12 +1,37 @@
 const username = "joe";
 const password = "Secret123$";
+let token;
 window.addEventListener("DOMContentLoaded", () => {
     const controlDiv = document.getElementById("controls");
     createButton(controlDiv, "Get Data", getData);
-    createButton(controlDiv, "Log In", login);
-    createButton(controlDiv, "Log Out", logout);
+    createButton(controlDiv, "Log In", loginBearer);
+    createButton(controlDiv, "Log Out", logoutBearer);
 });
-async function login() {
+async function loginBearer() {
+    const response = await fetch("/api/account/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            username: username,
+            password: password,
+        }),
+    });
+    if (response.ok) {
+        const tokenInfo = await response.json();
+        if (tokenInfo.success) {
+            token = tokenInfo.token;
+        }
+        displayData("Logged in", token);
+    }
+    else {
+        displayData(`Error: ${response.status}: ${response.statusText}`);
+    }
+}
+async function logoutBearer() {
+    token = "";
+    displayData("Logged out");
+}
+async function loginCookie() {
     const response = await fetch("/api/account/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -22,7 +47,7 @@ async function login() {
         displayData(`Error: ${response.status}: ${response.statusText}`);
     }
 }
-async function logout() {
+async function logoutCookie() {
     const response = await fetch("/api/account/logout", {
         method: "POST",
     });
@@ -41,7 +66,9 @@ function createButton(parent, label, handler) {
     parent.appendChild(button);
 }
 async function getData() {
-    let response = await fetch("/api/people");
+    let response = await fetch("/api/people", {
+        headers: { Authorization: `Bearer ${token}` },
+    });
     if (response.ok) {
         let jsonData = await response.json();
         displayData(...jsonData.map((item) => `${item.surname}, ${item.firstname}`));

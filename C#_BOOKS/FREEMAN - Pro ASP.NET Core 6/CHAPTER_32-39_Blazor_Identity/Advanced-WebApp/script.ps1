@@ -35,3 +35,6 @@ dotnet ef database drop --force --context DataContext
 dotnet ef database drop --force --context IdentityContext
 dotnet ef database update --context DataContext
 dotnet ef database update --context IdentityContext
+
+dotnet add package System.IdentityModel.Tokens.Jwt
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer

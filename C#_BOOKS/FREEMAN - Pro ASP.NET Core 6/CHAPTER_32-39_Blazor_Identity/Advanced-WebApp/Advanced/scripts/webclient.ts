@@ -1,14 +1,40 @@
 ﻿const username: string = "joe";
 const password: string = "Secret123$";
+let token: string;
 
 window.addEventListener("DOMContentLoaded", () => {
   const controlDiv: HTMLElement = document.getElementById("controls");
   createButton(controlDiv, "Get Data", getData);
-  createButton(controlDiv, "Log In", login);
-  createButton(controlDiv, "Log Out", logout);
+  createButton(controlDiv, "Log In", loginBearer);
+  createButton(controlDiv, "Log Out", logoutBearer);
 });
 
-async function login() {
+async function loginBearer() {
+  const response: Response = await fetch("/api/account/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: username,
+      password: password,
+    }),
+  });
+  if (response.ok) {
+    const tokenInfo: ApiToken = await response.json();
+    if (tokenInfo.success) {
+      token = tokenInfo.token;
+    }
+    displayData("Logged in", token);
+  } else {
+    displayData(`Error: ${response.status}: ${response.statusText}`);
+  }
+}
+
+async function logoutBearer() {
+  token = "";
+  displayData("Logged out");
+}
+
+async function loginCookie() {
   const response: Response = await fetch("/api/account/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -24,7 +50,7 @@ async function login() {
   }
 }
 
-async function logout() {
+async function logoutCookie() {
   const response: Response = await fetch("/api/account/logout", {
     method: "POST",
   });
@@ -48,7 +74,9 @@ function createButton(
 }
 
 async function getData() {
-  let response: Response = await fetch("/api/people");
+  let response: Response = await fetch("/api/people", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   if (response.ok) {
     let jsonData = await response.json();
     displayData(
@@ -73,4 +101,9 @@ function displayData(...items: Array<string>) {
 interface ApiPeople {
   surname: string;
   firstname: string;
+}
+
+interface ApiToken {
+  success: boolean;
+  token: string;
 }
