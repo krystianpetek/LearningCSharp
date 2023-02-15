@@ -47,8 +47,8 @@
     [Inject]
     public DataContext? DataContext { get; set; }
 
-    public IEnumerable<Department>? Departments => DataContext?
-    .Departments.Include(department => department.People)
+    public IEnumerable<Department>? Departments => DataContext?.Departments
+    .Include(department => department.People)
     .ThenInclude(people => people.Location);
 
     public string Theme { get; set; } = "info";
