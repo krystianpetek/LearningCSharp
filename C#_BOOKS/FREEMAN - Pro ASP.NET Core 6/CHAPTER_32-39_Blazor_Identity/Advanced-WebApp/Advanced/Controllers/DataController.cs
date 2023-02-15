@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DataModel.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Advanced.Controllers;
 
 [ApiController]
 [Route("api/people")]
+[Authorize]
 public class DataController : ControllerBase
 {
     private readonly DataContext _dataContext;
